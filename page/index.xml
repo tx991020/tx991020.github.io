@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Beautiful Hugo</title>
-    <link>http://tx991020.github.io/page/index.xml</link>
+    <link>//tx991020.github.io/page/index.xml</link>
     <description>Recent content in Pages on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <managingEditor>youremail@domain.com (Some Person)</managingEditor>
     <webMaster>youremail@domain.com (Some Person)</webMaster>
-    <atom:link href="http://tx991020.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//tx991020.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About me</title>
-      <link>http://tx991020.github.io/page/about/</link>
+      <link>//tx991020.github.io/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>youremail@domain.com (Some Person)</author>
-      <guid>http://tx991020.github.io/page/about/</guid>
+      <guid>//tx991020.github.io/page/about/</guid>
       <description>
 
 &lt;p&gt;My name is Inigo Montoya. I have the following qualities:&lt;/p&gt;
