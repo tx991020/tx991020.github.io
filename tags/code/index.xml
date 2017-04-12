@@ -6,15 +6,15 @@
     <description>Recent content in Code on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <managingEditor>tx991020@gmail.com</managingEditor>
+    <webMaster>tx991020@gmail.com</webMaster>
     <atom:link href="//tx991020.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Code Sample</title>
       <link>//tx991020.github.io/post/2016-03-08-code-sample/</link>
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2016-03-08-code-sample/</guid>
       <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
 

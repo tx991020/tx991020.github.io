@@ -6,15 +6,15 @@
     <description>Recent content in Math on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <managingEditor>tx991020@gmail.com</managingEditor>
+    <webMaster>tx991020@gmail.com</webMaster>
     <atom:link href="//tx991020.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Math Sample</title>
       <link>//tx991020.github.io/post/2017-03-05-math-sample/</link>
       <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2017-03-05-math-sample/</guid>
       <description>&lt;p&gt;KaTeX can be used to generate complex math formulas server-side.&lt;/p&gt;
 

@@ -6,15 +6,15 @@
     <description>Recent content in Example on Beautiful Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
+    <managingEditor>tx991020@gmail.com</managingEditor>
+    <webMaster>tx991020@gmail.com</webMaster>
     <atom:link href="//tx991020.github.io/tags/example/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Photoswipe Gallery Sample</title>
       <link>//tx991020.github.io/post/2017-03-20-photoswipe-gallery-sample/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2017-03-20-photoswipe-gallery-sample/</guid>
       <description>&lt;p&gt;Beautiful Hugo adds a few custom shortcodes created by &lt;a href=&#34;https://www.liwen.id.au/heg/&#34;&gt;Li-Wen Yip&lt;/a&gt; and &lt;a href=&#34;https://github.com/GjjvdBurg/HugoPhotoSwipe&#34;&gt;Gert-Jan van den Berg&lt;/a&gt; for making galleries with &lt;a href=&#34;http://photoswipe.com&#34;&gt;PhotoSwipe&lt;/a&gt; .&lt;/p&gt;
 
@@ -156,7 +156,7 @@
       <title>Big Image Sample</title>
       <link>//tx991020.github.io/post/2017-03-07-bigimg-sample/</link>
       <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2017-03-07-bigimg-sample/</guid>
       <description>&lt;p&gt;The image banners at the top of the page are refered to as &amp;ldquo;bigimg&amp;rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.&lt;/p&gt;
 
@@ -196,7 +196,7 @@
       <title>Math Sample</title>
       <link>//tx991020.github.io/post/2017-03-05-math-sample/</link>
       <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2017-03-05-math-sample/</guid>
       <description>&lt;p&gt;KaTeX can be used to generate complex math formulas server-side.&lt;/p&gt;
 
@@ -248,7 +248,7 @@ $$&lt;/p&gt;</description>
       <title>Code Sample</title>
       <link>//tx991020.github.io/post/2016-03-08-code-sample/</link>
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2016-03-08-code-sample/</guid>
       <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
 
@@ -288,7 +288,7 @@ $$&lt;/p&gt;</description>
       <title>Test markdown</title>
       <link>//tx991020.github.io/post/2015-02-20-test-markdown/</link>
       <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
-      <author>youremail@domain.com (Some Person)</author>
+      <author>tx991020@gmail.com</author>
       <guid>//tx991020.github.io/post/2015-02-20-test-markdown/</guid>
       <description>
 
