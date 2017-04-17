@@ -146,6 +146,68 @@
               </article>
             
               <article class="post-preview">
+                <a href="//tx991020.github.io/post/14923600672449/">
+                  <h2 class="post-title"></h2>
+      
+                  
+                </a>
+      
+                <p class="post-meta">
+                  Posted on January 1, 0001
+                </p>
+                <div class="post-entry">
+                  
+                    
+                  
+                </div>
+      
+                
+      
+              </article>
+            
+              <article class="post-preview">
+                <a href="//tx991020.github.io/post/Mac%20%E5%AE%89%E8%A3%85%20MySQLdb/">
+                  <h2 class="post-title"></h2>
+      
+                  
+                </a>
+      
+                <p class="post-meta">
+                  Posted on January 1, 0001
+                </p>
+                <div class="post-entry">
+                  
+                    
+
+<h1 id="mac-安装-mysqldb">Mac 安装 MySQLdb</h1>
+
+<ol>
+<li>编辑profile</li>
+</ol>
+
+<p><code>nano ~/.profile</code>
+写入下列内容</p>
+
+<pre><code>export PATH=/usr/local/mysql/bin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+</code></pre>
+
+<p>保存退出，我这里是ctrl + O(保存)，然后Enter(非常重要)，ctrl + X(退出)，
+执行代码
+<code>source ~/.profile</code>
+2. 安装MySQLdb
+<code>sudo pip2 install MySQL-python</code>
+<code>nano ~/.profile</code>
+<code>source ~/.profile</code></p>
+
+                  
+                </div>
+      
+                
+      
+              </article>
+            
+              <article class="post-preview">
                 <a href="//tx991020.github.io/post/homebrew/">
                   <h2 class="post-title"></h2>
       
@@ -188,6 +250,29 @@ brew outdated        # 看一下哪些软件可以升级
 brew upgrade <xxx>   # 如果不是所有的都要升级，那就这样升级指定的</p>
 
 <p>brew upgrade; brew cleanup    # 如果都要升级，直接升级完然后清理干净</p>
+
+                  
+                </div>
+      
+                
+      
+              </article>
+            
+              <article class="post-preview">
+                <a href="//tx991020.github.io/post/leancloud%20%E7%89%88%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">
+                  <h2 class="post-title"></h2>
+      
+                  
+                </a>
+      
+                <p class="post-meta">
+                  Posted on January 1, 0001
+                </p>
+                <div class="post-entry">
+                  
+                    
+
+<h1 id="leancloud-版增删改查">leancloud 版增删改查</h1>
 
                   
                 </div>
@@ -314,7 +399,7 @@ print(cat.name)
               </article>
             
               <article class="post-preview">
-                <a href="//tx991020.github.io/post/%E7%94%A8polipo%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">
+                <a href="//tx991020.github.io/post/python%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8/">
                   <h2 class="post-title"></h2>
       
                   
@@ -325,10 +410,33 @@ print(cat.name)
                 </p>
                 <div class="post-entry">
                   
-                    用polipo为终端设置代理 做开发的同学，应该都会经常接触终端，有些时候我们在终端会做一些网络操作，比如下载gradle包等，由于一些原因，某些网络操作不是那么理想，这时候我们就需要设置代理来自由地访问网络。 Shadowsocks是我们常用的代理工具，它使用socks5协议，而终端很多工具目前只支持http和https等协议，对socks5协议支持不够好，所以我们为终端设置shadowsocks的思路就是将socks协议转换成http协议，然后为终端设置即可。仔细想想也算是适配器模式的一种现实应用吧。 想要进行转换，需要借助工具，这里我们采用比较知名的polipo来实现。polipo是一个轻量级的缓存web代理程序。闲话休叙，让我们开始动手吧。 安装 Fedora安装 1 sudo yum install polipo Mac下使用Homebrew安装 1 brew install polipo Ubuntu安装 1 sudo apt-get install polipo 修改配置(Linux) 如下打开配置文件 1 sudo vim /etc/polipo/config 设置ParentProxy为Shadowsocks，通常情况下本机shadowsocks的地址如下
-Uncomment this if you want to use a parent SOCKS proxy: socksParentProxy = &ldquo;localhost:1080&rdquo; socksProxyType = socks5 设置日志输出文件 1 2 logFile=/var/log/polipo logLevel=4 修改配置(Mac) 设置每次登陆启动polipo 1 ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents 修改文件/usr/local/opt/polipo/homebrew.mxcl.polipo.plist设置parentProxy
-&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;?&gt; &lt;!DOCTYPE plist PUBLIC &ldquo;-//Apple//DTD PLIST 1.0//EN&rdquo; &ldquo;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;  Label homebrew.
-                    <a href="//tx991020.github.io/post/%E7%94%A8polipo%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" class="post-read-more">[Read&nbsp;More]</a>
+                    
+
+<h1 id="python-自定义异常">python 自定义异常</h1>
+
+                  
+                </div>
+      
+                
+      
+              </article>
+            
+              <article class="post-preview">
+                <a href="//tx991020.github.io/post/python%20%E9%80%92%E5%BD%92/">
+                  <h2 class="post-title"></h2>
+      
+                  
+                </a>
+      
+                <p class="post-meta">
+                  Posted on January 1, 0001
+                </p>
+                <div class="post-entry">
+                  
+                    
+
+<h1 id="python-递归">python 递归</h1>
+
                   
                 </div>
       
