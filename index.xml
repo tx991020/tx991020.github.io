@@ -456,25 +456,183 @@ Be all my sins remembered.&lt;/p&gt;
     </item>
     
     <item>
-      <title>About me</title>
-      <link>//tx991020.github.io/page/about/</link>
+      <title></title>
+      <link>//tx991020.github.io/post/homebrew/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com</author>
-      <guid>//tx991020.github.io/page/about/</guid>
+      <guid>//tx991020.github.io/post/homebrew/</guid>
+      <description>&lt;p&gt;#homebrew
+mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：&lt;/p&gt;
+
+&lt;p&gt;1.
+安装（需要 Ruby）：
+ruby -e &amp;ldquo;$(curl -fsSL &lt;a href=&#34;https://raw.github.com/Homebrew/homebrew/Go/install)&amp;quot;&#34;&gt;https://raw.github.com/Homebrew/homebrew/Go/install)&amp;quot;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;2.
+搜索：brew search MySQL&lt;/p&gt;
+
+&lt;p&gt;3.
+查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等&lt;/p&gt;
+
+&lt;p&gt;4.
+更新：brew update 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义——&lt;/p&gt;
+
+&lt;p&gt;5.
+检查过时（是否有新版本）：brew outdated 这回列出所有安装的软件里可以升级的那些&lt;/p&gt;
+
+&lt;p&gt;6.
+升级：brew upgrade 升级所有可以升级的软件们&lt;/p&gt;
+
+&lt;p&gt;7.
+清理：brew cleanup 清理不需要的版本极其安装包缓存&lt;/p&gt;
+
+&lt;p&gt;常用的就这些。一般来说如果你追求新版本（不升级不舒服斯基），那么你最常用的操作序列就是这样：
+brew update          # 更新 Homebrew 的信息
+brew outdated        # 看一下哪些软件可以升级
+brew upgrade &lt;xxx&gt;   # 如果不是所有的都要升级，那就这样升级指定的&lt;/p&gt;
+
+&lt;p&gt;brew upgrade; brew cleanup    # 如果都要升级，直接升级完然后清理干净&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>//tx991020.github.io/post/mac%E6%9B%B4%E6%94%B9pip%E6%BA%90%EF%BC%8C%E6%B2%A1%E6%9C%89.pip%EF%BC%88%E5%8D%B3linux%20ubuntu%20python%20pip%20%E6%8D%A2%E6%BA%90%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%EF%BC%89/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com</author>
+      <guid>//tx991020.github.io/post/mac%E6%9B%B4%E6%94%B9pip%E6%BA%90%EF%BC%8C%E6%B2%A1%E6%9C%89.pip%EF%BC%88%E5%8D%B3linux%20ubuntu%20python%20pip%20%E6%8D%A2%E6%BA%90%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%EF%BC%89/</guid>
       <description>
 
-&lt;p&gt;My name is Inigo Montoya. I have the following qualities:&lt;/p&gt;
+&lt;h1 id=&#34;mac更改pip源-没有-pip-即linux-ubuntu-python-pip-换源方法教程&#34;&gt;mac更改pip源，没有.pip（即linux ubuntu python pip 换源方法教程）&lt;/h1&gt;
 
-&lt;ul&gt;
-&lt;li&gt;I rock a great mustache&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;m extremely loyal to my family&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;有的朋友要改pypi源 mac没有.pip文件夹很正常 因为要自己建&lt;/p&gt;
 
-&lt;p&gt;What else do you need?&lt;/p&gt;
+&lt;p&gt;在终端进入目录：cd ~/&lt;/p&gt;
 
-&lt;h3 id=&#34;my-history&#34;&gt;my history&lt;/h3&gt;
+&lt;p&gt;如果没有 .pip 文件夹，那么就要新建这个文件夹，mkdir .pip&lt;/p&gt;
 
-&lt;p&gt;To be honest, I&amp;rsquo;m having some trouble remembering right now.&lt;/p&gt;
+&lt;p&gt;然后在.pip 文件夹内新建一个文件 touch pip.conf，&lt;/p&gt;
+
+&lt;p&gt;编辑 pip.conf 文件，写入阿里云&lt;/p&gt;
+
+&lt;p&gt;[global]&lt;/p&gt;
+
+&lt;p&gt;index-url = &lt;a href=&#34;http://mirrors.aliyun.com/pypi/simple/&#34;&gt;http://mirrors.aliyun.com/pypi/simple/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[install]&lt;/p&gt;
+
+&lt;p&gt;trusted-host=mirrors.aliyun.com&lt;/p&gt;
+
+&lt;p&gt;或者可以使用豆瓣的镜像：&lt;/p&gt;
+
+&lt;p&gt;[global]&lt;/p&gt;
+
+&lt;p&gt;index-url = &lt;a href=&#34;http://pypi.douban.com/simple&#34;&gt;http://pypi.douban.com/simple&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[install]&lt;/p&gt;
+
+&lt;p&gt;trusted-host=pypi.douban.com&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com</author>
+      <guid>//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/</guid>
+      <description>
+
+&lt;h1 id=&#34;mac系统下安装-启动-停止mongodb&#34;&gt;mac系统下安装、启动、停止mongodb&lt;/h1&gt;
+
+&lt;p&gt;1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）&lt;/p&gt;
+
+&lt;p&gt;2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift + command +G 输入 /usr/local后回车便能看到这个隐藏的目录了&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/14923600672449/14923958780349.png&#34; alt=&#34;&#34; /&gt;
+3. 上图中展示的就是我的本机的目录结构了，在/usr/local/mongodb/bin下就是mongodb的执行文件了
+4. 然后在根目录下新建 data 文件夹，里面再建一个db文件夹，就是上图中那个 usr文件夹上面的 那个data文件夹 ，里面是用来存放数据库的
+5. 终端切换到/usr/local/mongodb/bin目录下，
+&lt;img src=&#34;media/14923600672449/14923959618215.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6.执行 ./mongod 启动服务端&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/14923600672449/14923960178684.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7.显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下你/data/db文件夹位置对不对，不行就重新删掉建一个
+8.打开浏览器，输入localhost:27017,会出现“&lt;/p&gt;
+
+&lt;p&gt;It looks like you are trying to access MongoDB over HTTP on the native driver port.
+” 这样一行文字，然后可以重新打开一个终端 同样是&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;media/14923600672449/14923960697135.png&#34; alt=&#34;&#34; /&gt;
+9. 出现上图的提示就代表连接成功了 ，终端上会一直显示一个 ‘&amp;gt;’ 符号，此时就可以输入mongodb的sql命令 了(这里我列出一些基本的)
+*test 是我建的一个集合名字&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;show dbs //显示数据库
+use test //使用某个数据库
+db.test.insert({‘name’:’byc’}) //插入一条记录
+db.test.find() //查找所有记录
+db.test.findone() //查找一条记录
+db.dropDatabase() //删除数据库
+db.test.drop //删除指定集合
+show collections //显示所有集合
+db.createColletion(‘byc’) //创建集合
+db.test.save({}) //插入记录db.test.update({‘_id’,1},{$set:{name:’test’,age:20}})
+db.test.remove({}) //删除所有集合
+for(var i=1;i&amp;lt;=10;i++){db.test.insert({&amp;quot;name&amp;quot;:&amp;quot;king&amp;quot;+i,&amp;quot;age&amp;quot;:i})} //循环插入10条记录
+db.test.find().pretty() //格式化显示查询结果
+db.test.find().count() //查询数据条数
+db.test.find({&amp;quot;age&amp;quot;:5}) /查找age是5的条目
+db.test.find({“age”:{$gt:5}}) //查找age大于5的条目
+db.test.find({&amp;quot;age&amp;quot;:{$gt:5}}).sort({&amp;quot;age&amp;quot;:1}) //查找age大于5的条目且升序排列
+db.test.find({&amp;quot;age&amp;quot;:{$gt:5}}).sort({&amp;quot;age&amp;quot;:1}) //查找age大于5的条目且升序排列
+db.test.find({&amp;quot;age&amp;quot;:{$gt:5}}).sort({&amp;quot;age”:-1}) //查找age大于5的条目且降序排列
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;10.要停止mongodb一定要正确的退出,不然下次再次连接数据库会出现问题.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;use admin; db.shotdownServer();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;11.如果你不想每次启动mongodb都要切换到/usr/local/mongodb/bin目录下，你可以将它添加到环境变量,操作如下：&lt;/p&gt;
+
+&lt;p&gt;首先添加PATH：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &#39;export PATH=/usr/local/mongodb/bin:$PATH&#39;&amp;gt;&amp;gt;~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;添加完成后为使环境变量生效，可重启shell终端，或输入命令 source .bash_profile。
+查看环境变量是否添加成功：
+echo $PATH&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>//tx991020.github.io/post/python%20%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com</author>
+      <guid>//tx991020.github.io/post/python%20%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;p&gt;#python 单例实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Animal(object):
+    __instance = None
+
+    def __new__(cls, *args):
+        if cls.__instance is None:
+
+            cls.__instance = object.__new__(cls)
+        return cls.__instance
+    def __init__(self,name):
+        self.name = name
+
+
+cat = Animal(&#39;miao&#39;)
+print(cat)
+
+print(cat.name)
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

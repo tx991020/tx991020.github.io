@@ -6,23 +6,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>First post!</title>
-  <meta property="og:title" content="First post!" />
-  <meta name="twitter:title" content="First post!" />
-  <meta name="description" content="This is my first post, how exciting!">
-  <meta property="og:description" content="This is my first post, how exciting!">
-  <meta name="twitter:description" content="This is my first post, how exciting!">
+  <title>Beautiful Hugo</title>
+  <meta property="og:title" content="Beautiful Hugo" />
+  <meta name="twitter:title" content="Beautiful Hugo" />
+  <meta name="description" content="#homebrew mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：
+1. 安装（需要 Ruby）： ruby -e &ldquo;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/Go/install)&quot;
+2. 搜索：brew search MySQL
+3. 查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等
+4. 更新：brew update 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义——
+5. 检查过时（是否有新版本）：brew outdated 这回列出所有安装的软件里可以升级的那些
+6. 升级：brew upgrade 升级所有可以升级的软件们
+7. 清理：brew cleanup 清理不需要的版本极其安装包缓存
+常用的就这些。一般来说如果你追求新版本（不升级不舒服斯基），那么你最常用的操作序列就是这样： brew update # 更新 Homebrew 的信息 brew outdated # 看一下哪些软件可以升级 brew upgrade  # 如果不是所有的都要升级，那就这样升级指定的
+brew upgrade; brew cleanup # 如果都要升级，直接升级完然后清理干净">
+  <meta property="og:description" content="#homebrew mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：
+1. 安装（需要 Ruby）： ruby -e &ldquo;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/Go/install)&quot;
+2. 搜索：brew search MySQL
+3. 查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等
+4. 更新：brew update 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义——
+5. 检查过时（是否有新版本）：brew outdated 这回列出所有安装的软件里可以升级的那些
+6. 升级：brew upgrade 升级所有可以升级的软件们
+7. 清理：brew cleanup 清理不需要的版本极其安装包缓存
+常用的就这些。一般来说如果你追求新版本（不升级不舒服斯基），那么你最常用的操作序列就是这样： brew update # 更新 Homebrew 的信息 brew outdated # 看一下哪些软件可以升级 brew upgrade  # 如果不是所有的都要升级，那就这样升级指定的
+brew upgrade; brew cleanup # 如果都要升级，直接升级完然后清理干净">
+  <meta name="twitter:description" content="#homebrew mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：
+1. 安装（需要 Ruby）： ruby -e &ldquo;$(curl -fsSL https://raw.github.com/Homebrew/homebrew/Go/install)&quot;
+2. 搜索：brew search MySQL
+3. 查询：brew info mysql 主要 …">
   <meta name="author" content=""/>
   <link href='//tx991020.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="//tx991020.github.io/img/avatar-icon.png" />
   <meta name="twitter:image" content="//tx991020.github.io/img/avatar-icon.png" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="//tx991020.github.io/post/2015-01-04-first-post/" />
+  <meta property="og:url" content="//tx991020.github.io/post/homebrew/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Beautiful Hugo" />
 
   <meta name="generator" content="Hugo 0.19" />
-  <link rel="canonical" href="//tx991020.github.io/post/2015-01-04-first-post/" />
+  <link rel="canonical" href="//tx991020.github.io/post/homebrew/" />
   <link rel="alternate" href="//tx991020.github.io/index.xml" type="application/rss+xml" title="Beautiful Hugo">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -114,27 +135,7 @@
 
 
 
-  
-
-  <header class="header-section ">
-    
-    <div class="intro-header no-img">
-      
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-heading">
-              <h1>First post!</h1>
-                
-                
-                  <span class="post-meta">Posted on January 5, 2015</span>
-                
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <div class="intro-header"></div>
 
 
     <div class="container" role="main">
@@ -143,19 +144,49 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>This is my first post, how exciting!</p>
+        <p>#homebrew
+mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：</p>
+
+<p>1.
+安装（需要 Ruby）：
+ruby -e &ldquo;$(curl -fsSL <a href="https://raw.github.com/Homebrew/homebrew/Go/install)&quot;">https://raw.github.com/Homebrew/homebrew/Go/install)&quot;</a></p>
+
+<p>2.
+搜索：brew search MySQL</p>
+
+<p>3.
+查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等</p>
+
+<p>4.
+更新：brew update 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义——</p>
+
+<p>5.
+检查过时（是否有新版本）：brew outdated 这回列出所有安装的软件里可以升级的那些</p>
+
+<p>6.
+升级：brew upgrade 升级所有可以升级的软件们</p>
+
+<p>7.
+清理：brew cleanup 清理不需要的版本极其安装包缓存</p>
+
+<p>常用的就这些。一般来说如果你追求新版本（不升级不舒服斯基），那么你最常用的操作序列就是这样：
+brew update          # 更新 Homebrew 的信息
+brew outdated        # 看一下哪些软件可以升级
+brew upgrade <xxx>   # 如果不是所有的都要升级，那就这样升级指定的</p>
+
+<p>brew upgrade; brew cleanup    # 如果都要升级，直接升级完然后清理干净</p>
 
       </article>
 
       <ul class="pager blog-pager">
         
           <li class="previous">
-            <a href="//tx991020.github.io/post/homebrew/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+            <a href="//tx991020.github.io/post/mac%E6%9B%B4%E6%94%B9pip%E6%BA%90%EF%BC%8C%E6%B2%A1%E6%9C%89.pip%EF%BC%88%E5%8D%B3linux%20ubuntu%20python%20pip%20%E6%8D%A2%E6%BA%90%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%EF%BC%89/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
           </li>
         
         
           <li class="next">
-            <a href="//tx991020.github.io/post/2015-01-15-pirates/" data-toggle="tooltip" data-placement="top" title="Pirates arrrr">Next Post &rarr;</a>
+            <a href="//tx991020.github.io/post/2015-01-04-first-post/" data-toggle="tooltip" data-placement="top" title="First post!">Next Post &rarr;</a>
           </li>
         
       </ul>

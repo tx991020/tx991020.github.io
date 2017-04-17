@@ -177,6 +177,197 @@
 
               </article>
             
+              <article class="post-preview">
+              <a href="//tx991020.github.io/post/homebrew/">
+                <h2 class="post-title"></h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on January 1, 0001
+              </p>
+              <div class="post-entry">
+                
+                  <p>#homebrew
+mac 系统常用的软件安装工具就是 homebrew, 其最常用的命令如下：</p>
+
+<p>1.
+安装（需要 Ruby）：
+ruby -e &ldquo;$(curl -fsSL <a href="https://raw.github.com/Homebrew/homebrew/Go/install)&quot;">https://raw.github.com/Homebrew/homebrew/Go/install)&quot;</a></p>
+
+<p>2.
+搜索：brew search MySQL</p>
+
+<p>3.
+查询：brew info mysql 主要看具体的信息，比如目前的版本，依赖，安装后注意事项等</p>
+
+<p>4.
+更新：brew update 这会更新 Homebrew 自己，并且使得接下来的两个操作有意义——</p>
+
+<p>5.
+检查过时（是否有新版本）：brew outdated 这回列出所有安装的软件里可以升级的那些</p>
+
+<p>6.
+升级：brew upgrade 升级所有可以升级的软件们</p>
+
+<p>7.
+清理：brew cleanup 清理不需要的版本极其安装包缓存</p>
+
+<p>常用的就这些。一般来说如果你追求新版本（不升级不舒服斯基），那么你最常用的操作序列就是这样：
+brew update          # 更新 Homebrew 的信息
+brew outdated        # 看一下哪些软件可以升级
+brew upgrade <xxx>   # 如果不是所有的都要升级，那就这样升级指定的</p>
+
+<p>brew upgrade; brew cleanup    # 如果都要升级，直接升级完然后清理干净</p>
+
+                
+              </div>
+
+              
+
+              </article>
+            
+              <article class="post-preview">
+              <a href="//tx991020.github.io/post/mac%E6%9B%B4%E6%94%B9pip%E6%BA%90%EF%BC%8C%E6%B2%A1%E6%9C%89.pip%EF%BC%88%E5%8D%B3linux%20ubuntu%20python%20pip%20%E6%8D%A2%E6%BA%90%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%EF%BC%89/">
+                <h2 class="post-title"></h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on January 1, 0001
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<h1 id="mac更改pip源-没有-pip-即linux-ubuntu-python-pip-换源方法教程">mac更改pip源，没有.pip（即linux ubuntu python pip 换源方法教程）</h1>
+
+<p>有的朋友要改pypi源 mac没有.pip文件夹很正常 因为要自己建</p>
+
+<p>在终端进入目录：cd ~/</p>
+
+<p>如果没有 .pip 文件夹，那么就要新建这个文件夹，mkdir .pip</p>
+
+<p>然后在.pip 文件夹内新建一个文件 touch pip.conf，</p>
+
+<p>编辑 pip.conf 文件，写入阿里云</p>
+
+<p>[global]</p>
+
+<p>index-url = <a href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a></p>
+
+<p>[install]</p>
+
+<p>trusted-host=mirrors.aliyun.com</p>
+
+<p>或者可以使用豆瓣的镜像：</p>
+
+<p>[global]</p>
+
+<p>index-url = <a href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a></p>
+
+<p>[install]</p>
+
+<p>trusted-host=pypi.douban.com</p>
+
+                
+              </div>
+
+              
+
+              </article>
+            
+              <article class="post-preview">
+              <a href="//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/">
+                <h2 class="post-title"></h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on January 1, 0001
+              </p>
+              <div class="post-entry">
+                
+                  mac系统下安装、启动、停止mongodb 1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）
+2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift + command +G 输入 /usr/local后回车便能看到这个隐藏的目录了
+3. 上图中展示的就是我的本机的目录结构了，在/usr/local/mongodb/bin下就是mongodb的执行文件了 4. 然后在根目录下新建 data 文件夹，里面再建一个db文件夹，就是上图中那个 usr文件夹上面的 那个data文件夹 ，里面是用来存放数据库的 5. 终端切换到/usr/local/mongodb/bin目录下， 6.执行 ./mongod 启动服务端
+7.显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下你/data/db文件夹位置对不对，不行就重新删掉建一个 8.打开浏览器，输入localhost:27017,会出现“
+It looks like you are trying to access MongoDB over HTTP on the native driver port. ” 这样一行文字，然后可以重新打开一个终端 同样是
+9. 出现上图的提示就代表连接成功了 ，终端上会一直显示一个 ‘&gt;’ 符号，此时就可以输入mongodb的sql命令 了(这里我列出一些基本的) *test 是我建的一个集合名字
+show dbs //显示数据库 use test //使用某个数据库 db.test.insert({‘name’:’byc’}) //插入一条记录 db.test.find() //查找所有记录 db.test.findone() //查找一条记录 db.dropDatabase() //删除数据库 db.
+                  <a href="//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/" class="post-read-more">[Read&nbsp;More]</a>
+                
+              </div>
+
+              
+
+              </article>
+            
+              <article class="post-preview">
+              <a href="//tx991020.github.io/post/python%20%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0/">
+                <h2 class="post-title"></h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on January 1, 0001
+              </p>
+              <div class="post-entry">
+                
+                  <p>#python 单例实现</p>
+
+<pre><code>class Animal(object):
+    __instance = None
+
+    def __new__(cls, *args):
+        if cls.__instance is None:
+
+            cls.__instance = object.__new__(cls)
+        return cls.__instance
+    def __init__(self,name):
+        self.name = name
+
+
+cat = Animal('miao')
+print(cat)
+
+print(cat.name)
+</code></pre>
+
+                
+              </div>
+
+              
+
+              </article>
+            
+              <article class="post-preview">
+              <a href="//tx991020.github.io/post/%E7%94%A8polipo%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/">
+                <h2 class="post-title"></h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on January 1, 0001
+              </p>
+              <div class="post-entry">
+                
+                  用polipo为终端设置代理 做开发的同学，应该都会经常接触终端，有些时候我们在终端会做一些网络操作，比如下载gradle包等，由于一些原因，某些网络操作不是那么理想，这时候我们就需要设置代理来自由地访问网络。 Shadowsocks是我们常用的代理工具，它使用socks5协议，而终端很多工具目前只支持http和https等协议，对socks5协议支持不够好，所以我们为终端设置shadowsocks的思路就是将socks协议转换成http协议，然后为终端设置即可。仔细想想也算是适配器模式的一种现实应用吧。 想要进行转换，需要借助工具，这里我们采用比较知名的polipo来实现。polipo是一个轻量级的缓存web代理程序。闲话休叙，让我们开始动手吧。 安装 Fedora安装 1 sudo yum install polipo Mac下使用Homebrew安装 1 brew install polipo Ubuntu安装 1 sudo apt-get install polipo 修改配置(Linux) 如下打开配置文件 1 sudo vim /etc/polipo/config 设置ParentProxy为Shadowsocks，通常情况下本机shadowsocks的地址如下
+Uncomment this if you want to use a parent SOCKS proxy: socksParentProxy = &ldquo;localhost:1080&rdquo; socksProxyType = socks5 设置日志输出文件 1 2 logFile=/var/log/polipo logLevel=4 修改配置(Mac) 设置每次登陆启动polipo 1 ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents 修改文件/usr/local/opt/polipo/homebrew.mxcl.polipo.plist设置parentProxy
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;?&gt; &lt;!DOCTYPE plist PUBLIC &ldquo;-//Apple//DTD PLIST 1.0//EN&rdquo; &ldquo;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;  Label homebrew.
+                  <a href="//tx991020.github.io/post/%E7%94%A8polipo%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/" class="post-read-more">[Read&nbsp;More]</a>
+                
+              </div>
+
+              
+
+              </article>
+            
           </div>
 
           

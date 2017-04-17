@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Beautiful Hugo</title>
+  <meta property="og:title" content="Beautiful Hugo" />
+  <meta name="twitter:title" content="Beautiful Hugo" />
+  <meta name="description" content="mac系统下安装、启动、停止mongodb 1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）
+2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift &#43; command &#43;G 输入 /usr/local后回车便能看到这个隐藏的目录了
+3. 上图中展示的就是我的本机的目录结构了，在/usr/local/mongodb/bin下就是mongodb的执行文件了 4. 然后在根目录下新建 data 文件夹，里面再建一个db文件夹，就是上图中那个 usr文件夹上面的 那个data文件夹 ，里面是用来存放数据库的 5. 终端切换到/usr/local/mongodb/bin目录下， 6.执行 ./mongod 启动服务端
+7.显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下你/data/db文件夹位置对不对，不行就重新删掉建一个 8.打开浏览器，输入localhost:27017,会出现“
+It looks like you are trying to access MongoDB over HTTP on the native driver port. ” 这样一行文字，然后可以重新打开一个终端 同样是
+9. 出现上图的提示就代表连接成功了 ，终端上会一直显示一个 ‘&gt;’ 符号，此时就可以输入mongodb的sql命令 了(这里我列出一些基本的) *test 是我建的一个集合名字
+show dbs //显示数据库 use test //使用某个数据库 db.test.insert({‘name’:’byc’}) //插入一条记录 db.test.find() //查找所有记录 db.test.findone() //查找一条记录 db.dropDatabase() //删除数据库 db.">
+  <meta property="og:description" content="mac系统下安装、启动、停止mongodb 1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）
+2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift &#43; command &#43;G 输入 /usr/local后回车便能看到这个隐藏的目录了
+3. 上图中展示的就是我的本机的目录结构了，在/usr/local/mongodb/bin下就是mongodb的执行文件了 4. 然后在根目录下新建 data 文件夹，里面再建一个db文件夹，就是上图中那个 usr文件夹上面的 那个data文件夹 ，里面是用来存放数据库的 5. 终端切换到/usr/local/mongodb/bin目录下， 6.执行 ./mongod 启动服务端
+7.显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下你/data/db文件夹位置对不对，不行就重新删掉建一个 8.打开浏览器，输入localhost:27017,会出现“
+It looks like you are trying to access MongoDB over HTTP on the native driver port. ” 这样一行文字，然后可以重新打开一个终端 同样是
+9. 出现上图的提示就代表连接成功了 ，终端上会一直显示一个 ‘&gt;’ 符号，此时就可以输入mongodb的sql命令 了(这里我列出一些基本的) *test 是我建的一个集合名字
+show dbs //显示数据库 use test //使用某个数据库 db.test.insert({‘name’:’byc’}) //插入一条记录 db.test.find() //查找所有记录 db.test.findone() //查找一条记录 db.dropDatabase() //删除数据库 db.">
+  <meta name="twitter:description" content="mac系统下安装、启动、停止mongodb 1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）
+2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift &#43; command &#43;G 输入 /usr/local后回 …">
+  <meta name="author" content=""/>
+  <link href='//tx991020.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="//tx991020.github.io/img/avatar-icon.png" />
+  <meta name="twitter:image" content="//tx991020.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Beautiful Hugo" />
+
+  <meta name="generator" content="Hugo 0.19" />
+  <link rel="canonical" href="//tx991020.github.io/post/mac%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E3%80%81%E5%90%AF%E5%8A%A8%E3%80%81%E5%81%9C%E6%AD%A2mongodb/" />
+  <link rel="alternate" href="//tx991020.github.io/index.xml" type="application/rss+xml" title="Beautiful Hugo">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="//tx991020.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="//tx991020.github.io/css/pygment_highlights.css" />
+  <link rel="stylesheet" href="//tx991020.github.io/css/highlight.min.css" />
+
+
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="//tx991020.github.io">Beautiful Hugo</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Samples</a>
+              <div class="navlinks-children">
+                
+                  <a href="/post/2017-03-07-bigimg-sample">Big Image Sample</a>
+                
+                  <a href="/post/2017-03-05-math-sample">Math Sample</a>
+                
+                  <a href="/post/2016-03-08-code-sample">Code Sample</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="Beautiful Hugo" href="//tx991020.github.io">
+            <img class="avatar-img" src="//tx991020.github.io/img/avatar-icon.png" alt="Beautiful Hugo" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+    
+  
+  
+  
+
+
+
+
+  <div class="intro-header"></div>
+
+
+    <div class="container" role="main">
+      
+        <div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<h1 id="mac系统下安装-启动-停止mongodb">mac系统下安装、启动、停止mongodb</h1>
+
+<p>1下载Mongodb后，将Mongodb-3.2.5.tar.gz 复制到 /usr/local 路径下解压得到mongodb这个文件夹，（下图中的是我自己改了名字删掉了版本号）</p>
+
+<p>2*默认情况下在Finder中是看不到 /usr 这个目录的（终端用得溜的请略过），可以打开Finder后按shift + command +G 输入 /usr/local后回车便能看到这个隐藏的目录了</p>
+
+<p><img src="media/14923600672449/14923958780349.png" alt="" />
+3. 上图中展示的就是我的本机的目录结构了，在/usr/local/mongodb/bin下就是mongodb的执行文件了
+4. 然后在根目录下新建 data 文件夹，里面再建一个db文件夹，就是上图中那个 usr文件夹上面的 那个data文件夹 ，里面是用来存放数据库的
+5. 终端切换到/usr/local/mongodb/bin目录下，
+<img src="media/14923600672449/14923959618215.png" alt="" /></p>
+
+<p>6.执行 ./mongod 启动服务端</p>
+
+<p><img src="media/14923600672449/14923960178684.png" alt="" /></p>
+
+<p>7.显示等候客户端连接的界面就代表启动成功了，如果不成功就检查下你/data/db文件夹位置对不对，不行就重新删掉建一个
+8.打开浏览器，输入localhost:27017,会出现“</p>
+
+<p>It looks like you are trying to access MongoDB over HTTP on the native driver port.
+” 这样一行文字，然后可以重新打开一个终端 同样是</p>
+
+<p><img src="media/14923600672449/14923960697135.png" alt="" />
+9. 出现上图的提示就代表连接成功了 ，终端上会一直显示一个 ‘&gt;’ 符号，此时就可以输入mongodb的sql命令 了(这里我列出一些基本的)
+*test 是我建的一个集合名字</p>
+
+<pre><code>show dbs //显示数据库
+use test //使用某个数据库
+db.test.insert({‘name’:’byc’}) //插入一条记录
+db.test.find() //查找所有记录
+db.test.findone() //查找一条记录
+db.dropDatabase() //删除数据库
+db.test.drop //删除指定集合
+show collections //显示所有集合
+db.createColletion(‘byc’) //创建集合
+db.test.save({}) //插入记录db.test.update({‘_id’,1},{$set:{name:’test’,age:20}})
+db.test.remove({}) //删除所有集合
+for(var i=1;i&lt;=10;i++){db.test.insert({&quot;name&quot;:&quot;king&quot;+i,&quot;age&quot;:i})} //循环插入10条记录
+db.test.find().pretty() //格式化显示查询结果
+db.test.find().count() //查询数据条数
+db.test.find({&quot;age&quot;:5}) /查找age是5的条目
+db.test.find({“age”:{$gt:5}}) //查找age大于5的条目
+db.test.find({&quot;age&quot;:{$gt:5}}).sort({&quot;age&quot;:1}) //查找age大于5的条目且升序排列
+db.test.find({&quot;age&quot;:{$gt:5}}).sort({&quot;age&quot;:1}) //查找age大于5的条目且升序排列
+db.test.find({&quot;age&quot;:{$gt:5}}).sort({&quot;age”:-1}) //查找age大于5的条目且降序排列
+</code></pre>
+
+<p>10.要停止mongodb一定要正确的退出,不然下次再次连接数据库会出现问题.</p>
+
+<pre><code>use admin; db.shotdownServer();
+</code></pre>
+
+<p>11.如果你不想每次启动mongodb都要切换到/usr/local/mongodb/bin目录下，你可以将它添加到环境变量,操作如下：</p>
+
+<p>首先添加PATH：</p>
+
+<pre><code>echo 'export PATH=/usr/local/mongodb/bin:$PATH'&gt;&gt;~/.bash_profile
+</code></pre>
+
+<p>添加完成后为使环境变量生效，可重启shell终端，或输入命令 source .bash_profile。
+查看环境变量是否添加成功：
+echo $PATH</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+          <li class="previous">
+            <a href="//tx991020.github.io/post/python%20%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+          </li>
+        
+        
+          <li class="next">
+            <a href="//tx991020.github.io/post/mac%E6%9B%B4%E6%94%B9pip%E6%BA%90%EF%BC%8C%E6%B2%A1%E6%9C%89.pip%EF%BC%88%E5%8D%B3linux%20ubuntu%20python%20pip%20%E6%8D%A2%E6%BA%90%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%EF%BC%89/" data-toggle="tooltip" data-placement="top" title="">Next Post &rarr;</a>
+          </li>
+        
+      </ul>
+
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:tx991020@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/tx991020" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="//tx991020.github.io/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+          &nbsp;&bull;&nbsp;
+          2017
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="//tx991020.github.io">Beautiful Hugo</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.19</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="//tx991020.github.io/js/main.js"></script>
+<script src="//tx991020.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> renderMathInElement(document.body); </script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
