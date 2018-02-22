@@ -1,36 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on Beautiful Hugo</title>
-    <link>//tx991020.github.io/page/index.xml</link>
-    <description>Recent content in Pages on Beautiful Hugo</description>
+    <title>Pages on 大王派我来搬砖</title>
+    <link>https://tx991020.github.io/page/</link>
+    <description>Recent content in Pages on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <managingEditor>tx991020@gmail.com</managingEditor>
-    <webMaster>tx991020@gmail.com</webMaster>
-    <atom:link href="//tx991020.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
+    <webMaster>tx991020@gmail.com (andy wu)</webMaster>
+    
+	<atom:link href="https://tx991020.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>About me</title>
-      <link>//tx991020.github.io/page/about/</link>
+      <link>https://tx991020.github.io/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com</author>
-      <guid>//tx991020.github.io/page/about/</guid>
-      <description>
-
-&lt;p&gt;My name is Inigo Montoya. I have the following qualities:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;I rock a great mustache&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;m extremely loyal to my family&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;What else do you need?&lt;/p&gt;
-
-&lt;h3 id=&#34;my-history&#34;&gt;my history&lt;/h3&gt;
-
-&lt;p&gt;To be honest, I&amp;rsquo;m having some trouble remembering right now.&lt;/p&gt;
-</description>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://tx991020.github.io/page/about/</guid>
+      <description> My name is Andy Wu. I have the following qualities:
+ I rock a great mustache I&amp;rsquo;m extremely loyal to my family  What else do you need?
+my history </description>
     </item>
     
   </channel>
