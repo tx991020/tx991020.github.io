@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>http://gopherday.com/post/2015-06-10-python-apscheduler/</loc>
+    <lastmod>2016-11-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/post/2016-11-20-golang-set/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
   </url>
@@ -88,10 +93,6 @@
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-06-10-python-apscheduler/</loc>
-  </url>
-  
-  <url>
     <loc>http://gopherday.com/page/about/</loc>
   </url>
   
@@ -108,7 +109,7 @@
   
   <url>
     <loc>http://gopherday.com/tags/code/</loc>
-    <lastmod>2016-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2014-05-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

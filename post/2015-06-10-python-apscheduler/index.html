@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>大王派我来搬砖</title>
-  <meta property="og:title" content="大王派我来搬砖" />
-  <meta name="twitter:title" content="大王派我来搬砖" />
+  <title>APScheduler</title>
+  <meta property="og:title" content="APScheduler" />
+  <meta name="twitter:title" content="APScheduler" />
   <meta name="description" content="定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：
 APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
 APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
@@ -199,7 +199,39 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
 
 
 
-  <div class="intro-header"></div>
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>APScheduler</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (390 words)
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
 
     
@@ -348,9 +380,13 @@ timezone (datetime.tzinfo|str) – time zone for run_date if it doesn’t have o
       
         <ul class="pager blog-pager">
           
+            <li class="previous">
+              <a href="http://gopherday.com/post/2016-11-20-golang-set/" data-toggle="tooltip" data-placement="top" title="golang set">&larr; Previous Post</a>
+            </li>
+          
           
             <li class="next">
-              <a href="http://gopherday.com/post/2014.05-10-python-retring/" data-toggle="tooltip" data-placement="top" title="python 重试装饰器">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2016-12-20-pandas-pic/" data-toggle="tooltip" data-placement="top" title="pandas basic">Next Post &rarr;</a>
             </li>
           
         </ul>

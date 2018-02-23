@@ -7,39 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Sun, 20 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 May 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>golang set</title>
-      <link>http://gopherday.com/post/2016-11-20-golang-set/</link>
-      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016-11-20-golang-set/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.</description>
-    </item>
-    
-    <item>
-      <title>Code Sample</title>
-      <link>http://gopherday.com/post/2016-03-08-code-sample/</link>
-      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016-03-08-code-sample/</guid>
-      <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>golang redispool</title>
-      <link>http://gopherday.com/post/2016-02-15-golang-redispool/</link>
-      <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016-02-15-golang-redispool/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/garyburd/redigo/redis&amp;#34; ) var pool *redis.Pool func init() { pool = &amp;amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&amp;#34;tcp&amp;#34;, &amp;#34;localhost:6379&amp;#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&amp;#34;Set&amp;#34;, &amp;#34;abc&amp;#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&amp;#34;Get&amp;#34;, &amp;#34;abc&amp;#34;)) if err != nil { fmt.Println(&amp;#34;get abc failed,&amp;#34;, err) return } fmt.</description>
-    </item>
     
     <item>
       <title>python 重试装饰器</title>
