@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on 大王派我来搬砖</title>
-    <link>https://tx991020.github.io/tags/golang/</link>
+    <link>tx991020.github.io/tags/golang/</link>
     <description>Recent content in Golang on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
     <lastBuildDate>Sun, 20 Nov 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://tx991020.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="tx991020.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>golang set</title>
-      <link>https://tx991020.github.io/post/2016-11-20-golang-set/</link>
+      <link>tx991020.github.io/post/2016-11-20-golang-set/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>https://tx991020.github.io/post/2016-11-20-golang-set/</guid>
+      <guid>tx991020.github.io/post/2016-11-20-golang-set/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.</description>
     </item>
     
