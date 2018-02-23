@@ -214,6 +214,88 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
+                <h2 class="post-title">Code Sample</h2>
+                
+                  <h3 class="post-subtitle">
+                  Using Hugo or Pygments
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (183 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>The following are two code samples using syntax highlighting.</p>
+
+<p></p>
+                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/code/">code</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
+                <h2 class="post-title">golang redispool</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 15, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (74 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
+                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/code/">code</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/">
                 <h2 class="post-title">Flake it till you make it</h2>
                 

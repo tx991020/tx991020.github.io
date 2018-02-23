@@ -94,6 +94,15 @@ $$&lt;/p&gt;
     </item>
     
     <item>
+      <title>spark basic</title>
+      <link>http://gopherday.com/post/2017-02-15-spark-basic/</link>
+      <pubDate>Wed, 15 Feb 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-02-15-spark-basic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>spark sql优化原理图</title>
       <link>http://gopherday.com/post/2017-02-12-spark-pic/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
@@ -118,6 +127,15 @@ $$&lt;/p&gt;
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2017-02-10-sparksql/</guid>
       <description>from pyspark.sql import SparkSession if __name__ == &amp;#39;__main__&amp;#39;: spark = SparkSession.builder.appName(&amp;#34;Python Spark &amp;#34;).master(&amp;#34;local[2]&amp;#34;).getOrCreate() jdbcDF = spark.read.format(&amp;#34;jdbc&amp;#34;).option(&amp;#34;url&amp;#34;, &amp;#34;jdbc:mysql://localhost:3306/video&amp;#34;).option(&amp;#34;driver&amp;#34;,&amp;#34;com.mysql.jdbc.Driver&amp;#34;).option(&amp;#34;dbtable&amp;#34;, &amp;#34;baidu&amp;#34;).option(&amp;#34;user&amp;#34;, &amp;#34;root&amp;#34;).option(&amp;#34;password&amp;#34;, &amp;#34;123456&amp;#34;).load() jdbcDF.show() </description>
+    </item>
+    
+    <item>
+      <title>pandas basic</title>
+      <link>http://gopherday.com/post/2016-12-20-pandas-pic/</link>
+      <pubDate>Tue, 20 Dec 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-12-20-pandas-pic/</guid>
+      <description></description>
     </item>
     
     <item>
