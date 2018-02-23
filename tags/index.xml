@@ -2,94 +2,94 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 大王派我来搬砖</title>
-    <link>tx991020.github.io/tags/</link>
+    <link>http://gopherday.com/tags/</link>
     <description>Recent content in Tags on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
     <lastBuildDate>Tue, 07 Mar 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="tx991020.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://gopherday.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bigimg</title>
-      <link>tx991020.github.io/tags/bigimg/</link>
+      <link>http://gopherday.com/tags/bigimg/</link>
       <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/bigimg/</guid>
+      <guid>http://gopherday.com/tags/bigimg/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>tx991020.github.io/tags/code/</link>
+      <link>http://gopherday.com/tags/code/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/code/</guid>
+      <guid>http://gopherday.com/tags/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Example</title>
-      <link>tx991020.github.io/tags/example/</link>
+      <link>http://gopherday.com/tags/example/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/example/</guid>
+      <guid>http://gopherday.com/tags/example/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>tx991020.github.io/tags/golang/</link>
+      <link>http://gopherday.com/tags/golang/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/golang/</guid>
+      <guid>http://gopherday.com/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Markdown</title>
-      <link>tx991020.github.io/tags/markdown/</link>
+      <link>http://gopherday.com/tags/markdown/</link>
       <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/markdown/</guid>
+      <guid>http://gopherday.com/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Math</title>
-      <link>tx991020.github.io/tags/math/</link>
+      <link>http://gopherday.com/tags/math/</link>
       <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/math/</guid>
+      <guid>http://gopherday.com/tags/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Photoswipe</title>
-      <link>tx991020.github.io/tags/photoswipe/</link>
+      <link>http://gopherday.com/tags/photoswipe/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/photoswipe/</guid>
+      <guid>http://gopherday.com/tags/photoswipe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>tx991020.github.io/tags/python/</link>
+      <link>http://gopherday.com/tags/python/</link>
       <pubDate>Sat, 10 May 2014 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/python/</guid>
+      <guid>http://gopherday.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spark</title>
-      <link>tx991020.github.io/tags/spark/</link>
+      <link>http://gopherday.com/tags/spark/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/tags/spark/</guid>
+      <guid>http://gopherday.com/tags/spark/</guid>
       <description></description>
     </item>
     

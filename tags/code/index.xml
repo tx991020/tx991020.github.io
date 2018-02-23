@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Code on 大王派我来搬砖</title>
-    <link>tx991020.github.io/tags/code/</link>
+    <link>http://gopherday.com/tags/code/</link>
     <description>Recent content in Code on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
     <lastBuildDate>Sun, 20 Nov 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="tx991020.github.io/tags/code/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://gopherday.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>golang set</title>
-      <link>tx991020.github.io/post/2016-11-20-golang-set/</link>
+      <link>http://gopherday.com/post/2016-11-20-golang-set/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/post/2016-11-20-golang-set/</guid>
+      <guid>http://gopherday.com/post/2016-11-20-golang-set/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.</description>
     </item>
     
     <item>
       <title>Code Sample</title>
-      <link>tx991020.github.io/post/2016-03-08-code-sample/</link>
+      <link>http://gopherday.com/post/2016-03-08-code-sample/</link>
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/post/2016-03-08-code-sample/</guid>
+      <guid>http://gopherday.com/post/2016-03-08-code-sample/</guid>
       <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -34,19 +34,19 @@
     
     <item>
       <title>golang redispool</title>
-      <link>tx991020.github.io/post/2016-02-15-golang-redispool/</link>
+      <link>http://gopherday.com/post/2016-02-15-golang-redispool/</link>
       <pubDate>Mon, 15 Feb 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/post/2016-02-15-golang-redispool/</guid>
+      <guid>http://gopherday.com/post/2016-02-15-golang-redispool/</guid>
       <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/garyburd/redigo/redis&amp;#34; ) var pool *redis.Pool func init() { pool = &amp;amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&amp;#34;tcp&amp;#34;, &amp;#34;localhost:6379&amp;#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&amp;#34;Set&amp;#34;, &amp;#34;abc&amp;#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&amp;#34;Get&amp;#34;, &amp;#34;abc&amp;#34;)) if err != nil { fmt.Println(&amp;#34;get abc failed,&amp;#34;, err) return } fmt.</description>
     </item>
     
     <item>
       <title>python 重试装饰器</title>
-      <link>tx991020.github.io/post/2014.05-10-python-retring/</link>
+      <link>http://gopherday.com/post/2014.05-10-python-retring/</link>
       <pubDate>Sat, 10 May 2014 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>tx991020.github.io/post/2014.05-10-python-retring/</guid>
+      <guid>http://gopherday.com/post/2014.05-10-python-retring/</guid>
       <description> python retrying chache def login_required(view_func): &amp;#34;&amp;#34;&amp;#34;检验用户的登录状态&amp;#34;&amp;#34;&amp;#34; @wraps(view_func) # 不改变原有函数的签名文档 def wrapper(*args, **kwargs): user_id = session.get(&amp;#34;user_id&amp;#34;) if user_id is not None: # 表示用户已经登录 # 使用g对象保存user_id，在视图函数中可以直接使用 g.user_id = user_id return view_func(*args, **kwargs) else: # 用户未登录 resp = { &amp;#34;errno&amp;#34;: RET.SESSIONERR, &amp;#34;errmsg&amp;#34;: &amp;#34;用户未登录&amp;#34; } return jsonify(resp) return wrapper # 构建装饰器 def wraps(func): @functools.wraps(func) def decorator( *args, **kwargs): print(&amp;#34;开始验证&amp;#34;) print(&amp;#34;%scalled&amp;#34; % func.__name__) result = func(*args, **kwargs) print(&amp;#34;验证完毕&amp;#34;) print(&amp;#34;%send&amp;#34; % func.__name__) return result return decorator @wraps def connnet_db(): print(&amp;#34;searching&amp;#34;) def singleton(fun): instances = {} def decorator(*args,**kwargs): if fun not in instances: print(111,fun) instances[fun] = fun(*args,**kwargs) return instances[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator def singleton(fun): cache = {} def decorator(*args,**kwargs): if fun not in cache: print(111,fun) cache[fun] = fun(*args,**kwargs) return cache[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator @singleton def fib(i): if i &amp;lt; 2: return 1 return fib(i-1) + fib(i-2) if __name__ == &amp;#39;__main__&amp;#39;: for i in range(10): test() </description>
     </item>
     
