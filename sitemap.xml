@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>http://gopherday.com/post/2017-02-12-spark-pic/</loc>
+    <lastmod>2017-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/post/2017-02-11-sparkstreaming/</loc>
     <lastmod>2017-02-11T00:00:00+00:00</lastmod>
   </url>
@@ -70,6 +75,10 @@
   <url>
     <loc>http://gopherday.com/</loc>
     <lastmod>2017-03-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gopherday.com/post/2015-06-10-python-apscheduler/</loc>
   </url>
   
   <url>
@@ -148,7 +157,7 @@
   
   <url>
     <loc>http://gopherday.com/tags/spark/</loc>
-    <lastmod>2017-02-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-02-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -94,6 +94,15 @@ $$&lt;/p&gt;
     </item>
     
     <item>
+      <title>spark sql优化原理图</title>
+      <link>http://gopherday.com/post/2017-02-12-spark-pic/</link>
+      <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-02-12-spark-pic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>spark streaming</title>
       <link>http://gopherday.com/post/2017-02-11-sparkstreaming/</link>
       <pubDate>Sat, 11 Feb 2017 00:00:00 +0000</pubDate>
@@ -186,6 +195,29 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2014.05-10-python-retring/</guid>
       <description> python retrying chache def login_required(view_func): &amp;#34;&amp;#34;&amp;#34;检验用户的登录状态&amp;#34;&amp;#34;&amp;#34; @wraps(view_func) # 不改变原有函数的签名文档 def wrapper(*args, **kwargs): user_id = session.get(&amp;#34;user_id&amp;#34;) if user_id is not None: # 表示用户已经登录 # 使用g对象保存user_id，在视图函数中可以直接使用 g.user_id = user_id return view_func(*args, **kwargs) else: # 用户未登录 resp = { &amp;#34;errno&amp;#34;: RET.SESSIONERR, &amp;#34;errmsg&amp;#34;: &amp;#34;用户未登录&amp;#34; } return jsonify(resp) return wrapper # 构建装饰器 def wraps(func): @functools.wraps(func) def decorator( *args, **kwargs): print(&amp;#34;开始验证&amp;#34;) print(&amp;#34;%scalled&amp;#34; % func.__name__) result = func(*args, **kwargs) print(&amp;#34;验证完毕&amp;#34;) print(&amp;#34;%send&amp;#34; % func.__name__) return result return decorator @wraps def connnet_db(): print(&amp;#34;searching&amp;#34;) def singleton(fun): instances = {} def decorator(*args,**kwargs): if fun not in instances: print(111,fun) instances[fun] = fun(*args,**kwargs) return instances[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator def singleton(fun): cache = {} def decorator(*args,**kwargs): if fun not in cache: print(111,fun) cache[fun] = fun(*args,**kwargs) return cache[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator @singleton def fib(i): if i &amp;lt; 2: return 1 return fib(i-1) + fib(i-2) if __name__ == &amp;#39;__main__&amp;#39;: for i in range(10): test() </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://gopherday.com/post/2015-06-10-python-apscheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2015-06-10-python-apscheduler/</guid>
+      <description>定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+def my_job(): print time.strftime(&amp;lsquo;%Y-%m-%d %H:%M:%S&amp;rsquo;, time.localtime(time.time()))
+sched = BlockingScheduler() sched.add_job(my_job, &amp;lsquo;interval&amp;rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
+操作作业 1. 添加作业 上面是通过add_job()来添加作业，另外还有一种方式是通过scheduled_job()修饰器来修饰函数
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
+@sched.scheduled_job(&amp;lsquo;interval&amp;rsquo;, seconds=5) def my_job(): print time.strftime(&amp;lsquo;%Y-%m-%d %H:%M:%S&amp;rsquo;, time.localtime(time.time()))
+sched.start() 2. 移除作业
+job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2, id=&amp;lsquo;my_job_id&amp;rsquo;) sched.remove_job(&amp;lsquo;my_job_id&amp;rsquo;) 3. 暂停和恢复作业 暂停作业:</description>
     </item>
     
   </channel>
