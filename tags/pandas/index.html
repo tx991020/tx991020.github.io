@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Python</title>
-  <meta property="og:title" content="Python" />
-  <meta name="twitter:title" content="Python" />
+  <title>Pandas</title>
+  <meta property="og:title" content="Pandas" />
+  <meta name="twitter:title" content="Pandas" />
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -15,13 +15,13 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/tags/python/" />
+  <meta property="og:url" content="http://gopherday.com/tags/pandas/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/tags/python/" />
-  <link rel="alternate" href="http://gopherday.com/tags/python/index.xml" type="application/rss+xml" title="大王派我来搬砖">
+  <link rel="canonical" href="http://gopherday.com/tags/pandas/" />
+  <link rel="alternate" href="http://gopherday.com/tags/pandas/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -167,7 +167,7 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="page-heading">
-              <h1>#Python</h1>
+              <h1>#Pandas</h1>
               <hr class="small">
             </div>
           </div>
@@ -206,113 +206,6 @@
                     #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
                   
                     #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014.05-10-python-retring/">
-                <h2 class="post-title">python 重试装饰器</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on May 10, 2014
-              </p>
-              <div class="post-entry">
-                
-                  
-
-<h2 id="python-retrying-chache">python retrying chache</h2>
-
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">login_required</span><span class="p">(</span><span class="n">view_func</span><span class="p">):</span>
-    <span class="sa"></span><span class="s2">&#34;&#34;&#34;检验用户的登录状态&#34;&#34;&#34;</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">view_func</span><span class="p">)</span>  <span class="c1"># 不改变原有函数的签名文档</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user_id&#34;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">user_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># 表示用户已经登录</span>
-            <span class="c1"># 使用g对象保存user_id，在视图函数中可以直接使用</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user_id</span>
-            <span class="k">return</span> <span class="n">view_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># 用户未登录</span>
-            <span class="n">resp</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="sa"></span><span class="s2">&#34;errno&#34;</span><span class="p">:</span> <span class="n">RET</span><span class="o">.</span><span class="n">SESSIONERR</span><span class="p">,</span>
-                <span class="sa"></span><span class="s2">&#34;errmsg&#34;</span><span class="p">:</span> <span class="sa"></span><span class="s2">&#34;用户未登录&#34;</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">wrapper</span>
-    
-    
-<span class="c1"># 构建装饰器</span>
-<span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;开始验证&#34;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2"> called&#34;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;验证完毕&#34;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2"> end&#34;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
-    <span class="k">return</span> <span class="n">decorator</span>
-
-
-<span class="nd">@wraps</span>
-<span class="k">def</span> <span class="nf">connnet_db</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;searching&#34;</span><span class="p">)</span>
-    
-    
-    
-<span class="k">def</span> <span class="nf">singleton</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="n">instances</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">fun</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">fun</span><span class="p">)</span>
-            <span class="n">instances</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">instances</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;已存在&#34;</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">decorator</span>
-    
-<span class="k">def</span> <span class="nf">singleton</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">fun</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">fun</span><span class="p">)</span>
-            <span class="n">cache</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;已存在&#34;</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">decorator</span>
-
-<span class="nd">@singleton</span>
-<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">test</span><span class="p">()</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/code/">code</a>&nbsp;
                   
                 </span>
               
@@ -358,7 +251,7 @@
           
           <li>
             
-            <a href="http://gopherday.com/tags/python/index.xml" title="RSS">
+            <a href="http://gopherday.com/tags/pandas/index.xml" title="RSS">
             
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>

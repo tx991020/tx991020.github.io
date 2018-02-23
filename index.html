@@ -530,6 +530,44 @@ $$</p>
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016.11.20-python-pandas01/">
+                <h2 class="post-title">pandas to dict</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
+                  <a href="http://gopherday.com/post/2016.11.20-python-pandas01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-03-08-code-sample/">
                 <h2 class="post-title">Code Sample</h2>
                 
@@ -642,49 +680,6 @@ $$</p>
                 
               </div>
 
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-20-test-markdown/">
-                <h2 class="post-title">Test markdown</h2>
-                
-                  <h3 class="post-subtitle">
-                  Each post also has a subtitle
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 20, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (95 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-Here is some bold text
-Here is a secondary heading Here&rsquo;s a useless table:
-   Number Next number Previous number     Five Six Four   Ten Eleven Nine   Seven Eight Six   Two Three One    How about a yummy crepe?
-                  <a href="http://gopherday.com/post/2015-02-20-test-markdown/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/markdown/">markdown</a>&nbsp;
-                
-                </span>
               
             </article>
           
