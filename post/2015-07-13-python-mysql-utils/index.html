@@ -5,15 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>vagrant 入门</title>
-  <meta property="og:title" content="vagrant 入门" />
-  <meta name="twitter:title" content="vagrant 入门" />
-  <meta name="description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta property="og:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta name="twitter:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak …">
+  <title>pyspider 常用模板</title>
+  <meta property="og:title" content="pyspider 常用模板" />
+  <meta name="twitter:title" content="pyspider 常用模板" />
+  <meta name="description" content="import MySQLdb # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = MySQLdb.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.">
+  <meta property="og:description" content="import MySQLdb # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = MySQLdb.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.">
+  <meta name="twitter:description" content="import MySQLdb # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -21,12 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/post/2014-11-10-vagrant/" />
+  <meta property="og:url" content="http://gopherday.com/post/2015-07-13-python-mysql-utils/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/post/2014-11-10-vagrant/" />
+  <link rel="canonical" href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -184,17 +181,17 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>vagrant 入门</h1>
+              <h1>pyspider 常用模板</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 12, 2015
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 13, 2015
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (62 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (109 words)
   
   
 </span>
@@ -214,47 +211,76 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>#vagrant虚拟机优化</p>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
+        <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">MySQLdb</span>
+<span class="c1"># MySQL 建立连接</span>
+<span class="k">class</span> <span class="nc">MySQLPipeline</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-config.vm.hostname = &#34;test&#34;
-虚拟机主机名
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mysql_host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mysql_port</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mysql_user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mysql_password</span> <span class="o">=</span> <span class="n">password</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mysql_db</span> <span class="o">=</span> <span class="n">db</span>
 
-vb.name = &#34;ubuntu_test&#34;
-配置虚拟机内存
+        <span class="c1"># 创建MYSQL数据库链接对象</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mysql_host</span><span class="p">,</span>
+                                    <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mysql_user</span><span class="p">,</span>
+                                    <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mysql_password</span><span class="p">,</span>
+                                    <span class="n">db</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mysql_db</span><span class="p">,</span>
+                                    <span class="n">charset</span><span class="o">=</span><span class="sa"></span><span class="s2">&#34;utf8&#34;</span><span class="p">)</span>
 
-vb.memory = &#34;512&#34;
-配置虚拟机CPU
+    <span class="c1"># 查询数据</span>
+    <span class="k">def</span> <span class="nf">searching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;sql查询成功&#34;</span><span class="p">)</span>
 
-vb.cpus = 1
-完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile
+                <span class="k">return</span> <span class="n">cur</span>
 
-Vagrant.configure(&#34;2&#34;) do |config|
-  config.vm.box = &#34;centos&#34;
-  config.vm.network &#34;forwarded_port&#34;, guest:80, host:80
-  config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080
-  config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true
-  config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34;
-  config.vm.hostname = &#34;test&#34;
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
 
-  config.vm.provider &#34;virtualbox&#34; do |vb|
-    vb.name = &#34;ubuntu_test&#34;
-    vb.memory = &#34;512&#34;
-    vb.cpus = 1
-  end
-end</code></pre></div>
+
+<span class="c1">#增删改</span>
+<span class="k">def</span> <span class="nf">processing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span> <span class="k">as</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;sql处理成功&#34;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+    <span class="c1"># 实例</span>
+    <span class="k">def</span> <span class="nf">get_results</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">searching</span><span class="p">(</span><span class="n">query_sql</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+            <span class="n">word</span><span class="p">,</span> <span class="nb">id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">word</span><span class="p">,</span> <span class="nb">id</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;查询为空&#34;</span><span class="p">)</span></code></pre></div>
+
       </article>
 
       
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/" data-toggle="tooltip" data-placement="top" title="Flake it till you make it">&larr; Previous Post</a>
+              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" data-toggle="tooltip" data-placement="top" title="pyspider 常用模板">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" data-toggle="tooltip" data-placement="top" title="pyspider 常用模板">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" data-toggle="tooltip" data-placement="top" title="golang redispool">Next Post &rarr;</a>
             </li>
           
         </ul>

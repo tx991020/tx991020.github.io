@@ -336,6 +336,42 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/">
+                <h2 class="post-title">爬虫 pyquery goquery css匹配语法 智障使用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  pyquery 用法模板 主要分为 1类匹配 写法 doc(.class)， 2 id 匹配 写法doc(#id), 3标签匹配 A B=&#34;C&#34; 写法doc(A[B=&#34;C&#34;]) 4值匹配 A=&#34;B&#34; 写法 B = doc(&#34;xxx&#34;).attr(&#34;A&#34;) 或B = doc(&#34;xxx&#34;).attr.A 5遍历相同类型。 for x in doc(&#34;yyyy&#34;).items() import requests from pyquery import PyQuery as pq r = requests.get(&#34;http://video.infolz.com/&#34;) r.encoding=&#34;utf-8&#34; r1 = requests.get(&#34;http://www.infolz.com/2016/1213/303.shtml&#34;) &#34;&#34;&#34; &lt;object class=&#34;cmstopVideo&#34; width=&#34;650&#34; height=&#34;519&#34; data=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34; type=&#34;application/x-shockwave-flash&#34;&gt;&lt;param name=&#34;src&#34; value=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34;/&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;wmode&#34; value=&#34;Transparent&#34;/&gt;&lt;/object&gt; &#34;&#34;&#34; 1单层查找 a &gt; b 横跨多层查找用空格 a b 2选择类 .
+                  <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-03-08-code-sample/">
                 <h2 class="post-title">Code Sample</h2>
                 
@@ -408,6 +444,80 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
+                <h2 class="post-title">pyspider 常用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 13, 2015
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (109 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  import MySQLdb # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = MySQLdb.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
+                  <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
+                <h2 class="post-title">pyspider 常用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2015
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (188 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
+                  <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
                 
                 </span>
               
@@ -510,197 +620,6 @@ end</code></pre></div>
               
             </article>
           
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-20-test-markdown/">
-                <h2 class="post-title">Test markdown</h2>
-                
-                  <h3 class="post-subtitle">
-                  Each post also has a subtitle
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 20, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (95 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-Here is some bold text
-Here is a secondary heading Here&rsquo;s a useless table:
-   Number Next number Previous number     Five Six Four   Ten Eleven Nine   Seven Eight Six   Two Three One    How about a yummy crepe?
-                  <a href="http://gopherday.com/post/2015-02-20-test-markdown/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/markdown/">markdown</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/">
-                <h2 class="post-title">To be</h2>
-                
-                  <h3 class="post-subtitle">
-                  ... or not to be?
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 13, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (122 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  When he himself might his quietus make With a bare bodkin? Who would fardels bear, To grunt and sweat under a weary life, But that the dread of something after death, The undiscovered country, from whose bourn No traveller returns, puzzles the will, And makes us rather bear those ills we have Than fly to others that we know not of? Thus conscience does make cowards of us all, And thus the native hue of resolution Is sicklied o&rsquo;er with the pale cast of thought, And enterprise of great pitch and moment With this regard their currents turn awry And lose the name of action.
-                  <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014.05-10-python-retring/">
-                <h2 class="post-title">python 重试装饰器</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on May 10, 2014
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (140 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-
-<h2 id="python-retrying-chache">python retrying chache</h2>
-
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">login_required</span><span class="p">(</span><span class="n">view_func</span><span class="p">):</span>
-    <span class="sa"></span><span class="s2">&#34;&#34;&#34;检验用户的登录状态&#34;&#34;&#34;</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">view_func</span><span class="p">)</span>  <span class="c1"># 不改变原有函数的签名文档</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="n">user_id</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user_id&#34;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">user_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># 表示用户已经登录</span>
-            <span class="c1"># 使用g对象保存user_id，在视图函数中可以直接使用</span>
-            <span class="n">g</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user_id</span>
-            <span class="k">return</span> <span class="n">view_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># 用户未登录</span>
-            <span class="n">resp</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="sa"></span><span class="s2">&#34;errno&#34;</span><span class="p">:</span> <span class="n">RET</span><span class="o">.</span><span class="n">SESSIONERR</span><span class="p">,</span>
-                <span class="sa"></span><span class="s2">&#34;errmsg&#34;</span><span class="p">:</span> <span class="sa"></span><span class="s2">&#34;用户未登录&#34;</span>
-            <span class="p">}</span>
-            <span class="k">return</span> <span class="n">jsonify</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">wrapper</span>
-    
-    
-<span class="c1"># 构建装饰器</span>
-<span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nd">@functools.wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;开始验证&#34;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2"> called&#34;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;验证完毕&#34;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2"> end&#34;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">result</span>
-    <span class="k">return</span> <span class="n">decorator</span>
-
-
-<span class="nd">@wraps</span>
-<span class="k">def</span> <span class="nf">connnet_db</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;searching&#34;</span><span class="p">)</span>
-    
-    
-    
-<span class="k">def</span> <span class="nf">singleton</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="n">instances</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">fun</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">fun</span><span class="p">)</span>
-            <span class="n">instances</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">instances</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;已存在&#34;</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">decorator</span>
-    
-<span class="k">def</span> <span class="nf">singleton</span><span class="p">(</span><span class="n">fun</span><span class="p">):</span>
-    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">fun</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">fun</span><span class="p">)</span>
-            <span class="n">cache</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">fun</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;已存在&#34;</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="n">decorator</span>
-
-<span class="nd">@singleton</span>
-<span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="n">test</span><span class="p">()</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
         </div>
 
         
@@ -710,6 +629,10 @@ Here is a secondary heading Here&rsquo;s a useless table:
                 <a href="/page/1/">&larr; Newer Posts</a>
               </li>
             
+            
+              <li class="next">
+                <a href="/page/3/">Older Posts &rarr;</a>
+              </li>
             
           </ul>
         

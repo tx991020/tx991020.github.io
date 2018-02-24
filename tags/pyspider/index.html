@@ -5,15 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>vagrant 入门</title>
-  <meta property="og:title" content="vagrant 入门" />
-  <meta name="twitter:title" content="vagrant 入门" />
-  <meta name="description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta property="og:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta name="twitter:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak …">
+  <title>Pyspider</title>
+  <meta property="og:title" content="Pyspider" />
+  <meta name="twitter:title" content="Pyspider" />
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -21,13 +15,13 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/post/2014-11-10-vagrant/" />
+  <meta property="og:url" content="http://gopherday.com/tags/pyspider/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/post/2014-11-10-vagrant/" />
-  <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
+  <link rel="canonical" href="http://gopherday.com/tags/pyspider/" />
+  <link rel="alternate" href="http://gopherday.com/tags/pyspider/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -167,40 +161,14 @@
 
 
     
-  
-  
-  
-
-
-
-
-  
-
   <header class="header-section ">
-    
     <div class="intro-header no-img">
-      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-heading">
-              <h1>vagrant 入门</h1>
-                
-                
-                  <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 12, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (62 words)
-  
-  
-</span>
-
-
-                
+            <div class="page-heading">
+              <h1>#Pyspider</h1>
+              <hr class="small">
             </div>
           </div>
         </div>
@@ -208,67 +176,45 @@
     </div>
   </header>
 
-
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p>#vagrant虚拟机优化</p>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
-
-config.vm.hostname = &#34;test&#34;
-虚拟机主机名
-
-vb.name = &#34;ubuntu_test&#34;
-配置虚拟机内存
-
-vb.memory = &#34;512&#34;
-配置虚拟机CPU
-
-vb.cpus = 1
-完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile
-
-Vagrant.configure(&#34;2&#34;) do |config|
-  config.vm.box = &#34;centos&#34;
-  config.vm.network &#34;forwarded_port&#34;, guest:80, host:80
-  config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080
-  config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true
-  config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34;
-  config.vm.hostname = &#34;test&#34;
-
-  config.vm.provider &#34;virtualbox&#34; do |vb|
-    vb.name = &#34;ubuntu_test&#34;
-    vb.memory = &#34;512&#34;
-    vb.cpus = 1
-  end
-end</code></pre></div>
-      </article>
-
-      
-        <ul class="pager blog-pager">
-          
-            <li class="previous">
-              <a href="http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/" data-toggle="tooltip" data-placement="top" title="Flake it till you make it">&larr; Previous Post</a>
-            </li>
-          
-          
-            <li class="next">
-              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" data-toggle="tooltip" data-placement="top" title="pyspider 常用模板">Next Post &rarr;</a>
-            </li>
-          
-        </ul>
-      
-
-
-      
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
-        
-      
+        <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
+                <h2 class="post-title">pyspider 常用模板</h2>
 
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 10, 2015
+              </p>
+              <div class="post-entry">
+                
+                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
+                  <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+        </div>
+        
+      </div>
     </div>
   </div>
-</div>
 
     <footer>
   <div class="container">
@@ -303,7 +249,7 @@ end</code></pre></div>
           
           <li>
             
-            <a href="http://gopherday.com/index.xml" title="RSS">
+            <a href="http://gopherday.com/tags/pyspider/index.xml" title="RSS">
             
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
