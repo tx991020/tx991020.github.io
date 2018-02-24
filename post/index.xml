@@ -38,6 +38,18 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
     </item>
     
     <item>
+      <title>宝塔linux 控制面板</title>
+      <link>http://gopherday.com/post/2017-04-10-baota-linux/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-04-10-baota-linux/</guid>
+      <description>Centos安装命令：
+yum install -y wget &amp;amp;&amp;amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;amp;&amp;amp; sh install.sh Ubuntu/Deepin安装命令：
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;amp;&amp;amp; sudo bash install.sh 重启
+service bt restart</description>
+    </item>
+    
+    <item>
       <title>Photoswipe Gallery Sample</title>
       <link>http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
@@ -257,8 +269,7 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
       <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2014-11-10-vagrant/</guid>
-      <description>基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name ##vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &amp;#34;test&amp;#34; 虚拟机主机名 vb.name = &amp;#34;ubuntu_test&amp;#34; 配置虚拟机内存 vb.memory = &amp;#34;512&amp;#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;centos&amp;#34; config.vm.network &amp;#34;forwarded_port&amp;#34;, guest:80, host:80 config.vm.network &amp;#34;forwarded_port&amp;#34;, guest:8080, host:8080 config.vm.synced_folder &amp;#34;/Users/andy/data&amp;#34;, &amp;#39;/data&amp;#39;, :smb =&amp;gt; true config.vm.network &amp;#34;private_network&amp;#34;, ip: &amp;#34;192.</description>
+      <description>基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name vagrant虚拟机优化 虚拟机名称 config.vm.hostname = &amp;#34;test&amp;#34; 虚拟机主机名 vb.name = &amp;#34;ubuntu_test&amp;#34; 配置虚拟机内存 vb.memory = &amp;#34;512&amp;#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&amp;#34;2&amp;#34;) do |config| config.vm.box = &amp;#34;centos&amp;#34; config.vm.network &amp;#34;forwarded_port&amp;#34;, guest:80, host:80 config.vm.network &amp;#34;forwarded_port&amp;#34;, guest:8080, host:8080 config.vm.synced_folder &amp;#34;/Users/andy/data&amp;#34;, &amp;#39;/data&amp;#39;, :smb =&amp;gt; true config.vm.network &amp;#34;private_network&amp;#34;, ip: &amp;#34;192.</description>
     </item>
     
     <item>
