@@ -219,7 +219,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (390 words)
+  <i class="fa fa-clock-o"></i> 3 minutes (467 words)
   
   
 </span>
@@ -374,6 +374,53 @@ timezone (datetime.tzinfo|str) – time zone for run_date if it doesn’t have o
 <h2 id="the-job-will-be-executed-on-november-6th-2009-at-16-30-05">The job will be executed on November 6th, 2009 at 16:30:05</h2>
 
 <p>sched.add_job(my_job, &lsquo;date&rsquo;, run_date=datetime(2009, 11, 6, 16, 30, 5), args=[&lsquo;text&rsquo;])</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">apscheduler</span><span class="p">.</span><span class="nx">schedulers</span><span class="p">.</span><span class="nx">blocking</span> <span class="k">import</span> <span class="nx">BlockingScheduler</span>
+<span class="k">import</span> <span class="nx">apscheduler</span><span class="p">.</span><span class="nx">events</span>
+<span class="err">#</span><span class="nx">需要引用日志</span>
+<span class="nx">from</span> <span class="nx">log_demo</span> <span class="k">import</span> <span class="nx">get_log</span>
+<span class="nx">err_logger</span> <span class="o">=</span> <span class="nx">get_log</span><span class="p">()</span>
+
+
+<span class="nx">def</span> <span class="nx">err_listener</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span><span class="o">:</span>
+    <span class="err">#</span><span class="nx">异常监听</span>
+    <span class="k">if</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">exception</span><span class="o">:</span>
+        <span class="nx">err_logger</span><span class="p">.</span><span class="nx">exception</span><span class="p">(</span><span class="s1">&#39;%s error.&#39;</span><span class="o">%</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">jobstore</span><span class="p">)))</span>
+    <span class="k">else</span><span class="o">:</span>
+        <span class="nx">err_logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;%s miss&#39;</span><span class="o">%</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">job_id</span><span class="p">)))</span>
+
+
+<span class="nx">def</span> <span class="nx">days</span><span class="p">()</span><span class="o">:</span>
+    <span class="err">#</span><span class="nx">每天</span>
+    <span class="nx">pass</span>
+<span class="nx">def</span> <span class="nx">minutes</span><span class="p">()</span><span class="o">:</span>
+    <span class="err">#</span><span class="nx">每分钟</span>
+    <span class="nx">print</span><span class="p">(</span><span class="s2">&#34;hahha&#34;</span><span class="p">)</span>
+<span class="nx">def</span> <span class="nx">always</span><span class="p">()</span><span class="o">:</span>
+    <span class="err">#</span><span class="nx">直接运行</span>
+    <span class="nx">print</span><span class="p">(</span><span class="s2">&#34;1234&#34;</span><span class="p">)</span>
+<span class="nx">def</span> <span class="nx">hours1</span><span class="p">()</span><span class="o">:</span>
+    <span class="err">#</span><span class="nx">每小时</span>
+    <span class="nx">pass</span>
+
+
+<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+    <span class="nx">sched</span> <span class="o">=</span> <span class="nx">BlockingScheduler</span><span class="p">()</span>
+    <span class="err">#</span><span class="nx">天</span>
+    <span class="nx">sched</span><span class="p">.</span><span class="nx">add_job</span><span class="p">(</span><span class="nx">days</span><span class="p">,</span> <span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="nx">days</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">start_date</span><span class="o">=</span><span class="s1">&#39;2017-01-01 00:07:00&#39;</span><span class="p">)</span>
+    <span class="err">#</span><span class="nx">分钟</span> <span class="nx">范围</span><span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mi">59</span><span class="p">)</span>
+    <span class="nx">sched</span><span class="p">.</span><span class="nx">add_job</span><span class="p">(</span><span class="nx">minutes</span><span class="p">,</span> <span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="nx">minutes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nx">start_date</span><span class="o">=</span><span class="s1">&#39;2017-01-01 00:07:00&#39;</span><span class="p">)</span>
+    <span class="err">#</span><span class="nx">小时</span>
+    <span class="err">#</span><span class="nx">直接运行</span>
+    <span class="nx">sched</span><span class="p">.</span><span class="nx">add_job</span><span class="p">(</span><span class="nx">always</span><span class="p">)</span>
+    
+    <span class="k">try</span><span class="o">:</span>
+        <span class="nx">print</span><span class="p">(</span><span class="s1">&#39;开始咯&#39;</span><span class="p">)</span>
+        <span class="nx">sched</span><span class="p">.</span><span class="nx">add_listener</span><span class="p">(</span><span class="nx">err_listener</span><span class="p">,</span>
+                           <span class="nx">apscheduler</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">EVENT_JOB_ERROR</span> <span class="o">|</span> <span class="nx">apscheduler</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">EVENT_JOB_MISSED</span> <span class="o">|</span> <span class="nx">apscheduler</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">EVENT_JOB_EXECUTED</span><span class="p">)</span>
+        <span class="nx">sched</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+    <span class="nx">except</span> <span class="nx">Exception</span> <span class="nx">as</span> <span class="nx">ex</span><span class="o">:</span>
+        <span class="nx">err_logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">ex</span><span class="p">)</span></code></pre></div>
 
       </article>
 

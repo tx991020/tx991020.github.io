@@ -339,6 +339,60 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2014-11-10-vagrant/">
+                <h2 class="post-title">vagrant 入门</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on June 12, 2015
+              </p>
+              <div class="post-entry">
+                
+                  <p>#vagrant虚拟机优化</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
+
+config.vm.hostname = &#34;test&#34;
+虚拟机主机名
+
+vb.name = &#34;ubuntu_test&#34;
+配置虚拟机内存
+
+vb.memory = &#34;512&#34;
+配置虚拟机CPU
+
+vb.cpus = 1
+完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile
+
+Vagrant.configure(&#34;2&#34;) do |config|
+  config.vm.box = &#34;centos&#34;
+  config.vm.network &#34;forwarded_port&#34;, guest:80, host:80
+  config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080
+  config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true
+  config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34;
+  config.vm.hostname = &#34;test&#34;
+
+  config.vm.provider &#34;virtualbox&#34; do |vb|
+    vb.name = &#34;ubuntu_test&#34;
+    vb.memory = &#34;512&#34;
+    vb.cpus = 1
+  end
+end</code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/vagrant/">vagrant</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/">
                 <h2 class="post-title">Flake it till you make it</h2>
 
@@ -521,8 +575,6 @@ Here is a secondary heading Here&rsquo;s a useless table:
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/code/">code</a>&nbsp;
                   
                 </span>
               

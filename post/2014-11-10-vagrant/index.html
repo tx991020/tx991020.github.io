@@ -5,12 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>golang redispool</title>
-  <meta property="og:title" content="golang redispool" />
-  <meta name="twitter:title" content="golang redispool" />
-  <meta name="description" content="package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.">
-  <meta property="og:description" content="package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.">
-  <meta name="twitter:description" content="package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() …">
+  <title>vagrant 入门</title>
+  <meta property="og:title" content="vagrant 入门" />
+  <meta name="twitter:title" content="vagrant 入门" />
+  <meta name="description" content="#vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
+  <meta property="og:description" content="#vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
+  <meta name="twitter:description" content="#vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +21,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/post/2016-02-15-golang-redispool/" />
+  <meta property="og:url" content="http://gopherday.com/post/2014-11-10-vagrant/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/post/2016-02-15-golang-redispool/" />
+  <link rel="canonical" href="http://gopherday.com/post/2014-11-10-vagrant/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -181,17 +184,17 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>golang redispool</h1>
+              <h1>vagrant 入门</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 15, 2016
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 12, 2015
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (74 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (62 words)
   
   
 </span>
@@ -211,60 +214,47 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
+        <p>#vagrant虚拟机优化</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="s">&#34;fmt&#34;</span>
+config.vm.hostname = &#34;test&#34;
+虚拟机主机名
 
-    <span class="s">&#34;github.com/garyburd/redigo/redis&#34;</span>
-<span class="p">)</span>
+vb.name = &#34;ubuntu_test&#34;
+配置虚拟机内存
 
-<span class="kd">var</span> <span class="nx">pool</span> <span class="o">*</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Pool</span>
+vb.memory = &#34;512&#34;
+配置虚拟机CPU
 
-<span class="kd">func</span> <span class="nx">init</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">pool</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Pool</span><span class="p">{</span>
-        <span class="nx">MaxIdle</span><span class="p">:</span>     <span class="mi">16</span><span class="p">,</span>
-        <span class="nx">MaxActive</span><span class="p">:</span>   <span class="mi">0</span><span class="p">,</span>
-        <span class="nx">IdleTimeout</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-        <span class="nx">Dial</span><span class="p">:</span> <span class="kd">func</span><span class="p">()</span> <span class="p">(</span><span class="nx">redis</span><span class="p">.</span><span class="nx">Conn</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="s">&#34;tcp&#34;</span><span class="p">,</span> <span class="s">&#34;localhost:6379&#34;</span><span class="p">)</span>
-        <span class="p">},</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+vb.cpus = 1
+完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+Vagrant.configure(&#34;2&#34;) do |config|
+  config.vm.box = &#34;centos&#34;
+  config.vm.network &#34;forwarded_port&#34;, guest:80, host:80
+  config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080
+  config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true
+  config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34;
+  config.vm.hostname = &#34;test&#34;
 
-    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">pool</span><span class="p">.</span><span class="nx">Get</span><span class="p">()</span>
-    <span class="k">defer</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-
-    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="s">&#34;Set&#34;</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-
-    <span class="nx">r</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">redis</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="s">&#34;Get&#34;</span><span class="p">,</span> <span class="s">&#34;abc&#34;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;get abc failed,&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="p">}</span>
-
-    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
-    <span class="nx">pool</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-<span class="p">}</span></code></pre></div>
-
+  config.vm.provider &#34;virtualbox&#34; do |vb|
+    vb.name = &#34;ubuntu_test&#34;
+    vb.memory = &#34;512&#34;
+    vb.cpus = 1
+  end
+end</code></pre></div>
       </article>
 
       
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://gopherday.com/post/2014-11-10-vagrant/" data-toggle="tooltip" data-placement="top" title="vagrant 入门">&larr; Previous Post</a>
+              <a href="http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/" data-toggle="tooltip" data-placement="top" title="Flake it till you make it">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/" data-toggle="tooltip" data-placement="top" title="Code Sample">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" data-toggle="tooltip" data-placement="top" title="golang redispool">Next Post &rarr;</a>
             </li>
           
         </ul>
