@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Mon, 10 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</title>
+      <link>http://gopherday.com/post/2017-06-13-ariang-filemanerger/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-06-13-ariang-filemanerger/</guid>
+      <description>简单介绍 Aria2 是一个命令行下运行、多协议、多来源下载工具，支持磁力链接、BT 种子、HTTP、FTP 等下载协议，当然因为它是命令行下载工具，所以我们想下载一个东西还需要去敲命令自然是不方便，于是就有一些人根据 Aria2 的 API 开发了一些在线管理面板，可以直接在网页上面添加管理任务。
+本教程介绍的是 AriaNg，Github 项目：https://github.com/mayswind/AriaNg
+Aria2 是一个后端 (服务端) 的程序，而 AriaNg 是一个前端 (HTML+JS 静态) 控制面板，不需要和 Aria2(后端 / 服务端)放在一个服务器或者设备中，你甚至可以只在服务器上面搭建 Aria2 后端，然后访问别人建好的 AriaNg 前端面板，也可以远程操作 Aria2 后端！
+centos6 安装Aria2 wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm yum -y install aria2 # 测试 aria2c -v  配置后端 # 创建Aria2配置文件夹 mkdir /root/.aria2 &amp;amp;&amp;amp; cd /root/.aria2 # 下载Aria2配置文件、DHT文件(BT有没有速度就靠这个) wget --no-check-certificate https://softs.fun/Other/Aria2/aria2.conf wget --no-check-certificate https://softs.fun/Other/Aria2/dht.dat # 创建一个空的 Aria2 下载任务保存文件 echo &amp;#39;&amp;#39; &amp;gt; /root/.</description>
+    </item>
     
     <item>
       <title>caddy nginx 对比</title>
