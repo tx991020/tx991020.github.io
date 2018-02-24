@@ -367,7 +367,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
           
             <article class="post-preview">
               <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
-                <h2 class="post-title">pyspider 常用模板</h2>
+                <h2 class="post-title">pymysql 模板</h2>
 
                 
               </a>
@@ -377,7 +377,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
               </p>
               <div class="post-entry">
                 
-                  import MySQLdb # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = MySQLdb.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
+                  import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
                   <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
                 
               </div>
@@ -433,35 +433,9 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
               </p>
               <div class="post-entry">
                 
-                  <p>#vagrant虚拟机优化</p>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
-
-config.vm.hostname = &#34;test&#34;
-虚拟机主机名
-
-vb.name = &#34;ubuntu_test&#34;
-配置虚拟机内存
-
-vb.memory = &#34;512&#34;
-配置虚拟机CPU
-
-vb.cpus = 1
-完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile
-
-Vagrant.configure(&#34;2&#34;) do |config|
-  config.vm.box = &#34;centos&#34;
-  config.vm.network &#34;forwarded_port&#34;, guest:80, host:80
-  config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080
-  config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true
-  config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34;
-  config.vm.hostname = &#34;test&#34;
-
-  config.vm.provider &#34;virtualbox&#34; do |vb|
-    vb.name = &#34;ubuntu_test&#34;
-    vb.memory = &#34;512&#34;
-    vb.cpus = 1
-  end
-end</code></pre></div>
+                  基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name ##vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.
+                  <a href="http://gopherday.com/post/2014-11-10-vagrant/" class="post-read-more">[Read More]</a>
                 
               </div>
 

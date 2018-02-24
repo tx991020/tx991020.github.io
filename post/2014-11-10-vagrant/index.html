@@ -8,12 +8,11 @@
   <title>vagrant 入门</title>
   <meta property="og:title" content="vagrant 入门" />
   <meta name="twitter:title" content="vagrant 入门" />
-  <meta name="description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta property="og:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.168.100.126&#34; config.vm.hostname = &#34;test&#34; config.vm.provider &#34;virtualbox&#34; do |vb| vb.name = &#34;ubuntu_test&#34; vb.memory = &#34;512&#34; vb.cpus = 1 end end">
-  <meta name="twitter:description" content="#vagrant虚拟机优化
-虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak …">
+  <meta name="description" content="基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name ##vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.">
+  <meta property="og:description" content="基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name ##vagrant虚拟机优化
+虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.">
+  <meta name="twitter:description" content="基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -194,7 +193,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (62 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
   
   
 </span>
@@ -214,7 +213,25 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>#vagrant虚拟机优化</p>
+        
+
+<h2 id="基础镜像">基础镜像</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">centos7
+http://pan.baidu.com/s/1o7BSmoU
+centos6
+http://pan.baidu.com/s/1o81Zb9C
+
+ubuntu
+http://pan.baidu.com/s/1pLzVhnP</code></pre></div>
+<h2 id="添加本地box">添加本地box</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">vagrant box add 自定义你的box名称  box路径
+
+vagrant box add my_first_box D:/centos-7.0-x86_64.box</code></pre></div>
+<h2 id="查看已添加的box">查看已添加的box</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">vagrant box list</code></pre></div>
+<h2 id="删除box">删除box</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">vagrant box remove your_box_name</code></pre></div>
+<p>##vagrant虚拟机优化</p>
 <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">虚拟机名称
 
 config.vm.hostname = &#34;test&#34;
@@ -243,6 +260,8 @@ Vagrant.configure(&#34;2&#34;) do |config|
     vb.cpus = 1
   end
 end</code></pre></div>
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/c6e2fa427eead0951e9616ee61e8718d.jpg" alt="" /></p>
+
       </article>
 
       
