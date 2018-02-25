@@ -38,6 +38,15 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
     </item>
     
     <item>
+      <title>使用 rclone 将文件同步至 Google Dirve</title>
+      <link>http://gopherday.com/post/2017-05-10-rclone/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-05-10-rclone/</guid>
+      <description>首先是下载文件 yum install unzip wget -y wget -O https://downloads.rclone.org/rclone-current-linux-amd64.zip unzip rclone-current-linux-amd64.zip cd rclone-*-linux-amd64 然后复制文件到相关路径 cp rclone /usr/bin/ chown root:root /usr/bin/rclone chmod 755 /usr/bin/rclone 新建一个配置 rclone config n) New remote d) Delete remote q) Quit config e/n/d/q&amp;gt; n name&amp;gt; google(你的配置名称,此处随意填写但之后需要用到) Type of storage to configure. Choose a number from below, or type in your own value 1 / Amazon Drive \ &amp;#34;amazon cloud drive&amp;#34; 2 / Amazon S3 (also Dreamhost, Ceph, Minio) \ &amp;#34;s3&amp;#34; 3 / Backblaze B2 \ &amp;#34;b2&amp;#34; 4 / Dropbox \ &amp;#34;dropbox&amp;#34; 5 / Encrypt/Decrypt a remote \ &amp;#34;crypt&amp;#34; 6 / Google Cloud Storage (this is not Google Drive) \ &amp;#34;google cloud storage&amp;#34; 7 / Google Drive \ &amp;#34;drive&amp;#34; 8 / Hubic \ &amp;#34;hubic&amp;#34; 9 / Local Disk \ &amp;#34;local&amp;#34; 10 / Microsoft OneDrive \ &amp;#34;onedrive&amp;#34; 11 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH) \ &amp;#34;swift&amp;#34; 12 / SSH/SFTP Connection \ &amp;#34;sftp&amp;#34; 13 / Yandex Disk \ &amp;#34;yandex&amp;#34; Storage&amp;gt; 7(根据网盘类型选择Google Dirve) Google Application Client Id - leave blank normally.</description>
+    </item>
+    
+    <item>
       <title>宝塔linux 控制面板</title>
       <link>http://gopherday.com/post/2017-04-10-baota-linux/</link>
       <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>

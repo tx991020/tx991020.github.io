@@ -184,6 +184,39 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-10-sparksql/">
+                <h2 class="post-title">sparksql</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">jdbcDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;jdbc&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;jdbc:mysql://localhost:3306/video&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;driver&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;com.mysql.jdbc.Driver&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;dbtable&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;baidu&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;root&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;123456&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">jdbcDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-12-20-pandas-pic/">
                 <h2 class="post-title">pandas basic</h2>
 
@@ -442,33 +475,6 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014-11-10-vagrant/">
-                <h2 class="post-title">vagrant 入门</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on June 12, 2015
-              </p>
-              <div class="post-entry">
-                
-                  基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name vagrant虚拟机优化 虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.
-                  <a href="http://gopherday.com/post/2014-11-10-vagrant/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/vagrant/">vagrant</a>&nbsp;
                   
                 </span>
               

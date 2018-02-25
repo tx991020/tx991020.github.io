@@ -245,6 +245,33 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-05-10-rclone/">
+                <h2 class="post-title">使用 rclone 将文件同步至 Google Dirve</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  首先是下载文件 yum install unzip wget -y wget -O https://downloads.rclone.org/rclone-current-linux-amd64.zip unzip rclone-current-linux-amd64.zip cd rclone-*-linux-amd64 然后复制文件到相关路径 cp rclone /usr/bin/ chown root:root /usr/bin/rclone chmod 755 /usr/bin/rclone 新建一个配置 rclone config n) New remote d) Delete remote q) Quit config e/n/d/q&gt; n name&gt; google(你的配置名称,此处随意填写但之后需要用到) Type of storage to configure. Choose a number from below, or type in your own value 1 / Amazon Drive \ &#34;amazon cloud drive&#34; 2 / Amazon S3 (also Dreamhost, Ceph, Minio) \ &#34;s3&#34; 3 / Backblaze B2 \ &#34;b2&#34; 4 / Dropbox \ &#34;dropbox&#34; 5 / Encrypt/Decrypt a remote \ &#34;crypt&#34; 6 / Google Cloud Storage (this is not Google Drive) \ &#34;google cloud storage&#34; 7 / Google Drive \ &#34;drive&#34; 8 / Hubic \ &#34;hubic&#34; 9 / Local Disk \ &#34;local&#34; 10 / Microsoft OneDrive \ &#34;onedrive&#34; 11 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH) \ &#34;swift&#34; 12 / SSH/SFTP Connection \ &#34;sftp&#34; 13 / Yandex Disk \ &#34;yandex&#34; Storage&gt; 7(根据网盘类型选择Google Dirve) Google Application Client Id - leave blank normally.
+                  <a href="http://gopherday.com/post/2017-05-10-rclone/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-04-10-baota-linux/">
                 <h2 class="post-title">宝塔linux 控制面板</h2>
 
@@ -521,39 +548,6 @@ $$</p>
 
     <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="p">()</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-02-10-sparksql/">
-                <h2 class="post-title">sparksql</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
-    <span class="n">jdbcDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;jdbc&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;jdbc:mysql://localhost:3306/video&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;driver&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;com.mysql.jdbc.Driver&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;dbtable&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;baidu&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;root&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;123456&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-    <span class="n">jdbcDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
 
                 
               </div>
