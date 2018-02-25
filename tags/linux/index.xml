@@ -58,5 +58,14 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;amp;&amp
 service bt restart</description>
     </item>
     
+    <item>
+      <title>mysql 安装配置</title>
+      <link>http://gopherday.com/post/2014-07-10-mysql-setup/</link>
+      <pubDate>Thu, 10 Jul 2014 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2014-07-10-mysql-setup/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

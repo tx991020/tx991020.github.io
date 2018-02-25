@@ -312,6 +312,15 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
     </item>
     
     <item>
+      <title>mysql 安装配置</title>
+      <link>http://gopherday.com/post/2014-07-10-mysql-setup/</link>
+      <pubDate>Thu, 10 Jul 2014 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2014-07-10-mysql-setup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>python 重试装饰器</title>
       <link>http://gopherday.com/post/2014.05-10-python-retring/</link>
       <pubDate>Sat, 10 May 2014 00:00:00 +0000</pubDate>

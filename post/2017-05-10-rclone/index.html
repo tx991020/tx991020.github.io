@@ -191,7 +191,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (293 words)
+  <i class="fa fa-clock-o"></i> 2 minutes (395 words)
   
   
 </span>
@@ -296,6 +296,39 @@ rclone mkdir google:anime #创建配置名为google的网盘的anime目录</code
 <h2 id="同步文件">同步文件</h2>
 <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">rclone sync /root/anime google:anime#同步本地/root/anime到配置名为google的网盘的anime目录,反过来也可以 
 rclone sync google2:donga google:anime #同步本地配置名为google2的网盘的google目录到配置名为shira的网盘的anime目录,反过来也可以</code></pre></div>
+<h2 id="rclone-常用命令">rclone 常用命令</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">rclone config – 以控制会话的形式添加rclone的配置，配置保存在.rclone.conf文件中。 
+rclone copy – 将文件从源复制到目的地址，跳过已复制完成的。 
+rclone mount-挂载
+rclone sync – 将源数据同步到目的地址，只更新目的地址的数据。 
+rclone move – 将源数据移动到目的地址。
+rclone delete – 删除指定路径下的文件内容。 
+rclone purge – 清空指定路径下所有文件数据。 
+rclone mkdir – 创建一个新目录。 
+rclone rmdir – 删除空目录。 
+rclone check – 检查源和目的地址数据是否匹配。
+rclone ls – 列出指定路径下所有的文件以及文件大小和路径。
+rclone lsd – 列出指定路径下所有的目录/容器/桶。
+rclone lsl – 列出指定路径下所有文件以及修改时间、文件大小和路径。
+rclone md5sum – 为指定路径下的所有文件产生一个md5sum文件。 
+rclone sha1sum – 为指定路径下的所有文件产生一个sha1sum文件。 
+rclone size – 获取指定路径下，文件内容的总大小。
+rclone version – 查看当前版本。 
+rclone cleanup – 清空remote。 
+rclone dedupe – 交互式查找重复文件，进行删除/重命名操作。</code></pre></div>
+<h2 id="rclone挂载网盘">Rclone挂载网盘</h2>
+
+<p>命令示例：rclone mount google:movie /root/wzfougg &ndash;allow-non-empty，此命令会把本地目录/root/wzfougg ，挂载到
+网盘（google配置文件名）目录movie 下。如果你的目标目录中有文件，可以使用参数：&ndash;allow-non-empty，但是注意它会清空原目录中的文件。</p>
+
+<h2 id="利用screen让rclone在后台运行">利用Screen让Rclone在后台运行</h2>
+
+<p>使用rclone mount 命令后，如果不守护进程的话，会话结束后rclone mount 进程就会终止。我们可以用Screen
+来让Rclone保持在后台运行。在执行Rclone挂载命令前，选择执行：执行：screen -S lnmp 创建screen会话(screen -S取别名)，挂载完成后再用
+快捷键CTRL-a d
+来暂时断开当前会话。
+最后用screen -r <screen_pid>重新连接上。</p>
+
       </article>
 
       
