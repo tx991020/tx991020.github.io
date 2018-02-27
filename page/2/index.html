@@ -450,6 +450,78 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-08-21-ansible/">
+                <h2 class="post-title">ansible自动化运维01</h2>
+                
+                  <h3 class="post-subtitle">
+                  mac linux ansible的使用
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 21, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (55 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  
+
+<h2 id="安装">安装</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install ansible</code></pre></div>
+<h2 id="新建默认配置文件路径">新建默认配置文件路径</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">mkdir /etc/ansible
+cd /etc/ansible
+vi ansible.cfg
+vi host</code></pre></div>
+<h2 id="ansible-cfg-示例">ansible.cfg 示例</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">[defaults]
+inventory = /etc/ansible/hosts 
+forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。
+default_sudo_user = root
+host_key_checking = False
+#log_path = /var/log/ansible.log 
+private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径
+[ssh_connection]
+ssh_args = -o StrictHostKeyChecking=no</code></pre></div>
+<h2 id="hosts-示例">hosts 示例</h2>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/b4b72bc63bafecaa0bdc7e0fa69935cf.jpg" alt="" /></p>
+
+<h2 id="ansible执行命令常用option">Ansible执行命令常用Option</h2>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/9f505a739788fc1bc1f42c95d87d307f.jpg" alt="" /></p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">ansible aliyun  -m command -a &#34;echo hello&#34;</code></pre></div>
+<h2 id="ad-hoc-用法">ad-hoc 用法</h2>
+
+<h2 id="playbook-用法">playbook 用法</h2>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/f50c52dda01ba6cb6b668e695b02100b.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/4babf3acc211ee051f3f0e463c758683.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-03-08-code-sample/">
                 <h2 class="post-title">Code Sample</h2>
                 
@@ -560,42 +632,6 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
                   #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
                 
                   #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
-                <h2 class="post-title">pyspider 常用模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (188 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
-                  <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
                 
                 </span>
               
