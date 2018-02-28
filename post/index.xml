@@ -59,6 +59,24 @@ service bt restart</description>
     </item>
     
     <item>
+      <title>spark dataframe</title>
+      <link>http://gopherday.com/post/2017-03-24-spark-dataframe/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-24-spark-dataframe/</guid>
+      <description>from pyspark.sql import SparkSession from pyspark.sql import Row spark = SparkSession.builder.appName(&amp;#39;test&amp;#39;).getOrCreate() sc = spark.sparkContext spark.conf.set(&amp;#34;spark.sql.shuffle.partitions&amp;#34;, 6) l = [(&amp;#39;Ankit&amp;#39;,25),(&amp;#39;Jalfaizy&amp;#39;,22),(&amp;#39;saurabh&amp;#39;,20),(&amp;#39;Bala&amp;#39;,26)] rdd = sc.parallelize(l) people = rdd.map(lambda x: Row(name=x[0], age=int(x[1]))) schemaPeople = spark.createDataFrame(people) df = spark.read.format(&amp;#34;csv&amp;#34;). \ option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;) \ .load(&amp;#34;iris.csv&amp;#34;) df.printSchema() df.show(10) df.count() df.columns df.withColumn(&amp;#39;newWidth&amp;#39;,df.SepalWidth * 2).show() df.drop(&amp;#39;Name&amp;#39;).show() df.describe().show() df.describe(&amp;#39;Name&amp;#39;).show() #分类变量 df.select(&amp;#39;Name&amp;#39;,&amp;#39;SepalLength&amp;#39;).show() df.select(&amp;#39;Name&amp;#39;).distinct().count() ### 分组统计 groupby(colname).agg({&amp;#39;col&amp;#39;:&amp;#39;fun&amp;#39;,&amp;#39;col2&amp;#39;:&amp;#39;fun2&amp;#39;}) df.groupby(&amp;#39;Name&amp;#39;).agg({&amp;#39;SepalWidth&amp;#39;:&amp;#39;mean&amp;#39;,&amp;#39;SepalLength&amp;#39;:&amp;#39;max&amp;#39;}).show() ### 自定义的汇总方法 import pyspark.sql.functions as fn df.agg(fn.count(&amp;#39;SepalWidth&amp;#39;).alias(&amp;#39;width_count&amp;#39;), fn.countDistinct(&amp;#39;id&amp;#39;).alias(&amp;#39;distinct_id_count&amp;#39;)).collect() ### 数据集拆成两部分 trainDF, testDF = df.randomSplit([0.6, 0.</description>
+    </item>
+    
+    <item>
+      <title>spark2.x</title>
+      <link>http://gopherday.com/post/2017-03-23-spark-01/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-23-spark-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Photoswipe Gallery Sample</title>
       <link>http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
@@ -208,6 +226,15 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
     </item>
     
     <item>
+      <title>docker 入门</title>
+      <link>http://gopherday.com/post/2015-09-11-docker-01/</link>
+      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2015-09-11-docker-01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>golang set</title>
       <link>http://gopherday.com/post/2016-11-20-golang-set/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
@@ -218,10 +245,10 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
     
     <item>
       <title>pandas to dict</title>
-      <link>http://gopherday.com/post/2016.11.20-python-pandas01/</link>
+      <link>http://gopherday.com/post/2016-11-20-python-pandas01/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016.11.20-python-pandas01/</guid>
+      <guid>http://gopherday.com/post/2016-11-20-python-pandas01/</guid>
       <description>python pandas to dict import pandas as pd import json b = [{&amp;#39;source&amp;#39;: &amp;#39;baidu&amp;#39;, &amp;#39;num&amp;#39;: 61}, {&amp;#39;source&amp;#39;: &amp;#39;cctv&amp;#39;, &amp;#39;num&amp;#39;: 14}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 3}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 1}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 1}] if __name__ == &amp;#39;__main__&amp;#39;: df =pd.DataFrame(b) c = df[&amp;#34;num&amp;#34;].groupby(df[&amp;#39;source&amp;#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&amp;#39;baidu&amp;#39;: 61, &amp;#39;cctv&amp;#39;: 14, &amp;#39;cntv&amp;#39;: 5} y = {&amp;#34;微信&amp;#34;: 0, &amp;#34;微博&amp;#34;: 0,&amp;#34;头条&amp;#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&amp;#39;微信&amp;#39;: 40, &amp;#39;微博&amp;#39;: 0, &amp;#39;头条&amp;#39;: 156, &amp;#39;baidu&amp;#39;: 610, &amp;#39;cntv&amp;#39;: 10} for v in dd: q.</description>
     </item>
     
@@ -235,12 +262,41 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
     </item>
     
     <item>
+      <title>pykafa</title>
+      <link>http://gopherday.com/post/2016-09-14-pykafka/</link>
+      <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-09-14-pykafka/</guid>
+      <description>from kafka import KafkaProducer from kafka import KafkaConsumer from kafka.errors import KafkaError import json class Kafka_consumer(): &amp;#39;&amp;#39;&amp;#39; 使用Kafka—python的消费模块 &amp;#39;&amp;#39;&amp;#39; def __init__(self, kafkahost, kafkaport, kafkatopic, groupid): self.kafkaHost = kafkahost self.kafkaPort = kafkaport self.kafkatopic = kafkatopic self.groupid = groupid self.consumer = KafkaConsumer(self.kafkatopic, group_id = self.groupid, bootstrap_servers = &amp;#39;{kafka_host}:{kafka_port}&amp;#39;.format( kafka_host=self.kafkaHost, kafka_port=self.kafkaPort ), auto_offset_reset=&amp;#39;earliest&amp;#39;,enable_auto_commit=False) def consume_data(self): try: for message in self.consumer: # print json.loads(message.value) yield message except KeyboardInterrupt, e: print e def main(): &amp;#39;&amp;#39;&amp;#39; 测试consumer和producer :return: &amp;#39;&amp;#39;&amp;#39; ##测试消费模块 #消费模块的返回格式为 # ConsumerRecord( # topic=u&amp;#39;ranktest&amp;#39;, # partition=0, # offset=202, # timestamp=None, # timestamp_type=None, # key=None, # value=&amp;#39;&amp;#34;{abetst}:{null}---0&amp;#34;&amp;#39;, # checksum=-1868164195, #\serialized_key_size=-1, # serialized_value_size=21) consumer = Kafka_consumer(&amp;#39;127.</description>
+    </item>
+    
+    <item>
+      <title>Kafka架构介绍</title>
+      <link>http://gopherday.com/post/2016-09-12-kafka/</link>
+      <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-09-12-kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>ansible自动化运维01</title>
       <link>http://gopherday.com/post/2016-08-21-ansible/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2016-08-21-ansible/</guid>
-      <description> 安装 brew install ansible 新建默认配置文件路径 mkdir /etc/ansible cd /etc/ansible vi ansible.cfg vi host ansible.cfg 示例 [defaults] inventory = /etc/ansible/hosts forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。 default_sudo_user = root host_key_checking = False #log_path = /var/log/ansible.log private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径 [ssh_connection] ssh_args = -o StrictHostKeyChecking=no hosts 示例 Ansible执行命令常用Option ansible aliyun -m command -a &amp;#34;echo hello&amp;#34; ad-hoc 用法 playbook 用法 </description>
+      <description>安装 brew install ansible [centos] yum install ansible 新建默认配置文件路径 mkdir /etc/ansible cd /etc/ansible vi ansible.cfg vi host ansible.cfg 示例 [defaults] inventory = /etc/ansible/hosts forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。 default_sudo_user = root host_key_checking = False #log_path = /var/log/ansible.log private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径 [ssh_connection] ssh_args = -o StrictHostKeyChecking=no hosts 示例 Ansible执行命令常用Option ansible aliyun -m command -a &amp;#34;echo hello&amp;#34; ad-hoc 用法 ansible app -m pip -a &amp;#34;name=django state=present&amp;#34; ansible 192.168.10.10 -m conmand -a &amp;#34;service ntpd status&amp;#34; 用:作分隔符，指定多台机器做变更 ansible 192.</description>
+    </item>
+    
+    <item>
+      <title>alfred&#43;qiniu 在markdown中愉快的贴图</title>
+      <link>http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/</link>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/</guid>
+      <description> qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至 剪贴板，并自动粘贴到当前编辑器
+安装qshell qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的 安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至 usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功
+配置workflow环境变量 点击上图标出的环境变量图标，可以看到下图所示的四个配置项 这四个配置项都与七牛账号相关： AccessKey &amp;amp; SecretKey 这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&amp;gt;密钥管理中查看，或者直接访问https://portal.qiniu.com/user/key查看。 bucket &amp;amp; bucketDomain 在对象存储-&amp;gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名 </description>
     </item>
     
     <item>
@@ -252,6 +308,17 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
       <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Confd&#43;etcd实现高可用自动发现</title>
+      <link>http://gopherday.com/post/2016-06-03-etcd&#43;confd/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-06-03-etcd&#43;confd/</guid>
+      <description>Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
+etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
+[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &amp;#34;myconfig.conf.tmpl&amp;#34; dest = &amp;#34;/tmp/myconfig.conf&amp;#34; keys = [ &amp;#34;/myapp/database/url&amp;#34;, &amp;#34;/myapp/database/user&amp;#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &amp;#34;/myapp/database/url&amp;#34;}} database_user = {{getv &amp;#34;/myapp/database/user&amp;#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp;amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.</description>
     </item>
     
     <item>
@@ -336,6 +403,36 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2014.05-10-python-retring/</guid>
       <description>python retrying chache def login_required(view_func): &amp;#34;&amp;#34;&amp;#34;检验用户的登录状态&amp;#34;&amp;#34;&amp;#34; @wraps(view_func) # 不改变原有函数的签名文档 def wrapper(*args, **kwargs): user_id = session.get(&amp;#34;user_id&amp;#34;) if user_id is not None: # 表示用户已经登录 # 使用g对象保存user_id，在视图函数中可以直接使用 g.user_id = user_id return view_func(*args, **kwargs) else: # 用户未登录 resp = { &amp;#34;errno&amp;#34;: RET.SESSIONERR, &amp;#34;errmsg&amp;#34;: &amp;#34;用户未登录&amp;#34; } return jsonify(resp) return wrapper # 构建装饰器 def wraps(func): @functools.wraps(func) def decorator( *args, **kwargs): print(&amp;#34;开始验证&amp;#34;) print(&amp;#34;%scalled&amp;#34; % func.__name__) result = func(*args, **kwargs) print(&amp;#34;验证完毕&amp;#34;) print(&amp;#34;%send&amp;#34; % func.__name__) return result return decorator @wraps def connnet_db(): print(&amp;#34;searching&amp;#34;) def singleton(fun): instances = {} def decorator(*args,**kwargs): if fun not in instances: print(111,fun) instances[fun] = fun(*args,**kwargs) return instances[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator def singleton(fun): cache = {} def decorator(*args,**kwargs): if fun not in cache: print(111,fun) cache[fun] = fun(*args,**kwargs) return cache[fun] else: print(&amp;#34;已存在&amp;#34;) return decorator @singleton def fib(i): if i &amp;lt; 2: return 1 return fib(i-1) + fib(i-2) if __name__ == &amp;#39;__main__&amp;#39;: for i in range(10): test() import requests from tenacity import * ## 爬虫专用 def scraping(url): r = requests.</description>
+    </item>
+    
+    <item>
+      <title>vagrant 入门</title>
+      <link>http://gopherday.com/post/2014-04-10-mac/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2014-04-10-mac/</guid>
+      <description> Mac系统如何显示隐藏文件？ 在终端（Terminal）输入如下命令，即可显示隐藏文件和文件夹
+显示全部文件 defaults write com.apple.finder AppleShowAllFiles -bool true osascript -e &amp;#39;tell application &amp;#34;Finder&amp;#34; to quit&amp;#39; 不显示全部文件 defaults write com.apple.finder AppleShowAllFiles -bool false osascript -e &amp;#39;tell application &amp;#34;Finder&amp;#34; to quit&amp;#39;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://gopherday.com/post/2016-11-21-python-pandas02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-11-21-python-pandas02/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://gopherday.com/post/2016-11-23-python-pandas03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-11-23-python-pandas03/</guid>
+      <description> title: pandas 分组聚合
+date: 2016-11-23
+tags: [&amp;ldquo;pandas&amp;rdquo;] </description>
     </item>
     
   </channel>

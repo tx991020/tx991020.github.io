@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Wed, 15 Feb 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Mar 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>spark dataframe</title>
+      <link>http://gopherday.com/post/2017-03-24-spark-dataframe/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-24-spark-dataframe/</guid>
+      <description>from pyspark.sql import SparkSession from pyspark.sql import Row spark = SparkSession.builder.appName(&amp;#39;test&amp;#39;).getOrCreate() sc = spark.sparkContext spark.conf.set(&amp;#34;spark.sql.shuffle.partitions&amp;#34;, 6) l = [(&amp;#39;Ankit&amp;#39;,25),(&amp;#39;Jalfaizy&amp;#39;,22),(&amp;#39;saurabh&amp;#39;,20),(&amp;#39;Bala&amp;#39;,26)] rdd = sc.parallelize(l) people = rdd.map(lambda x: Row(name=x[0], age=int(x[1]))) schemaPeople = spark.createDataFrame(people) df = spark.read.format(&amp;#34;csv&amp;#34;). \ option(&amp;#34;header&amp;#34;, &amp;#34;true&amp;#34;) \ .load(&amp;#34;iris.csv&amp;#34;) df.printSchema() df.show(10) df.count() df.columns df.withColumn(&amp;#39;newWidth&amp;#39;,df.SepalWidth * 2).show() df.drop(&amp;#39;Name&amp;#39;).show() df.describe().show() df.describe(&amp;#39;Name&amp;#39;).show() #分类变量 df.select(&amp;#39;Name&amp;#39;,&amp;#39;SepalLength&amp;#39;).show() df.select(&amp;#39;Name&amp;#39;).distinct().count() ### 分组统计 groupby(colname).agg({&amp;#39;col&amp;#39;:&amp;#39;fun&amp;#39;,&amp;#39;col2&amp;#39;:&amp;#39;fun2&amp;#39;}) df.groupby(&amp;#39;Name&amp;#39;).agg({&amp;#39;SepalWidth&amp;#39;:&amp;#39;mean&amp;#39;,&amp;#39;SepalLength&amp;#39;:&amp;#39;max&amp;#39;}).show() ### 自定义的汇总方法 import pyspark.sql.functions as fn df.agg(fn.count(&amp;#39;SepalWidth&amp;#39;).alias(&amp;#39;width_count&amp;#39;), fn.countDistinct(&amp;#39;id&amp;#39;).alias(&amp;#39;distinct_id_count&amp;#39;)).collect() ### 数据集拆成两部分 trainDF, testDF = df.randomSplit([0.6, 0.</description>
+    </item>
+    
+    <item>
+      <title>spark2.x</title>
+      <link>http://gopherday.com/post/2017-03-23-spark-01/</link>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-23-spark-01/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>spark basic</title>

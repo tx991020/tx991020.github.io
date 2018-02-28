@@ -195,7 +195,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (55 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (83 words)
   
   
 </span>
@@ -218,7 +218,9 @@
         
 
 <h2 id="安装">安装</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install ansible</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install ansible
+[centos]
+yum install ansible</code></pre></div>
 <h2 id="新建默认配置文件路径">新建默认配置文件路径</h2>
 <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">mkdir /etc/ansible
 cd /etc/ansible
@@ -243,7 +245,10 @@ ssh_args = -o StrictHostKeyChecking=no</code></pre></div>
 <p><img src="http://oq1xuulg6.bkt.clouddn.com/9f505a739788fc1bc1f42c95d87d307f.jpg" alt="" /></p>
 <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">ansible aliyun  -m command -a &#34;echo hello&#34;</code></pre></div>
 <h2 id="ad-hoc-用法">ad-hoc 用法</h2>
-
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">ansible app -m pip -a &#34;name=django state=present&#34;
+ansible 192.168.10.10 -m conmand -a &#34;service ntpd status&#34;
+用:作分隔符，指定多台机器做变更
+ansible 192.168.10.10:192.168.10:20 -m conmand -a &#34;service ntpd status&#34;</code></pre></div>
 <h2 id="playbook-用法">playbook 用法</h2>
 
 <p><img src="http://oq1xuulg6.bkt.clouddn.com/f50c52dda01ba6cb6b668e695b02100b.jpg" alt="" />
@@ -255,12 +260,12 @@ ssh_args = -o StrictHostKeyChecking=no</code></pre></div>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/" data-toggle="tooltip" data-placement="top" title="Code Sample">&larr; Previous Post</a>
+              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/" data-toggle="tooltip" data-placement="top" title="alfred&#43;qiniu 在markdown中愉快的贴图">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" data-toggle="tooltip" data-placement="top" title="爬虫 pyquery goquery css匹配语法 智障使用模板">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2016-09-12-kafka/" data-toggle="tooltip" data-placement="top" title="Kafka架构介绍">Next Post &rarr;</a>
             </li>
           
         </ul>

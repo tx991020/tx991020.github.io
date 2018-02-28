@@ -199,40 +199,8 @@
               </p>
               <div class="post-entry">
                 
-                  
-
-<h2 id="安装">安装</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install ansible</code></pre></div>
-<h2 id="新建默认配置文件路径">新建默认配置文件路径</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">mkdir /etc/ansible
-cd /etc/ansible
-vi ansible.cfg
-vi host</code></pre></div>
-<h2 id="ansible-cfg-示例">ansible.cfg 示例</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">[defaults]
-inventory = /etc/ansible/hosts 
-forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。
-default_sudo_user = root
-host_key_checking = False
-#log_path = /var/log/ansible.log 
-private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径
-[ssh_connection]
-ssh_args = -o StrictHostKeyChecking=no</code></pre></div>
-<h2 id="hosts-示例">hosts 示例</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/b4b72bc63bafecaa0bdc7e0fa69935cf.jpg" alt="" /></p>
-
-<h2 id="ansible执行命令常用option">Ansible执行命令常用Option</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/9f505a739788fc1bc1f42c95d87d307f.jpg" alt="" /></p>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">ansible aliyun  -m command -a &#34;echo hello&#34;</code></pre></div>
-<h2 id="ad-hoc-用法">ad-hoc 用法</h2>
-
-<h2 id="playbook-用法">playbook 用法</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/f50c52dda01ba6cb6b668e695b02100b.jpg" alt="" />
-<img src="http://oq1xuulg6.bkt.clouddn.com/4babf3acc211ee051f3f0e463c758683.jpg" alt="" /></p>
-
+                  安装 brew install ansible [centos] yum install ansible 新建默认配置文件路径 mkdir /etc/ansible cd /etc/ansible vi ansible.cfg vi host ansible.cfg 示例 [defaults] inventory = /etc/ansible/hosts forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。 default_sudo_user = root host_key_checking = False #log_path = /var/log/ansible.log private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径 [ssh_connection] ssh_args = -o StrictHostKeyChecking=no hosts 示例 Ansible执行命令常用Option ansible aliyun -m command -a &#34;echo hello&#34; ad-hoc 用法 ansible app -m pip -a &#34;name=django state=present&#34; ansible 192.168.10.10 -m conmand -a &#34;service ntpd status&#34; 用:作分隔符，指定多台机器做变更 ansible 192.
+                  <a href="http://gopherday.com/post/2016-08-21-ansible/" class="post-read-more">[Read More]</a>
                 
               </div>
 

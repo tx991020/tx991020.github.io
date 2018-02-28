@@ -184,6 +184,84 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-12-spark-pic/">
+                <h2 class="post-title">spark sql优化原理图</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 12, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/c1d3a02874639319ec93852194a547da.png" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/c0803e4f5be0977d25c3309980a524e5.png" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/680c5358a8f527282d833f5623d75527.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-11-sparkstreaming/">
+                <h2 class="post-title">spark streaming</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 11, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.streaming.kafka</span> <span class="kn">import</span> <span class="n">KafkaUtils</span>
+<span class="kn">from</span> <span class="nn">pyspark.streaming</span> <span class="kn">import</span> <span class="n">StreamingContext</span>
+
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">topic</span> <span class="o">=</span><span class="sa"></span><span class="s2">&#34;test&#34;</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
+    <span class="n">ssc</span> <span class="o">=</span> <span class="n">StreamingContext</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">kvs</span> <span class="o">=</span> <span class="n">KafkaUtils</span><span class="o">.</span><span class="n">createDirectStream</span><span class="p">(</span><span class="n">ssc</span><span class="p">,[</span><span class="n">topic</span><span class="p">],{</span><span class="sa"></span><span class="s2">&#34;metadata.broker.list&#34;</span><span class="p">:</span><span class="sa"></span><span class="s2">&#34;127.0.0.1:9092&#34;</span><span class="p">})</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">kvs</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34; &#34;</span><span class="p">))</span> \
+        <span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> \
+        <span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">counts</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+
+    <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-02-10-sparksql/">
                 <h2 class="post-title">sparksql</h2>
 
@@ -285,6 +363,32 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-09-11-docker-01/">
+                <h2 class="post-title">docker 入门</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/docker/">docker</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-11-20-golang-set/">
                 <h2 class="post-title">golang set</h2>
 
@@ -312,7 +416,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
-              <a href="http://gopherday.com/post/2016.11.20-python-pandas01/">
+              <a href="http://gopherday.com/post/2016-11-20-python-pandas01/">
                 <h2 class="post-title">pandas to dict</h2>
 
                 
@@ -324,7 +428,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
               <div class="post-entry">
                 
                   python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
-                  <a href="http://gopherday.com/post/2016.11.20-python-pandas01/" class="post-read-more">[Read More]</a>
+                  <a href="http://gopherday.com/post/2016-11-20-python-pandas01/" class="post-read-more">[Read More]</a>
                 
               </div>
 
@@ -366,151 +470,26 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
             </article>
           
             <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-08-21-ansible/">
-                <h2 class="post-title">ansible自动化运维01</h2>
+              <a href="http://gopherday.com/post/2016-09-14-pykafka/">
+                <h2 class="post-title">pykafa</h2>
 
-                
-                  <h3 class="post-subtitle">
-                    mac linux ansible的使用
-                  </h3>
                 
               </a>
 
               <p class="post-meta">
-                Posted on August 21, 2016
+                Posted on September 14, 2016
               </p>
               <div class="post-entry">
                 
-                  
-
-<h2 id="安装">安装</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install ansible</code></pre></div>
-<h2 id="新建默认配置文件路径">新建默认配置文件路径</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">mkdir /etc/ansible
-cd /etc/ansible
-vi ansible.cfg
-vi host</code></pre></div>
-<h2 id="ansible-cfg-示例">ansible.cfg 示例</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">[defaults]
-inventory = /etc/ansible/hosts 
-forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。
-default_sudo_user = root
-host_key_checking = False
-#log_path = /var/log/ansible.log 
-private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径
-[ssh_connection]
-ssh_args = -o StrictHostKeyChecking=no</code></pre></div>
-<h2 id="hosts-示例">hosts 示例</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/b4b72bc63bafecaa0bdc7e0fa69935cf.jpg" alt="" /></p>
-
-<h2 id="ansible执行命令常用option">Ansible执行命令常用Option</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/9f505a739788fc1bc1f42c95d87d307f.jpg" alt="" /></p>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">ansible aliyun  -m command -a &#34;echo hello&#34;</code></pre></div>
-<h2 id="ad-hoc-用法">ad-hoc 用法</h2>
-
-<h2 id="playbook-用法">playbook 用法</h2>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/f50c52dda01ba6cb6b668e695b02100b.jpg" alt="" />
-<img src="http://oq1xuulg6.bkt.clouddn.com/4babf3acc211ee051f3f0e463c758683.jpg" alt="" /></p>
-
+                  from kafka import KafkaProducer from kafka import KafkaConsumer from kafka.errors import KafkaError import json class Kafka_consumer(): &#39;&#39;&#39; 使用Kafka—python的消费模块 &#39;&#39;&#39; def __init__(self, kafkahost, kafkaport, kafkatopic, groupid): self.kafkaHost = kafkahost self.kafkaPort = kafkaport self.kafkatopic = kafkatopic self.groupid = groupid self.consumer = KafkaConsumer(self.kafkatopic, group_id = self.groupid, bootstrap_servers = &#39;{kafka_host}:{kafka_port}&#39;.format( kafka_host=self.kafkaHost, kafka_port=self.kafkaPort ), auto_offset_reset=&#39;earliest&#39;,enable_auto_commit=False) def consume_data(self): try: for message in self.consumer: # print json.loads(message.value) yield message except KeyboardInterrupt, e: print e def main(): &#39;&#39;&#39; 测试consumer和producer :return: &#39;&#39;&#39; ##测试消费模块 #消费模块的返回格式为 # ConsumerRecord( # topic=u&#39;ranktest&#39;, # partition=0, # offset=202, # timestamp=None, # timestamp_type=None, # key=None, # value=&#39;&#34;{abetst}:{null}---0&#34;&#39;, # checksum=-1868164195, #\serialized_key_size=-1, # serialized_value_size=21) consumer = Kafka_consumer(&#39;127.
+                  <a href="http://gopherday.com/post/2016-09-14-pykafka/" class="post-read-more">[Read More]</a>
                 
               </div>
 
               
                 <span class="post-meta">
                   
-                    #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
-                <h2 class="post-title">Code Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using Hugo or Pygments
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 8, 2016
-              </p>
-              <div class="post-entry">
-                
-                  <p>The following are two code samples using syntax highlighting.</p>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
-                <h2 class="post-title">golang redispool</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 15, 2016
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
-                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
-                <h2 class="post-title">pymysql 模板</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on July 13, 2015
-              </p>
-              <div class="post-entry">
-                
-                  import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
-                  <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                    #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
                   
                 </span>
               

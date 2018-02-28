@@ -23,10 +23,10 @@
     
     <item>
       <title>pandas to dict</title>
-      <link>http://gopherday.com/post/2016.11.20-python-pandas01/</link>
+      <link>http://gopherday.com/post/2016-11-20-python-pandas01/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016.11.20-python-pandas01/</guid>
+      <guid>http://gopherday.com/post/2016-11-20-python-pandas01/</guid>
       <description>python pandas to dict import pandas as pd import json b = [{&amp;#39;source&amp;#39;: &amp;#39;baidu&amp;#39;, &amp;#39;num&amp;#39;: 61}, {&amp;#39;source&amp;#39;: &amp;#39;cctv&amp;#39;, &amp;#39;num&amp;#39;: 14}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 3}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 1}, {&amp;#39;source&amp;#39;: &amp;#39;cntv&amp;#39;, &amp;#39;num&amp;#39;: 1}] if __name__ == &amp;#39;__main__&amp;#39;: df =pd.DataFrame(b) c = df[&amp;#34;num&amp;#34;].groupby(df[&amp;#39;source&amp;#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&amp;#39;baidu&amp;#39;: 61, &amp;#39;cctv&amp;#39;: 14, &amp;#39;cntv&amp;#39;: 5} y = {&amp;#34;微信&amp;#34;: 0, &amp;#34;微博&amp;#34;: 0,&amp;#34;头条&amp;#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&amp;#39;微信&amp;#39;: 40, &amp;#39;微博&amp;#39;: 0, &amp;#39;头条&amp;#39;: 156, &amp;#39;baidu&amp;#39;: 610, &amp;#39;cntv&amp;#39;: 10} for v in dd: q.</description>
     </item>
     

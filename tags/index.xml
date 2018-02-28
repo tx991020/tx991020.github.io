@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Sun, 21 Aug 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jun 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Alfred</title>
+      <link>http://gopherday.com/tags/alfred/</link>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/alfred/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Ansible</title>
@@ -27,6 +36,24 @@
       <pubDate>Tue, 07 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/tags/bigimg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://gopherday.com/tags/docker/</link>
+      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Etcd</title>
+      <link>http://gopherday.com/tags/etcd/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/etcd/</guid>
       <description></description>
     </item>
     
@@ -49,11 +76,29 @@
     </item>
     
     <item>
+      <title>Kafka</title>
+      <link>http://gopherday.com/tags/kafka/</link>
+      <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Linux</title>
       <link>http://gopherday.com/tags/linux/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>http://gopherday.com/tags/mac/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/mac/</guid>
       <description></description>
     </item>
     
@@ -114,7 +159,7 @@
     <item>
       <title>Spark</title>
       <link>http://gopherday.com/tags/spark/</link>
-      <pubDate>Wed, 15 Feb 2017 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/tags/spark/</guid>
       <description></description>

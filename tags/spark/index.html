@@ -184,6 +184,64 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/">
+                <h2 class="post-title">spark dataframe</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 23, 2017
+              </p>
+              <div class="post-entry">
+                
+                  from pyspark.sql import SparkSession from pyspark.sql import Row spark = SparkSession.builder.appName(&#39;test&#39;).getOrCreate() sc = spark.sparkContext spark.conf.set(&#34;spark.sql.shuffle.partitions&#34;, 6) l = [(&#39;Ankit&#39;,25),(&#39;Jalfaizy&#39;,22),(&#39;saurabh&#39;,20),(&#39;Bala&#39;,26)] rdd = sc.parallelize(l) people = rdd.map(lambda x: Row(name=x[0], age=int(x[1]))) schemaPeople = spark.createDataFrame(people) df = spark.read.format(&#34;csv&#34;). \ option(&#34;header&#34;, &#34;true&#34;) \ .load(&#34;iris.csv&#34;) df.printSchema() df.show(10) df.count() df.columns df.withColumn(&#39;newWidth&#39;,df.SepalWidth * 2).show() df.drop(&#39;Name&#39;).show() df.describe().show() df.describe(&#39;Name&#39;).show() #分类变量 df.select(&#39;Name&#39;,&#39;SepalLength&#39;).show() df.select(&#39;Name&#39;).distinct().count() ### 分组统计 groupby(colname).agg({&#39;col&#39;:&#39;fun&#39;,&#39;col2&#39;:&#39;fun2&#39;}) df.groupby(&#39;Name&#39;).agg({&#39;SepalWidth&#39;:&#39;mean&#39;,&#39;SepalLength&#39;:&#39;max&#39;}).show() ### 自定义的汇总方法 import pyspark.sql.functions as fn df.agg(fn.count(&#39;SepalWidth&#39;).alias(&#39;width_count&#39;), fn.countDistinct(&#39;id&#39;).alias(&#39;distinct_id_count&#39;)).collect() ### 数据集拆成两部分 trainDF, testDF = df.randomSplit([0.6, 0.
+                  <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-23-spark-01/">
+                <h2 class="post-title">spark2.x</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 23, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/7ce314c19f9afe24282b204a1f11c2af.jpg" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/c7a3e377fba2eebfdd1a532dab5f0131.jpg" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/d4db290b81c346e429184d717e1239df.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-02-15-spark-basic/">
                 <h2 class="post-title">spark basic</h2>
 

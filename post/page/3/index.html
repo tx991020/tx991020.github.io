@@ -184,6 +184,235 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-12-kafka/">
+                <h2 class="post-title">Kafka架构介绍</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on September 12, 2016
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/72f7dff67c061a9a3723bbc17ca0b5c7.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/2fd171c0d52f9d1f49006900bc77028c.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/6cf4f061e82c3b3f0d46367c10c8780c.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/2ca361fa8fe31ede4d4c70568c23e15a.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/e91781f773b2ead0d9cd775083c06c57.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-08-21-ansible/">
+                <h2 class="post-title">ansible自动化运维01</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    mac linux ansible的使用
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on August 21, 2016
+              </p>
+              <div class="post-entry">
+                
+                  安装 brew install ansible [centos] yum install ansible 新建默认配置文件路径 mkdir /etc/ansible cd /etc/ansible vi ansible.cfg vi host ansible.cfg 示例 [defaults] inventory = /etc/ansible/hosts forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。 default_sudo_user = root host_key_checking = False #log_path = /var/log/ansible.log private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径 [ssh_connection] ssh_args = -o StrictHostKeyChecking=no hosts 示例 Ansible执行命令常用Option ansible aliyun -m command -a &#34;echo hello&#34; ad-hoc 用法 ansible app -m pip -a &#34;name=django state=present&#34; ansible 192.168.10.10 -m conmand -a &#34;service ntpd status&#34; 用:作分隔符，指定多台机器做变更 ansible 192.
+                  <a href="http://gopherday.com/post/2016-08-21-ansible/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/">
+                <h2 class="post-title">alfred&#43;qiniu 在markdown中愉快的贴图</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on June 5, 2016
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<p>qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至
+剪贴板，并自动粘贴到当前编辑器</p>
+
+<h2 id="安装qshell">安装qshell</h2>
+
+<p>qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的
+安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至
+usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功</p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/b0968e86037c69ffb320882e6d9f5005.jpg" alt="" /></p>
+
+<h2 id="配置workflow环境变量">配置workflow环境变量</h2>
+
+<p>点击上图标出的环境变量图标，可以看到下图所示的四个配置项
+<img src="http://oq1xuulg6.bkt.clouddn.com/ecc4639f12109dcbdb5bee530b231846.jpg" alt="" />
+这四个配置项都与七牛账号相关：
+AccessKey &amp; SecretKey
+这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&gt;密钥管理中查看，或者直接访问<a href="https://portal.qiniu.com/user/key查看。">https://portal.qiniu.com/user/key查看。</a>
+bucket &amp; bucketDomain
+在对象存储-&gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名
+<img src="http://oq1xuulg6.bkt.clouddn.com/947210aba161fd1e9d0a4e3ef2a31967.gif" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
+                <h2 class="post-title">Code Sample</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    Using Hugo or Pygments
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 8, 2016
+              </p>
+              <div class="post-entry">
+                
+                  <p>The following are two code samples using syntax highlighting.</p>
+
+<p></p>
+                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/">
+                <h2 class="post-title">Confd&#43;etcd实现高可用自动发现</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 8, 2016
+              </p>
+              <div class="post-entry">
+                
+                  Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
+etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
+[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.
+                  <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
+                <h2 class="post-title">golang redispool</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 15, 2016
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
+                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
+                <h2 class="post-title">pymysql 模板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 13, 2015
+              </p>
+              <div class="post-entry">
+                
+                  import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
+                  <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                  
+                    #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
                 <h2 class="post-title">pyspider 常用模板</h2>
 
@@ -262,119 +491,6 @@
 
             </article>
           
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-20-test-markdown/">
-                <h2 class="post-title">Test markdown</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Each post also has a subtitle
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 20, 2015
-              </p>
-              <div class="post-entry">
-                
-                  You can write regular markdown here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to take 5 minutes to learn how to write in markdown - it&rsquo;ll teach you how to transform regular text into bold/italics/headings/tables/etc.
-Here is some bold text
-Here is a secondary heading Here&rsquo;s a useless table:
-   Number Next number Previous number     Five Six Four   Ten Eleven Nine   Seven Eight Six   Two Three One    How about a yummy crepe?
-                  <a href="http://gopherday.com/post/2015-02-20-test-markdown/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/markdown/">markdown</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/">
-                <h2 class="post-title">To be</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    ... or not to be?
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 13, 2015
-              </p>
-              <div class="post-entry">
-                
-                  When he himself might his quietus make With a bare bodkin? Who would fardels bear, To grunt and sweat under a weary life, But that the dread of something after death, The undiscovered country, from whose bourn No traveller returns, puzzles the will, And makes us rather bear those ills we have Than fly to others that we know not of? Thus conscience does make cowards of us all, And thus the native hue of resolution Is sicklied o&rsquo;er with the pale cast of thought, And enterprise of great pitch and moment With this regard their currents turn awry And lose the name of action.
-                  <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014-07-10-mysql-setup/">
-                <h2 class="post-title">mysql 安装配置</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on July 10, 2014
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/325ba0e62a97f0dca86a549f71ec4a49.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014.05-10-python-retring/">
-                <h2 class="post-title">python retrying 重试装饰器</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on May 10, 2014
-              </p>
-              <div class="post-entry">
-                
-                  python retrying chache def login_required(view_func): &#34;&#34;&#34;检验用户的登录状态&#34;&#34;&#34; @wraps(view_func) # 不改变原有函数的签名文档 def wrapper(*args, **kwargs): user_id = session.get(&#34;user_id&#34;) if user_id is not None: # 表示用户已经登录 # 使用g对象保存user_id，在视图函数中可以直接使用 g.user_id = user_id return view_func(*args, **kwargs) else: # 用户未登录 resp = { &#34;errno&#34;: RET.SESSIONERR, &#34;errmsg&#34;: &#34;用户未登录&#34; } return jsonify(resp) return wrapper # 构建装饰器 def wraps(func): @functools.wraps(func) def decorator( *args, **kwargs): print(&#34;开始验证&#34;) print(&#34;%scalled&#34; % func.__name__) result = func(*args, **kwargs) print(&#34;验证完毕&#34;) print(&#34;%send&#34; % func.__name__) return result return decorator @wraps def connnet_db(): print(&#34;searching&#34;) def singleton(fun): instances = {} def decorator(*args,**kwargs): if fun not in instances: print(111,fun) instances[fun] = fun(*args,**kwargs) return instances[fun] else: print(&#34;已存在&#34;) return decorator def singleton(fun): cache = {} def decorator(*args,**kwargs): if fun not in cache: print(111,fun) cache[fun] = fun(*args,**kwargs) return cache[fun] else: print(&#34;已存在&#34;) return decorator @singleton def fib(i): if i &lt; 2: return 1 return fib(i-1) + fib(i-2) if __name__ == &#39;__main__&#39;: for i in range(10): test() import requests from tenacity import * ## 爬虫专用 def scraping(url): r = requests.
-                  <a href="http://gopherday.com/post/2014.05-10-python-retring/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -383,6 +499,10 @@ Here is a secondary heading Here&rsquo;s a useless table:
                 <a href="/post/page/2/">&larr; Newer Posts</a>
               </li>
             
+            
+              <li class="next">
+                <a href="/post/page/4/">Older Posts &rarr;</a>
+              </li>
             
           </ul>
         
