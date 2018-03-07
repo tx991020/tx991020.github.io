@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elasticsearch on 大王派我来搬砖</title>
+    <link>http://gopherday.com/tags/elasticsearch/</link>
+    <description>Recent content in Elasticsearch on 大王派我来搬砖</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
+    <webMaster>tx991020@gmail.com (andy wu)</webMaster>
+    <lastBuildDate>Tue, 14 Jul 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://gopherday.com/tags/elasticsearch/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python elasticsearch</title>
+      <link>http://gopherday.com/post/2015-07-14-python-elastic-utils/</link>
+      <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2015-07-14-python-elastic-utils/</guid>
+      <description>from elasticsearch import Elasticsearch from elasticsearch import helpers
+class ESutill(): def init(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body)</description>
+    </item>
+    
+  </channel>
+</rss>

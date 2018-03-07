@@ -31,6 +31,15 @@
     </item>
     
     <item>
+      <title>pandas to sql</title>
+      <link>http://gopherday.com/post/2016-11-21-pandas_to_sql/</link>
+      <pubDate>Mon, 21 Nov 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2016-11-21-pandas_to_sql/</guid>
+      <description>## pandas json 转sql，直接存入mysql import requests import pandas as pd from sqlalchemy import create_engine yconnect = create_engine(&amp;#39;mysql+pymysql://root:123456@localhost:3306/video?charset=utf8&amp;#39;) if __name__ == &amp;#39;__main__&amp;#39;: url = &amp;#34;http://app.video.baidu.com/app?word=北京&amp;amp;pn=1&amp;amp;rn=50&amp;amp;order=1&amp;#34; r = requests.get(url) data = r.json()[&amp;#34;result&amp;#34;] df = pd.DataFrame(data) del df[&amp;#39;nsclick_v&amp;#39;] # 表名baidu,数据库名video, 如果表以存在，追加数据 pd.io.sql.to_sql(df, &amp;#39;baidu&amp;#39;, yconnect, schema=&amp;#39;video&amp;#39;, if_exists=&amp;#39;append&amp;#39;) </description>
+    </item>
+    
+    <item>
       <title>pandas to dict</title>
       <link>http://gopherday.com/post/2016-11-20-python-pandas01/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>

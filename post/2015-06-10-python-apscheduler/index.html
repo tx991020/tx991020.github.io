@@ -8,12 +8,12 @@
   <title>APScheduler</title>
   <meta property="og:title" content="APScheduler" />
   <meta name="twitter:title" content="APScheduler" />
-  <meta name="description" content="定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：
-APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+  <meta name="description" content="定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
 APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
-作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保 存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
 执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
-调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了 处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
 import time from apscheduler.schedulers.blocking import BlockingScheduler
 def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
 sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
@@ -22,13 +22,13 @@ import time from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
 @sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
 sched.start() 2. 移除作业
-job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3. 暂停和恢复作业 暂停作业:">
-  <meta property="og:description" content="定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：
-APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3.">
+  <meta property="og:description" content="定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
 APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
-作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保 存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
 执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
-调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了 处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
 import time from apscheduler.schedulers.blocking import BlockingScheduler
 def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
 sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
@@ -37,8 +37,10 @@ import time from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
 @sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
 sched.start() 2. 移除作业
-job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3. 暂停和恢复作业 暂停作业:">
-  <meta name="twitter:description" content="定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到 …">
+job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3.">
+  <meta name="twitter:description" content="定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+APScheduler有四种组成部分： 触发器(trigger) …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -219,7 +221,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 3 minutes (467 words)
+  <i class="fa fa-clock-o"></i> 3 minutes (472 words)
   
   
 </span>
@@ -242,19 +244,21 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
         
 
 <p>定时任务框架APScheduler学习详解
-APScheduler简介
-在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：</p>
+APScheduler简介</p>
 
-<p>APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。</p>
+<p>APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型
+的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。</p>
 
 <p>APScheduler有四种组成部分：
 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。</p>
 
-<p>作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。</p>
+<p>作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保
+存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。</p>
 
 <p>执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。</p>
 
-<p>调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　</p>
+<p>调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了
+处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　</p>
 
 <p>简单应用：</p>
 
@@ -300,7 +304,8 @@ apsched.schedulers.base.BaseScheduler.pause_job()
 <p>apsched.job.Job.resume()
 apsched.schedulers.base.BaseScheduler.resume_job()
 4. 获得job列表
- 获得调度作业的列表，可以使用get_jobs()来完成，它会返回所有的job实例。或者使用print_jobs()来输出所有格式化的作业列表。也可以利用get_job(任务ID)获取指定任务的作业列表</p>
+ 获得调度作业的列表，可以使用get_jobs()来完成，它会返回所有的job实例。或者使用print_jobs()来输出所有格式化的作业列表。也可以利用
+ get_job(任务ID)获取指定任务的作业列表</p>
 
 <p>job = sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=2 ,id=&lsquo;123&rsquo;)
 print sched.get_job(job_id=&lsquo;123&rsquo;)
@@ -322,13 +327,15 @@ add_job的第二个参数是trigger，它管理着作业的调度方式。它可
 month (int|str) – month (1-12) -（表示取值范围为1-12月）
 day (int|str) – day of the (1-31) -（表示取值范围为1-31日）
 week (int|str) – ISO week (1-53) -（格里历2006年12月31日可以写成2006年-W52-7（扩展形式）或2006W527（紧凑形式））
-day_of_week (int|str) – number or name of weekday (0-6 or mon,tue,wed,thu,fri,sat,sun) - （表示一周中的第几天，既可以用0-6表示也可以用其英语缩写表示）
+day_of_week (int|str) – number or name of weekday (0-6 or mon,tue,wed,thu,fri,sat,sun) - （表示一周中的第几天，既可以用0-6表
+示也可以用其英语缩写表示）
 hour (int|str) – hour (0-23) - （表示取值范围为0-23时）
 minute (int|str) – minute (0-59) - （表示取值范围为0-59分）
 second (int|str) – second (0-59) - （表示取值范围为0-59秒）
 start_date (datetime|str) – earliest possible date/time to trigger on (inclusive) - （表示开始时间）
 end_date (datetime|str) – latest possible date/time to trigger on (inclusive) - （表示结束时间）
-timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone) -（表示时区取值）
+timezone (datetime.tzinfo|str) – time zone to use for the date/time calculations (defaults to scheduler timezone) -
+（表示时区取值）
 参数的取值格式：</p>
 
 <h2 id="表示2017年3月22日17时19分07秒执行该程序">表示2017年3月22日17时19分07秒执行该程序</h2>
@@ -428,12 +435,12 @@ timezone (datetime.tzinfo|str) – time zone for run_date if it doesn’t have o
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://gopherday.com/post/2015-09-11-docker-01/" data-toggle="tooltip" data-placement="top" title="docker 入门">&larr; Previous Post</a>
+              <a href="http://gopherday.com/post/2016-11-20-golang-set/" data-toggle="tooltip" data-placement="top" title="golang set">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="http://gopherday.com/post/2016-11-23-python-pandas03/" data-toggle="tooltip" data-placement="top" title="pandas 分组聚合">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2016-11-21-pandas_to_sql/" data-toggle="tooltip" data-placement="top" title="pandas to sql">Next Post &rarr;</a>
             </li>
           
         </ul>

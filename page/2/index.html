@@ -214,6 +214,175 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-13-rpc/">
+                <h2 class="post-title">golang net/rpc</h2>
+                
+                  <h3 class="post-subtitle">
+                  golang 标准库
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 13, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (229 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  client package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/rpc&#34; ) type Args struct { A, B int } type Quotient struct { Quo, Rem int } func main() { client, err := rpc.DialHTTP(&#34;tcp&#34;, &#34;127.0.0.1:1234&#34;) if err != nil { log.Fatal(&#34;dialing:&#34;, err) } // Synchronous call 	args := &amp;Args{7, 8} var reply int err = client.Call(&#34;Arith.Multiply&#34;, args, &amp;reply) if err != nil { log.Fatal(&#34;arith error:&#34;, err) } fmt.Printf(&#34;Arith: %d*%d=%d\n&#34;, args.A, args.
+                  <a href="http://gopherday.com/post/2017-03-13-rpc/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-07-bigimg-sample/">
+                <h2 class="post-title">Big Image Sample</h2>
+                
+                  <h3 class="post-subtitle">
+                  Using Multiple Images
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 7, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (191 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>The image banners at the top of the page are refered to as &ldquo;bigimg&rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.</p>
+
+<p></p>
+                  <a href="http://gopherday.com/post/2017-03-07-bigimg-sample/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/bigimg/">bigimg</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-05-math-sample/">
+                <h2 class="post-title">Math Sample</h2>
+                
+                  <h3 class="post-subtitle">
+                  Using KaTeX
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 5, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (120 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>KaTeX can be used to generate complex math formulas server-side.</p>
+
+<p>$$
+\phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots
+$$</p>
+
+<p>Additional details can be found on <a href="https://github.com/Khan/KaTeX">GitHub</a> or on the <a href="http://tiddlywiki.com/plugins/tiddlywiki/katex/">Wiki</a>.
+</p>
+                  <a href="http://gopherday.com/post/2017-03-05-math-sample/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
+                
+                  #<a href="http://gopherday.com//tags/math/">math</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-15-spark-basic/">
+                <h2 class="post-title">spark basic</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 15, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-23%2014.18.31.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-02-12-spark-pic/">
                 <h2 class="post-title">spark sql优化原理图</h2>
                 
@@ -352,6 +521,58 @@
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-09-python-hadoop/">
+                <h2 class="post-title">python hadoop</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 9, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (34 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">pip install mrjob</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">mrjob</span><span class="p">.</span><span class="nx">job</span> <span class="k">import</span> <span class="nx">MRJob</span>
+
+
+<span class="k">class</span> <span class="nx">MRWordFrequencyCount</span><span class="p">(</span><span class="nx">MRJob</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="nx">def</span> <span class="nx">mapper</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">yield</span> <span class="s2">&#34;chars&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&#34;words&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">())</span>
+        <span class="k">yield</span> <span class="s2">&#34;lines&#34;</span><span class="p">,</span> <span class="mi">1</span>
+
+    <span class="nx">def</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">yield</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+    <span class="nx">MRWordFrequencyCount</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/hadoop/">hadoop</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-12-20-pandas-pic/">
                 <h2 class="post-title">pandas basic</h2>
                 
@@ -418,199 +639,6 @@
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/">
-                <h2 class="post-title">APScheduler</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 3 minutes (467 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  定时任务框架APScheduler学习详解 APScheduler简介 在平常的工作中几乎有一半的功能模块都需要定时任务来推动，例如项目中有一个定时统计程序，定时爬出网站的URL程序，定时检测钓鱼网站的程序等等，都涉及到了关于定时任务的问题，第一时间想到的是利用time模块的time.sleep()方法使程序休眠来达到定时任务的目的，虽然这样也可以，但是总觉得不是那么的专业，^_^所以就找到了python的定时任务模块APScheduler：
-APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
-APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
-作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
-执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
-调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
-import time from apscheduler.schedulers.blocking import BlockingScheduler
-def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
-sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
-操作作业 1. 添加作业 上面是通过add_job()来添加作业，另外还有一种方式是通过scheduled_job()修饰器来修饰函数
-import time from apscheduler.schedulers.blocking import BlockingScheduler
-sched = BlockingScheduler()
-@sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
-sched.start() 2. 移除作业
-job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3. 暂停和恢复作业 暂停作业:
-                  <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-09-11-docker-01/">
-                <h2 class="post-title">docker 入门</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/docker/">docker</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-11-20-golang-set/">
-                <h2 class="post-title">golang set</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.
-                  <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-11-20-python-pandas01/">
-                <h2 class="post-title">pandas to dict</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
-                  <a href="http://gopherday.com/post/2016-11-20-python-pandas01/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/">
-                <h2 class="post-title">爬虫 pyquery goquery css匹配语法 智障使用模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  pyquery 用法模板 主要分为 1类匹配 写法 doc(.class)， 2 id 匹配 写法doc(#id), 3标签匹配 A B=&#34;C&#34; 写法doc(A[B=&#34;C&#34;]) 4值匹配 A=&#34;B&#34; 写法 B = doc(&#34;xxx&#34;).attr(&#34;A&#34;) 或B = doc(&#34;xxx&#34;).attr.A 5遍历相同类型。 for x in doc(&#34;yyyy&#34;).items() import requests from pyquery import PyQuery as pq r = requests.get(&#34;http://video.infolz.com/&#34;) r.encoding=&#34;utf-8&#34; r1 = requests.get(&#34;http://www.infolz.com/2016/1213/303.shtml&#34;) &#34;&#34;&#34; &lt;object class=&#34;cmstopVideo&#34; width=&#34;650&#34; height=&#34;519&#34; data=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34; type=&#34;application/x-shockwave-flash&#34;&gt;&lt;param name=&#34;src&#34; value=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34;/&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;wmode&#34; value=&#34;Transparent&#34;/&gt;&lt;/object&gt; &#34;&#34;&#34; 1单层查找 a &gt; b 横跨多层查找用空格 a b 2选择类 .
-                  <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
                 
                 </span>
               

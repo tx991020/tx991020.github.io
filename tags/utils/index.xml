@@ -30,5 +30,14 @@
       <description>import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&amp;#34;utf8&amp;#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&amp;#34;sql查询成功&amp;#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.</description>
     </item>
     
+    <item>
+      <title>python redis utils</title>
+      <link>http://gopherday.com/post/2015-07-12-python-redis-utils/</link>
+      <pubDate>Sun, 12 Jul 2015 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2015-07-12-python-redis-utils/</guid>
+      <description>import redis class RedisPipline(): def __init__(self): self.pool = redis.ConnectionPool(host=redis_host, port=redis_port, password=redis_password, db=redis_db) self.redis_conn = redis.Redis(connection_pool=self.pool) # set def set_data(self, key, data): self.redis_conn.set(key, data) # get def get_data(self, key): return self.redis_conn.get(key) # rpush def rpush_data(self, key, data): self.redis_conn.rpush(key, json.dumps(data)) # lpop def lpop_data(self, key): self.redis_conn.lpop(key) # 删除key def delete_key(self, key): if self.redis_conn.exists(key): self.redis_conn.delete(key) </description>
+    </item>
+    
   </channel>
 </rss>

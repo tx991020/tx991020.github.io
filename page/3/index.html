@@ -214,6 +214,332 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-21-pandas_to_sql/">
+                <h2 class="post-title">pandas to sql</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 21, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (43 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="err">##</span> <span class="nx">pandas</span> <span class="nx">json</span> <span class="nx">转sql</span><span class="err">，</span><span class="nx">直接存入mysql</span>
+
+<span class="k">import</span> <span class="nx">requests</span>
+<span class="k">import</span> <span class="nx">pandas</span> <span class="nx">as</span> <span class="nx">pd</span>
+<span class="nx">from</span> <span class="nx">sqlalchemy</span> <span class="k">import</span> <span class="nx">create_engine</span>
+
+<span class="nx">yconnect</span> <span class="o">=</span> <span class="nx">create_engine</span><span class="p">(</span><span class="s1">&#39;mysql+pymysql://root:123456@localhost:3306/video?charset=utf8&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+    <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;http://app.video.baidu.com/app?word=北京&amp;pn=1&amp;rn=50&amp;order=1&#34;</span>
+
+    <span class="nx">r</span> <span class="o">=</span> <span class="nx">requests</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+    <span class="nx">data</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">json</span><span class="p">()[</span><span class="s2">&#34;result&#34;</span><span class="p">]</span>
+    <span class="nx">df</span> <span class="o">=</span> <span class="nx">pd</span><span class="p">.</span><span class="nx">DataFrame</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+
+    <span class="nx">del</span> <span class="nx">df</span><span class="p">[</span><span class="s1">&#39;nsclick_v&#39;</span><span class="p">]</span>
+    <span class="err">#</span> <span class="nx">表名baidu</span><span class="p">,</span><span class="nx">数据库名video</span><span class="p">,</span> <span class="nx">如果表以存在</span><span class="err">，</span><span class="nx">追加数据</span>
+    <span class="nx">pd</span><span class="p">.</span><span class="nx">io</span><span class="p">.</span><span class="nx">sql</span><span class="p">.</span><span class="nx">to_sql</span><span class="p">(</span><span class="nx">df</span><span class="p">,</span> <span class="s1">&#39;baidu&#39;</span><span class="p">,</span> <span class="nx">yconnect</span><span class="p">,</span> <span class="nx">schema</span><span class="o">=</span><span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="nx">if_exists</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/">
+                <h2 class="post-title">APScheduler</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 3 minutes (472 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保 存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了 处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
+操作作业 1. 添加作业 上面是通过add_job()来添加作业，另外还有一种方式是通过scheduled_job()修饰器来修饰函数
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
+@sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched.start() 2. 移除作业
+job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3.
+                  <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-golang-set/">
+                <h2 class="post-title">golang set</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.
+                  <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-python-pandas01/">
+                <h2 class="post-title">pandas to dict</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
+                  <a href="http://gopherday.com/post/2016-11-20-python-pandas01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/">
+                <h2 class="post-title">爬虫 pyquery goquery css匹配语法 智障使用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  pyquery 用法模板 主要分为 1类匹配 写法 doc(.class)， 2 id 匹配 写法doc(#id), 3标签匹配 A B=&#34;C&#34; 写法doc(A[B=&#34;C&#34;]) 4值匹配 A=&#34;B&#34; 写法 B = doc(&#34;xxx&#34;).attr(&#34;A&#34;) 或B = doc(&#34;xxx&#34;).attr.A 5遍历相同类型。 for x in doc(&#34;yyyy&#34;).items() import requests from pyquery import PyQuery as pq r = requests.get(&#34;http://video.infolz.com/&#34;) r.encoding=&#34;utf-8&#34; r1 = requests.get(&#34;http://www.infolz.com/2016/1213/303.shtml&#34;) &#34;&#34;&#34; &lt;object class=&#34;cmstopVideo&#34; width=&#34;650&#34; height=&#34;519&#34; data=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34; type=&#34;application/x-shockwave-flash&#34;&gt;&lt;param name=&#34;src&#34; value=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34;/&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;wmode&#34; value=&#34;Transparent&#34;/&gt;&lt;/object&gt; &#34;&#34;&#34; 1单层查找 a &gt; b 横跨多层查找用空格 a b 2选择类 .
+                  <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
+                <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 12, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (300 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
+                  <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-10-15-elasticsearch01/">
+                <h2 class="post-title">ElasticSearch 入门</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 15, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/d8729850d72830bd7b4b1f6b617c97a5.png" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/7a89498963af92287cf4742a4d8a6399.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-15-go-heap/">
+                <h2 class="post-title">golang heap interface实现</h2>
+                
+                  <h3 class="post-subtitle">
+                  golang 标准库学习
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 15, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (397 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package main import ( &#34;container/heap&#34; &#34;fmt&#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&#39;s length, not just its contents.
+                  <a href="http://gopherday.com/post/2016-09-15-go-heap/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-09-14-pykafka/">
                 <h2 class="post-title">pykafa</h2>
                 
@@ -284,330 +610,6 @@
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-08-21-ansible/">
-                <h2 class="post-title">ansible自动化运维01</h2>
-                
-                  <h3 class="post-subtitle">
-                  mac linux ansible的使用
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 21, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (83 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  安装 brew install ansible [centos] yum install ansible 新建默认配置文件路径 mkdir /etc/ansible cd /etc/ansible vi ansible.cfg vi host ansible.cfg 示例 [defaults] inventory = /etc/ansible/hosts forks = 5 #设置默认情况下Ansible最多能有多少个进程同时工作，默认设置最多5个进程并行处理。 default_sudo_user = root host_key_checking = False #log_path = /var/log/ansible.log private_key_file = /Users/andy/.ssh/id_rsa #本地密钥存放路径 [ssh_connection] ssh_args = -o StrictHostKeyChecking=no hosts 示例 Ansible执行命令常用Option ansible aliyun -m command -a &#34;echo hello&#34; ad-hoc 用法 ansible app -m pip -a &#34;name=django state=present&#34; ansible 192.168.10.10 -m conmand -a &#34;service ntpd status&#34; 用:作分隔符，指定多台机器做变更 ansible 192.
-                  <a href="http://gopherday.com/post/2016-08-21-ansible/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/">
-                <h2 class="post-title">alfred&#43;qiniu 在markdown中愉快的贴图</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 5, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (18 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-
-<p>qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至
-剪贴板，并自动粘贴到当前编辑器</p>
-
-<h2 id="安装qshell">安装qshell</h2>
-
-<p>qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的
-安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至
-usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功</p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/b0968e86037c69ffb320882e6d9f5005.jpg" alt="" /></p>
-
-<h2 id="配置workflow环境变量">配置workflow环境变量</h2>
-
-<p>点击上图标出的环境变量图标，可以看到下图所示的四个配置项
-<img src="http://oq1xuulg6.bkt.clouddn.com/ecc4639f12109dcbdb5bee530b231846.jpg" alt="" />
-这四个配置项都与七牛账号相关：
-AccessKey &amp; SecretKey
-这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&gt;密钥管理中查看，或者直接访问<a href="https://portal.qiniu.com/user/key查看。">https://portal.qiniu.com/user/key查看。</a>
-bucket &amp; bucketDomain
-在对象存储-&gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名
-<img src="http://oq1xuulg6.bkt.clouddn.com/947210aba161fd1e9d0a4e3ef2a31967.gif" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
-                <h2 class="post-title">Code Sample</h2>
-                
-                  <h3 class="post-subtitle">
-                  Using Hugo or Pygments
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (183 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>The following are two code samples using syntax highlighting.</p>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/">
-                <h2 class="post-title">Confd&#43;etcd实现高可用自动发现</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (251 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
-etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
-[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.
-                  <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
-                <h2 class="post-title">golang redispool</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 15, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (74 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
-                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
-                <h2 class="post-title">pymysql 模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 13, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (109 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
-                  <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
-                <h2 class="post-title">pyspider 常用模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (188 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
-                  <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2014-11-10-vagrant/">
-                <h2 class="post-title">vagrant 入门</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 12, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name vagrant虚拟机优化 虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.
-                  <a href="http://gopherday.com/post/2014-11-10-vagrant/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/vagrant/">vagrant</a>&nbsp;
                 
                 </span>
               
