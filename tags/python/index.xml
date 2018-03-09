@@ -41,8 +41,7 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
       <pubDate>Tue, 14 Jul 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2015-07-14-python-elastic-utils/</guid>
-      <description>from elasticsearch import Elasticsearch from elasticsearch import helpers
-class ESutill(): def init(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body)</description>
+      <description>from elasticsearch import Elasticsearch from elasticsearch import helpers class ESutill(): def __init__(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body) </description>
     </item>
     
     <item>

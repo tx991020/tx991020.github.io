@@ -214,6 +214,46 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-12-kafka/">
+                <h2 class="post-title">Kafka架构介绍</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 12, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/72f7dff67c061a9a3723bbc17ca0b5c7.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/2fd171c0d52f9d1f49006900bc77028c.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/6cf4f061e82c3b3f0d46367c10c8780c.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/2ca361fa8fe31ede4d4c70568c23e15a.jpg" alt="" />
+<img src="http://oq1xuulg6.bkt.clouddn.com/e91781f773b2ead0d9cd775083c06c57.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-08-21-ansible/">
                 <h2 class="post-title">ansible自动化运维01</h2>
                 
@@ -526,19 +566,19 @@ etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 
 
               <div class="post-entry">
                 
-                  <p>from elasticsearch import Elasticsearch
-from elasticsearch import helpers</p>
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">Elasticsearch</span>
+<span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">helpers</span>
 
-<p>class ESutill():
-    def <strong>init</strong>(self,hosts,index,doc_type,body):
-        self.index = index
-        self.body = body
-        self.doc_type = doc_type
-        self.hosts = hosts
-        self.es = Elasticsearch(hosts=self.hosts)
-        if not self.es.indices.exists(index=self.index):
-            self.es.indices.create(index=self.index)
-            self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body)</p>
+<span class="k">class</span> <span class="nx">ESutill</span><span class="p">()</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span><span class="nx">hosts</span><span class="p">,</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="nx">index</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">body</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span> <span class="o">=</span> <span class="nx">doc_type</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span> <span class="o">=</span> <span class="nx">hosts</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">es</span> <span class="o">=</span> <span class="nx">Elasticsearch</span><span class="p">(</span><span class="nx">hosts</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nx">not</span> <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span><span class="o">:</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">put_mapping</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span></code></pre></div>
 
                 
               </div>
@@ -658,42 +698,6 @@ from elasticsearch import helpers</p>
               
             </article>
           
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-10-pyspider-01/">
-                <h2 class="post-title">pyspider 常用模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (188 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
-                  <a href="http://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
         </div>
 
         
@@ -765,7 +769,7 @@ from elasticsearch import helpers</p>
           
 
           &nbsp;&bull;&nbsp;
-          2017
+          2018
 
           
             &nbsp;&bull;&nbsp;
