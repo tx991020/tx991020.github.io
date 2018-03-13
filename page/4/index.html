@@ -214,6 +214,156 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
+                <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 12, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (300 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
+                  <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-10-15-elasticsearch01/">
+                <h2 class="post-title">ElasticSearch 入门</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 15, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/d8729850d72830bd7b4b1f6b617c97a5.png" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/7a89498963af92287cf4742a4d8a6399.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-15-go-heap/">
+                <h2 class="post-title">golang heap interface实现</h2>
+                
+                  <h3 class="post-subtitle">
+                  golang 标准库学习
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 15, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (397 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package main import ( &#34;container/heap&#34; &#34;fmt&#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&#39;s length, not just its contents.
+                  <a href="http://gopherday.com/post/2016-09-15-go-heap/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-14-pykafka/">
+                <h2 class="post-title">pykafa</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 14, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (236 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  from kafka import KafkaProducer from kafka import KafkaConsumer from kafka.errors import KafkaError import json class Kafka_consumer(): &#39;&#39;&#39; 使用Kafka—python的消费模块 &#39;&#39;&#39; def __init__(self, kafkahost, kafkaport, kafkatopic, groupid): self.kafkaHost = kafkahost self.kafkaPort = kafkaport self.kafkatopic = kafkatopic self.groupid = groupid self.consumer = KafkaConsumer(self.kafkatopic, group_id = self.groupid, bootstrap_servers = &#39;{kafka_host}:{kafka_port}&#39;.format( kafka_host=self.kafkaHost, kafka_port=self.kafkaPort ), auto_offset_reset=&#39;earliest&#39;,enable_auto_commit=False) def consume_data(self): try: for message in self.consumer: # print json.loads(message.value) yield message except KeyboardInterrupt, e: print e def main(): &#39;&#39;&#39; 测试consumer和producer :return: &#39;&#39;&#39; ##测试消费模块 #消费模块的返回格式为 # ConsumerRecord( # topic=u&#39;ranktest&#39;, # partition=0, # offset=202, # timestamp=None, # timestamp_type=None, # key=None, # value=&#39;&#34;{abetst}:{null}---0&#34;&#39;, # checksum=-1868164195, #\serialized_key_size=-1, # serialized_value_size=21) consumer = Kafka_consumer(&#39;127.
+                  <a href="http://gopherday.com/post/2016-09-14-pykafka/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-09-12-kafka/">
                 <h2 class="post-title">Kafka架构介绍</h2>
                 
@@ -352,83 +502,6 @@ bucket &amp; bucketDomain
             </article>
           
             <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
-                <h2 class="post-title">golang sync.map</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on April 10, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (73 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-	<span class="s2">&#34;fmt&#34;</span>
-	<span class="s2">&#34;sync&#34;</span>
-<span class="p">)</span>
-
-<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
-		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
-		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
-		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
-	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
-
-	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-		<span class="k">return</span> <span class="kc">true</span>
-	<span class="p">})</span>
-<span class="p">}</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-03-08-code-sample/">
                 <h2 class="post-title">Code Sample</h2>
                 
@@ -465,44 +538,6 @@ bucket &amp; bucketDomain
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/">
-                <h2 class="post-title">Confd&#43;etcd实现高可用自动发现</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (251 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
-etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
-[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.
-                  <a href="http://gopherday.com/post/2016-06-03-etcd&#43;confd/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
                 
                 </span>
               
@@ -589,110 +624,6 @@ etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 
                   #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
                 
                   #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/">
-                <h2 class="post-title">pymysql 模板</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 13, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (109 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  import pymysql # MySQL 建立连接 class MySQLPipeline(object): def __init__(self, host, port, user, password, db): self.mysql_host = host self.mysql_port = port self.mysql_user = user self.mysql_password = password self.mysql_db = db # 创建MYSQL数据库链接对象 self.conn = pymysql.connect(host=self.mysql_host, user=self.mysql_user, password=self.mysql_password, db=self.mysql_db, charset=&#34;utf8&#34;) # 查询数据 def searching(self, sql): try: with self.conn as cur: cur.execute(sql) logger.info(&#34;sql查询成功&#34;) return cur except Exception as e: print(e) logger.error(e) return None #增删改 def processing(self, sql): try: with self.conn as cur: cur.execute(sql) logger.
-                  <a href="http://gopherday.com/post/2015-07-13-python-mysql-utils/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-12-python-redis-utils/">
-                <h2 class="post-title">python redis utils</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 12, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (52 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">redis</span>
-
-
-<span class="k">class</span> <span class="nc">RedisPipline</span><span class="p">():</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">ConnectionPool</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">redis_host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">redis_port</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">redis_password</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">redis_db</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span><span class="n">connection_pool</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">)</span>
-
-    <span class="c1"># set</span>
-    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-
-    <span class="c1"># get</span>
-    <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-    <span class="c1"># rpush</span>
-    <span class="k">def</span> <span class="nf">rpush_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="n">rpush</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-
-    <span class="c1"># lpop</span>
-    <span class="k">def</span> <span class="nf">lpop_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="n">lpop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-    <span class="c1"># 删除key</span>
-    <span class="k">def</span> <span class="nf">delete_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">redis_conn</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
                 
                 </span>
               

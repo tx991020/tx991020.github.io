@@ -25,6 +25,33 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
     </item>
     
     <item>
+      <title>golang etcd watch</title>
+      <link>http://gopherday.com/post/2017-11-21-go-etcd-watcd/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-11-21-go-etcd-watcd/</guid>
+      <description>package etcd import ( &amp;#34;context&amp;#34; &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;LearnEtcd/tailf&amp;#34; &amp;#34;strings&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/astaxie/beego/logs&amp;#34; etcd_client &amp;#34;github.com/coreos/etcd/clientv3&amp;#34; &amp;#34;github.com/coreos/etcd/mvcc/mvccpb&amp;#34; &amp;#34;LearnEtcd/Ip&amp;#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&amp;#34;localhost:2379&amp;#34;, &amp;#34;localhost:22379&amp;#34;, &amp;#34;localhost:32379&amp;#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&amp;#34;connect etcd failed, err:&amp;#34;, err) return } etcdClient = &amp;amp;EtcdClient{ Client: cli, } if strings.</description>
+    </item>
+    
+    <item>
+      <title>golang kafka</title>
+      <link>http://gopherday.com/post/2017-08-10-go-kafka/</link>
+      <pubDate>Thu, 10 Aug 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-08-10-go-kafka/</guid>
+      <description>producer package kafka import ( &amp;#34;github.com/Shopify/sarama&amp;#34; &amp;#34;github.com/astaxie/beego/logs&amp;#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&amp;#34;init kafka producer failed, err:&amp;#34;, err) return } logs.Debug(&amp;#34;init kafka succ&amp;#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.</description>
+    </item>
+    
+    <item>
+      <title>golang sync.map</title>
+      <link>http://gopherday.com/post/2017-04-10-go-sync.map/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-04-10-go-sync.map/</guid>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { list := map[string]interface{}{ &amp;#34;name&amp;#34;: &amp;#34;田馥甄&amp;#34;, &amp;#34;birthday&amp;#34;: &amp;#34;1983年3月30日&amp;#34;, &amp;#34;age&amp;#34;: 34, &amp;#34;hobby&amp;#34;: []string{&amp;#34;听音乐&amp;#34;, &amp;#34;看电影&amp;#34;, &amp;#34;电视&amp;#34;, &amp;#34;和姐妹一起讨论私人话题&amp;#34;}, &amp;#34;constellation&amp;#34;: &amp;#34;白羊座&amp;#34;, } var m sync.Map for k, v := range list { m.Store(k, v) } var wg sync.WaitGroup wg.Add(2) go func() { m.Store(&amp;#34;age&amp;#34;, 22) m.LoadOrStore(&amp;#34;tag&amp;#34;, 8888) wg.Done() }() go func() { m.Delete(&amp;#34;constellation&amp;#34;) m.Store(&amp;#34;age&amp;#34;, 18) wg.Done() }() wg.Wait() m.Range(func(key, value interface{}) bool { fmt.Println(key, value) return true }) } </description>
+    </item>
+    
+    <item>
       <title>go-colly</title>
       <link>http://gopherday.com/post/2017-10-18-go-colly/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
@@ -57,7 +84,7 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2016-11-20-golang-set/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.</description>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.</description>
     </item>
     
     <item>
@@ -85,15 +112,6 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2016-09-15-go-heap/</guid>
       <description>package main import ( &amp;#34;container/heap&amp;#34; &amp;#34;fmt&amp;#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &amp;lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&amp;#39;s length, not just its contents.</description>
-    </item>
-    
-    <item>
-      <title>golang sync.map</title>
-      <link>http://gopherday.com/post/2017-04-10-go-sync.map/</link>
-      <pubDate>Sun, 10 Apr 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2017-04-10-go-sync.map/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { list := map[string]interface{}{ &amp;#34;name&amp;#34;: &amp;#34;田馥甄&amp;#34;, &amp;#34;birthday&amp;#34;: &amp;#34;1983年3月30日&amp;#34;, &amp;#34;age&amp;#34;: 34, &amp;#34;hobby&amp;#34;: []string{&amp;#34;听音乐&amp;#34;, &amp;#34;看电影&amp;#34;, &amp;#34;电视&amp;#34;, &amp;#34;和姐妹一起讨论私人话题&amp;#34;}, &amp;#34;constellation&amp;#34;: &amp;#34;白羊座&amp;#34;, } var m sync.Map for k, v := range list { m.Store(k, v) } var wg sync.WaitGroup wg.Add(2) go func() { m.Store(&amp;#34;age&amp;#34;, 22) m.LoadOrStore(&amp;#34;tag&amp;#34;, 8888) wg.Done() }() go func() { m.Delete(&amp;#34;constellation&amp;#34;) m.Store(&amp;#34;age&amp;#34;, 18) wg.Done() }() wg.Wait() m.Range(func(key, value interface{}) bool { fmt.Println(key, value) return true }) } </description>
     </item>
     
     <item>

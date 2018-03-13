@@ -25,7 +25,7 @@ MQ: Kafka
 任务调度：Celery,APScheduler
 大数据：Spark/Pyspark,Pandas,ELK Stack, Hadoop,Hive,Flume
 爬虫：Scarpy,Pyspider,Colly,Pholcus,Pyquery,Goquery
-DevOps: Docker,Ansible</description>
+DevOps: Docker,Ansible,Vagrant</description>
     </item>
     
   </channel>

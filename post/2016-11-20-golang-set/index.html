@@ -8,9 +8,9 @@
   <title>golang set</title>
   <meta property="og:title" content="golang set" />
   <meta name="twitter:title" content="golang set" />
-  <meta name="description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.">
-  <meta property="og:description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.">
-  <meta name="twitter:description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() …">
+  <meta name="description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.">
+  <meta property="og:description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.">
+  <meta name="twitter:description" content="package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容 …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -191,7 +191,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (209 words)
   
   
 </span>
@@ -212,64 +212,98 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <div class="highlight"><pre class="chroma"><code class="language-golang" data-lang="golang"><span class="kn">package</span> <span class="nx">main</span>
-
 <span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;fmt&#34;</span>
 	<span class="s">&#34;sync&#34;</span>
 <span class="p">)</span>
 
-<span class="kd">type</span> <span class="nx">Set</span> <span class="kd">struct</span> <span class="p">{</span>
-	<span class="nx">m</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">bool</span>
-	<span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+<span class="kd">type</span> <span class="nx">IntSet</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">mu</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">RWMutex</span>
+	<span class="nx">m</span>  <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kd">struct</span><span class="p">{}</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nx">New</span><span class="p">()</span> <span class="o">*</span><span class="nx">Set</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">Set</span><span class="p">{</span>
-		<span class="nx">m</span><span class="p">:</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">bool</span><span class="p">{},</span>
+<span class="kd">func</span> <span class="nx">NewIntSet</span><span class="p">()</span> <span class="o">*</span><span class="nx">IntSet</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">IntSet</span><span class="p">{</span><span class="nx">m</span><span class="p">:</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kd">struct</span><span class="p">{})}</span>
+<span class="p">}</span>
+
+<span class="c1">// 给定回调函数对原始内容进行遍历
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Iterator</span><span class="p">(</span><span class="nx">f</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="kt">int</span><span class="p">))</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">this</span><span class="p">.</span><span class="nx">m</span> <span class="p">{</span>
+		<span class="nx">f</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 	<span class="p">}</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
 <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">Add</span><span class="p">(</span><span class="nx">item</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-	<span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">m</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="c1">// 设置键
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Add</span><span class="p">(</span><span class="nx">item</span> <span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">IntSet</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span> <span class="p">=</span> <span class="kd">struct</span><span class="p">{}{}</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+	<span class="k">return</span> <span class="nx">this</span>
 <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">Remove</span><span class="p">(</span><span class="nx">item</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-	<span class="nb">delete</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">m</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">Has</span><span class="p">(</span><span class="nx">item</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
-	<span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
-	<span class="nx">_</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">.</span><span class="nx">m</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span>
-	<span class="k">return</span> <span class="nx">ok</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">Len</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">List</span><span class="p">())</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">Clear</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
-	<span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">m</span> <span class="p">=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">IsEmpty</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>
-	<span class="k">if</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Len</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="kc">true</span>
+
+<span class="c1">// 批量添加设置键
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">BatchAdd</span><span class="p">(</span><span class="nx">items</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="o">*</span><span class="nx">IntSet</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">item</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">items</span> <span class="p">{</span>
+		<span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span> <span class="p">=</span> <span class="kd">struct</span><span class="p">{}{}</span>
 	<span class="p">}</span>
-	<span class="k">return</span> <span class="kc">false</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nx">this</span>
 <span class="p">}</span>
-<span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Set</span><span class="p">)</span> <span class="nx">List</span><span class="p">()</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
-	<span class="k">defer</span> <span class="nx">s</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
-	<span class="nx">list</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
-	<span class="k">for</span> <span class="nx">item</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span><span class="p">.</span><span class="nx">m</span> <span class="p">{</span>
-		<span class="nx">list</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span>
+
+<span class="c1">// 键是否存在
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Contains</span><span class="p">(</span><span class="nx">item</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+	<span class="nx">_</span><span class="p">,</span> <span class="nx">exists</span> <span class="o">:=</span> <span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">[</span><span class="nx">item</span><span class="p">]</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+	<span class="k">return</span> <span class="nx">exists</span>
+<span class="p">}</span>
+
+<span class="c1">// 删除键值对
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Remove</span><span class="p">(</span><span class="nx">key</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+	<span class="nb">delete</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 大小
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Size</span><span class="p">()</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+	<span class="nx">l</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">)</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+	<span class="k">return</span> <span class="nx">l</span>
+<span class="p">}</span>
+
+<span class="c1">// 清空set
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Clear</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">m</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kd">struct</span><span class="p">{})</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 转换为数组
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">Slice</span><span class="p">()</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">{</span>
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+	<span class="nx">ret</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">m</span><span class="p">))</span>
+	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">item</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">this</span><span class="p">.</span><span class="nx">m</span> <span class="p">{</span>
+		<span class="nx">ret</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">item</span>
+		<span class="nx">i</span><span class="o">++</span>
 	<span class="p">}</span>
-	<span class="k">return</span> <span class="nx">list</span>
+
+	<span class="nx">this</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+	<span class="k">return</span> <span class="nx">ret</span>
+<span class="p">}</span>
+
+<span class="c1">// 转换为字符串
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">this</span> <span class="o">*</span><span class="nx">IntSet</span><span class="p">)</span> <span class="nx">String</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprint</span><span class="p">(</span><span class="nx">this</span><span class="p">.</span><span class="nx">Slice</span><span class="p">())</span>
 <span class="p">}</span>
 <span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 	<span class="c1">// 初始化
-</span><span class="c1"></span>	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">New</span><span class="p">()</span>
+</span><span class="c1"></span>	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">NewIntSet</span><span class="p">()</span>
 
 	<span class="nx">s</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 	<span class="nx">s</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -279,17 +313,6 @@
 		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;0 item&#34;</span><span class="p">)</span>
 	<span class="p">}</span>
 
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-	<span class="k">if</span> <span class="nx">s</span><span class="p">.</span><span class="nx">Has</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;2 does exist&#34;</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-	<span class="nx">s</span><span class="p">.</span><span class="nx">Remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&#34;list of all items&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">List</span><span class="p">())</span>
 <span class="p">}</span></code></pre></div>
 
       </article>

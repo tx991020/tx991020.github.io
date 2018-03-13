@@ -5,12 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Code Sample</title>
-  <meta property="og:title" content="Code Sample" />
-  <meta name="twitter:title" content="Code Sample" />
-  <meta name="description" content="Using Hugo or Pygments">
-  <meta property="og:description" content="Using Hugo or Pygments">
-  <meta name="twitter:description" content="Using Hugo or Pygments">
+  <title>Golang</title>
+  <meta property="og:title" content="Golang" />
+  <meta name="twitter:title" content="Golang" />
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,13 +15,13 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/post/2016-03-08-code-sample/" />
+  <meta property="og:url" content="http://gopherday.com/tags/golang/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/post/2016-03-08-code-sample/" />
-  <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
+  <link rel="canonical" href="http://gopherday.com/tags/golang/" />
+  <link rel="alternate" href="http://gopherday.com/tags/golang/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -164,44 +161,14 @@
 
 
     
-  
-  
-  
-
-
-
-
-  
-
   <header class="header-section ">
-    
     <div class="intro-header no-img">
-      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-heading">
-              <h1>Code Sample</h1>
-                
-                  
-                    <h2 class="post-subheading">Using Hugo or Pygments</h2>
-                  
-                
-                
-                  <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (183 words)
-  
-  
-</span>
-
-
-                
+            <div class="page-heading">
+              <h1>#Golang</h1>
+              <hr class="small">
             </div>
           </div>
         </div>
@@ -209,63 +176,85 @@
     </div>
   </header>
 
-
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p>The following are two code samples using syntax highlighting.</p>
-
-<p></p>
-
-<p>The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not require any special installation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
-<p>The following is a code sample using the &ldquo;highlight&rdquo; shortcode provided in Hugo. This is server side highlighting and requires Python and Pygments to be installed.</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
-
-<p>And here is the same code with line numbers:</p>
-
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="ln">1</span>    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-<span class="ln">2</span>    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-<span class="ln">3</span>    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-<span class="ln">4</span>    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="ln">5</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
-      </article>
-
-      
-        <ul class="pager blog-pager">
-          
-            <li class="previous">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" data-toggle="tooltip" data-placement="top" title="golang redispool">&larr; Previous Post</a>
-            </li>
-          
-          
-            <li class="next">
-              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/" data-toggle="tooltip" data-placement="top" title="alfred&#43;qiniu 在markdown中愉快的贴图">Next Post &rarr;</a>
-            </li>
-          
-        </ul>
-      
-
-
-      
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
-        
-      
+        <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-15-go-heap/">
+                <h2 class="post-title">golang heap interface实现</h2>
 
+                
+                  <h3 class="post-subtitle">
+                    golang 标准库学习
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on September 15, 2016
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;container/heap&#34; &#34;fmt&#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&#39;s length, not just its contents.
+                  <a href="http://gopherday.com/post/2016-09-15-go-heap/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
+                <h2 class="post-title">golang redispool</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 15, 2016
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
+                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+        </div>
+        
+          <ul class="pager main-pager">
+            
+              <li class="previous">
+                <a href="/tags/golang/page/1/">&larr; Newer Posts</a>
+              </li>
+            
+            
+          </ul>
+        
+      </div>
     </div>
   </div>
-</div>
 
     <footer>
   <div class="container">
@@ -300,7 +289,7 @@
           
           <li>
             
-            <a href="http://gopherday.com/index.xml" title="RSS">
+            <a href="http://gopherday.com/tags/golang/index.xml" title="RSS">
             
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>

@@ -248,6 +248,60 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/">
+                <h2 class="post-title">golang etcd watch</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 21, 2017
+              </p>
+              <div class="post-entry">
+                
+                  package etcd import ( &#34;context&#34; &#34;encoding/json&#34; &#34;fmt&#34; &#34;LearnEtcd/tailf&#34; &#34;strings&#34; &#34;time&#34; &#34;github.com/astaxie/beego/logs&#34; etcd_client &#34;github.com/coreos/etcd/clientv3&#34; &#34;github.com/coreos/etcd/mvcc/mvccpb&#34; &#34;LearnEtcd/Ip&#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&#34;localhost:2379&#34;, &#34;localhost:22379&#34;, &#34;localhost:32379&#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&#34;connect etcd failed, err:&#34;, err) return } etcdClient = &amp;EtcdClient{ Client: cli, } if strings.
+                  <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-08-10-go-kafka/">
+                <h2 class="post-title">golang kafka</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on August 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
+                  <a href="http://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-06-13-ariang-filemanerger/">
                 <h2 class="post-title">AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</h2>
 
@@ -302,6 +356,74 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
+                <h2 class="post-title">golang sync.map</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s2">&#34;fmt&#34;</span>
+	<span class="s2">&#34;sync&#34;</span>
+<span class="p">)</span>
+
+<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
+		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
+		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
+		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+
+	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+		<span class="k">return</span> <span class="kc">true</span>
+	<span class="p">})</span>
+<span class="p">}</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                 </span>
               
@@ -389,146 +511,6 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-23-spark-01/">
-                <h2 class="post-title">spark2.x</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 23, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/7ce314c19f9afe24282b204a1f11c2af.jpg" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/c7a3e377fba2eebfdd1a532dab5f0131.jpg" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/d4db290b81c346e429184d717e1239df.jpg" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/">
-                <h2 class="post-title">Photoswipe Gallery Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Making a Gallery
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 20, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>Beautiful Hugo adds a few custom shortcodes created by <a href="https://www.liwen.id.au/heg/">Li-Wen Yip</a> and <a href="https://github.com/GjjvdBurg/HugoPhotoSwipe">Gert-Jan van den Berg</a> for making galleries with <a href="http://photoswipe.com">PhotoSwipe</a> .</p>
-
-
-
-<div class="gallery caption-position-bottom caption-effect-fade hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
-	  
-  
-<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
-<div class="box" >
-  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img" style="background-image: url('/img/hexagon-thumb.jpg');">
-      <img itemprop="thumbnail" src="/img/hexagon-thumb.jpg" />
-    </div>
-    <a href="/img/hexagon.jpg" itemprop="contentUrl"></a>
-  </figure>
-</div>
-  
-
-<div class="box" >
-  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img" style="background-image: url('/img/sphere-thumb.jpg');">
-      <img itemprop="thumbnail" src="/img/sphere-thumb.jpg" alt="Sphere"/>
-    </div>
-      <figcaption>
-          <p>Sphere</p>
-      </figcaption>
-    <a href="/img/sphere.jpg" itemprop="contentUrl"></a>
-  </figure>
-</div>
-  
-
-<div class="box" >
-  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img" style="background-image: url('/img/triangle-thumb.jpg');">
-      <img itemprop="thumbnail" src="/img/triangle-thumb.jpg" alt="This is a long comment about a triangle"/>
-    </div>
-      <figcaption>
-          <p>Triangle</p>
-      </figcaption>
-    <a href="/img/triangle.jpg" itemprop="contentUrl"></a>
-  </figure>
-</div>
-
-</div>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/photoswipe/">photoswipe</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-10-18-go-colly/">
-                <h2 class="post-title">go-colly</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    装饰器
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 20, 2017
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; ) type Collector struct { // UserAgent is the User-Agent string used by HTTP requests 	UserAgent string // MaxDepth limits the recursion depth of visited URLs. 	// Set it to 0 for infinite recursion (default). 	MaxDepth int } func UserAgent(ua string) func(*Collector) { return func(c *Collector) { c.UserAgent = ua } } func (c *Collector) Init() { c.UserAgent = &#34;colly - https://github.com/gocolly/colly&#34; c.
-                  <a href="http://gopherday.com/post/2017-10-18-go-colly/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                 </span>
               

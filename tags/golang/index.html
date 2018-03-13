@@ -214,6 +214,128 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/">
+                <h2 class="post-title">golang etcd watch</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 21, 2017
+              </p>
+              <div class="post-entry">
+                
+                  package etcd import ( &#34;context&#34; &#34;encoding/json&#34; &#34;fmt&#34; &#34;LearnEtcd/tailf&#34; &#34;strings&#34; &#34;time&#34; &#34;github.com/astaxie/beego/logs&#34; etcd_client &#34;github.com/coreos/etcd/clientv3&#34; &#34;github.com/coreos/etcd/mvcc/mvccpb&#34; &#34;LearnEtcd/Ip&#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&#34;localhost:2379&#34;, &#34;localhost:22379&#34;, &#34;localhost:32379&#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&#34;connect etcd failed, err:&#34;, err) return } etcdClient = &amp;EtcdClient{ Client: cli, } if strings.
+                  <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-08-10-go-kafka/">
+                <h2 class="post-title">golang kafka</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on August 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
+                  <a href="http://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
+                <h2 class="post-title">golang sync.map</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s2">&#34;fmt&#34;</span>
+	<span class="s2">&#34;sync&#34;</span>
+<span class="p">)</span>
+
+<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
+		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
+		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
+		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+
+	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+		<span class="k">return</span> <span class="kc">true</span>
+	<span class="p">})</span>
+<span class="p">}</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-10-18-go-colly/">
                 <h2 class="post-title">go-colly</h2>
 
@@ -318,7 +440,7 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
               </p>
               <div class="post-entry">
                 
-                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.
+                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.
                   <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
                 
               </div>
@@ -389,133 +511,16 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
 
             </article>
           
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-09-15-go-heap/">
-                <h2 class="post-title">golang heap interface实现</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    golang 标准库学习
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on September 15, 2016
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;container/heap&#34; &#34;fmt&#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&#39;s length, not just its contents.
-                  <a href="http://gopherday.com/post/2016-09-15-go-heap/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
-                <h2 class="post-title">golang sync.map</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 10, 2016
-              </p>
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-	<span class="s2">&#34;fmt&#34;</span>
-	<span class="s2">&#34;sync&#34;</span>
-<span class="p">)</span>
-
-<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
-		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
-		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
-		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
-	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
-
-	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-		<span class="k">return</span> <span class="kc">true</span>
-	<span class="p">})</span>
-<span class="p">}</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
-                <h2 class="post-title">golang redispool</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 15, 2016
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
-                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
         </div>
+        
+          <ul class="pager main-pager">
+            
+            
+              <li class="next">
+                <a href="/tags/golang/page/2/">Older Posts &rarr;</a>
+              </li>
+            
+          </ul>
         
       </div>
     </div>

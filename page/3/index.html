@@ -214,6 +214,192 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-11-sparkstreaming/">
+                <h2 class="post-title">spark streaming</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 11, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (59 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+<span class="kn">from</span> <span class="nn">pyspark.streaming.kafka</span> <span class="kn">import</span> <span class="n">KafkaUtils</span>
+<span class="kn">from</span> <span class="nn">pyspark.streaming</span> <span class="kn">import</span> <span class="n">StreamingContext</span>
+
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">topic</span> <span class="o">=</span><span class="sa"></span><span class="s2">&#34;test&#34;</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
+    <span class="n">ssc</span> <span class="o">=</span> <span class="n">StreamingContext</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">kvs</span> <span class="o">=</span> <span class="n">KafkaUtils</span><span class="o">.</span><span class="n">createDirectStream</span><span class="p">(</span><span class="n">ssc</span><span class="p">,[</span><span class="n">topic</span><span class="p">],{</span><span class="sa"></span><span class="s2">&#34;metadata.broker.list&#34;</span><span class="p">:</span><span class="sa"></span><span class="s2">&#34;127.0.0.1:9092&#34;</span><span class="p">})</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">kvs</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">lines</span><span class="o">.</span><span class="n">flatMap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">line</span><span class="p">:</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34; &#34;</span><span class="p">))</span> \
+        <span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> \
+        <span class="o">.</span><span class="n">reduceByKey</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">counts</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+
+    <span class="n">ssc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">ssc</span><span class="o">.</span><span class="n">awaitTermination</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-10-sparksql/">
+                <h2 class="post-title">sparksql</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 10, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (21 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">jdbcDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;jdbc&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;jdbc:mysql://localhost:3306/video&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;driver&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;com.mysql.jdbc.Driver&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;dbtable&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;baidu&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;root&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;123456&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">jdbcDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-02-09-python-hadoop/">
+                <h2 class="post-title">python hadoop</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 9, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (34 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">pip install mrjob</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">mrjob</span><span class="p">.</span><span class="nx">job</span> <span class="k">import</span> <span class="nx">MRJob</span>
+
+
+<span class="k">class</span> <span class="nx">MRWordFrequencyCount</span><span class="p">(</span><span class="nx">MRJob</span><span class="p">)</span><span class="o">:</span>
+
+    <span class="nx">def</span> <span class="nx">mapper</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">yield</span> <span class="s2">&#34;chars&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="s2">&#34;words&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">())</span>
+        <span class="k">yield</span> <span class="s2">&#34;lines&#34;</span><span class="p">,</span> <span class="mi">1</span>
+
+    <span class="nx">def</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">yield</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
+    <span class="nx">MRWordFrequencyCount</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/hadoop/">hadoop</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-12-20-pandas-pic/">
+                <h2 class="post-title">pandas basic</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on December 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-23%2014.07.03.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-11-23-python-pandas03/">
                 <h2 class="post-title">pandas 分组聚合</h2>
                 
@@ -367,7 +553,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (209 words)
   
   
 </span>
@@ -375,7 +561,7 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
 
               <div class="post-entry">
                 
-                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.
+                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.
                   <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
                 
               </div>
@@ -456,156 +642,6 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
-                <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 12, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (300 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
-                  <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-10-15-elasticsearch01/">
-                <h2 class="post-title">ElasticSearch 入门</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 15, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/d8729850d72830bd7b4b1f6b617c97a5.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/7a89498963af92287cf4742a4d8a6399.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-09-15-go-heap/">
-                <h2 class="post-title">golang heap interface实现</h2>
-                
-                  <h3 class="post-subtitle">
-                  golang 标准库学习
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 15, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (397 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  package main import ( &#34;container/heap&#34; &#34;fmt&#34; ) // An IntHeap is a min-heap of ints. type IntHeap []int func (h IntHeap) Len() int { return len(h) } func (h IntHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] } func (h IntHeap) Less(i, j int) bool { return h[i] &lt; h[j] } // The following two IntHeap methods Push and Pop use pointer receivers // because they modify the slice&#39;s length, not just its contents.
-                  <a href="http://gopherday.com/post/2016-09-15-go-heap/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-09-14-pykafka/">
-                <h2 class="post-title">pykafa</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 14, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (236 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  from kafka import KafkaProducer from kafka import KafkaConsumer from kafka.errors import KafkaError import json class Kafka_consumer(): &#39;&#39;&#39; 使用Kafka—python的消费模块 &#39;&#39;&#39; def __init__(self, kafkahost, kafkaport, kafkatopic, groupid): self.kafkaHost = kafkahost self.kafkaPort = kafkaport self.kafkatopic = kafkatopic self.groupid = groupid self.consumer = KafkaConsumer(self.kafkatopic, group_id = self.groupid, bootstrap_servers = &#39;{kafka_host}:{kafka_port}&#39;.format( kafka_host=self.kafkaHost, kafka_port=self.kafkaPort ), auto_offset_reset=&#39;earliest&#39;,enable_auto_commit=False) def consume_data(self): try: for message in self.consumer: # print json.loads(message.value) yield message except KeyboardInterrupt, e: print e def main(): &#39;&#39;&#39; 测试consumer和producer :return: &#39;&#39;&#39; ##测试消费模块 #消费模块的返回格式为 # ConsumerRecord( # topic=u&#39;ranktest&#39;, # partition=0, # offset=202, # timestamp=None, # timestamp_type=None, # key=None, # value=&#39;&#34;{abetst}:{null}---0&#34;&#39;, # checksum=-1868164195, #\serialized_key_size=-1, # serialized_value_size=21) consumer = Kafka_consumer(&#39;127.
-                  <a href="http://gopherday.com/post/2016-09-14-pykafka/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/kafka/">kafka</a>&nbsp;
                 
                 </span>
               

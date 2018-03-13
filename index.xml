@@ -34,6 +34,24 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
     </item>
     
     <item>
+      <title>golang etcd watch</title>
+      <link>http://gopherday.com/post/2017-11-21-go-etcd-watcd/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-11-21-go-etcd-watcd/</guid>
+      <description>package etcd import ( &amp;#34;context&amp;#34; &amp;#34;encoding/json&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;LearnEtcd/tailf&amp;#34; &amp;#34;strings&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/astaxie/beego/logs&amp;#34; etcd_client &amp;#34;github.com/coreos/etcd/clientv3&amp;#34; &amp;#34;github.com/coreos/etcd/mvcc/mvccpb&amp;#34; &amp;#34;LearnEtcd/Ip&amp;#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&amp;#34;localhost:2379&amp;#34;, &amp;#34;localhost:22379&amp;#34;, &amp;#34;localhost:32379&amp;#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&amp;#34;connect etcd failed, err:&amp;#34;, err) return } etcdClient = &amp;amp;EtcdClient{ Client: cli, } if strings.</description>
+    </item>
+    
+    <item>
+      <title>golang kafka</title>
+      <link>http://gopherday.com/post/2017-08-10-go-kafka/</link>
+      <pubDate>Thu, 10 Aug 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-08-10-go-kafka/</guid>
+      <description>producer package kafka import ( &amp;#34;github.com/Shopify/sarama&amp;#34; &amp;#34;github.com/astaxie/beego/logs&amp;#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&amp;#34;init kafka producer failed, err:&amp;#34;, err) return } logs.Debug(&amp;#34;init kafka succ&amp;#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.</description>
+    </item>
+    
+    <item>
       <title>AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</title>
       <link>http://gopherday.com/post/2017-06-13-ariang-filemanerger/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
@@ -56,6 +74,15 @@ Every Site on HTTPS Caddy is a general-purpose HTTP/2 web server that serves HTT
 为什么要使用 Caddy 安全 Caddy 是一个默认使用https协议的web服务器 无依赖 Caddy 使用 Go 语言编写，编译好的二进制文件能够运行在任何支持Go语言的平台，不需要自己安装任何库。 使用简单 Caddy 的配置简单，不管你是新的web开发者，还是专业人士，都能够快速上手
 Caddy 一键安装脚本
 wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/caddy_install.sh &amp;amp;&amp;amp; chmod +x caddy_install.sh &amp;amp;&amp;amp; bash caddy_install.sh  这里我们看一下官网的例子说明 Caddy Documentation  :2015 # Host: (any), Port: 2015 localhost # Host: localhost; Port: 2015 localhost:8080 # Host: localhost; Port: 8080 example.</description>
+    </item>
+    
+    <item>
+      <title>golang sync.map</title>
+      <link>http://gopherday.com/post/2017-04-10-go-sync.map/</link>
+      <pubDate>Mon, 10 Apr 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-04-10-go-sync.map/</guid>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { list := map[string]interface{}{ &amp;#34;name&amp;#34;: &amp;#34;田馥甄&amp;#34;, &amp;#34;birthday&amp;#34;: &amp;#34;1983年3月30日&amp;#34;, &amp;#34;age&amp;#34;: 34, &amp;#34;hobby&amp;#34;: []string{&amp;#34;听音乐&amp;#34;, &amp;#34;看电影&amp;#34;, &amp;#34;电视&amp;#34;, &amp;#34;和姐妹一起讨论私人话题&amp;#34;}, &amp;#34;constellation&amp;#34;: &amp;#34;白羊座&amp;#34;, } var m sync.Map for k, v := range list { m.Store(k, v) } var wg sync.WaitGroup wg.Add(2) go func() { m.Store(&amp;#34;age&amp;#34;, 22) m.LoadOrStore(&amp;#34;tag&amp;#34;, 8888) wg.Done() }() go func() { m.Delete(&amp;#34;constellation&amp;#34;) m.Store(&amp;#34;age&amp;#34;, 18) wg.Done() }() wg.Wait() m.Range(func(key, value interface{}) bool { fmt.Println(key, value) return true }) } </description>
     </item>
     
     <item>
@@ -176,6 +203,17 @@ service bt restart</description>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2017-03-13-rpc/</guid>
       <description>client package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/rpc&amp;#34; ) type Args struct { A, B int } type Quotient struct { Quo, Rem int } func main() { client, err := rpc.DialHTTP(&amp;#34;tcp&amp;#34;, &amp;#34;127.0.0.1:1234&amp;#34;) if err != nil { log.Fatal(&amp;#34;dialing:&amp;#34;, err) } // Synchronous call 	args := &amp;amp;Args{7, 8} var reply int err = client.Call(&amp;#34;Arith.Multiply&amp;#34;, args, &amp;amp;reply) if err != nil { log.Fatal(&amp;#34;arith error:&amp;#34;, err) } fmt.Printf(&amp;#34;Arith: %d*%d=%d\n&amp;#34;, args.A, args.</description>
+    </item>
+    
+    <item>
+      <title>Confd&#43;etcd实现高可用自动发现</title>
+      <link>http://gopherday.com/post/2017-03-08-etcd&#43;confd/</link>
+      <pubDate>Wed, 08 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-08-etcd&#43;confd/</guid>
+      <description>Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
+etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
+[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &amp;#34;myconfig.conf.tmpl&amp;#34; dest = &amp;#34;/tmp/myconfig.conf&amp;#34; keys = [ &amp;#34;/myapp/database/url&amp;#34;, &amp;#34;/myapp/database/user&amp;#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &amp;#34;/myapp/database/url&amp;#34;}} database_user = {{getv &amp;#34;/myapp/database/user&amp;#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp;amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.</description>
     </item>
     
     <item>
@@ -306,7 +344,7 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2016-11-20-golang-set/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type Set struct { m map[int]bool sync.RWMutex } func New() *Set { return &amp;amp;Set{ m: map[int]bool{}, } } func (s *Set) Add(item int) { s.Lock() defer s.Unlock() s.m[item] = true } func (s *Set) Remove(item int) { s.Lock() s.Unlock() delete(s.m, item) } func (s *Set) Has(item int) bool { s.RLock() defer s.RUnlock() _, ok := s.m[item] return ok } func (s *Set) Len() int { return len(s.</description>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.</description>
     </item>
     
     <item>
@@ -393,15 +431,6 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
     </item>
     
     <item>
-      <title>golang sync.map</title>
-      <link>http://gopherday.com/post/2017-04-10-go-sync.map/</link>
-      <pubDate>Sun, 10 Apr 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2017-04-10-go-sync.map/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;sync&amp;#34; ) func main() { list := map[string]interface{}{ &amp;#34;name&amp;#34;: &amp;#34;田馥甄&amp;#34;, &amp;#34;birthday&amp;#34;: &amp;#34;1983年3月30日&amp;#34;, &amp;#34;age&amp;#34;: 34, &amp;#34;hobby&amp;#34;: []string{&amp;#34;听音乐&amp;#34;, &amp;#34;看电影&amp;#34;, &amp;#34;电视&amp;#34;, &amp;#34;和姐妹一起讨论私人话题&amp;#34;}, &amp;#34;constellation&amp;#34;: &amp;#34;白羊座&amp;#34;, } var m sync.Map for k, v := range list { m.Store(k, v) } var wg sync.WaitGroup wg.Add(2) go func() { m.Store(&amp;#34;age&amp;#34;, 22) m.LoadOrStore(&amp;#34;tag&amp;#34;, 8888) wg.Done() }() go func() { m.Delete(&amp;#34;constellation&amp;#34;) m.Store(&amp;#34;age&amp;#34;, 18) wg.Done() }() wg.Wait() m.Range(func(key, value interface{}) bool { fmt.Println(key, value) return true }) } </description>
-    </item>
-    
-    <item>
       <title>Code Sample</title>
       <link>http://gopherday.com/post/2016-03-08-code-sample/</link>
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
@@ -410,17 +439,6 @@ job = scheduler.add_job(myfunc, &amp;lsquo;interval&amp;rsquo;, minutes=2) job.r
       <description>&lt;p&gt;The following are two code samples using syntax highlighting.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Confd&#43;etcd实现高可用自动发现</title>
-      <link>http://gopherday.com/post/2016-06-03-etcd&#43;confd/</link>
-      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2016-06-03-etcd&#43;confd/</guid>
-      <description>Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
-etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
-[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &amp;#34;myconfig.conf.tmpl&amp;#34; dest = &amp;#34;/tmp/myconfig.conf&amp;#34; keys = [ &amp;#34;/myapp/database/url&amp;#34;, &amp;#34;/myapp/database/user&amp;#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &amp;#34;/myapp/database/url&amp;#34;}} database_user = {{getv &amp;#34;/myapp/database/user&amp;#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp;amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.</description>
     </item>
     
     <item>
@@ -639,16 +657,7 @@ MQ: Kafka
 任务调度：Celery,APScheduler
 大数据：Spark/Pyspark,Pandas,ELK Stack, Hadoop,Hive,Flume
 爬虫：Scarpy,Pyspider,Colly,Pholcus,Pyquery,Goquery
-DevOps: Docker,Ansible</description>
-    </item>
-    
-    <item>
-      <title>docker 入门</title>
-      <link>http://gopherday.com/post/2015-09-11-docker-01/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2015-09-11-docker-01/</guid>
-      <description></description>
+DevOps: Docker,Ansible,Vagrant</description>
     </item>
     
   </channel>

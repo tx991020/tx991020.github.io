@@ -5,12 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Code Sample</title>
-  <meta property="og:title" content="Code Sample" />
-  <meta name="twitter:title" content="Code Sample" />
-  <meta name="description" content="Using Hugo or Pygments">
-  <meta property="og:description" content="Using Hugo or Pygments">
-  <meta name="twitter:description" content="Using Hugo or Pygments">
+  <title>Confd&#43;etcd实现高可用自动发现</title>
+  <meta property="og:title" content="Confd&#43;etcd实现高可用自动发现" />
+  <meta name="twitter:title" content="Confd&#43;etcd实现高可用自动发现" />
+  <meta name="description" content="Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
+etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
+[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.">
+  <meta property="og:description" content="Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
+etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
+[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.">
+  <meta name="twitter:description" content="Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如 …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +22,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/post/2016-03-08-code-sample/" />
+  <meta property="og:url" content="http://gopherday.com/post/2017-03-08-etcd&#43;confd/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/post/2016-03-08-code-sample/" />
+  <link rel="canonical" href="http://gopherday.com/post/2017-03-08-etcd&#43;confd/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -181,21 +185,17 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Code Sample</h1>
-                
-                  
-                    <h2 class="post-subheading">Using Hugo or Pygments</h2>
-                  
+              <h1>Confd&#43;etcd实现高可用自动发现</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2017
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (183 words)
+  <i class="fa fa-clock-o"></i> 2 minutes (251 words)
   
   
 </span>
@@ -215,43 +215,130 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>The following are two code samples using syntax highlighting.</p>
+        
 
-<p></p>
+<p>Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的
+数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和
+etcd的配合使用比较多。其常用架构如下：
+<img src="http://oq1xuulg6.bkt.clouddn.com/0d938c9a1a5eb4cf3c241828dbbdf346.jpg" alt="" /></p>
 
-<p>The following is a code sample using triple backticks ( ``` ) code fencing provided in Hugo. This is client side highlighting and does not require any special installation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
-<p>The following is a code sample using the &ldquo;highlight&rdquo; shortcode provided in Hugo. This is server side highlighting and requires Python and Pygments to be installed.</p>
+<h1 id="一-简单配置">一、简单配置</h1>
 
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
+<h2 id="1-配置etcd数据">1、配置etcd数据</h2>
 
-<p>And here is the same code with line numbers:</p>
+<p>具体步骤这里略过，这里只配置两条数据</p>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">etcdctl set /myapp/database/url www.qq.com
+etcdctl set /myapp/database/user rob</code></pre></div>
+<h2 id="2-confd安装">2、confd安装</h2>
 
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="ln">1</span>    <span class="kd">var</span> <span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">sum</span>
-<span class="ln">2</span>    <span class="nx">num1</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter first number&#34;</span><span class="p">)</span>
-<span class="ln">3</span>    <span class="nx">num2</span> <span class="o">=</span> <span class="nx">prompt</span><span class="p">(</span><span class="s2">&#34;Enter second number&#34;</span><span class="p">)</span>
-<span class="ln">4</span>    <span class="nx">sum</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">num2</span><span class="p">)</span> <span class="c1">// &#34;+&#34; means &#34;add&#34;
-</span><span class="ln">5</span><span class="c1"></span>    <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;Sum = &#34;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">)</span>  <span class="err">// &#34;+&#34; means combine into a string</span></code></pre></div>
+<p>confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：<a href="https://github.com/kelseyhightower/confd/releases">https://github.com/kelseyhightower/confd/releases</a> ，并将其放到
+/usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates}</code></pre></div>
+<h2 id="3-创建confd配置文件">3、创建confd配置文件</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">vim  /etc/confd/conf.d/myconfig.toml
+[template]
+src = &#34;myconfig.conf.tmpl&#34;
+dest = &#34;/tmp/myconfig.conf&#34;
+keys = [
+    &#34;/myapp/database/url&#34;,
+    &#34;/myapp/database/user&#34;,
+]</code></pre></div>
+<h2 id="4-创建模板文件">4、创建模板文件</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">vim /etc/confd/templates/myconfig.conf.tmpl
+[myconfig]
+database_url = {{getv &#34;/myapp/database/url&#34;}}
+database_user = {{getv &#34;/myapp/database/user&#34;}}</code></pre></div>
+<h2 id="5-执行生成配置文件">5、执行生成配置文件</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">confd -onetime -backend etcd -node http://127.0.0.1:2379    #只一次
+confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp;   #按时间轮询</code></pre></div>
+<h2 id="6-验证文件生成">6、验证文件生成</h2>
+
+<p>[root@etcd1 tmp]# cat /tmp/myconfig.conf
+[myconfig]
+database_url = www.qq.com
+database_user = rob</p>
+
+<h1 id="二-etcd-confd-nginx配置">二、etcd+confd+nginx配置</h1>
+
+<h2 id="1-创建数据">1、创建数据</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">etcdctl set /myapp/subdomain myapp
+etcdctl set /myapp/upstream/app2 &#34;10.0.1.100:80&#34;
+etcdctl set /myapp/upstream/app1 &#34;10.0.1.101:80&#34;
+etcdctl set /yourapp/subdomain yourapp
+etcdctl set /yourapp/upstream/app2 &#34;10.0.1.102:80&#34;
+etcdctl set /yourapp/upstream/app1 &#34;10.0.1.103:80&#34;</code></pre></div>
+<h2 id="2-创建配置文件">2、创建配置文件</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">cat /etc/confd/conf.d/myapp-nginx.toml
+[template]
+prefix = &#34;/myapp&#34;
+src = &#34;nginx.tmpl&#34;
+dest = &#34;/tmp/myapp.conf&#34;
+owner = &#34;nginx&#34;
+mode = &#34;0644&#34;
+keys = [
+  &#34;/subdomain&#34;,
+  &#34;/upstream&#34;,
+]
+check_cmd = &#34;/usr/sbin/nginx -t -c {{.src}}&#34;
+reload_cmd = &#34;/usr/sbin/service nginx reload&#34;
+# cat /etc/confd/conf.d/yourapp-nginx.toml
+[template]
+prefix = &#34;/yourapp&#34;
+src = &#34;nginx.tmpl&#34;
+dest = &#34;/tmp/yourapp.conf&#34;
+owner = &#34;nginx&#34;
+mode = &#34;0644&#34;
+keys = [
+  &#34;/subdomain&#34;,
+  &#34;/upstream&#34;,
+]
+check_cmd = &#34;/usr/sbin/nginx -t -c {{.src}}&#34;
+reload_cmd = &#34;/usr/sbin/service nginx reload&#34;</code></pre></div>
+<p>这里创建了两个配置文件。接下来创建一个模板文件，两个配置文件会根据该模板文件生成配置：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs"># cat /etc/confd/templates/nginx.tmpl
+upstream {{getv &#34;/subdomain&#34;}} {
+{{range getvs &#34;/upstream/*&#34;}}
+    server {{.}};
+{{end}}
+}
+server {
+    server_name  {{getv &#34;/subdomain&#34;}}.example.com;
+    location / {
+        proxy_pass        http://{{getv &#34;/subdomain&#34;}};
+        proxy_redirect    off;
+        proxy_set_header  Host             $host;
+        proxy_set_header  X-Real-IP        $remote_addr;
+        proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+   }
+}</code></pre></div>
+<h2 id="3-验证">3、验证</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs"># cat myapp.conf
+upstream myapp {
+    server 10.0.1.100:80;
+    server 10.0.1.101:80;
+}
+server {
+    server_name  myapp.example.com;
+    location / {
+        proxy_pass        http://myapp;
+        proxy_redirect    off;
+        proxy_set_header  Host             $host;
+        proxy_set_header  X-Real-IP        $remote_addr;
+        proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
+   }
+}</code></pre></div>
       </article>
 
       
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" data-toggle="tooltip" data-placement="top" title="golang redispool">&larr; Previous Post</a>
+              <a href="http://gopherday.com/post/2017-03-07-bigimg-sample/" data-toggle="tooltip" data-placement="top" title="Big Image Sample">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/" data-toggle="tooltip" data-placement="top" title="alfred&#43;qiniu 在markdown中愉快的贴图">Next Post &rarr;</a>
+              <a href="http://gopherday.com/post/2017-03-13-rpc/" data-toggle="tooltip" data-placement="top" title="golang net/rpc">Next Post &rarr;</a>
             </li>
           
         </ul>
