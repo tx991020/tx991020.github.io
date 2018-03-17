@@ -214,6 +214,114 @@
           
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-golang-set/">
+                <h2 class="post-title">golang set</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (209 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.
+                  <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-python-pandas01/">
+                <h2 class="post-title">pandas to dict</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
+                  <a href="http://gopherday.com/post/2016-11-20-python-pandas01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/">
+                <h2 class="post-title">爬虫 pyquery goquery css匹配语法 智障使用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 20, 2016
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (166 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  pyquery 用法模板 主要分为 1类匹配 写法 doc(.class)， 2 id 匹配 写法doc(#id), 3标签匹配 A B=&#34;C&#34; 写法doc(A[B=&#34;C&#34;]) 4值匹配 A=&#34;B&#34; 写法 B = doc(&#34;xxx&#34;).attr(&#34;A&#34;) 或B = doc(&#34;xxx&#34;).attr.A 5遍历相同类型。 for x in doc(&#34;yyyy&#34;).items() import requests from pyquery import PyQuery as pq r = requests.get(&#34;http://video.infolz.com/&#34;) r.encoding=&#34;utf-8&#34; r1 = requests.get(&#34;http://www.infolz.com/2016/1213/303.shtml&#34;) &#34;&#34;&#34; &lt;object class=&#34;cmstopVideo&#34; width=&#34;650&#34; height=&#34;519&#34; data=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34; type=&#34;application/x-shockwave-flash&#34;&gt;&lt;param name=&#34;src&#34; value=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34;/&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;wmode&#34; value=&#34;Transparent&#34;/&gt;&lt;/object&gt; &#34;&#34;&#34; 1单层查找 a &gt; b 横跨多层查找用空格 a b 2选择类 .
+                  <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
                 <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
                 
@@ -496,134 +604,6 @@ bucket &amp; bucketDomain
                 <span class="post-meta">
                 
                   #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
-                <h2 class="post-title">Code Sample</h2>
-                
-                  <h3 class="post-subtitle">
-                  Using Hugo or Pygments
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 8, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (183 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>The following are two code samples using syntax highlighting.</p>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
-                <h2 class="post-title">golang redispool</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 15, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (74 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
-                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-14-python-elastic-utils/">
-                <h2 class="post-title">python elasticsearch</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 14, 2015
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (32 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">Elasticsearch</span>
-<span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">helpers</span>
-
-<span class="k">class</span> <span class="nx">ESutill</span><span class="p">()</span><span class="o">:</span>
-    <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span><span class="nx">hosts</span><span class="p">,</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="p">)</span><span class="o">:</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="nx">index</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">body</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span> <span class="o">=</span> <span class="nx">doc_type</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span> <span class="o">=</span> <span class="nx">hosts</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">es</span> <span class="o">=</span> <span class="nx">Elasticsearch</span><span class="p">(</span><span class="nx">hosts</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nx">not</span> <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span><span class="o">:</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">put_mapping</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                
-                  #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
                 
                 </span>
               

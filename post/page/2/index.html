@@ -184,6 +184,66 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-04-10-baota-linux/">
+                <h2 class="post-title">宝塔linux 控制面板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-24%2015.43.01.png" alt="" /></p>
+
+<p>Centos安装命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;&amp; sh install.sh</code></pre></div>
+<p>Ubuntu/Deepin安装命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh</code></pre></div>
+<p>重启</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">service bt restart</code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/">
+                <h2 class="post-title">spark dataframe</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 23, 2017
+              </p>
+              <div class="post-entry">
+                
+                  from pyspark.sql import SparkSession from pyspark.sql import Row spark = SparkSession.builder.appName(&#39;test&#39;).getOrCreate() sc = spark.sparkContext spark.conf.set(&#34;spark.sql.shuffle.partitions&#34;, 6) l = [(&#39;Ankit&#39;,25),(&#39;Jalfaizy&#39;,22),(&#39;saurabh&#39;,20),(&#39;Bala&#39;,26)] rdd = sc.parallelize(l) people = rdd.map(lambda x: Row(name=x[0], age=int(x[1]))) schemaPeople = spark.createDataFrame(people) df = spark.read.format(&#34;csv&#34;). \ option(&#34;header&#34;, &#34;true&#34;) \ .load(&#34;iris.csv&#34;) df.printSchema() df.show(10) df.count() df.columns df.withColumn(&#39;newWidth&#39;,df.SepalWidth * 2).show() df.drop(&#39;Name&#39;).show() df.describe().show() df.describe(&#39;Name&#39;).show() #分类变量 df.select(&#39;Name&#39;,&#39;SepalLength&#39;).show() df.select(&#39;Name&#39;).distinct().count() ### 分组统计 groupby(colname).agg({&#39;col&#39;:&#39;fun&#39;,&#39;col2&#39;:&#39;fun2&#39;}) df.groupby(&#39;Name&#39;).agg({&#39;SepalWidth&#39;:&#39;mean&#39;,&#39;SepalLength&#39;:&#39;max&#39;}).show() ### 自定义的汇总方法 import pyspark.sql.functions as fn df.agg(fn.count(&#39;SepalWidth&#39;).alias(&#39;width_count&#39;), fn.countDistinct(&#39;id&#39;).alias(&#39;distinct_id_count&#39;)).collect() ### 数据集拆成两部分 trainDF, testDF = df.randomSplit([0.6, 0.
+                  <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-03-23-spark-01/">
                 <h2 class="post-title">spark2.x</h2>
 
@@ -386,6 +446,33 @@
             </article>
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-10-elastic-model/">
+                <h2 class="post-title">ElasticSearch 智障 使用模板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  from elasticsearch import Elasticsearch from elasticsearch import helpers class ESutill(): def __init__(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body) # mapping 示例 &#34;&#34;&#34; self.es.indices.put_mapping( index=self.index, doc_type=&#34;spider_status&#34;, body={ &#34;_all&#34;: { &#34;enabled&#34;: True #准许动态插入 }, &#34;properties&#34;: { &#34;table_name&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;source&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;monitoring_time&#34;: { &#34;type&#34;: &#34;date&#34;, &#34;format&#34;: &#34;epoch_second&#34; }, &#34;total_count&#34;: { &#34;type&#34;: &#34;long&#34; }, &#34;new_count&#34;: { &#34;type&#34;: &#34;long&#34; } } }) &#34;&#34;&#34; #批量插入 def put_data(self, inputdata): &#34;&#34;&#34; 批量传入数据---写入数据库 :param inputdata: [] 列表数据 :return: 无 &#34;&#34;&#34; helpers.
+                  <a href="http://gopherday.com/post/2017-03-10-elastic-model/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-03-08-etcd&#43;confd/">
                 <h2 class="post-title">Confd&#43;etcd实现高可用自动发现</h2>
 
@@ -443,104 +530,6 @@ etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 
                     #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
                   
                     #<a href="http://gopherday.com//tags/bigimg/">bigimg</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-05-math-sample/">
-                <h2 class="post-title">Math Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using KaTeX
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 5, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>KaTeX can be used to generate complex math formulas server-side.</p>
-
-<p>$$
-\phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots
-$$</p>
-
-<p>Additional details can be found on <a href="https://github.com/Khan/KaTeX">GitHub</a> or on the <a href="http://tiddlywiki.com/plugins/tiddlywiki/katex/">Wiki</a>.
-</p>
-                  <a href="http://gopherday.com/post/2017-03-05-math-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/math/">math</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-02-15-spark-basic/">
-                <h2 class="post-title">spark basic</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 15, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-23%2014.18.31.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-02-12-spark-pic/">
-                <h2 class="post-title">spark sql优化原理图</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 12, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/c1d3a02874639319ec93852194a547da.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/c0803e4f5be0977d25c3309980a524e5.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/680c5358a8f527282d833f5623d75527.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
                   
                 </span>
               

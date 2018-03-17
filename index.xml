@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Thu, 08 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang 面试填坑</title>
+      <link>http://gopherday.com/post/2018-03-16-job-interview-go/</link>
+      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-03-16-job-interview-go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python 面试填坑</title>
+      <link>http://gopherday.com/post/2018-03-16-job-interview-python/</link>
+      <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-03-16-job-interview-python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Big Image Sample</title>
@@ -203,6 +221,15 @@ service bt restart</description>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2017-03-13-rpc/</guid>
       <description>client package main import ( &amp;#34;fmt&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/rpc&amp;#34; ) type Args struct { A, B int } type Quotient struct { Quo, Rem int } func main() { client, err := rpc.DialHTTP(&amp;#34;tcp&amp;#34;, &amp;#34;127.0.0.1:1234&amp;#34;) if err != nil { log.Fatal(&amp;#34;dialing:&amp;#34;, err) } // Synchronous call 	args := &amp;amp;Args{7, 8} var reply int err = client.Call(&amp;#34;Arith.Multiply&amp;#34;, args, &amp;amp;reply) if err != nil { log.Fatal(&amp;#34;arith error:&amp;#34;, err) } fmt.Printf(&amp;#34;Arith: %d*%d=%d\n&amp;#34;, args.A, args.</description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch 智障 使用模板</title>
+      <link>http://gopherday.com/post/2017-03-10-elastic-model/</link>
+      <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2017-03-10-elastic-model/</guid>
+      <description>from elasticsearch import Elasticsearch from elasticsearch import helpers class ESutill(): def __init__(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body) # mapping 示例 &amp;#34;&amp;#34;&amp;#34; self.es.indices.put_mapping( index=self.index, doc_type=&amp;#34;spider_status&amp;#34;, body={ &amp;#34;_all&amp;#34;: { &amp;#34;enabled&amp;#34;: True #准许动态插入 }, &amp;#34;properties&amp;#34;: { &amp;#34;table_name&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;keyword&amp;#34; }, &amp;#34;source&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;keyword&amp;#34; }, &amp;#34;monitoring_time&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;date&amp;#34;, &amp;#34;format&amp;#34;: &amp;#34;epoch_second&amp;#34; }, &amp;#34;total_count&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;long&amp;#34; }, &amp;#34;new_count&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;long&amp;#34; } } }) &amp;#34;&amp;#34;&amp;#34; #批量插入 def put_data(self, inputdata): &amp;#34;&amp;#34;&amp;#34; 批量传入数据---写入数据库 :param inputdata: [] 列表数据 :return: 无 &amp;#34;&amp;#34;&amp;#34; helpers.</description>
     </item>
     
     <item>

@@ -184,6 +184,33 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-10-elastic-model/">
+                <h2 class="post-title">ElasticSearch 智障 使用模板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  from elasticsearch import Elasticsearch from elasticsearch import helpers class ESutill(): def __init__(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body) # mapping 示例 &#34;&#34;&#34; self.es.indices.put_mapping( index=self.index, doc_type=&#34;spider_status&#34;, body={ &#34;_all&#34;: { &#34;enabled&#34;: True #准许动态插入 }, &#34;properties&#34;: { &#34;table_name&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;source&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;monitoring_time&#34;: { &#34;type&#34;: &#34;date&#34;, &#34;format&#34;: &#34;epoch_second&#34; }, &#34;total_count&#34;: { &#34;type&#34;: &#34;long&#34; }, &#34;new_count&#34;: { &#34;type&#34;: &#34;long&#34; } } }) &#34;&#34;&#34; #批量插入 def put_data(self, inputdata): &#34;&#34;&#34; 批量传入数据---写入数据库 :param inputdata: [] 列表数据 :return: 无 &#34;&#34;&#34; helpers.
+                  <a href="http://gopherday.com/post/2017-03-10-elastic-model/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2015-07-14-python-elastic-utils/">
                 <h2 class="post-title">python elasticsearch</h2>
 
