@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Fri, 16 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang etcd watch</title>
+      <link>http://gopherday.com/post/2018-03-27-order-api/</link>
+      <pubDate>Tue, 27 Mar 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-03-27-order-api/</guid>
+      <description>订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string ($string) 订单创建时间 默认自动生成当前时间（不用填） Id:	integer ($int64) 订单编号主键自增 （不用填） PingId:	integer ($int64) ping++ 自动生成的订单编号 （不用填） PingInfo:	string ping++ 自动生成的 支付凭证信息 （不用填） Price:	integer ($int64) 商品单价 （必填） ProductId:	integer ($int64) 商品id (必填) Status:	string 订单状态 待支付:&amp;#39;CREATED&amp;#39;,已支付:&amp;#39;PAID&amp;#39;,支付失败:&amp;#39;FAIL&amp;#39;,存在退款:&amp;#39;REFUNDED&amp;#39;,订单已取消&amp;#39;CANCELED&amp;#39; （不用填，默认是待支付，服务端根据ping++的通知 更改状态） SuccessUrl:	string 支付成功的回调url(不用填) UserId:	integer ($int64) 用户id(必填) Utime:	string ($string) 订单更改时间(默认自动生成当前时间，不用填) } 商品 Product{ Avatar:	string 商品图片(必填，例如http://img.</description>
+    </item>
     
     <item>
       <title>golang 面试填坑</title>

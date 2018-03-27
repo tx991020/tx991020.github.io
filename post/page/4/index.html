@@ -184,6 +184,47 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/">
+                <h2 class="post-title">APScheduler</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保 存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了 处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
+操作作业 1. 添加作业 上面是通过add_job()来添加作业，另外还有一种方式是通过scheduled_job()修饰器来修饰函数
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
+@sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched.start() 2. 移除作业
+job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3.
+                  <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-11-20-golang-set/">
                 <h2 class="post-title">golang set</h2>
 
@@ -434,55 +475,6 @@
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/">
-                <h2 class="post-title">alfred&#43;qiniu 在markdown中愉快的贴图</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on June 5, 2016
-              </p>
-              <div class="post-entry">
-                
-                  
-
-<p>qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至
-剪贴板，并自动粘贴到当前编辑器</p>
-
-<h2 id="安装qshell">安装qshell</h2>
-
-<p>qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的
-安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至
-usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功</p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/b0968e86037c69ffb320882e6d9f5005.jpg" alt="" /></p>
-
-<h2 id="配置workflow环境变量">配置workflow环境变量</h2>
-
-<p>点击上图标出的环境变量图标，可以看到下图所示的四个配置项
-<img src="http://oq1xuulg6.bkt.clouddn.com/ecc4639f12109dcbdb5bee530b231846.jpg" alt="" />
-这四个配置项都与七牛账号相关：
-AccessKey &amp; SecretKey
-这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&gt;密钥管理中查看，或者直接访问<a href="https://portal.qiniu.com/user/key查看。">https://portal.qiniu.com/user/key查看。</a>
-bucket &amp; bucketDomain
-在对象存储-&gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名
-<img src="http://oq1xuulg6.bkt.clouddn.com/947210aba161fd1e9d0a4e3ef2a31967.gif" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
                   
                 </span>
               

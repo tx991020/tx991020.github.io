@@ -184,6 +184,33 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-03-27-order-api/">
+                <h2 class="post-title">golang etcd watch</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 27, 2018
+              </p>
+              <div class="post-entry">
+                
+                  订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string ($string) 订单创建时间 默认自动生成当前时间（不用填） Id:	integer ($int64) 订单编号主键自增 （不用填） PingId:	integer ($int64) ping++ 自动生成的订单编号 （不用填） PingInfo:	string ping++ 自动生成的 支付凭证信息 （不用填） Price:	integer ($int64) 商品单价 （必填） ProductId:	integer ($int64) 商品id (必填) Status:	string 订单状态 待支付:&#39;CREATED&#39;,已支付:&#39;PAID&#39;,支付失败:&#39;FAIL&#39;,存在退款:&#39;REFUNDED&#39;,订单已取消&#39;CANCELED&#39; （不用填，默认是待支付，服务端根据ping++的通知 更改状态） SuccessUrl:	string 支付成功的回调url(不用填) UserId:	integer ($int64) 用户id(必填) Utime:	string ($string) 订单更改时间(默认自动生成当前时间，不用填) } 商品 Product{ Avatar:	string 商品图片(必填，例如http://img.
+                  <a href="http://gopherday.com/post/2018-03-27-order-api/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-11-27-go-nsq/">
                 <h2 class="post-title">golang nsq</h2>
 
@@ -471,35 +498,6 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
                 
                   数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
                   <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-10-15-elasticsearch01/">
-                <h2 class="post-title">ElasticSearch 入门</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on October 15, 2016
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/d8729850d72830bd7b4b1f6b617c97a5.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/7a89498963af92287cf4742a4d8a6399.png" alt="" /></p>
-
                 
               </div>
 

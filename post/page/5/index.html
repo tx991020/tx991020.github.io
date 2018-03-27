@@ -184,6 +184,55 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/">
+                <h2 class="post-title">alfred&#43;qiniu 在markdown中愉快的贴图</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on June 5, 2016
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<p>qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至
+剪贴板，并自动粘贴到当前编辑器</p>
+
+<h2 id="安装qshell">安装qshell</h2>
+
+<p>qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的
+安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至
+usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功</p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/b0968e86037c69ffb320882e6d9f5005.jpg" alt="" /></p>
+
+<h2 id="配置workflow环境变量">配置workflow环境变量</h2>
+
+<p>点击上图标出的环境变量图标，可以看到下图所示的四个配置项
+<img src="http://oq1xuulg6.bkt.clouddn.com/ecc4639f12109dcbdb5bee530b231846.jpg" alt="" />
+这四个配置项都与七牛账号相关：
+AccessKey &amp; SecretKey
+这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&gt;密钥管理中查看，或者直接访问<a href="https://portal.qiniu.com/user/key查看。">https://portal.qiniu.com/user/key查看。</a>
+bucket &amp; bucketDomain
+在对象存储-&gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名
+<img src="http://oq1xuulg6.bkt.clouddn.com/947210aba161fd1e9d0a4e3ef2a31967.gif" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-03-08-code-sample/">
                 <h2 class="post-title">Code Sample</h2>
 
@@ -479,31 +528,6 @@ Here is a secondary heading Here&rsquo;s a useless table:
                     #<a href="http://gopherday.com//tags/markdown/">markdown</a>&nbsp;
                   
                 </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/">
-                <h2 class="post-title">To be</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    ... or not to be?
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 13, 2015
-              </p>
-              <div class="post-entry">
-                
-                  When he himself might his quietus make With a bare bodkin? Who would fardels bear, To grunt and sweat under a weary life, But that the dread of something after death, The undiscovered country, from whose bourn No traveller returns, puzzles the will, And makes us rather bear those ills we have Than fly to others that we know not of? Thus conscience does make cowards of us all, And thus the native hue of resolution Is sicklied o&rsquo;er with the pale cast of thought, And enterprise of great pitch and moment With this regard their currents turn awry And lose the name of action.
-                  <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
               
 
             </article>

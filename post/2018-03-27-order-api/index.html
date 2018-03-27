@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>大王派我来搬砖</title>
-  <meta property="og:title" content="大王派我来搬砖" />
-  <meta name="twitter:title" content="大王派我来搬砖" />
-  <meta name="description" content=" Python Golang Java DevOps Programmer ">
-  <meta property="og:description" content=" Python Golang Java DevOps Programmer ">
-  <meta name="twitter:description" content=" Python Golang Java DevOps Programmer ">
+  <title>golang etcd watch</title>
+  <meta property="og:title" content="golang etcd watch" />
+  <meta name="twitter:title" content="golang etcd watch" />
+  <meta name="description" content="订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string ($string) 订单创建时间 默认自动生成当前时间（不用填） Id:	integer ($int64) 订单编号主键自增 （不用填） PingId:	integer ($int64) ping&#43;&#43; 自动生成的订单编号 （不用填） PingInfo:	string ping&#43;&#43; 自动生成的 支付凭证信息 （不用填） Price:	integer ($int64) 商品单价 （必填） ProductId:	integer ($int64) 商品id (必填) Status:	string 订单状态 待支付:&#39;CREATED&#39;,已支付:&#39;PAID&#39;,支付失败:&#39;FAIL&#39;,存在退款:&#39;REFUNDED&#39;,订单已取消&#39;CANCELED&#39; （不用填，默认是待支付，服务端根据ping&#43;&#43;的通知 更改状态） SuccessUrl:	string 支付成功的回调url(不用填) UserId:	integer ($int64) 用户id(必填) Utime:	string ($string) 订单更改时间(默认自动生成当前时间，不用填) } 商品 Product{ Avatar:	string 商品图片(必填，例如http://img.">
+  <meta property="og:description" content="订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string ($string) 订单创建时间 默认自动生成当前时间（不用填） Id:	integer ($int64) 订单编号主键自增 （不用填） PingId:	integer ($int64) ping&#43;&#43; 自动生成的订单编号 （不用填） PingInfo:	string ping&#43;&#43; 自动生成的 支付凭证信息 （不用填） Price:	integer ($int64) 商品单价 （必填） ProductId:	integer ($int64) 商品id (必填) Status:	string 订单状态 待支付:&#39;CREATED&#39;,已支付:&#39;PAID&#39;,支付失败:&#39;FAIL&#39;,存在退款:&#39;REFUNDED&#39;,订单已取消&#39;CANCELED&#39; （不用填，默认是待支付，服务端根据ping&#43;&#43;的通知 更改状态） SuccessUrl:	string 支付成功的回调url(不用填) UserId:	integer ($int64) 用户id(必填) Utime:	string ($string) 订单更改时间(默认自动生成当前时间，不用填) } 商品 Product{ Avatar:	string 商品图片(必填，例如http://img.">
+  <meta name="twitter:description" content="订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/" />
+  <meta property="og:url" content="http://gopherday.com/post/2018-03-27-order-api/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/" />
+  <link rel="canonical" href="http://gopherday.com/post/2018-03-27-order-api/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -180,14 +180,23 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>大王派我来搬砖</h1>
+            <div class="post-heading">
+              <h1>golang etcd watch</h1>
                 
-                  
-                    <hr class="small">
-                    <span class="page-subheading">Build a beautiful and simple website in minutes</span>
-                  
                 
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 27, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (145 words)
+  
+  
+</span>
+
+
                 
             </div>
           </div>
@@ -198,152 +207,120 @@
 
 
     
-  <div role="main" class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-          <div class="well">
-            
-
-<h2 id="python-golang-java-devops-programmer">Python Golang Java DevOps Programmer</h2>
-
-          </div>
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
         
 
-        <div class="posts-list">
+<h2 id="订单">订单</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">Order{
+Amount:	integer ($int64)   商品总金额 = 商品单价 * 购买的商品数量  （填购买几件，1，2，3等等）
+CancelUrl:	string         取消订单后的回调url（不用填）
+Channel:	string         订单渠道  alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr）
+Ctime:	string ($string)   订单创建时间  默认自动生成当前时间（不用填）
+Id:	integer ($int64)       订单编号主键自增 （不用填）
+PingId:	integer ($int64)   ping++ 自动生成的订单编号 （不用填）
+PingInfo:	string         ping++ 自动生成的 支付凭证信息 （不用填）
+Price:	integer ($int64)   商品单价  （必填）
+ProductId:	integer ($int64) 商品id (必填)
+Status:	string               订单状态 待支付:&#39;CREATED&#39;,已支付:&#39;PAID&#39;,支付失败:&#39;FAIL&#39;,存在退款:&#39;REFUNDED&#39;,订单已取消&#39;CANCELED&#39; 
+                            （不用填，默认是待支付，服务端根据ping++的通知 更改状态）
+SuccessUrl:	string           支付成功的回调url(不用填)
+UserId:	integer ($int64)     用户id(必填)
+Utime:	string ($string)     订单更改时间(默认自动生成当前时间，不用填)
+}</code></pre></div>
+<h2 id="商品">商品</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">Product{
+Avatar:	string  商品图片(必填，例如http://img.pipacoding.com/assets/pc/courseIcons/1.png)
+Content:	string 商品内容(必填，例如 适合完成入门课的小朋友学习)
+Ctime:	string ($string) 商品创建时间  默认自动生成当前时间（不用填）
+Id:	integer ($int64)     商品id主键（不用填，自动生成）
+InventoryCount:	integer ($int64)   商品剩余库存(不用填)
+Name:	string                      商品名称(必填，如核桃编程营初级班)
+Price:	integer ($int64)            商品单价(必填 如99)
+Tags:	string                      商品标签( 可选，)
+Title:	string                      商品标题(必填，如 第12期(3.23开课))
+Utime:	string ($string)  商品更新时间  默认自动生成当前时间（不用填）
+
+}</code></pre></div>
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/808adc2961a233fa7765b66b5ceaeb69.png" alt="" /></p>
+
+<h2 id="product-api">product API</h2>
+
+<h3 id="按id查询">按id查询</h3>
+
+<p>GET
+/product/{id}
+<img src="http://oq1xuulg6.bkt.clouddn.com/0efe0e42e0e10560d4c927cbcb3e7f1b.jpg" alt="" /></p>
+
+<p>按 条件查询
+例如
+GET
+/product/productByFilter/current=1&amp;pageSize=10
+<img src="http://oq1xuulg6.bkt.clouddn.com/b8c7ec4969dde453a4bd2b889aa8d622.jpg" alt="" /></p>
+
+<h3 id="按id-修改">按id 修改</h3>
+
+<p>PUT
+/product/{id}
+<img src="http://oq1xuulg6.bkt.clouddn.com/aabf92c34cd92cd59240f51f0b65fe6a.jpg" alt="" /></p>
+
+<h3 id="新增商品">新增商品</h3>
+
+<p>POST
+/Product</p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/9bbf8fa2640228c8b41cfdffbd585d69.jpg" alt="" /></p>
+
+<h2 id="oeder-api">oeder API</h2>
+
+<h3 id="按id查询-1">按id查询</h3>
+
+<p>GET
+/order/{id}
+<img src="http://oq1xuulg6.bkt.clouddn.com/adbc1cfa381a8cc77618667530ebb8cc.jpg" alt="" /></p>
+
+<h3 id="新增订单">新增订单</h3>
+
+<p>POST
+/Order
+<img src="http://oq1xuulg6.bkt.clouddn.com/0dea075ab2e2394f4e553c66f4a4f82f.jpg" alt="" /></p>
+
+<h3 id="修改订单-退款审批">修改订单/退款审批</h3>
+
+<p>PUT
+/order/{id}
+<img src="http://oq1xuulg6.bkt.clouddn.com/c0e594fa05f928e4eb628732f6030e2d.jpg" alt="" /></p>
+
+<h3 id="按条件查询订单">按条件查询订单</h3>
+
+<p>GET
+/product/productByFilter/current=1&amp;pageSize=10
+<img src="http://oq1xuulg6.bkt.clouddn.com/2e2feb2147cb80af8fcd3707f86b201e.jpg" alt="" /></p>
+
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://gopherday.com/post/2018-03-16-job-interview-go/" data-toggle="tooltip" data-placement="top" title="golang 面试填坑">&larr; Previous Post</a>
+            </li>
           
           
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-01-go-design-patterns/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
+        </ul>
+      
 
 
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-10-spark-dockerfile/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-05-10-rpcx/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-01-springboot-01/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-        </div>
-
+      
         
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="/page/6/">&larr; Newer Posts</a>
-              </li>
-            
-            
-          </ul>
         
-      </div>
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">
