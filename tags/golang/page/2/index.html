@@ -184,6 +184,33 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
+                <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 12, 2016
+              </p>
+              <div class="post-entry">
+                
+                  数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
+                  <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-10-15-elasticsearch01/">
                 <h2 class="post-title">ElasticSearch 入门</h2>
 

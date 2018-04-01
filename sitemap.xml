@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://gopherday.com/post/2018-04-01-gin/</loc>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/post/2018-03-27-order-api/</loc>
     <lastmod>2018-03-27T00:00:00+00:00</lastmod>
   </url>
@@ -274,7 +279,7 @@
   
   <url>
     <loc>http://gopherday.com/</loc>
-    <lastmod>2018-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -364,7 +369,7 @@
   
   <url>
     <loc>http://gopherday.com/tags/golang/</loc>
-    <lastmod>2018-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -423,7 +428,7 @@
   
   <url>
     <loc>http://gopherday.com/post/</loc>
-    <lastmod>2018-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-04-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

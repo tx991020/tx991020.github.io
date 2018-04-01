@@ -184,6 +184,33 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-04-01-gin/">
+                <h2 class="post-title">Gin API 设计</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 1, 2018
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;hdutil&#34; &#34;github.com/gin-gonic/gin&#34; &#34;net/http&#34; &#34;fmt&#34; &#34;reflect&#34; &#34;logic/pkg/dao&#34; ) func main() { r := gin.Default() r.Use(hdutil.GJsonResponse) r.GET( `user/:customId`, hdutil.GPathOptionalString(&#34;customId&#34;), GetData1, ) r.POST( ``, hdutil.GRequestBodyObject(reflect.TypeOf(dao.Hetaojun{}), &#34;json&#34;), PostData, ) r.GET( `/homeByFilter`, hdutil.GQueryRequireString(&#34;filter&#34;), hdutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), hdutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetByFilter, ) r.PUT( `/:pingId`, hdutil.GPathRequireInt(&#34;hetaojunId&#34;), hdutil.GRequestBodyMap, UpdateData, ) r.Run(&#34;:4000&#34;) // listen and serve on 0.0.0.0:8080 } func GetData(c *gin.Context) { qq := map[string]string{ &#34;a&#34;: &#34;aa&#34;, &#34;b&#34;: &#34;bb&#34;, } c.Data(http.StatusOK, &#34;&#34;, hdutil.GR(&amp;hdutil.Error{0, &#34;&#34;}, qq)) } func GetData1(c *gin.
+                  <a href="http://gopherday.com/post/2018-04-01-gin/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2018-03-27-order-api/">
                 <h2 class="post-title">商品订单系统API</h2>
 
@@ -471,33 +498,6 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
                 
                   package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.
                   <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
-                <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on November 12, 2016
-              </p>
-              <div class="post-entry">
-                
-                  数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
-                  <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
                 
               </div>
 
