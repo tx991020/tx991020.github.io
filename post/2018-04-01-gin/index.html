@@ -8,9 +8,9 @@
   <title>Gin API 设计</title>
   <meta property="og:title" content="Gin API 设计" />
   <meta name="twitter:title" content="Gin API 设计" />
-  <meta name="description" content="package main import ( &#34;hdutil&#34; &#34;github.com/gin-gonic/gin&#34; &#34;net/http&#34; &#34;fmt&#34; &#34;reflect&#34; &#34;logic/pkg/dao&#34; ) func main() { r := gin.Default() r.Use(hdutil.GJsonResponse) r.GET( `user/:customId`, hdutil.GPathOptionalString(&#34;customId&#34;), GetData1, ) r.POST( ``, hdutil.GRequestBodyObject(reflect.TypeOf(dao.Hetaojun{}), &#34;json&#34;), PostData, ) r.GET( `/homeByFilter`, hdutil.GQueryRequireString(&#34;filter&#34;), hdutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), hdutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetByFilter, ) r.PUT( `/:pingId`, hdutil.GPathRequireInt(&#34;hetaojunId&#34;), hdutil.GRequestBodyMap, UpdateData, ) r.Run(&#34;:4000&#34;) // listen and serve on 0.0.0.0:8080 } func GetData(c *gin.Context) { qq := map[string]string{ &#34;a&#34;: &#34;aa&#34;, &#34;b&#34;: &#34;bb&#34;, } c.Data(http.StatusOK, &#34;&#34;, hdutil.GR(&amp;hdutil.Error{0, &#34;&#34;}, qq)) } func GetData1(c *gin.">
-  <meta property="og:description" content="package main import ( &#34;hdutil&#34; &#34;github.com/gin-gonic/gin&#34; &#34;net/http&#34; &#34;fmt&#34; &#34;reflect&#34; &#34;logic/pkg/dao&#34; ) func main() { r := gin.Default() r.Use(hdutil.GJsonResponse) r.GET( `user/:customId`, hdutil.GPathOptionalString(&#34;customId&#34;), GetData1, ) r.POST( ``, hdutil.GRequestBodyObject(reflect.TypeOf(dao.Hetaojun{}), &#34;json&#34;), PostData, ) r.GET( `/homeByFilter`, hdutil.GQueryRequireString(&#34;filter&#34;), hdutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), hdutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetByFilter, ) r.PUT( `/:pingId`, hdutil.GPathRequireInt(&#34;hetaojunId&#34;), hdutil.GRequestBodyMap, UpdateData, ) r.Run(&#34;:4000&#34;) // listen and serve on 0.0.0.0:8080 } func GetData(c *gin.Context) { qq := map[string]string{ &#34;a&#34;: &#34;aa&#34;, &#34;b&#34;: &#34;bb&#34;, } c.Data(http.StatusOK, &#34;&#34;, hdutil.GR(&amp;hdutil.Error{0, &#34;&#34;}, qq)) } func GetData1(c *gin.">
-  <meta name="twitter:description" content="package main import ( &#34;hdutil&#34; &#34;github.com/gin-gonic/gin&#34; &#34;net/http&#34; &#34;fmt&#34; &#34;reflect&#34; &#34;logic/pkg/dao&#34; ) func main() { r := gin.Default() …">
+  <meta name="description" content="package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;reflect&#34; &#34;github.com/gin-gonic/gin&#34; xutil &#34;hdutil&#34; &#34;logic/pkg/dao&#34; &#34;logic/pkg/service&#34; ) func main() { r := gin.Default() rt := r.Group(`/homeworks`) rt.POST( ``, xutil.GRequestBodyObject(reflect.TypeOf(dao.Homework{}), &#34;json&#34;), CreateHomework, ) rt.PUT( `/:homeworkId`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GRequestBodyMap, UpdateHomework, ) r.GET( `/homeworksByFilter`, xutil.GQueryRequireString(&#34;filter&#34;), xutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), xutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetHomeworkByFilter, ) rt.POST( `/notify`, xutil.GRequestBodyObject(reflect.TypeOf([]int64{}), &#34;json&#34;), BatchSendRemark, ) rt.GET( `/:homeworkId/thumb`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GQueryRequireString(&#34;sessionId&#34;), ThumbUp, ) rt.GET( `/:homeworkId/sharetimeline`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareTimeline, ) rt.GET( `/:homeworkId/sharefriend`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareFriend, ) r.Run(&#34;:5000&#34;) } func CreateHomework(c *gin.Context) { u := c.">
+  <meta property="og:description" content="package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;reflect&#34; &#34;github.com/gin-gonic/gin&#34; xutil &#34;hdutil&#34; &#34;logic/pkg/dao&#34; &#34;logic/pkg/service&#34; ) func main() { r := gin.Default() rt := r.Group(`/homeworks`) rt.POST( ``, xutil.GRequestBodyObject(reflect.TypeOf(dao.Homework{}), &#34;json&#34;), CreateHomework, ) rt.PUT( `/:homeworkId`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GRequestBodyMap, UpdateHomework, ) r.GET( `/homeworksByFilter`, xutil.GQueryRequireString(&#34;filter&#34;), xutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), xutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetHomeworkByFilter, ) rt.POST( `/notify`, xutil.GRequestBodyObject(reflect.TypeOf([]int64{}), &#34;json&#34;), BatchSendRemark, ) rt.GET( `/:homeworkId/thumb`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GQueryRequireString(&#34;sessionId&#34;), ThumbUp, ) rt.GET( `/:homeworkId/sharetimeline`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareTimeline, ) rt.GET( `/:homeworkId/sharefriend`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareFriend, ) r.Run(&#34;:5000&#34;) } func CreateHomework(c *gin.Context) { u := c.">
+  <meta name="twitter:description" content="package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;reflect&#34; &#34;github.com/gin-gonic/gin&#34; xutil &#34;hdutil&#34; &#34;logic/pkg/dao&#34; &#34;logic/pkg/service&#34; ) func main() { r …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -191,7 +191,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (122 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (167 words)
   
   
 </span>
@@ -214,85 +214,116 @@
         <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
-	<span class="s2">&#34;hdutil&#34;</span>
-	<span class="s2">&#34;github.com/gin-gonic/gin&#34;</span>
-	<span class="s2">&#34;net/http&#34;</span>
+
 	<span class="s2">&#34;fmt&#34;</span>
+	<span class="s2">&#34;net/http&#34;</span>
 	<span class="s2">&#34;reflect&#34;</span>
+	<span class="s2">&#34;github.com/gin-gonic/gin&#34;</span>
+	<span class="nx">xutil</span> <span class="s2">&#34;hdutil&#34;</span>
 	<span class="s2">&#34;logic/pkg/dao&#34;</span>
+
+
+
+	<span class="s2">&#34;logic/pkg/service&#34;</span>
+
 <span class="p">)</span>
+
 
 <span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
 	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">gin</span><span class="p">.</span><span class="nx">Default</span><span class="p">()</span>
-	<span class="nx">r</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">hdutil</span><span class="p">.</span><span class="nx">GJsonResponse</span><span class="p">)</span>
-
-	<span class="nx">r</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span>
-		<span class="sb">`user/:customId`</span><span class="p">,</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GPathOptionalString</span><span class="p">(</span><span class="s2">&#34;customId&#34;</span><span class="p">),</span>
-		<span class="nx">GetData1</span><span class="p">,</span>
-	<span class="p">)</span>
-
-	<span class="nx">r</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span>
+	<span class="nx">rt</span> <span class="o">:=</span> <span class="nx">r</span><span class="p">.</span><span class="nx">Group</span><span class="p">(</span><span class="sb">`/homeworks`</span><span class="p">)</span>
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span>
 		<span class="sb">``</span><span class="p">,</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GRequestBodyObject</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Hetaojun</span><span class="p">{}),</span> <span class="s2">&#34;json&#34;</span><span class="p">),</span>
-		<span class="nx">PostData</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GRequestBodyObject</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Homework</span><span class="p">{}),</span> <span class="s2">&#34;json&#34;</span><span class="p">),</span>
+		<span class="nx">CreateHomework</span><span class="p">,</span>
 	<span class="p">)</span>
+
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">PUT</span><span class="p">(</span>
+		<span class="sb">`/:homeworkId`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GPathRequireInt</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">),</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GRequestBodyMap</span><span class="p">,</span>
+		<span class="nx">UpdateHomework</span><span class="p">,</span>
+	<span class="p">)</span>
+
 	<span class="nx">r</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span>
-		<span class="sb">`/homeByFilter`</span><span class="p">,</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GQueryRequireString</span><span class="p">(</span><span class="s2">&#34;filter&#34;</span><span class="p">),</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GQueryOptionalIntDefault</span><span class="p">(</span><span class="s2">&#34;current&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GQueryOptionalIntDefault</span><span class="p">(</span><span class="s2">&#34;pageSize&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-		<span class="nx">GetByFilter</span><span class="p">,</span>
+		<span class="sb">`/homeworksByFilter`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GQueryRequireString</span><span class="p">(</span><span class="s2">&#34;filter&#34;</span><span class="p">),</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GQueryOptionalIntDefault</span><span class="p">(</span><span class="s2">&#34;current&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GQueryOptionalIntDefault</span><span class="p">(</span><span class="s2">&#34;pageSize&#34;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+		<span class="nx">GetHomeworkByFilter</span><span class="p">,</span>
 	<span class="p">)</span>
-	<span class="nx">r</span><span class="p">.</span><span class="nx">PUT</span><span class="p">(</span>
-		<span class="sb">`/:pingId`</span><span class="p">,</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GPathRequireInt</span><span class="p">(</span><span class="s2">&#34;hetaojunId&#34;</span><span class="p">),</span>
-		<span class="nx">hdutil</span><span class="p">.</span><span class="nx">GRequestBodyMap</span><span class="p">,</span>
-		<span class="nx">UpdateData</span><span class="p">,</span>
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">POST</span><span class="p">(</span>
+		<span class="sb">`/notify`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GRequestBodyObject</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">([]</span><span class="nx">int64</span><span class="p">{}),</span> <span class="s2">&#34;json&#34;</span><span class="p">),</span>
+		<span class="nx">BatchSendRemark</span><span class="p">,</span>
 	<span class="p">)</span>
 
-	<span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s2">&#34;:4000&#34;</span><span class="p">)</span> <span class="c1">// listen and serve on 0.0.0.0:8080
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="nx">func</span> <span class="nx">GetData</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>  <span class="p">{</span>
-
-	<span class="nx">qq</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="nx">string</span><span class="p">{</span>
-		<span class="s2">&#34;a&#34;</span><span class="o">:</span> <span class="s2">&#34;aa&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;b&#34;</span><span class="o">:</span> <span class="s2">&#34;bb&#34;</span><span class="p">,</span>
-	<span class="p">}</span>
-
-	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">hdutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">hdutil</span><span class="p">.</span><span class="nb">Error</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">},</span> <span class="nx">qq</span><span class="p">))</span>
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span>
+		<span class="sb">`/:homeworkId/thumb`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GPathRequireInt</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">),</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GQueryRequireString</span><span class="p">(</span><span class="s2">&#34;sessionId&#34;</span><span class="p">),</span>
+		<span class="nx">ThumbUp</span><span class="p">,</span>
+	<span class="p">)</span>
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span>
+		<span class="sb">`/:homeworkId/sharetimeline`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GPathRequireInt</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">),</span>
+		<span class="nx">ShareTimeline</span><span class="p">,</span>
+	<span class="p">)</span>
+	<span class="nx">rt</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span>
+		<span class="sb">`/:homeworkId/sharefriend`</span><span class="p">,</span>
+		<span class="nx">xutil</span><span class="p">.</span><span class="nx">GPathRequireInt</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">),</span>
+		<span class="nx">ShareFriend</span><span class="p">,</span>
+	<span class="p">)</span>
+	<span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s2">&#34;:5000&#34;</span><span class="p">)</span>
 <span class="p">}</span>
 
+<span class="nx">func</span> <span class="nx">CreateHomework</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">u</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;requestBody&#34;</span><span class="p">).(</span><span class="o">*</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Homework</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">u</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="nx">func</span> <span class="nx">BatchSendRemark</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">ids</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;requestBody&#34;</span><span class="p">).(</span><span class="o">*</span><span class="p">[]</span><span class="nx">int64</span><span class="p">)</span>
 
-<span class="nx">func</span> <span class="nx">GetData1</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>  <span class="p">{</span>
-	<span class="nx">u</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;customId&#34;</span><span class="p">).(</span><span class="nx">string</span><span class="p">)</span>
-
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="nx">u</span><span class="p">)</span>
-	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">hdutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">hdutil</span><span class="p">.</span><span class="nb">Error</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">},</span><span class="nx">u</span><span class="p">))</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">ids</span><span class="p">))</span>
 <span class="p">}</span>
 
-
-<span class="nx">func</span> <span class="nx">PostData</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>  <span class="p">{</span>
-	<span class="nx">u</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;requestBody&#34;</span><span class="p">).(</span><span class="o">*</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Hetaojun</span><span class="p">)</span>
-
-
-	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">hdutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">hdutil</span><span class="p">.</span><span class="nb">Error</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">},</span><span class="nx">u</span><span class="p">))</span>
-<span class="p">}</span>
-
-
-<span class="nx">func</span> <span class="nx">UpdateData</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>  <span class="p">{</span>
+<span class="nx">func</span> <span class="nx">UpdateHomework</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">m</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;requestBody&#34;</span><span class="p">).(</span><span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{})</span>
-
-
-	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">hdutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">hdutil</span><span class="p">.</span><span class="nb">Error</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">},</span><span class="nx">m</span><span class="p">))</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">m</span><span class="p">))</span>
 <span class="p">}</span>
 
-<span class="nx">func</span> <span class="nx">GetByFilter</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>  <span class="p">{</span>
+
+<span class="nx">func</span> <span class="nx">GetHomeworkByFilter</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
 	<span class="nx">current</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;current&#34;</span><span class="p">).(</span><span class="nx">int64</span><span class="p">)</span>
 	<span class="nx">pagesize</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;pageSize&#34;</span><span class="p">).(</span><span class="nx">int64</span><span class="p">)</span>
+
 	<span class="nx">jsonstring</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;filter&#34;</span><span class="p">).(</span><span class="nx">string</span><span class="p">)</span>
+
 	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">current</span><span class="p">,</span><span class="nx">pagesize</span><span class="p">,</span><span class="nx">jsonstring</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">current</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="nx">func</span> <span class="nx">ThumbUp</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">id</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">).(</span><span class="nx">int64</span><span class="p">)</span>
+	<span class="nx">sessionId</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;sessionId&#34;</span><span class="p">).(</span><span class="nx">string</span><span class="p">)</span>
+	<span class="nx">strId</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s2">&#34;%d&#34;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">sessionId</span><span class="p">,</span><span class="nx">strId</span><span class="p">)</span>
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">strId</span><span class="p">))</span>
+<span class="p">}</span>
+
+
+<span class="nx">func</span> <span class="nx">ShareTimeline</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">id</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">).(</span><span class="nx">int64</span><span class="p">)</span>
+
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">id</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">//分享
+</span><span class="c1"></span><span class="nx">func</span> <span class="nx">ShareFriend</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">id</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MustGet</span><span class="p">(</span><span class="s2">&#34;homeworkId&#34;</span><span class="p">).(</span><span class="nx">int64</span><span class="p">)</span>
+
+
+	<span class="nx">c</span><span class="p">.</span><span class="nx">Data</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">xutil</span><span class="p">.</span><span class="nx">GR</span><span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">NoneError</span><span class="p">,</span> <span class="nx">id</span><span class="p">))</span>
 <span class="p">}</span></code></pre></div>
 
       </article>
