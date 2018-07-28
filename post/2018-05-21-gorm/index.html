@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>GORM</title>
-  <meta property="og:title" content="GORM" />
-  <meta name="twitter:title" content="GORM" />
-  <meta name="description" content="%like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ">
-  <meta property="og:description" content="%like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ">
-  <meta name="twitter:description" content="%like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ">
+  <title>GORM 高级用法</title>
+  <meta property="og:title" content="GORM 高级用法" />
+  <meta name="twitter:title" content="GORM 高级用法" />
+  <meta name="description" content="``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T map[string]interface{} } func (p JsonP) Value() (driver.Value, error) { if p ==nil{ return &#34;&#34;,nil } j, _ := json.Marshal(p.T) return j, nil } func (p *JsonP) Scan(src interface{}) error { if p ==nil{ return errors.New(&#34;p is nil&#34;) } source, ok := src.([]byte) if !ok { return errors.New(&#34;Type assertion .([]byte) failed.&#34;) } var i interface{} err := json.">
+  <meta property="og:description" content="``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T map[string]interface{} } func (p JsonP) Value() (driver.Value, error) { if p ==nil{ return &#34;&#34;,nil } j, _ := json.Marshal(p.T) return j, nil } func (p *JsonP) Scan(src interface{}) error { if p ==nil{ return errors.New(&#34;p is nil&#34;) } source, ok := src.([]byte) if !ok { return errors.New(&#34;Type assertion .([]byte) failed.&#34;) } var i interface{} err := json.">
+  <meta name="twitter:description" content="``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -181,7 +181,7 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>GORM</h1>
+              <h1>GORM 高级用法</h1>
                 
                 
                   <span class="post-meta">
@@ -191,7 +191,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (7 words)
+  <i class="fa fa-clock-o"></i> 2 minutes (358 words)
   
   
 </span>
@@ -211,11 +211,141 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">%</span><span class="nx">like</span><span class="o">%</span><span class="nx">查询</span>
-<span class="nx">result</span> <span class="o">:=</span><span class="p">[]</span><span class="o">*</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Product</span><span class="p">{}</span>
-
-<span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s2">&#34;product&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s2">&#34;name like ?&#34;</span><span class="p">,</span><span class="s2">&#34;%提高%&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span></code></pre></div>
+        <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="sb">```
+</span><span class="sb">%like%查询
+</span><span class="sb">result :=[]*dao.Product{}
+</span><span class="sb">
+</span><span class="sb">dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result)
+</span><span class="sb">fmt.Println(result)
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">## 自定义JsonP 类型
+</span><span class="sb">type JsonP struct {
+</span><span class="sb">	T map[string]interface{}
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">func (p JsonP) Value() (driver.Value, error) {
+</span><span class="sb">	if p ==nil{
+</span><span class="sb">		return &#34;&#34;,nil
+</span><span class="sb">	}
+</span><span class="sb">	j, _ := json.Marshal(p.T)
+</span><span class="sb">	return j, nil
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">func (p *JsonP) Scan(src interface{}) error {
+</span><span class="sb">	if p ==nil{
+</span><span class="sb">		return errors.New(&#34;p is nil&#34;)
+</span><span class="sb">	}
+</span><span class="sb">	source, ok := src.([]byte)
+</span><span class="sb">	if !ok {
+</span><span class="sb">		return errors.New(&#34;Type assertion .([]byte) failed.&#34;)
+</span><span class="sb">	}
+</span><span class="sb">
+</span><span class="sb">	var i interface{}
+</span><span class="sb">	err := json.Unmarshal(source, &amp;i)
+</span><span class="sb">	if err != nil {
+</span><span class="sb">		return err
+</span><span class="sb">	}
+</span><span class="sb">
+</span><span class="sb">	p.T, ok = i.(map[string]interface{})
+</span><span class="sb">	if !ok {
+</span><span class="sb">		return errors.New(&#34;Type assertion .(map[string]interface{}) failed.&#34;)
+</span><span class="sb">	}
+</span><span class="sb">
+</span><span class="sb">	return nil
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">## 自定义JSONTIIME
+</span><span class="sb">
+</span><span class="sb">type JSONTime struct {
+</span><span class="sb">	T time.Time
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">func (t *JSONTime) MarshalJSON() ([]byte, error) {
+</span><span class="sb">	//do your serializing here
+</span><span class="sb">	stamp := fmt.Sprintf(&#34;</span><span class="err">\</span><span class="sb">&#34;%d</span><span class="err">\</span><span class="sb">&#34;&#34;, t.T.UnixNano()/1e6)
+</span><span class="sb">	return []byte(stamp), nil
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">func (t *JSONTime) UnmarshalJSON(b []byte) error {
+</span><span class="sb">	if len(b) == 0 {
+</span><span class="sb">		return nil
+</span><span class="sb">	}
+</span><span class="sb">	if b[0] == b[len(b)-1] &amp;&amp; b[0] == &#39;&#34;&#39; {
+</span><span class="sb">		i, err := strconv.ParseInt(string(b[1:len(b)-1]), 10, 64)
+</span><span class="sb">		t.T = time.Unix(i/1e3, (i%1e3)*1e6)
+</span><span class="sb">		return err
+</span><span class="sb">	} else {
+</span><span class="sb">		i, err := strconv.ParseInt(string(b), 10, 64)
+</span><span class="sb">		t.T = time.Unix(i/1e3, (i%1e3)*1e6)
+</span><span class="sb">		return err
+</span><span class="sb">	}
+</span><span class="sb">	return nil
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">// sql.Scanner
+</span><span class="sb">func (t *JSONTime) Scan(value interface{}) error {
+</span><span class="sb">	t.T = value.(time.Time)
+</span><span class="sb">	return nil
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">// sql.driver.Valuer, MUST BE (t JSONTime), NOT (t *JSONTime)
+</span><span class="sb">func (t JSONTime) Value() (driver.Value, error) {
+</span><span class="sb">	if t == nil {
+</span><span class="sb">		return nil, nil
+</span><span class="sb">	} else {
+</span><span class="sb">		return t.T, nil
+</span><span class="sb">	}
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">##CallBack
+</span><span class="sb">
+</span><span class="sb">func (u *User) AfterCreate(tx *gorm.DB) (err error) {
+</span><span class="sb">    tx.Model(u).Update(&#34;role&#34;, &#34;admin&#34;)
+</span><span class="sb">    return
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">
+</span><span class="sb">func (u *User) AfterCreate(scope *gorm.Scope) (err error) {
+</span><span class="sb">  scope.DB().Model(u).Update(&#34;role&#34;, &#34;admin&#34;)
+</span><span class="sb">    return
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">##链式查询
+</span><span class="sb">
+</span><span class="sb">func DBGetOrdersByOffset(db *gorm.DB, offset int, m map[string]interface{}, rawq string, order int, ordcond string, limit int, getCount bool) ([]*Order, int) {
+</span><span class="sb">	totalCount := 0
+</span><span class="sb">	result := make([]*Order, 0)
+</span><span class="sb">	db = db.Model(Order{})
+</span><span class="sb">	if m != nil {
+</span><span class="sb">		db = db.Where(m)
+</span><span class="sb">	}
+</span><span class="sb">	if len(rawq) &gt; 0 {
+</span><span class="sb">		db = db.Where(rawq)
+</span><span class="sb">	}
+</span><span class="sb">	if order &gt; 0 {
+</span><span class="sb">		db = db.Order(&#34;id asc&#34;)
+</span><span class="sb">	} else if order &lt; 0 {
+</span><span class="sb">		db = db.Order(&#34;id desc&#34;)
+</span><span class="sb">	} else if len(ordcond) &gt; 0 {
+</span><span class="sb">		db = db.Order(ordcond)
+</span><span class="sb">	}
+</span><span class="sb">	if getCount {
+</span><span class="sb">		db.Count(&amp;totalCount)
+</span><span class="sb">	}
+</span><span class="sb">	if limit &gt; 0 {
+</span><span class="sb">		db = db.Limit(limit)
+</span><span class="sb">	}
+</span><span class="sb">	if db.Offset(offset).Find(&amp;result).RecordNotFound() {
+</span><span class="sb">		logs.Error(&#34;%v&#34;, db.Error)
+</span><span class="sb">	}
+</span><span class="sb">	return result, totalCount
+</span><span class="sb">}
+</span><span class="sb">```</span></code></pre></div>
 
       </article>
 

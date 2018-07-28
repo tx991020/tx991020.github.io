@@ -7,10 +7,56 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Sun, 01 Apr 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GORM 高级用法</title>
+      <link>http://gopherday.com/post/2018-05-21-gorm/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-05-21-gorm/</guid>
+      <description>``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&amp;#34;product&amp;#34;).Where(&amp;#34;name like ?&amp;#34;,&amp;#34;%提高%&amp;#34;).Find(&amp;amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T map[string]interface{} } func (p JsonP) Value() (driver.Value, error) { if p ==nil{ return &amp;#34;&amp;#34;,nil } j, _ := json.Marshal(p.T) return j, nil } func (p *JsonP) Scan(src interface{}) error { if p ==nil{ return errors.New(&amp;#34;p is nil&amp;#34;) } source, ok := src.([]byte) if !ok { return errors.New(&amp;#34;Type assertion .([]byte) failed.&amp;#34;) } var i interface{} err := json.</description>
+    </item>
+    
+    <item>
+      <title>MySQL 乐观锁与悲观锁</title>
+      <link>http://gopherday.com/post/2018-05-25-mysql/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-05-25-mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis Watch</title>
+      <link>http://gopherday.com/post/2018-05-27-redis-watch/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-05-27-redis-watch/</guid>
+      <description>&amp;lt;?php header(&amp;#34;content-type:text/html;charset=utf-8&amp;#34;); $redis = new redis(); $result = $redis-&amp;gt;connect(&amp;#39;10.10.10.119&amp;#39;, 6379); $redis-&amp;gt;watch(&amp;#34;mywatchkey&amp;#34;); $mywatchkey = $redis-&amp;gt;get(&amp;#34;mywatchkey&amp;#34;); $rob_total = 100; //抢购数量 if($mywatchkey&amp;lt;$rob_total){ $redis-&amp;gt;multi(); //设置延迟，方便测试效果。  sleep(5); //插入抢购数据  $redis-&amp;gt;hSet(&amp;#34;mywatchlist&amp;#34;,&amp;#34;user_id_&amp;#34;.mt_rand(1, 9999),time()); $redis-&amp;gt;set(&amp;#34;mywatchkey&amp;#34;,$mywatchkey+1); $rob_result = $redis-&amp;gt;exec(); if($rob_result){ $mywatchlist = $redis-&amp;gt;hGetAll(&amp;#34;mywatchlist&amp;#34;); echo &amp;#34;抢购成功！&amp;lt;br/&amp;gt;&amp;#34;; echo &amp;#34;剩余数量：&amp;#34;.($rob_total-$mywatchkey-1).&amp;#34;&amp;lt;br/&amp;gt;&amp;#34;; echo &amp;#34;用户列表：&amp;lt;pre&amp;gt;&amp;#34;; var_dump($mywatchlist); }else{ echo &amp;#34;手气不好，再抢购！&amp;#34;;exit; } } ?&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>Express</title>
+      <link>http://gopherday.com/post/2018-05-02-express/</link>
+      <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-05-02-express/</guid>
+      <description>const express = require(&amp;#39;express&amp;#39;); const path = require(&amp;#39;path&amp;#39;); const bodyParser = require(&amp;#39;body-parser&amp;#39;); const crypto = require(&amp;#39;crypto&amp;#39;); // 生成一个 express 实例 const app = express(); // 设置视图文件存放目录 app.set(&amp;#39;views&amp;#39;, path.join(__dirname, &amp;#39;views&amp;#39;)); app.set(&amp;#39;view engine&amp;#39;, &amp;#39;ejs&amp;#39;); // 设置静态文件存放目录 app.use(express.static(path.join(__dirname, &amp;#39;public&amp;#39;))); // 解析 urlencoded 请求体必备 app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true })); // 响应首页get请求 app.get(&amp;#39;/&amp;#39;, function(req, res) { res.render(&amp;#39;index&amp;#39;, { title: &amp;#39;首页&amp;#39; }); }); app.get(&amp;#39;/login&amp;#39;, function(req, res) { res.render(&amp;#39;login&amp;#39;, { title: &amp;#39;登录&amp;#39;, user: req.session.user, page: &amp;#39;login&amp;#39; }); }); app.</description>
+    </item>
+    
+    <item>
+      <title>Coupon 商品优惠券 API</title>
+      <link>http://gopherday.com/post/2018-04-10-coupon/</link>
+      <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-04-10-coupon/</guid>
+      <description>##coupon_temp 优惠券模板
+CREATE TABLE `coupon_temp` ( `id` int(11) NOT NULL AUTO_INCREMENT, `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, `utime` timestamp NOT NULL DEFAULT &amp;#39;0000-00-00 00:00:00&amp;#39; ON UPDATE CURRENT_TIMESTAMP, `start_time` timestamp NOT NULL DEFAULT &amp;#39;0000-00-00 00:00:00&amp;#39;, `end_time` timestamp NOT NULL DEFAULT &amp;#39;0000-00-00 00:00:00&amp;#39;, `type` tinyint(1) NOT NULL, `metadata` varchar(11) DEFAULT NULL, `amount_available` bigint(16) DEFAULT NULL, `amount_off` bigint(16) DEFAULT NULL, `percent_off` bigint(16) DEFAULT NULL, `max_circulation` int(8) DEFAULT NULL, `max_user_circulation` int(8) DEFAULT NULL, `duration` bigint(16) DEFAULT NULL, `name` varchar(11) NOT NULL, PRIMARY KEY (`id`) ) ENGINE=InnoDB AUTO_INCREMENT=100003 DEFAULT CHARSET=utf8mb4;</description>
+    </item>
     
     <item>
       <title>Gin API 设计</title>
@@ -689,20 +735,38 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
     </item>
     
     <item>
+      <title></title>
+      <link>http://gopherday.com/post/2018-05-03-javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-05-03-javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://gopherday.com/post/2018-07-10-k8s/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-10-k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>About me</title>
       <link>http://gopherday.com/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/page/about/</guid>
       <description>My name is Andy Wu. I have the following qualities:
- 后端工程师 极客，热爱学习，热爱开源,涉猎范围广 理念:Keep It Simple and Stupid  我的技能树 Python Golang Java
+ 后端工程师 极客，热爱学习，热爱开源,涉猎范围广 理念:Keep It Simple and Stupid  我的技能树 Python Golang Java,PHP,
 DB: mysql, mongodb,redis,elasticsearch,etcd
 Web: Gin,Beego,Flask,Django,SpringBoot
 MQ: Kafka
 任务调度：Celery,APScheduler
 大数据：Spark/Pyspark,Pandas,ELK Stack, Hadoop,Hive,Flume
 爬虫：Scarpy,Pyspider,Colly,Pholcus,Pyquery,Goquery
-DevOps: Docker,Ansible,Vagrant</description>
+DevOps: k8s,Docker,Ansible,Vagrant</description>
     </item>
     
   </channel>

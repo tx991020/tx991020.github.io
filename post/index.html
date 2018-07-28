@@ -184,6 +184,183 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-05-21-gorm/">
+                <h2 class="post-title">GORM 高级用法</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 21, 2018
+              </p>
+              <div class="post-entry">
+                
+                  ``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T map[string]interface{} } func (p JsonP) Value() (driver.Value, error) { if p ==nil{ return &#34;&#34;,nil } j, _ := json.Marshal(p.T) return j, nil } func (p *JsonP) Scan(src interface{}) error { if p ==nil{ return errors.New(&#34;p is nil&#34;) } source, ok := src.([]byte) if !ok { return errors.New(&#34;Type assertion .([]byte) failed.&#34;) } var i interface{} err := json.
+                  <a href="http://gopherday.com/post/2018-05-21-gorm/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-05-25-mysql/">
+                <h2 class="post-title">MySQL 乐观锁与悲观锁</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 21, 2018
+              </p>
+              <div class="post-entry">
+                
+                  
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-05-27-redis-watch/">
+                <h2 class="post-title">Redis Watch</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 21, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;?</span><span class="nx">php</span>  
+<span class="nx">header</span><span class="p">(</span><span class="s2">&#34;content-type:text/html;charset=utf-8&#34;</span><span class="p">);</span>  
+<span class="nx">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">redis</span><span class="p">();</span>  
+<span class="nx">$result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;10.10.10.119&#39;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span> 
+<span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">watch</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>   
+<span class="nx">$mywatchkey</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>  
+<span class="nx">$rob_total</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>   <span class="c1">//抢购数量  
+</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="nx">$mywatchkey</span><span class="o">&lt;</span><span class="nx">$rob_total</span><span class="p">){</span>  
+   
+    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">multi</span><span class="p">();</span>  
+      
+    <span class="c1">//设置延迟，方便测试效果。  
+</span><span class="c1"></span>    <span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>  
+    <span class="c1">//插入抢购数据  
+</span><span class="c1"></span>    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hSet</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">,</span><span class="s2">&#34;user_id_&#34;</span><span class="p">.</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9999</span><span class="p">),</span><span class="nx">time</span><span class="p">());</span>  
+    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">,</span><span class="nx">$mywatchkey</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  
+    <span class="nx">$rob_result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">exec</span><span class="p">();</span>  
+    <span class="k">if</span><span class="p">(</span><span class="nx">$rob_result</span><span class="p">){</span>  
+        <span class="nx">$mywatchlist</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hGetAll</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">);</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;抢购成功！&lt;br/&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;剩余数量：&#34;</span><span class="p">.(</span><span class="nx">$rob_total</span><span class="o">-</span><span class="nx">$mywatchkey</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="s2">&#34;&lt;br/&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;用户列表：&lt;pre&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">var_dump</span><span class="p">(</span><span class="nx">$mywatchlist</span><span class="p">);</span>  
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;手气不好，再抢购！&#34;</span><span class="p">;</span><span class="nx">exit</span><span class="p">;</span>  
+    <span class="p">}</span>  
+<span class="p">}</span>  
+<span class="o">?&gt;</span>  </code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/redis/">Redis</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-05-02-express/">
+                <h2 class="post-title">Express</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 2, 2018
+              </p>
+              <div class="post-entry">
+                
+                  const express = require(&#39;express&#39;); const path = require(&#39;path&#39;); const bodyParser = require(&#39;body-parser&#39;); const crypto = require(&#39;crypto&#39;); // 生成一个 express 实例 const app = express(); // 设置视图文件存放目录 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); app.set(&#39;view engine&#39;, &#39;ejs&#39;); // 设置静态文件存放目录 app.use(express.static(path.join(__dirname, &#39;public&#39;))); // 解析 urlencoded 请求体必备 app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true })); // 响应首页get请求 app.get(&#39;/&#39;, function(req, res) { res.render(&#39;index&#39;, { title: &#39;首页&#39; }); }); app.get(&#39;/login&#39;, function(req, res) { res.render(&#39;login&#39;, { title: &#39;登录&#39;, user: req.session.user, page: &#39;login&#39; }); }); app.
+                  <a href="http://gopherday.com/post/2018-05-02-express/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/nodejs/">NodeJs</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-04-10-coupon/">
+                <h2 class="post-title">Coupon 商品优惠券 API</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>##coupon_temp 优惠券模板</p>
+<div class="highlight"><pre class="chroma">CREATE TABLE `coupon_temp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `utime` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39; ON UPDATE CURRENT_TIMESTAMP,
+  `start_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
+  `end_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
+  `type` tinyint(1) NOT NULL,
+  `metadata` varchar(11) DEFAULT NULL,
+  `amount_available` bigint(16) DEFAULT NULL,
+  `amount_off` bigint(16) DEFAULT NULL,
+  `percent_off` bigint(16) DEFAULT NULL,
+  `max_circulation` int(8) DEFAULT NULL,
+  `max_user_circulation` int(8) DEFAULT NULL,
+  `duration` bigint(16) DEFAULT NULL,
+  `name` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100003 DEFAULT CHARSET=utf8mb4;</pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2018-04-01-gin/">
                 <h2 class="post-title">Gin API 设计</h2>
 
@@ -317,153 +494,6 @@
                     #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
                   
                     #<a href="http://gopherday.com//tags/bigimg/">bigimg</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-27-go-nsq/">
-                <h2 class="post-title">golang nsq</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on November 27, 2017
-              </p>
-              <div class="post-entry">
-                
-                  安装 brew install nsq nsqd ： 负责接收消息，存储队列和将消息发送给客户端，nsqd 可以多机器部署，当你使用客户端向一个topic发送消息时，可以配置多个nsqd地址，消息会随机的 分配到各个nsqd上，nsqd优先把消息存储到内存channel中，当内存channel满了之后，则把消息写到磁盘文件中。他监听了两个tcp端口，一个用来服务客 户端，一个用来提供http的接口 ，nsqd 启动时置顶下nsqlookupd地址即可： 在一个 shell 中，运行 nsqlookupd:
-nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给客户端、nsqadmin提供nsqd地址与状态
-➜nsqlookupd [nsqlookupd] 2017/11/27 22:48:11.186029 nsqlookupd v1.0.0-compat (built w/go1.8) [nsqlookupd] 2017/11/27 22:48:11.186266 TCP: listening on [::]:4160 [nsqlookupd] 2017/11/27 22:48:11.186314 HTTP: listening on [::]:4161 再开启一个 shell，运行 nsqd:
-➜ bin ./nsqd --lookupd-tcp-address=127.0.0.1:4160 [nsqd] 2017/11/27 22:49:11.433686 nsqd v1.0.0-compat (built w/go1.8) [nsqd] 2017/11/27 22:49:11.433755 ID: 280 [nsqd] 2017/11/27 22:49:11.433797 NSQ: persisting topic/channel metadata to nsqd.dat [nsqd] 2017/11/27 22:49:11.
-                  <a href="http://gopherday.com/post/2017-11-27-go-nsq/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/">
-                <h2 class="post-title">golang etcd watch</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on November 21, 2017
-              </p>
-              <div class="post-entry">
-                
-                  package etcd import ( &#34;context&#34; &#34;encoding/json&#34; &#34;fmt&#34; &#34;LearnEtcd/tailf&#34; &#34;strings&#34; &#34;time&#34; &#34;github.com/astaxie/beego/logs&#34; etcd_client &#34;github.com/coreos/etcd/clientv3&#34; &#34;github.com/coreos/etcd/mvcc/mvccpb&#34; &#34;LearnEtcd/Ip&#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&#34;localhost:2379&#34;, &#34;localhost:22379&#34;, &#34;localhost:32379&#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&#34;connect etcd failed, err:&#34;, err) return } etcdClient = &amp;EtcdClient{ Client: cli, } if strings.
-                  <a href="http://gopherday.com/post/2017-11-21-go-etcd-watcd/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-08-10-go-kafka/">
-                <h2 class="post-title">golang kafka</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on August 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
-                  <a href="http://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-06-13-ariang-filemanerger/">
-                <h2 class="post-title">AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on June 15, 2017
-              </p>
-              <div class="post-entry">
-                
-                  简单介绍 Aria2 是一个命令行下运行、多协议、多来源下载工具，支持磁力链接、BT 种子、HTTP、FTP 等下载协议，当然因为它是命令行下载工具，所以我们想下载一个东西还需要去敲命令自然是不方便，于是就有一些人根据 Aria2 的 API 开发了一些在线管理面板，可以直接在网页上面添加管理任务。
-本教程介绍的是 AriaNg，Github 项目：https://github.com/mayswind/AriaNg
-Aria2 是一个后端 (服务端) 的程序，而 AriaNg 是一个前端 (HTML+JS 静态) 控制面板，不需要和 Aria2(后端 / 服务端)放在一个服务器或者设备中，你甚至可以只在服务器上面搭建 Aria2 后端，然后访问别人建好的 AriaNg 前端面板，也可以远程操作 Aria2 后端！
-centos6 安装Aria2 wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm yum -y install aria2 # 测试 aria2c -v  配置后端 # 创建Aria2配置文件夹 mkdir /root/.aria2 &amp;&amp; cd /root/.aria2 # 下载Aria2配置文件、DHT文件(BT有没有速度就靠这个) wget --no-check-certificate https://softs.fun/Other/Aria2/aria2.conf wget --no-check-certificate https://softs.fun/Other/Aria2/dht.dat # 创建一个空的 Aria2 下载任务保存文件 echo &#39;&#39; &gt; /root/.
-                  <a href="http://gopherday.com/post/2017-06-13-ariang-filemanerger/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/">
-                <h2 class="post-title">caddy nginx 对比</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  Caddy 是什么？ Caddy 是一个多功能的 HTTP web服务器，并且使用Let&rsquo;s Encrypt提供的免费证书，自动让网站升级到HTTPS
-Every Site on HTTPS Caddy is a general-purpose HTTP/2 web server that serves HTTPS by default. Fork Caddy On Github
-为什么要使用 Caddy 安全 Caddy 是一个默认使用https协议的web服务器 无依赖 Caddy 使用 Go 语言编写，编译好的二进制文件能够运行在任何支持Go语言的平台，不需要自己安装任何库。 使用简单 Caddy 的配置简单，不管你是新的web开发者，还是专业人士，都能够快速上手
-Caddy 一键安装脚本
-wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh  这里我们看一下官网的例子说明 Caddy Documentation  :2015 # Host: (any), Port: 2015 localhost # Host: localhost; Port: 2015 localhost:8080 # Host: localhost; Port: 8080 example.
-                  <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
                   
                 </span>
               
