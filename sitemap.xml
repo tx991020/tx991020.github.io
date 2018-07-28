@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://gopherday.com/post/2018-07-11-go-retry/</loc>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gopherday.com/post/2018-07-15-go-clockchain/</loc>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gopherday.com/post/2018-07-12-go-xlsx/</loc>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gopherday.com/post/2018-07-10-k8s/</loc>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/post/2018-05-21-gorm/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
@@ -304,7 +324,7 @@
   
   <url>
     <loc>http://gopherday.com/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -352,10 +372,6 @@
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-10-k8s/</loc>
-  </url>
-  
-  <url>
     <loc>http://gopherday.com/page/about/</loc>
   </url>
   
@@ -383,6 +399,12 @@
   </url>
   
   <url>
+    <loc>http://gopherday.com/tags/devops/</loc>
+    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/tags/elasticsearch/</loc>
     <lastmod>2017-03-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -402,7 +424,7 @@
   
   <url>
     <loc>http://gopherday.com/tags/golang/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -467,7 +489,7 @@
   
   <url>
     <loc>http://gopherday.com/post/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

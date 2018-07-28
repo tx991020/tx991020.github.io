@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>大王派我来搬砖</title>
-  <meta property="og:title" content="大王派我来搬砖" />
-  <meta name="twitter:title" content="大王派我来搬砖" />
-  <meta name="description" content=" Python Golang Java DevOps Programmer ">
-  <meta property="og:description" content=" Python Golang Java DevOps Programmer ">
-  <meta name="twitter:description" content=" Python Golang Java DevOps Programmer ">
+  <title>golang retry</title>
+  <meta property="og:title" content="golang retry" />
+  <meta name="twitter:title" content="golang retry" />
+  <meta name="description" content="package main import ( &#34;fmt&#34; &#34;io/ioutil&#34; &#34;net/http&#34; &#34;time&#34; &#34;github.com/Rican7/retry&#34; &#34;github.com/Rican7/retry/backoff&#34; &#34;github.com/Rican7/retry/strategy&#34; ) func main() { Retry() } func Retry() error { var response *http.Response fmt.Println(1,&amp;response) action := func(attempt uint) error { var err error response, err = http.Get(&#34;http://www.baidu.com&#34;) fmt.Println(2,&amp;response) if err != nil { fmt.Println(err.Error()) } return err } err := retry.Retry( action, strategy.Limit(5), strategy.Backoff(backoff.Fibonacci(2*time.Second)), ) if nil != err { fmt.Println(222, err) return err } data,_:= ioutil.ReadAll(response.Body) fmt.Println(string(data)) return nil }">
+  <meta property="og:description" content="package main import ( &#34;fmt&#34; &#34;io/ioutil&#34; &#34;net/http&#34; &#34;time&#34; &#34;github.com/Rican7/retry&#34; &#34;github.com/Rican7/retry/backoff&#34; &#34;github.com/Rican7/retry/strategy&#34; ) func main() { Retry() } func Retry() error { var response *http.Response fmt.Println(1,&amp;response) action := func(attempt uint) error { var err error response, err = http.Get(&#34;http://www.baidu.com&#34;) fmt.Println(2,&amp;response) if err != nil { fmt.Println(err.Error()) } return err } err := retry.Retry( action, strategy.Limit(5), strategy.Backoff(backoff.Fibonacci(2*time.Second)), ) if nil != err { fmt.Println(222, err) return err } data,_:= ioutil.ReadAll(response.Body) fmt.Println(string(data)) return nil }">
+  <meta name="twitter:description" content="package main import ( &#34;fmt&#34; &#34;io/ioutil&#34; &#34;net/http&#34; &#34;time&#34; &#34;github.com/Rican7/retry&#34; &#34;github.com/Rican7/retry/backoff&#34; …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/" />
+  <meta property="og:url" content="http://gopherday.com/post/2018-07-11-go-retry/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/" />
+  <link rel="canonical" href="http://gopherday.com/post/2018-07-11-go-retry/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -180,14 +180,23 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>大王派我来搬砖</h1>
+            <div class="post-heading">
+              <h1>golang retry</h1>
                 
-                  
-                    <hr class="small">
-                    <span class="page-subheading">Build a beautiful and simple website in minutes</span>
-                  
                 
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 11, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (72 words)
+  
+  
+</span>
+
+
                 
             </div>
           </div>
@@ -198,181 +207,78 @@
 
 
     
-  <div role="main" class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;io/ioutil&#34;</span>
+	<span class="s">&#34;net/http&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+
+	<span class="s">&#34;github.com/Rican7/retry&#34;</span>
+	<span class="s">&#34;github.com/Rican7/retry/backoff&#34;</span>
+	<span class="s">&#34;github.com/Rican7/retry/strategy&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">Retry</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Retry</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">response</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Response</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
+	<span class="nx">action</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+
+		<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&#34;http://www.baidu.com&#34;</span><span class="p">)</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
+		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">err</span>
+	<span class="p">}</span>
+
+	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">retry</span><span class="p">.</span><span class="nx">Retry</span><span class="p">(</span>
+		<span class="nx">action</span><span class="p">,</span>
+		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Backoff</span><span class="p">(</span><span class="nx">backoff</span><span class="p">.</span><span class="nx">Fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)),</span>
+	<span class="p">)</span>
+
+	<span class="k">if</span> <span class="kc">nil</span> <span class="o">!=</span> <span class="nx">err</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nx">err</span>
+
+	<span class="p">}</span>
+	<span class="nx">data</span><span class="p">,</span><span class="nx">_</span><span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+	<span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://gopherday.com/post/2018-07-15-go-clockchain/" data-toggle="tooltip" data-placement="top" title="golang 实现blockchain">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
         
-          <div class="well">
-            
-
-<h2 id="python-golang-java-devops-programmer">Python Golang Java DevOps Programmer</h2>
-
-          </div>
         
+      
 
-        <div class="posts-list">
-          
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-01-go-design-patterns/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-10-spark-dockerfile/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-05-10-rpcx/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-01-springboot-01/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-05-03-javascript/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-        </div>
-
-        
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="/page/7/">&larr; Newer Posts</a>
-              </li>
-            
-            
-          </ul>
-        
-      </div>
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

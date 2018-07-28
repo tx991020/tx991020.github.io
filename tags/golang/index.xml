@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Mon, 21 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang retry</title>
+      <link>http://gopherday.com/post/2018-07-11-go-retry/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-11-go-retry/</guid>
+      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;io/ioutil&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/Rican7/retry&amp;#34; &amp;#34;github.com/Rican7/retry/backoff&amp;#34; &amp;#34;github.com/Rican7/retry/strategy&amp;#34; ) func main() { Retry() } func Retry() error { var response *http.Response fmt.Println(1,&amp;amp;response) action := func(attempt uint) error { var err error response, err = http.Get(&amp;#34;http://www.baidu.com&amp;#34;) fmt.Println(2,&amp;amp;response) if err != nil { fmt.Println(err.Error()) } return err } err := retry.Retry( action, strategy.Limit(5), strategy.Backoff(backoff.Fibonacci(2*time.Second)), ) if nil != err { fmt.Println(222, err) return err } data,_:= ioutil.ReadAll(response.Body) fmt.Println(string(data)) return nil }</description>
+    </item>
+    
+    <item>
+      <title>golang 实现blockchain</title>
+      <link>http://gopherday.com/post/2018-07-15-go-clockchain/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-15-go-clockchain/</guid>
+      <description>package main import ( &amp;#34;crypto/sha256&amp;#34; &amp;#34;encoding/json&amp;#34; &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;io&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;sort&amp;#34; &amp;#34;strings&amp;#34; &amp;#34;time&amp;#34; &amp;#34;golang.org/x/net/websocket&amp;#34; ) const ( queryLatest = iota queryAll responseBlockchain ) var genesisBlock = &amp;amp;Block{ Index: 0, PreviousHash: &amp;#34;0&amp;#34;, Timestamp: 1465154705, Data: &amp;#34;my genesis block!!&amp;#34;, Hash: &amp;#34;816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7&amp;#34;, } var ( sockets []*websocket.Conn blockchain = []*Block{genesisBlock} httpAddr = flag.String(&amp;#34;api&amp;#34;, &amp;#34;:3001&amp;#34;, &amp;#34;api server address.&amp;#34;) p2pAddr = flag.String(&amp;#34;p2p&amp;#34;, &amp;#34;:6001&amp;#34;, &amp;#34;p2p server address.&amp;#34;) initialPeers = flag.String(&amp;#34;peers&amp;#34;, &amp;#34;ws://localhost:6001&amp;#34;, &amp;#34;initial peers&amp;#34;) ) type Block struct { Index int64 `json:&amp;#34;index&amp;#34;` PreviousHash string `json:&amp;#34;previousHash&amp;#34;` Timestamp int64 `json:&amp;#34;timestamp&amp;#34;` Data string `json:&amp;#34;data&amp;#34;` Hash string `json:&amp;#34;hash&amp;#34;` } func (b *Block) String() string { return fmt.</description>
+    </item>
+    
+    <item>
+      <title>golang 读写excel</title>
+      <link>http://gopherday.com/post/2018-07-12-go-xlsx/</link>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-12-go-xlsx/</guid>
+      <description>golang 读取excel package main import ( &amp;#34;fmt&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;errors&amp;#34; &amp;#34;strings&amp;#34; &amp;#34;gitee.com/johng/gf/g/os/gtime&amp;#34; &amp;#34;gitee.com/johng/gf/g/util/gregex&amp;#34; &amp;#34;github.com/GiterLab/aliyun-sms-go-sdk/dysms&amp;#34; &amp;#34;github.com/astaxie/beego/logs&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; &amp;#34;github.com/gin-gonic/gin/json&amp;#34; &amp;#34;github.com/golang/glog&amp;#34; &amp;#34;github.com/pborman/uuid&amp;#34; &amp;#34;github.com/tealeg/xlsx&amp;#34; ) var ( accessKeyId = &amp;#34;&amp;#34; accessKeySecret = &amp;#34;&amp;#34; signName = &amp;#34;&amp;#34; templateParam = make(map[string]string) failList = []string{} ) func main() { r := gin.Default() r.Static(&amp;#34;/&amp;#34;, &amp;#34;./static&amp;#34;) r.POST(&amp;#34;/upload&amp;#34;, Upload) r.Run(&amp;#34;:6000&amp;#34;) } func Upload(c *gin.Context) { templatecode := c.PostForm(&amp;#34;templatecode&amp;#34;) if templatecode == &amp;#34;&amp;#34; { return } file, err := c.FormFile(&amp;#34;file&amp;#34;) if err !</description>
+    </item>
     
     <item>
       <title>GORM 高级用法</title>

@@ -40,6 +40,15 @@
     </item>
     
     <item>
+      <title>Devops</title>
+      <link>http://gopherday.com/tags/devops/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Elasticsearch</title>
       <link>http://gopherday.com/tags/elasticsearch/</link>
       <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
@@ -69,7 +78,7 @@
     <item>
       <title>Golang</title>
       <link>http://gopherday.com/tags/golang/</link>
-      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/tags/golang/</guid>
       <description></description>

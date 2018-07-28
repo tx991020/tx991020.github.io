@@ -184,6 +184,122 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/">
+                <h2 class="post-title">To be</h2>
+
+                
+                  <h3 class="post-subtitle">
+                    ... or not to be?
+                  </h3>
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on February 13, 2015
+              </p>
+              <div class="post-entry">
+                
+                  When he himself might his quietus make With a bare bodkin? Who would fardels bear, To grunt and sweat under a weary life, But that the dread of something after death, The undiscovered country, from whose bourn No traveller returns, puzzles the will, And makes us rather bear those ills we have Than fly to others that we know not of? Thus conscience does make cowards of us all, And thus the native hue of resolution Is sicklied o&rsquo;er with the pale cast of thought, And enterprise of great pitch and moment With this regard their currents turn awry And lose the name of action.
+                  <a href="http://gopherday.com/post/2015-02-13-hamlet-monologue/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2014-07-10-mysql-setup/">
+                <h2 class="post-title">mysql 安装配置</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 10, 2014
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/325ba0e62a97f0dca86a549f71ec4a49.png" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2014.05-10-python-retring/">
+                <h2 class="post-title">python retrying 重试装饰器</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 10, 2014
+              </p>
+              <div class="post-entry">
+                
+                  python retrying chache def login_required(view_func): &#34;&#34;&#34;检验用户的登录状态&#34;&#34;&#34; @wraps(view_func) # 不改变原有函数的签名文档 def wrapper(*args, **kwargs): user_id = session.get(&#34;user_id&#34;) if user_id is not None: # 表示用户已经登录 # 使用g对象保存user_id，在视图函数中可以直接使用 g.user_id = user_id return view_func(*args, **kwargs) else: # 用户未登录 resp = { &#34;errno&#34;: RET.SESSIONERR, &#34;errmsg&#34;: &#34;用户未登录&#34; } return jsonify(resp) return wrapper # 构建装饰器 def wraps(func): @functools.wraps(func) def decorator( *args, **kwargs): print(&#34;开始验证&#34;) print(&#34;%scalled&#34; % func.__name__) result = func(*args, **kwargs) print(&#34;验证完毕&#34;) print(&#34;%send&#34; % func.__name__) return result return decorator @wraps def connnet_db(): print(&#34;searching&#34;) def singleton(fun): instances = {} def decorator(*args,**kwargs): if fun not in instances: print(111,fun) instances[fun] = fun(*args,**kwargs) return instances[fun] else: print(&#34;已存在&#34;) return decorator def singleton(fun): cache = {} def decorator(*args,**kwargs): if fun not in cache: print(111,fun) cache[fun] = fun(*args,**kwargs) return cache[fun] else: print(&#34;已存在&#34;) return decorator @singleton def fib(i): if i &lt; 2: return 1 return fib(i-1) + fib(i-2) if __name__ == &#39;__main__&#39;: for i in range(10): test() import requests from tenacity import * ## 爬虫专用 def scraping(url): r = requests.
+                  <a href="http://gopherday.com/post/2014.05-10-python-retring/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2014-04-10-mac/">
+                <h2 class="post-title">vagrant 入门</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2014
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<h2 id="mac系统如何显示隐藏文件">Mac系统如何显示隐藏文件？</h2>
+
+<p>在终端（Terminal）输入如下命令，即可显示隐藏文件和文件夹</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">显示全部文件
+defaults write com.apple.finder AppleShowAllFiles -bool true
+osascript -e &#39;tell application &#34;Finder&#34; to quit&#39;
+
+不显示全部文件
+defaults write com.apple.finder AppleShowAllFiles -bool false
+osascript -e &#39;tell application &#34;Finder&#34; to quit&#39;</code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/mac/">Mac</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-05-10-beego-01/">
                 <h2 class="post-title"></h2>
 
@@ -285,86 +401,6 @@
           
             <article class="post-preview">
               <a href="http://gopherday.com/post/2017-03-01-go-context/">
-                <h2 class="post-title"></h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on January 1, 0001
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-01-go-design-patterns/">
-                <h2 class="post-title"></h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on January 1, 0001
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-10-spark-dockerfile/">
-                <h2 class="post-title"></h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on January 1, 0001
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-05-10-rpcx/">
-                <h2 class="post-title"></h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on January 1, 0001
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-01-springboot-01/">
                 <h2 class="post-title"></h2>
 
                 

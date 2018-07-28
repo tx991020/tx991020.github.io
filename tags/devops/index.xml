@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on 大王派我来搬砖</title>
+    <link>http://gopherday.com/tags/devops/</link>
+    <description>Recent content in Devops on 大王派我来搬砖</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
+    <webMaster>tx991020@gmail.com (andy wu)</webMaster>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://gopherday.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s</title>
+      <link>http://gopherday.com/post/2018-07-10-k8s/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-10-k8s/</guid>
+      <description> mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;amp;&amp;amp; chmod +x minikube &amp;amp;&amp;amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard</description>
+    </item>
+    
+  </channel>
+</rss>

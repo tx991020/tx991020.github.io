@@ -184,6 +184,128 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/">
+                <h2 class="post-title">APScheduler</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  定时任务框架APScheduler学习详解 APScheduler简介
+APScheduler基于Quartz的一个Python定时任务框架，实现了Quartz的所有功能，使用起来十分方便。提供了基于日期、固定时间间隔以及crontab类型 的任务，并且可以持久化任务。基于这些功能，我们可以很方便的实现一个python定时任务系统。
+APScheduler有四种组成部分： 触发器(trigger)包含调度逻辑，每一个作业有它自己的触发器，用于决定接下来哪一个作业会运行。除了他们自己初始配置意外，触发器完全是无状态的。
+作业存储(job store)存储被调度的作业，默认的作业存储是简单地把作业保存在内存中，其他的作业存储是将作业保存在数据库中。一个作业的数据讲在保 存在持久化作业存储时被序列化，并在加载时被反序列化。调度器不能分享同一个作业存储。
+执行器(executor)处理作业的运行，他们通常通过在作业中提交制定的可调用对象到一个线程或者进城池来进行。当作业完成时，执行器将会通知调度器。
+调度器(scheduler)是其他的组成部分。你通常在应用只有一个调度器，应用的开发者通常不会直接处理作业存储、调度器和触发器，相反，调度器提供了 处理这些的合适的接口。配置作业存储和执行器可以在调度器中完成，例如添加、修改和移除作业。　简单应用：
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched = BlockingScheduler() sched.add_job(my_job, &lsquo;interval&rsquo;, seconds=5) sched.start() 上面的例子表示每隔5s执行一次my_job函数，输出当前时间信息
+操作作业 1. 添加作业 上面是通过add_job()来添加作业，另外还有一种方式是通过scheduled_job()修饰器来修饰函数
+import time from apscheduler.schedulers.blocking import BlockingScheduler
+sched = BlockingScheduler()
+@sched.scheduled_job(&lsquo;interval&rsquo;, seconds=5) def my_job(): print time.strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;, time.localtime(time.time()))
+sched.start() 2. 移除作业
+job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() ###如果有多个任务序列的话可以给每个任务设置ID号，可以根据ID号选择清除对象，且remove放到start前才有效 sched.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2, id=&lsquo;my_job_id&rsquo;) sched.remove_job(&lsquo;my_job_id&rsquo;) 3.
+                  <a href="http://gopherday.com/post/2015-06-10-python-apscheduler/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-golang-set/">
+                <h2 class="post-title">golang set</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;sync&#34; ) type IntSet struct { mu sync.RWMutex m map[int]struct{} } func NewIntSet() *IntSet { return &amp;IntSet{m: make(map[int]struct{})} } // 给定回调函数对原始内容进行遍历 func (this *IntSet) Iterator(f func (v int)) { this.mu.RLock() for k, _ := range this.m { f(k) } this.mu.RUnlock() } // 设置键 func (this *IntSet) Add(item int) *IntSet { this.mu.Lock() this.m[item] = struct{}{} this.mu.Unlock() return this } // 批量添加设置键 func (this *IntSet) BatchAdd(items []int) *IntSet { this.
+                  <a href="http://gopherday.com/post/2016-11-20-golang-set/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-11-20-python-pandas01/">
+                <h2 class="post-title">pandas to dict</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  python pandas to dict import pandas as pd import json b = [{&#39;source&#39;: &#39;baidu&#39;, &#39;num&#39;: 61}, {&#39;source&#39;: &#39;cctv&#39;, &#39;num&#39;: 14}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 3}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}, {&#39;source&#39;: &#39;cntv&#39;, &#39;num&#39;: 1}] if __name__ == &#39;__main__&#39;: df =pd.DataFrame(b) c = df[&#34;num&#34;].groupby(df[&#39;source&#39;]).sum()[:5] gg = pd.DataFrame(c) pandas_to_dict = gg.to_dict() pandas_to_json = gg.to_json() x = {&#39;baidu&#39;: 61, &#39;cctv&#39;: 14, &#39;cntv&#39;: 5} y = {&#34;微信&#34;: 0, &#34;微博&#34;: 0,&#34;头条&#34;: 0} #合并两个字典 z = dict(x,**y) print(z) q= [] dd ={&#39;微信&#39;: 40, &#39;微博&#39;: 0, &#39;头条&#39;: 156, &#39;baidu&#39;: 610, &#39;cntv&#39;: 10} for v in dd: q.
+                  <a href="http://gopherday.com/post/2016-11-20-python-pandas01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/pandas/">pandas</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/">
+                <h2 class="post-title">爬虫 pyquery goquery css匹配语法 智障使用模板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on November 20, 2016
+              </p>
+              <div class="post-entry">
+                
+                  pyquery 用法模板 主要分为 1类匹配 写法 doc(.class)， 2 id 匹配 写法doc(#id), 3标签匹配 A B=&#34;C&#34; 写法doc(A[B=&#34;C&#34;]) 4值匹配 A=&#34;B&#34; 写法 B = doc(&#34;xxx&#34;).attr(&#34;A&#34;) 或B = doc(&#34;xxx&#34;).attr.A 5遍历相同类型。 for x in doc(&#34;yyyy&#34;).items() import requests from pyquery import PyQuery as pq r = requests.get(&#34;http://video.infolz.com/&#34;) r.encoding=&#34;utf-8&#34; r1 = requests.get(&#34;http://www.infolz.com/2016/1213/303.shtml&#34;) &#34;&#34;&#34; &lt;object class=&#34;cmstopVideo&#34; width=&#34;650&#34; height=&#34;519&#34; data=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34; type=&#34;application/x-shockwave-flash&#34;&gt;&lt;param name=&#34;src&#34; value=&#34;https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&amp;v=20161117&amp;vid=v0354ryo54j&amp;auto=0&#34;/&gt;&lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;allowscriptaccess&#34; value=&#34;true&#34;/&gt;&lt;param name=&#34;wmode&#34; value=&#34;Transparent&#34;/&gt;&lt;/object&gt; &#34;&#34;&#34; 1单层查找 a &gt; b 横跨多层查找用空格 a b 2选择类 .
+                  <a href="http://gopherday.com/post/2016-09-11-pyquery-goquery/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/utils/">utils</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/">
                 <h2 class="post-title">Gin&#43;Mysql简单的Restful风格的API</h2>
 
@@ -353,156 +475,6 @@
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/ansible/">ansible</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/">
-                <h2 class="post-title">alfred&#43;qiniu 在markdown中愉快的贴图</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on June 5, 2016
-              </p>
-              <div class="post-entry">
-                
-                  
-
-<p>qiniu-image-tool是一个mac上提升markdown贴图体验的实用小工具，可以自定义快捷键，一键上传图片或截图至七牛云，获取图片的markdown引用至
-剪贴板，并自动粘贴到当前编辑器</p>
-
-<h2 id="安装qshell">安装qshell</h2>
-
-<p>qshell是一个基于七牛API服务的命令行工具，qiniu-image-tool即使用脚本执行qshell指令实现账户信息设置及文件的上传操作。官方文档对qshell的
-安装和使用有非常详细的教程，这里不再赘述。为了防止出现异常情况，这里强制要求将qshell_darwin_amd64文件重命名为qshell并移至
-usr/local/bin目录下。安装完成后在任意目录执行/usr/local/bin/qshell -v如果显示当前qshell版本号表明安装成功</p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/b0968e86037c69ffb320882e6d9f5005.jpg" alt="" /></p>
-
-<h2 id="配置workflow环境变量">配置workflow环境变量</h2>
-
-<p>点击上图标出的环境变量图标，可以看到下图所示的四个配置项
-<img src="http://oq1xuulg6.bkt.clouddn.com/ecc4639f12109dcbdb5bee530b231846.jpg" alt="" />
-这四个配置项都与七牛账号相关：
-AccessKey &amp; SecretKey
-这是qshell操作个人账号的账号凭证，登陆七牛账号后在个人面板-&gt;密钥管理中查看，或者直接访问<a href="https://portal.qiniu.com/user/key查看。">https://portal.qiniu.com/user/key查看。</a>
-bucket &amp; bucketDomain
-在对象存储-&gt;存储空间列表中选择或新建一个存储空间即bucket，点击该bucket在右边看到一个测试域名，该域名即bucketDomain是图片上传后的访问域名
-<img src="http://oq1xuulg6.bkt.clouddn.com/947210aba161fd1e9d0a4e3ef2a31967.gif" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/alfred/">alfred</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-03-08-code-sample/">
-                <h2 class="post-title">Code Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using Hugo or Pygments
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 8, 2016
-              </p>
-              <div class="post-entry">
-                
-                  <p>The following are two code samples using syntax highlighting.</p>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2016-03-08-code-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2016-02-15-golang-redispool/">
-                <h2 class="post-title">golang redispool</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 15, 2016
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;github.com/garyburd/redigo/redis&#34; ) var pool *redis.Pool func init() { pool = &amp;redis.Pool{ MaxIdle: 16, MaxActive: 0, IdleTimeout: 300, Dial: func() (redis.Conn, error) { return redis.Dial(&#34;tcp&#34;, &#34;localhost:6379&#34;) }, } } func main() { c := pool.Get() defer c.Close() _, err := c.Do(&#34;Set&#34;, &#34;abc&#34;, 100) if err != nil { fmt.Println(err) return } r, err := redis.Int(c.Do(&#34;Get&#34;, &#34;abc&#34;)) if err != nil { fmt.Println(&#34;get abc failed,&#34;, err) return } fmt.
-                  <a href="http://gopherday.com/post/2016-02-15-golang-redispool/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2015-07-14-python-elastic-utils/">
-                <h2 class="post-title">python elasticsearch</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on July 14, 2015
-              </p>
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">Elasticsearch</span>
-<span class="nx">from</span> <span class="nx">elasticsearch</span> <span class="k">import</span> <span class="nx">helpers</span>
-
-<span class="k">class</span> <span class="nx">ESutill</span><span class="p">()</span><span class="o">:</span>
-    <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span><span class="nx">hosts</span><span class="p">,</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="p">)</span><span class="o">:</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">index</span> <span class="o">=</span> <span class="nx">index</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">body</span> <span class="o">=</span> <span class="nx">body</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span> <span class="o">=</span> <span class="nx">doc_type</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span> <span class="o">=</span> <span class="nx">hosts</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">es</span> <span class="o">=</span> <span class="nx">Elasticsearch</span><span class="p">(</span><span class="nx">hosts</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">hosts</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nx">not</span> <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span><span class="o">:</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">)</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">es</span><span class="p">.</span><span class="nx">indices</span><span class="p">.</span><span class="nx">put_mapping</span><span class="p">(</span><span class="nx">index</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">index</span><span class="p">,</span><span class="nx">doc_type</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">doc_type</span><span class="p">,</span><span class="nx">body</span><span class="o">=</span><span class="nx">self</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">python</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
                   
                 </span>
               

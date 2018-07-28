@@ -184,6 +184,124 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-05-10-rclone/">
+                <h2 class="post-title">使用 rclone 将文件同步至 Google Dirve</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  首先是下载文件 yum install unzip wget -y wget -O https://downloads.rclone.org/rclone-current-linux-amd64.zip unzip rclone-current-linux-amd64.zip cd rclone-*-linux-amd64 然后复制文件到相关路径 cp rclone /usr/bin/ chown root:root /usr/bin/rclone chmod 755 /usr/bin/rclone 新建一个配置 rclone config n) New remote d) Delete remote q) Quit config e/n/d/q&gt; n name&gt; google(你的配置名称,此处随意填写但之后需要用到) Type of storage to configure. Choose a number from below, or type in your own value 1 / Amazon Drive \ &#34;amazon cloud drive&#34; 2 / Amazon S3 (also Dreamhost, Ceph, Minio) \ &#34;s3&#34; 3 / Backblaze B2 \ &#34;b2&#34; 4 / Dropbox \ &#34;dropbox&#34; 5 / Encrypt/Decrypt a remote \ &#34;crypt&#34; 6 / Google Cloud Storage (this is not Google Drive) \ &#34;google cloud storage&#34; 7 / Google Drive \ &#34;drive&#34; 8 / Hubic \ &#34;hubic&#34; 9 / Local Disk \ &#34;local&#34; 10 / Microsoft OneDrive \ &#34;onedrive&#34; 11 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH) \ &#34;swift&#34; 12 / SSH/SFTP Connection \ &#34;sftp&#34; 13 / Yandex Disk \ &#34;yandex&#34; Storage&gt; 7(根据网盘类型选择Google Dirve) Google Application Client Id - leave blank normally.
+                  <a href="http://gopherday.com/post/2017-05-10-rclone/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-04-10-baota-linux/">
+                <h2 class="post-title">宝塔linux 控制面板</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-24%2015.43.01.png" alt="" /></p>
+
+<p>Centos安装命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;&amp; sh install.sh</code></pre></div>
+<p>Ubuntu/Deepin安装命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh</code></pre></div>
+<p>重启</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">service bt restart</code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/">
+                <h2 class="post-title">spark dataframe</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 23, 2017
+              </p>
+              <div class="post-entry">
+                
+                  from pyspark.sql import SparkSession from pyspark.sql import Row spark = SparkSession.builder.appName(&#39;test&#39;).getOrCreate() sc = spark.sparkContext spark.conf.set(&#34;spark.sql.shuffle.partitions&#34;, 6) l = [(&#39;Ankit&#39;,25),(&#39;Jalfaizy&#39;,22),(&#39;saurabh&#39;,20),(&#39;Bala&#39;,26)] rdd = sc.parallelize(l) people = rdd.map(lambda x: Row(name=x[0], age=int(x[1]))) schemaPeople = spark.createDataFrame(people) df = spark.read.format(&#34;csv&#34;). \ option(&#34;header&#34;, &#34;true&#34;) \ .load(&#34;iris.csv&#34;) df.printSchema() df.show(10) df.count() df.columns df.withColumn(&#39;newWidth&#39;,df.SepalWidth * 2).show() df.drop(&#39;Name&#39;).show() df.describe().show() df.describe(&#39;Name&#39;).show() #分类变量 df.select(&#39;Name&#39;,&#39;SepalLength&#39;).show() df.select(&#39;Name&#39;).distinct().count() ### 分组统计 groupby(colname).agg({&#39;col&#39;:&#39;fun&#39;,&#39;col2&#39;:&#39;fun2&#39;}) df.groupby(&#39;Name&#39;).agg({&#39;SepalWidth&#39;:&#39;mean&#39;,&#39;SepalLength&#39;:&#39;max&#39;}).show() ### 自定义的汇总方法 import pyspark.sql.functions as fn df.agg(fn.count(&#39;SepalWidth&#39;).alias(&#39;width_count&#39;), fn.countDistinct(&#39;id&#39;).alias(&#39;distinct_id_count&#39;)).collect() ### 数据集拆成两部分 trainDF, testDF = df.randomSplit([0.6, 0.
+                  <a href="http://gopherday.com/post/2017-03-24-spark-dataframe/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-03-23-spark-01/">
+                <h2 class="post-title">spark2.x</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on March 23, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/7ce314c19f9afe24282b204a1f11c2af.jpg" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/c7a3e377fba2eebfdd1a532dab5f0131.jpg" alt="" /></p>
+
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/d4db290b81c346e429184d717e1239df.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/">
                 <h2 class="post-title">Photoswipe Gallery Sample</h2>
 
@@ -404,139 +522,6 @@ etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-07-bigimg-sample/">
-                <h2 class="post-title">Big Image Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using Multiple Images
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 7, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>The image banners at the top of the page are refered to as &ldquo;bigimg&rdquo; in this theme. They are optional, and one more more can be specified. If more than one is specified, the images rotate every 10 seconds. In the front matter, bigimgs are specified using an array of hashes.</p>
-
-<p></p>
-                  <a href="http://gopherday.com/post/2017-03-07-bigimg-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/bigimg/">bigimg</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-05-math-sample/">
-                <h2 class="post-title">Math Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using KaTeX
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 5, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p>KaTeX can be used to generate complex math formulas server-side.</p>
-
-<p>$$
-\phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots
-$$</p>
-
-<p>Additional details can be found on <a href="https://github.com/Khan/KaTeX">GitHub</a> or on the <a href="http://tiddlywiki.com/plugins/tiddlywiki/katex/">Wiki</a>.
-</p>
-                  <a href="http://gopherday.com/post/2017-03-05-math-sample/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/math/">math</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-02-15-spark-basic/">
-                <h2 class="post-title">spark basic</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 15, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-23%2014.18.31.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-02-12-spark-pic/">
-                <h2 class="post-title">spark sql优化原理图</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on February 12, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/c1d3a02874639319ec93852194a547da.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/c0803e4f5be0977d25c3309980a524e5.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/680c5358a8f527282d833f5623d75527.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/spark/">spark</a>&nbsp;
                   
                 </span>
               

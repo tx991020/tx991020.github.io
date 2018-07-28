@@ -184,6 +184,166 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-11-go-retry/">
+                <h2 class="post-title">golang retry</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 11, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="s">&#34;io/ioutil&#34;</span>
+	<span class="s">&#34;net/http&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+
+	<span class="s">&#34;github.com/Rican7/retry&#34;</span>
+	<span class="s">&#34;github.com/Rican7/retry/backoff&#34;</span>
+	<span class="s">&#34;github.com/Rican7/retry/strategy&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">Retry</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">Retry</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">response</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Response</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
+	<span class="nx">action</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+		<span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
+
+		<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&#34;http://www.baidu.com&#34;</span><span class="p">)</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
+		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">err</span>
+	<span class="p">}</span>
+
+	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">retry</span><span class="p">.</span><span class="nx">Retry</span><span class="p">(</span>
+		<span class="nx">action</span><span class="p">,</span>
+		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Backoff</span><span class="p">(</span><span class="nx">backoff</span><span class="p">.</span><span class="nx">Fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)),</span>
+	<span class="p">)</span>
+
+	<span class="k">if</span> <span class="kc">nil</span> <span class="o">!=</span> <span class="nx">err</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+		<span class="k">return</span> <span class="nx">err</span>
+
+	<span class="p">}</span>
+	<span class="nx">data</span><span class="p">,</span><span class="nx">_</span><span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+	<span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-15-go-clockchain/">
+                <h2 class="post-title">golang 实现blockchain</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 11, 2018
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;crypto/sha256&#34; &#34;encoding/json&#34; &#34;flag&#34; &#34;fmt&#34; &#34;io&#34; &#34;log&#34; &#34;net/http&#34; &#34;sort&#34; &#34;strings&#34; &#34;time&#34; &#34;golang.org/x/net/websocket&#34; ) const ( queryLatest = iota queryAll responseBlockchain ) var genesisBlock = &amp;Block{ Index: 0, PreviousHash: &#34;0&#34;, Timestamp: 1465154705, Data: &#34;my genesis block!!&#34;, Hash: &#34;816534932c2b7154836da6afc367695e6337db8a921823784c14378abed4f7d7&#34;, } var ( sockets []*websocket.Conn blockchain = []*Block{genesisBlock} httpAddr = flag.String(&#34;api&#34;, &#34;:3001&#34;, &#34;api server address.&#34;) p2pAddr = flag.String(&#34;p2p&#34;, &#34;:6001&#34;, &#34;p2p server address.&#34;) initialPeers = flag.String(&#34;peers&#34;, &#34;ws://localhost:6001&#34;, &#34;initial peers&#34;) ) type Block struct { Index int64 `json:&#34;index&#34;` PreviousHash string `json:&#34;previousHash&#34;` Timestamp int64 `json:&#34;timestamp&#34;` Data string `json:&#34;data&#34;` Hash string `json:&#34;hash&#34;` } func (b *Block) String() string { return fmt.
+                  <a href="http://gopherday.com/post/2018-07-15-go-clockchain/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-12-go-xlsx/">
+                <h2 class="post-title">golang 读写excel</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 11, 2018
+              </p>
+              <div class="post-entry">
+                
+                  golang 读取excel package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;errors&#34; &#34;strings&#34; &#34;gitee.com/johng/gf/g/os/gtime&#34; &#34;gitee.com/johng/gf/g/util/gregex&#34; &#34;github.com/GiterLab/aliyun-sms-go-sdk/dysms&#34; &#34;github.com/astaxie/beego/logs&#34; &#34;github.com/gin-gonic/gin&#34; &#34;github.com/gin-gonic/gin/json&#34; &#34;github.com/golang/glog&#34; &#34;github.com/pborman/uuid&#34; &#34;github.com/tealeg/xlsx&#34; ) var ( accessKeyId = &#34;&#34; accessKeySecret = &#34;&#34; signName = &#34;&#34; templateParam = make(map[string]string) failList = []string{} ) func main() { r := gin.Default() r.Static(&#34;/&#34;, &#34;./static&#34;) r.POST(&#34;/upload&#34;, Upload) r.Run(&#34;:6000&#34;) } func Upload(c *gin.Context) { templatecode := c.PostForm(&#34;templatecode&#34;) if templatecode == &#34;&#34; { return } file, err := c.FormFile(&#34;file&#34;) if err !
+                  <a href="http://gopherday.com/post/2018-07-12-go-xlsx/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-10-k8s/">
+                <h2 class="post-title">k8s</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 10, 2018
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<h2 id="mac-安装minikube">mac 安装minikube</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install kubectl
+
+curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
+
+minikube start --registry-mirror=https://registry.docker-cn.com
+
+minikube dashboard</code></pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/devops/">DevOps</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2018-05-21-gorm/">
                 <h2 class="post-title">GORM 高级用法</h2>
 
@@ -381,119 +541,6 @@
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-03-27-order-api/">
-                <h2 class="post-title">商品订单系统API</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 27, 2018
-              </p>
-              <div class="post-entry">
-                
-                  订单 Order{ Amount:	integer ($int64) 商品总金额 = 商品单价 * 购买的商品数量 （填购买几件，1，2，3等等） CancelUrl:	string 取消订单后的回调url（不用填） Channel:	string 订单渠道 alipay, wx_pub_qr 微信公众号扫码支付（必填，当前支持alipay或者wx_pub_qr） Ctime:	string ($string) 订单创建时间 默认自动生成当前时间（不用填） Id:	integer ($int64) 订单编号主键自增 （不用填） PingId:	integer ($int64) ping++ 自动生成的订单编号 （不用填） PingInfo:	string ping++ 自动生成的 支付凭证信息 （不用填） Price:	integer ($int64) 商品单价 （必填） ProductId:	integer ($int64) 商品id (必填) Status:	string 订单状态 待支付:&#39;CREATED&#39;,已支付:&#39;PAID&#39;,支付失败:&#39;FAIL&#39;,存在退款:&#39;REFUNDED&#39;,订单已取消&#39;CANCELED&#39; （不用填，默认是待支付，服务端根据ping++的通知 更改状态） SuccessUrl:	string 支付成功的回调url(不用填) UserId:	integer ($int64) 用户id(必填) Utime:	string ($string) 订单更改时间(默认自动生成当前时间，不用填) } 商品 Product{ Avatar:	string 商品图片(必填，例如http://img.
-                  <a href="http://gopherday.com/post/2018-03-27-order-api/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-03-16-job-interview-go/">
-                <h2 class="post-title">golang 面试填坑</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 16, 2018
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">Python</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-03-16-job-interview-python/">
-                <h2 class="post-title">python 面试填坑</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 16, 2018
-              </p>
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/python/">Python</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-03-08-new-media/">
-                <h2 class="post-title">Big Image Sample</h2>
-
-                
-                  <h3 class="post-subtitle">
-                    Using Multiple Images
-                  </h3>
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 8, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/b94b776456ce12e753480e28076e21cb.jpg" alt="" />
-<img src="http://oq1xuulg6.bkt.clouddn.com/ba3db20603f2201db5a67771255d51ab.jpg" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/example/">example</a>&nbsp;
-                  
-                    #<a href="http://gopherday.com//tags/bigimg/">bigimg</a>&nbsp;
                   
                 </span>
               
