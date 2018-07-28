@@ -8,9 +8,11 @@
   <title>k8s</title>
   <meta property="og:title" content="k8s" />
   <meta name="twitter:title" content="k8s" />
-  <meta name="description" content=" mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard">
-  <meta property="og:description" content=" mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard">
-  <meta name="twitter:description" content=" mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv …">
+  <meta name="description" content="mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard kubectl cluster-info 查看当前集群信息
+我们可以通过minikube ssh进到虚机里，然后看看是否有一些container运行起来了 ➜ ~ minikube ssh _ _ _ _ ( ) ( ) ___ ___ (_) ___ (_)| |/&#39;) _ _ | |_ __ /&#39; _ ` _ `\| |/&#39; _ `\| || , &lt; ( ) ( )| &#39;_`\ /&#39;__`\ | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )( ___/ (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;(_,__/&#39;`\____) $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES c1aec3464788 gcr.">
+  <meta property="og:description" content="mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard kubectl cluster-info 查看当前集群信息
+我们可以通过minikube ssh进到虚机里，然后看看是否有一些container运行起来了 ➜ ~ minikube ssh _ _ _ _ ( ) ( ) ___ ___ (_) ___ (_)| |/&#39;) _ _ | |_ __ /&#39; _ ` _ `\| |/&#39; _ `\| || , &lt; ( ) ( )| &#39;_`\ /&#39;__`\ | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )( ___/ (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;(_,__/&#39;`\____) $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES c1aec3464788 gcr.">
+  <meta name="twitter:description" content="mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod &#43;x minikube &amp;&amp; sudo mv …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -191,7 +193,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (23 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (210 words)
   
   
 </span>
@@ -221,6 +223,35 @@ curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releas
 minikube start --registry-mirror=https://registry.docker-cn.com
 
 minikube dashboard</code></pre></div>
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/ccba729229d204cf4599765958488ac8.jpg" alt="" /></p>
+
+<p>kubectl cluster-info  查看当前集群信息</p>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">我们可以通过minikube ssh进到虚机里，然后看看是否有一些container运行起来了
+
+
+➜  ~ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/&#39;)  _   _ | |_      __
+/&#39; _ ` _ `\| |/&#39; _ `\| || , &lt;  ( ) ( )| &#39;_`\  /&#39;__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;(_,__/&#39;`\____)
+
+$ docker ps
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS               NAMES
+c1aec3464788        gcr.io/k8s-minikube/storage-provisioner    &#34;/storage-provisioner&#34;   8 minutes ago       Up 8 minutes                            k8s_storage-provisioner_storage-provisioner_kube-system_05db116c-236a-11e8-985b-08002709a6e3_0
+f36a4455bc73        fed89e8b4248                               &#34;/sidecar --v=2 --...&#34;   8 minutes ago       Up 8 minutes                            k8s_sidecar_kube-dns-54cccfbdf8-c7k5b_kube-system_0649fdef-236a-11e8-985b-08002709a6e3_0
+e49e279c5717        459944ce8cc4                               &#34;/dnsmasq-nanny -v...&#34;   8 minutes ago       Up 8 minutes                            k8s_dnsmasq_kube-dns-54cccfbdf8-c7k5b_kube-system_0649fdef-236a-11e8-985b-08002709a6e3_0
+1ec9842ec31d        512cd7425a73                               &#34;/kube-dns --domai...&#34;   8 minutes ago       Up 8 minutes                            k8s_kubedns_kube-dns-54cccfbdf8-c7k5b_kube-system_0649fdef-236a-11e8-985b-08002709a6e3_0
+805346db62f0        e94d2f21bc0c                               &#34;/dashboard --inse...&#34;   8 minutes ago       Up 8 minutes                            k8s_kubernetes-dashboard_kubernetes-dashboard-77d8b98585-ghb5p_kube-system_0630dbdf-236a-11e8-985b-08002709a6e3_0
+2c3edf77349e        gcr.io/google_containers/pause-amd64:3.0   &#34;/pause&#34;                 8 minutes ago       Up 8 minutes                            k8s_POD_kube-dns-54cccfbdf8-c7k5b_kube-system_0649fdef-236a-11e8-985b-08002709a6e3_0
+19313f1076da        gcr.io/google_containers/pause-amd64:3.0   &#34;/pause&#34;                 8 minutes ago       Up 8 minutes                            k8s_POD_kubernetes-dashboard-77d8b98585-ghb5p_kube-system_0630dbdf-236a-11e8-985b-08002709a6e3_0
+a340e072f095        gcr.io/google_containers/pause-amd64:3.0   &#34;/pause&#34;                 8 minutes ago       Up 8 minutes                            k8s_POD_storage-provisioner_kube-system_05db116c-236a-11e8-985b-08002709a6e3_0
+dab3d03f880b        d166ffa9201a                               &#34;/opt/kube-addons.sh&#34;    8 minutes ago       Up 8 minutes                            k8s_kube-addon-manager_kube-addon-manager-minikube_kube-system_c4c3188325a93a2d7fb1714e1abf1259_0
+75c8fe4570a1        gcr.io/google_containers/pause-amd64:3.0   &#34;/pause&#34;                 8 minutes ago       Up 8 minutes                            k8s_POD_kube-addon-manager-minikube_kube-system_c4c3188325a93a2d7fb1714e1abf1259_0
+
+
+然后退出来，在本地运行`minikube dashboard` 会在本地弹出浏览器，就是Kubernetes的dashboard，那基本上恭喜您，安装成功了。</code></pre></div>
       </article>
 
       

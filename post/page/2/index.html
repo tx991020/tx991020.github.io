@@ -184,6 +184,76 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-04-10-coupon/">
+                <h2 class="post-title">Coupon 商品优惠券 API</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <p>##coupon_temp 优惠券模板</p>
+<div class="highlight"><pre class="chroma">CREATE TABLE `coupon_temp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `utime` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39; ON UPDATE CURRENT_TIMESTAMP,
+  `start_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
+  `end_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
+  `type` tinyint(1) NOT NULL,
+  `metadata` varchar(11) DEFAULT NULL,
+  `amount_available` bigint(16) DEFAULT NULL,
+  `amount_off` bigint(16) DEFAULT NULL,
+  `percent_off` bigint(16) DEFAULT NULL,
+  `max_circulation` int(8) DEFAULT NULL,
+  `max_user_circulation` int(8) DEFAULT NULL,
+  `duration` bigint(16) DEFAULT NULL,
+  `name` varchar(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100003 DEFAULT CHARSET=utf8mb4;</pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-04-01-gin/">
+                <h2 class="post-title">Gin API 设计</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 1, 2018
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;reflect&#34; &#34;github.com/gin-gonic/gin&#34; xutil &#34;hdutil&#34; &#34;logic/pkg/dao&#34; &#34;logic/pkg/service&#34; ) func main() { r := gin.Default() rt := r.Group(`/homeworks`) rt.POST( ``, xutil.GRequestBodyObject(reflect.TypeOf(dao.Homework{}), &#34;json&#34;), CreateHomework, ) rt.PUT( `/:homeworkId`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GRequestBodyMap, UpdateHomework, ) r.GET( `/homeworksByFilter`, xutil.GQueryRequireString(&#34;filter&#34;), xutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), xutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetHomeworkByFilter, ) rt.POST( `/notify`, xutil.GRequestBodyObject(reflect.TypeOf([]int64{}), &#34;json&#34;), BatchSendRemark, ) rt.GET( `/:homeworkId/thumb`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GQueryRequireString(&#34;sessionId&#34;), ThumbUp, ) rt.GET( `/:homeworkId/sharetimeline`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareTimeline, ) rt.GET( `/:homeworkId/sharefriend`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareFriend, ) r.Run(&#34;:5000&#34;) } func CreateHomework(c *gin.Context) { u := c.
+                  <a href="http://gopherday.com/post/2018-04-01-gin/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2018-03-27-order-api/">
                 <h2 class="post-title">商品订单系统API</h2>
 
@@ -406,105 +476,6 @@ centos6 安装Aria2 wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/">
-                <h2 class="post-title">caddy nginx 对比</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  Caddy 是什么？ Caddy 是一个多功能的 HTTP web服务器，并且使用Let&rsquo;s Encrypt提供的免费证书，自动让网站升级到HTTPS
-Every Site on HTTPS Caddy is a general-purpose HTTP/2 web server that serves HTTPS by default. Fork Caddy On Github
-为什么要使用 Caddy 安全 Caddy 是一个默认使用https协议的web服务器 无依赖 Caddy 使用 Go 语言编写，编译好的二进制文件能够运行在任何支持Go语言的平台，不需要自己安装任何库。 使用简单 Caddy 的配置简单，不管你是新的web开发者，还是专业人士，都能够快速上手
-Caddy 一键安装脚本
-wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh  这里我们看一下官网的例子说明 Caddy Documentation  :2015 # Host: (any), Port: 2015 localhost # Host: localhost; Port: 2015 localhost:8080 # Host: localhost; Port: 8080 example.
-                  <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
-                <h2 class="post-title">golang sync.map</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-	<span class="s2">&#34;fmt&#34;</span>
-	<span class="s2">&#34;sync&#34;</span>
-<span class="p">)</span>
-
-<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
-		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
-		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
-		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
-		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
-	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
-	<span class="p">}</span>
-
-	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
-		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
-		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
-	<span class="p">}()</span>
-
-	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
-
-	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
-		<span class="k">return</span> <span class="kc">true</span>
-	<span class="p">})</span>
-<span class="p">}</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                 </span>
               

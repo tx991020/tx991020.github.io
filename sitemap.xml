@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://gopherday.com/post/2018-07-17-k8s-replicas-set/</loc>
+    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gopherday.com/post/2018-07-16-k8s-pods/</loc>
+    <lastmod>2018-07-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/post/2018-07-11-go-retry/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
@@ -324,7 +334,7 @@
   
   <url>
     <loc>http://gopherday.com/</loc>
-    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -372,6 +382,10 @@
   </url>
   
   <url>
+    <loc>http://gopherday.com/post/2018-07-18-k8s-deployment/</loc>
+  </url>
+  
+  <url>
     <loc>http://gopherday.com/page/about/</loc>
   </url>
   
@@ -400,7 +414,7 @@
   
   <url>
     <loc>http://gopherday.com/tags/devops/</loc>
-    <lastmod>2018-07-10T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -489,7 +503,7 @@
   
   <url>
     <loc>http://gopherday.com/post/</loc>
-    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
+    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

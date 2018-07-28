@@ -191,7 +191,7 @@
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (358 words)
+  <i class="fa fa-clock-o"></i> 2 minutes (421 words)
   
   
 </span>
@@ -344,6 +344,29 @@
 </span><span class="sb">		logs.Error(&#34;%v&#34;, db.Error)
 </span><span class="sb">	}
 </span><span class="sb">	return result, totalCount
+</span><span class="sb">}
+</span><span class="sb">
+</span><span class="sb">## 事务
+</span><span class="sb">
+</span><span class="sb">func CreateAnimals(db *gorm.DB) err {
+</span><span class="sb">  tx := db.Begin()
+</span><span class="sb">  // Note the use of tx as the database handle once you are within a transaction
+</span><span class="sb">
+</span><span class="sb">  if tx.Error != nil {
+</span><span class="sb">    return err
+</span><span class="sb">  }
+</span><span class="sb">
+</span><span class="sb">  if err := tx.Create(&amp;Animal{Name: &#34;Giraffe&#34;}).Error; err != nil {
+</span><span class="sb">     tx.Rollback()
+</span><span class="sb">     return err
+</span><span class="sb">  }
+</span><span class="sb">
+</span><span class="sb">  if err := tx.Create(&amp;Animal{Name: &#34;Lion&#34;}).Error; err != nil {
+</span><span class="sb">     tx.Rollback()
+</span><span class="sb">     return err
+</span><span class="sb">  }
+</span><span class="sb">
+</span><span class="sb">  return tx.Commit().Error
 </span><span class="sb">}
 </span><span class="sb">```</span></code></pre></div>
 

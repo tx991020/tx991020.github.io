@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Wed, 11 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://gopherday.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>k8s replicas-set</title>
+      <link>http://gopherday.com/post/2018-07-17-k8s-replicas-set/</link>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-17-k8s-replicas-set/</guid>
+      <description>apiVersion: v1 kind: ReplicationController metadata: name: nginx spec: replicas: 3 selector: app: nginx template: metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80 </description>
+    </item>
+    
+    <item>
+      <title>k8s pods</title>
+      <link>http://gopherday.com/post/2018-07-16-k8s-pods/</link>
+      <pubDate>Mon, 16 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-16-k8s-pods/</guid>
+      <description> Pod 基础 $ kubectl get pods # 获取所有正在运行的POD $ kubectl get pods -o wide # 获取pod的更多信息，比如在哪台k8s机器上 $ kubectl describe pod &amp;lt;pod&amp;gt; #获取一个POD的详细信息 $ kubectl exec &amp;lt;pod&amp;gt; &amp;lt;cmd&amp;gt; #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指 定哪个 pod_nginx.yml apiVersion: v1 kind: Pod metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80</description>
+    </item>
     
     <item>
       <title>golang retry</title>
@@ -45,7 +63,8 @@
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2018-07-10-k8s/</guid>
-      <description> mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;amp;&amp;amp; chmod +x minikube &amp;amp;&amp;amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard</description>
+      <description>mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;amp;&amp;amp; chmod +x minikube &amp;amp;&amp;amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard kubectl cluster-info 查看当前集群信息
+我们可以通过minikube ssh进到虚机里，然后看看是否有一些container运行起来了 ➜ ~ minikube ssh _ _ _ _ ( ) ( ) ___ ___ (_) ___ (_)| |/&amp;#39;) _ _ | |_ __ /&amp;#39; _ ` _ `\| |/&amp;#39; _ `\| || , &amp;lt; ( ) ( )| &amp;#39;_`\ /&amp;#39;__`\ | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )( ___/ (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&amp;#39;(_,__/&amp;#39;`\____) $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES c1aec3464788 gcr.</description>
     </item>
     
     <item>
@@ -776,6 +795,15 @@ Here is a secondary heading Here&amp;rsquo;s a useless table:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>http://gopherday.com/post/2018-05-03-javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://gopherday.com/post/2018-07-18-k8s-deployment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>http://gopherday.com/post/2018-07-18-k8s-deployment/</guid>
       <description></description>
     </item>
     

@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>大王派我来搬砖</title>
-  <meta property="og:title" content="大王派我来搬砖" />
-  <meta name="twitter:title" content="大王派我来搬砖" />
-  <meta name="description" content=" Python Golang Java DevOps Programmer ">
-  <meta property="og:description" content=" Python Golang Java DevOps Programmer ">
-  <meta name="twitter:description" content=" Python Golang Java DevOps Programmer ">
+  <title>k8s replicas-set</title>
+  <meta property="og:title" content="k8s replicas-set" />
+  <meta name="twitter:title" content="k8s replicas-set" />
+  <meta name="description" content="apiVersion: v1 kind: ReplicationController metadata: name: nginx spec: replicas: 3 selector: app: nginx template: metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80 ">
+  <meta property="og:description" content="apiVersion: v1 kind: ReplicationController metadata: name: nginx spec: replicas: 3 selector: app: nginx template: metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80 ">
+  <meta name="twitter:description" content="apiVersion: v1 kind: ReplicationController metadata: name: nginx spec: replicas: 3 selector: app: nginx template: metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx …">
   <meta name="author" content="andy wu"/>
   <link href='http://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="http://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="http://gopherday.com/" />
+  <meta property="og:url" content="http://gopherday.com/post/2018-07-17-k8s-replicas-set/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="http://gopherday.com/" />
+  <link rel="canonical" href="http://gopherday.com/post/2018-07-17-k8s-replicas-set/" />
   <link rel="alternate" href="http://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -180,14 +180,23 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>大王派我来搬砖</h1>
+            <div class="post-heading">
+              <h1>k8s replicas-set</h1>
                 
-                  
-                    <hr class="small">
-                    <span class="page-subheading">Build a beautiful and simple website in minutes</span>
-                  
                 
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 17, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (31 words)
+  
+  
+</span>
+
+
                 
             </div>
           </div>
@@ -198,268 +207,53 @@
 
 
     
-  <div role="main" class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">apiVersion: v1
+kind: ReplicationController 
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    app: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80</code></pre></div>
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/acbfba8661292b0663b4748eff631865.jpg" alt="" /></p>
+
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://gopherday.com/post/2018-07-16-k8s-pods/" data-toggle="tooltip" data-placement="top" title="k8s pods">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
         
-          <div class="well">
-            
-
-<h2 id="python-golang-java-devops-programmer">Python Golang Java DevOps Programmer</h2>
-
-          </div>
         
+      
 
-        <div class="posts-list">
-          
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-01-11-go-kafka/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-01-go-context/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-01-go-design-patterns/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-10-spark-dockerfile/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-05-10-rpcx/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-11-01-springboot-01/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-05-03-javascript/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-07-18-k8s-deployment/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-        </div>
-
-        
-          <ul class="pager main-pager">
-            
-              <li class="previous">
-                <a href="/page/7/">&larr; Newer Posts</a>
-              </li>
-            
-            
-          </ul>
-        
-      </div>
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

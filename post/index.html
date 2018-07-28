@@ -184,6 +184,99 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-17-k8s-replicas-set/">
+                <h2 class="post-title">k8s replicas-set</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 17, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">apiVersion: v1
+kind: ReplicationController 
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    app: nginx
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80</code></pre></div>
+<p><img src="http://oq1xuulg6.bkt.clouddn.com/acbfba8661292b0663b4748eff631865.jpg" alt="" /></p>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/devops/">DevOps</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2018-07-16-k8s-pods/">
+                <h2 class="post-title">k8s pods</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on July 16, 2018
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<h1 id="pod-基础">Pod 基础</h1>
+<div class="highlight"><pre class="chroma">$ kubectl get pods   # 获取所有正在运行的POD
+$ kubectl get pods -o wide   # 获取pod的更多信息，比如在哪台k8s机器上
+$ kubectl describe pod &lt;pod&gt;   #获取一个POD的详细信息
+$ kubectl exec &lt;pod&gt; &lt;cmd&gt;     #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指
+定哪个
+
+pod_nginx.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80</pre></div>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/devops/">DevOps</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2018-07-11-go-retry/">
                 <h2 class="post-title">golang retry</h2>
 
@@ -320,16 +413,9 @@
               </p>
               <div class="post-entry">
                 
-                  
-
-<h2 id="mac-安装minikube">mac 安装minikube</h2>
-<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">brew install kubectl
-
-curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/
-
-minikube start --registry-mirror=https://registry.docker-cn.com
-
-minikube dashboard</code></pre></div>
+                  mac 安装minikube brew install kubectl curl -Lo minikube http://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v0.25.2/minikube-darwin-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/ minikube start --registry-mirror=https://registry.docker-cn.com minikube dashboard kubectl cluster-info 查看当前集群信息
+我们可以通过minikube ssh进到虚机里，然后看看是否有一些container运行起来了 ➜ ~ minikube ssh _ _ _ _ ( ) ( ) ___ ___ (_) ___ (_)| |/&#39;) _ _ | |_ __ /&#39; _ ` _ `\| |/&#39; _ `\| || , &lt; ( ) ( )| &#39;_`\ /&#39;__`\ | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )( ___/ (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;(_,__/&#39;`\____) $ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES c1aec3464788 gcr.
+                  <a href="http://gopherday.com/post/2018-07-10-k8s/" class="post-read-more">[Read More]</a>
                 
               </div>
 
@@ -471,76 +557,6 @@ minikube dashboard</code></pre></div>
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/nodejs/">NodeJs</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-04-10-coupon/">
-                <h2 class="post-title">Coupon 商品优惠券 API</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 10, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <p>##coupon_temp 优惠券模板</p>
-<div class="highlight"><pre class="chroma">CREATE TABLE `coupon_temp` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `utime` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39; ON UPDATE CURRENT_TIMESTAMP,
-  `start_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
-  `end_time` timestamp NOT NULL DEFAULT &#39;0000-00-00 00:00:00&#39;,
-  `type` tinyint(1) NOT NULL,
-  `metadata` varchar(11) DEFAULT NULL,
-  `amount_available` bigint(16) DEFAULT NULL,
-  `amount_off` bigint(16) DEFAULT NULL,
-  `percent_off` bigint(16) DEFAULT NULL,
-  `max_circulation` int(8) DEFAULT NULL,
-  `max_user_circulation` int(8) DEFAULT NULL,
-  `duration` bigint(16) DEFAULT NULL,
-  `name` varchar(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100003 DEFAULT CHARSET=utf8mb4;</pre></div>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2018-04-01-gin/">
-                <h2 class="post-title">Gin API 设计</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on April 1, 2018
-              </p>
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; &#34;net/http&#34; &#34;reflect&#34; &#34;github.com/gin-gonic/gin&#34; xutil &#34;hdutil&#34; &#34;logic/pkg/dao&#34; &#34;logic/pkg/service&#34; ) func main() { r := gin.Default() rt := r.Group(`/homeworks`) rt.POST( ``, xutil.GRequestBodyObject(reflect.TypeOf(dao.Homework{}), &#34;json&#34;), CreateHomework, ) rt.PUT( `/:homeworkId`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GRequestBodyMap, UpdateHomework, ) r.GET( `/homeworksByFilter`, xutil.GQueryRequireString(&#34;filter&#34;), xutil.GQueryOptionalIntDefault(&#34;current&#34;, 1), xutil.GQueryOptionalIntDefault(&#34;pageSize&#34;, 10), GetHomeworkByFilter, ) rt.POST( `/notify`, xutil.GRequestBodyObject(reflect.TypeOf([]int64{}), &#34;json&#34;), BatchSendRemark, ) rt.GET( `/:homeworkId/thumb`, xutil.GPathRequireInt(&#34;homeworkId&#34;), xutil.GQueryRequireString(&#34;sessionId&#34;), ThumbUp, ) rt.GET( `/:homeworkId/sharetimeline`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareTimeline, ) rt.GET( `/:homeworkId/sharefriend`, xutil.GPathRequireInt(&#34;homeworkId&#34;), ShareFriend, ) r.Run(&#34;:5000&#34;) } func CreateHomework(c *gin.Context) { u := c.
-                  <a href="http://gopherday.com/post/2018-04-01-gin/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                 </span>
               

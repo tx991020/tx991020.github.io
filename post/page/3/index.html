@@ -184,6 +184,105 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/">
+                <h2 class="post-title">caddy nginx 对比</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  Caddy 是什么？ Caddy 是一个多功能的 HTTP web服务器，并且使用Let&rsquo;s Encrypt提供的免费证书，自动让网站升级到HTTPS
+Every Site on HTTPS Caddy is a general-purpose HTTP/2 web server that serves HTTPS by default. Fork Caddy On Github
+为什么要使用 Caddy 安全 Caddy 是一个默认使用https协议的web服务器 无依赖 Caddy 使用 Go 语言编写，编译好的二进制文件能够运行在任何支持Go语言的平台，不需要自己安装任何库。 使用简单 Caddy 的配置简单，不管你是新的web开发者，还是专业人士，都能够快速上手
+Caddy 一键安装脚本
+wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/caddy_install.sh &amp;&amp; chmod +x caddy_install.sh &amp;&amp; bash caddy_install.sh  这里我们看一下官网的例子说明 Caddy Documentation  :2015 # Host: (any), Port: 2015 localhost # Host: localhost; Port: 2015 localhost:8080 # Host: localhost; Port: 8080 example.
+                  <a href="http://gopherday.com/post/2017-06-10-caddy-nginx/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/linux/">linux</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="http://gopherday.com/post/2017-04-10-go-sync.map/">
+                <h2 class="post-title">golang sync.map</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on April 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">package</span> <span class="nx">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s2">&#34;fmt&#34;</span>
+	<span class="s2">&#34;sync&#34;</span>
+<span class="p">)</span>
+
+<span class="nx">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">list</span> <span class="o">:=</span> <span class="nx">map</span><span class="p">[</span><span class="nx">string</span><span class="p">]</span><span class="kr">interface</span><span class="p">{}{</span>
+		<span class="s2">&#34;name&#34;</span><span class="o">:</span>          <span class="s2">&#34;田馥甄&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;birthday&#34;</span><span class="o">:</span>      <span class="s2">&#34;1983年3月30日&#34;</span><span class="p">,</span>
+		<span class="s2">&#34;age&#34;</span><span class="o">:</span>           <span class="mi">34</span><span class="p">,</span>
+		<span class="s2">&#34;hobby&#34;</span><span class="o">:</span>         <span class="p">[]</span><span class="nx">string</span><span class="p">{</span><span class="s2">&#34;听音乐&#34;</span><span class="p">,</span> <span class="s2">&#34;看电影&#34;</span><span class="p">,</span> <span class="s2">&#34;电视&#34;</span><span class="p">,</span> <span class="s2">&#34;和姐妹一起讨论私人话题&#34;</span><span class="p">},</span>
+		<span class="s2">&#34;constellation&#34;</span><span class="o">:</span> <span class="s2">&#34;白羊座&#34;</span><span class="p">,</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">m</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
+	<span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">range</span> <span class="nx">list</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">wg</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span>
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">LoadOrStore</span><span class="p">(</span><span class="s2">&#34;tag&#34;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">go</span> <span class="nx">func</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="s2">&#34;constellation&#34;</span><span class="p">)</span>
+		<span class="nx">m</span><span class="p">.</span><span class="nx">Store</span><span class="p">(</span><span class="s2">&#34;age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+		<span class="nx">wg</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+	<span class="p">}()</span>
+
+	<span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
+
+	<span class="nx">m</span><span class="p">.</span><span class="nx">Range</span><span class="p">(</span><span class="nx">func</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="kr">interface</span><span class="p">{})</span> <span class="nx">bool</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+		<span class="k">return</span> <span class="kc">true</span>
+	<span class="p">})</span>
+<span class="p">}</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="http://gopherday.com/post/2017-05-10-rclone/">
                 <h2 class="post-title">使用 rclone 将文件同步至 Google Dirve</h2>
 
@@ -466,62 +565,6 @@
                 <span class="post-meta">
                   
                     #<a href="http://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-10-elastic-model/">
-                <h2 class="post-title">ElasticSearch 智障 使用模板</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  from elasticsearch import Elasticsearch from elasticsearch import helpers class ESutill(): def __init__(self,hosts,index,doc_type,body): self.index = index self.body = body self.doc_type = doc_type self.hosts = hosts self.es = Elasticsearch(hosts=self.hosts) if not self.es.indices.exists(index=self.index): self.es.indices.create(index=self.index) self.es.indices.put_mapping(index=self.index,doc_type=self.doc_type,body=self.body) # mapping 示例 &#34;&#34;&#34; self.es.indices.put_mapping( index=self.index, doc_type=&#34;spider_status&#34;, body={ &#34;_all&#34;: { &#34;enabled&#34;: True #准许动态插入 }, &#34;properties&#34;: { &#34;table_name&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;source&#34;: { &#34;type&#34;: &#34;keyword&#34; }, &#34;monitoring_time&#34;: { &#34;type&#34;: &#34;date&#34;, &#34;format&#34;: &#34;epoch_second&#34; }, &#34;total_count&#34;: { &#34;type&#34;: &#34;long&#34; }, &#34;new_count&#34;: { &#34;type&#34;: &#34;long&#34; } } }) &#34;&#34;&#34; #批量插入 def put_data(self, inputdata): &#34;&#34;&#34; 批量传入数据---写入数据库 :param inputdata: [] 列表数据 :return: 无 &#34;&#34;&#34; helpers.
-                  <a href="http://gopherday.com/post/2017-03-10-elastic-model/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/elasticsearch/">elasticsearch</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="http://gopherday.com/post/2017-03-08-etcd&#43;confd/">
-                <h2 class="post-title">Confd&#43;etcd实现高可用自动发现</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on March 8, 2017
-              </p>
-              <div class="post-entry">
-                
-                  Confd是一个轻量级的配置管理工具。通过查询Etcd，结合配置模板引擎，保持本地配置最新，同时具备定期探测机制，配置变更自动reload。其后端支持的 数据类型有：etcd、consul、vault、environment variables、redis、zookeeper、dynamodb、stackengine、rancher。不过一般使用Confd和 etcd的配合使用比较多。其常用架构如下： 一、简单配置 1、配置etcd数据 具体步骤这里略过，这里只配置两条数据
-etcdctl set /myapp/database/url www.qq.com etcdctl set /myapp/database/user rob 2、confd安装 confd比较简单就一个文件，拿过来就可以执行，可以从github上下载：https://github.com/kelseyhightower/confd/releases ，并将其放到 /usr/local/bin目录下即可。不过使用前需要创建相应的配置目录：
-[root@etcd1 bin]# mkdir -p /etc/confd/{conf.d,templates} 3、创建confd配置文件 vim /etc/confd/conf.d/myconfig.toml [template] src = &#34;myconfig.conf.tmpl&#34; dest = &#34;/tmp/myconfig.conf&#34; keys = [ &#34;/myapp/database/url&#34;, &#34;/myapp/database/user&#34;, ] 4、创建模板文件 vim /etc/confd/templates/myconfig.conf.tmpl [myconfig] database_url = {{getv &#34;/myapp/database/url&#34;}} database_user = {{getv &#34;/myapp/database/user&#34;}} 5、执行生成配置文件 confd -onetime -backend etcd -node http://127.0.0.1:2379 #只一次 confd -interval=60 -backend etcd -node http://127.0.0.1:2379 &amp; #按时间轮询 6、验证文件生成 [root@etcd1 tmp]# cat /tmp/myconfig.
-                  <a href="http://gopherday.com/post/2017-03-08-etcd&#43;confd/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="http://gopherday.com//tags/etcd/">etcd</a>&nbsp;
                   
                 </span>
               
