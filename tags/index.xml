@@ -2,220 +2,220 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 大王派我来搬砖</title>
-    <link>http://gopherday.com/tags/</link>
+    <link>https://gopherday.com/tags/</link>
     <description>Recent content in Tags on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
     <lastBuildDate>Sun, 05 Jun 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://gopherday.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gopherday.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Alfred</title>
-      <link>http://gopherday.com/tags/alfred/</link>
+      <link>https://gopherday.com/tags/alfred/</link>
       <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/alfred/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ansible</title>
-      <link>http://gopherday.com/tags/ansible/</link>
-      <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/ansible/</guid>
+      <guid>https://gopherday.com/tags/alfred/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bigimg</title>
-      <link>http://gopherday.com/tags/bigimg/</link>
+      <link>https://gopherday.com/tags/bigimg/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/bigimg/</guid>
+      <guid>https://gopherday.com/tags/bigimg/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Devops</title>
-      <link>http://gopherday.com/tags/devops/</link>
+      <link>https://gopherday.com/tags/devops/</link>
       <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/devops/</guid>
+      <guid>https://gopherday.com/tags/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Elasticsearch</title>
-      <link>http://gopherday.com/tags/elasticsearch/</link>
+      <link>https://gopherday.com/tags/elasticsearch/</link>
       <pubDate>Fri, 10 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/elasticsearch/</guid>
+      <guid>https://gopherday.com/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Etcd</title>
-      <link>http://gopherday.com/tags/etcd/</link>
+      <link>https://gopherday.com/tags/etcd/</link>
       <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/etcd/</guid>
+      <guid>https://gopherday.com/tags/etcd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Example</title>
-      <link>http://gopherday.com/tags/example/</link>
+      <link>https://gopherday.com/tags/example/</link>
       <pubDate>Thu, 08 Mar 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/example/</guid>
+      <guid>https://gopherday.com/tags/example/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>http://gopherday.com/tags/golang/</link>
+      <link>https://gopherday.com/tags/golang/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/golang/</guid>
+      <guid>https://gopherday.com/tags/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hadoop</title>
-      <link>http://gopherday.com/tags/hadoop/</link>
+      <link>https://gopherday.com/tags/hadoop/</link>
       <pubDate>Thu, 09 Feb 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/hadoop/</guid>
+      <guid>https://gopherday.com/tags/hadoop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://gopherday.com/tags/java/</link>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kafka</title>
-      <link>http://gopherday.com/tags/kafka/</link>
+      <link>https://gopherday.com/tags/kafka/</link>
       <pubDate>Wed, 14 Sep 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/kafka/</guid>
+      <guid>https://gopherday.com/tags/kafka/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>http://gopherday.com/tags/linux/</link>
+      <link>https://gopherday.com/tags/linux/</link>
       <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/linux/</guid>
+      <guid>https://gopherday.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mac</title>
-      <link>http://gopherday.com/tags/mac/</link>
+      <link>https://gopherday.com/tags/mac/</link>
       <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/mac/</guid>
+      <guid>https://gopherday.com/tags/mac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Markdown</title>
-      <link>http://gopherday.com/tags/markdown/</link>
+      <link>https://gopherday.com/tags/markdown/</link>
       <pubDate>Fri, 20 Feb 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/markdown/</guid>
+      <guid>https://gopherday.com/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Math</title>
-      <link>http://gopherday.com/tags/math/</link>
+      <link>https://gopherday.com/tags/math/</link>
       <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/math/</guid>
+      <guid>https://gopherday.com/tags/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nodejs</title>
-      <link>http://gopherday.com/tags/nodejs/</link>
+      <link>https://gopherday.com/tags/nodejs/</link>
       <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/nodejs/</guid>
+      <guid>https://gopherday.com/tags/nodejs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pandas</title>
-      <link>http://gopherday.com/tags/pandas/</link>
+      <link>https://gopherday.com/tags/pandas/</link>
       <pubDate>Tue, 20 Dec 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/pandas/</guid>
+      <guid>https://gopherday.com/tags/pandas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Photoswipe</title>
-      <link>http://gopherday.com/tags/photoswipe/</link>
+      <link>https://gopherday.com/tags/photoswipe/</link>
       <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/photoswipe/</guid>
+      <guid>https://gopherday.com/tags/photoswipe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pyspider</title>
-      <link>http://gopherday.com/tags/pyspider/</link>
+      <link>https://gopherday.com/tags/pyspider/</link>
       <pubDate>Fri, 10 Jul 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/pyspider/</guid>
+      <guid>https://gopherday.com/tags/pyspider/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://gopherday.com/tags/python/</link>
+      <link>https://gopherday.com/tags/python/</link>
       <pubDate>Fri, 16 Mar 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/python/</guid>
+      <guid>https://gopherday.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Redis</title>
-      <link>http://gopherday.com/tags/redis/</link>
+      <link>https://gopherday.com/tags/redis/</link>
       <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/redis/</guid>
+      <guid>https://gopherday.com/tags/redis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spark</title>
-      <link>http://gopherday.com/tags/spark/</link>
+      <link>https://gopherday.com/tags/spark/</link>
       <pubDate>Thu, 23 Mar 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/spark/</guid>
+      <guid>https://gopherday.com/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Utils</title>
-      <link>http://gopherday.com/tags/utils/</link>
+      <link>https://gopherday.com/tags/utils/</link>
       <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/utils/</guid>
+      <guid>https://gopherday.com/tags/utils/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vagrant</title>
-      <link>http://gopherday.com/tags/vagrant/</link>
+      <link>https://gopherday.com/tags/vagrant/</link>
       <pubDate>Fri, 12 Jun 2015 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/tags/vagrant/</guid>
+      <guid>https://gopherday.com/tags/vagrant/</guid>
       <description></description>
     </item>
     

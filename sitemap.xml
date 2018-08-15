@@ -3,548 +3,552 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-17-k8s-replicas-set/</loc>
+    <loc>https://gopherday.com/post/2018-07-17-k8s-replicas-set/</loc>
     <lastmod>2018-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-16-k8s-pods/</loc>
+    <loc>https://gopherday.com/post/2018-07-16-k8s-pods/</loc>
     <lastmod>2018-07-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-11-go-retry/</loc>
+    <loc>https://gopherday.com/post/2018-07-11-go-retry/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-15-go-clockchain/</loc>
+    <loc>https://gopherday.com/post/2018-07-15-go-clockchain/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-12-go-xlsx/</loc>
+    <loc>https://gopherday.com/post/2018-07-12-go-xlsx/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-10-k8s/</loc>
+    <loc>https://gopherday.com/post/2018-07-10-k8s/</loc>
     <lastmod>2018-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-05-21-gorm/</loc>
+    <loc>https://gopherday.com/post/2018-05-21-gorm/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-05-25-mysql/</loc>
+    <loc>https://gopherday.com/post/2018-05-25-mysql/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-05-27-redis-watch/</loc>
+    <loc>https://gopherday.com/post/2018-05-27-redis-watch/</loc>
     <lastmod>2018-05-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-05-02-express/</loc>
+    <loc>https://gopherday.com/post/2018-05-02-express/</loc>
     <lastmod>2018-05-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-04-10-coupon/</loc>
+    <loc>https://gopherday.com/post/2018-04-10-coupon/</loc>
     <lastmod>2018-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-04-01-gin/</loc>
+    <loc>https://gopherday.com/post/2018-04-01-gin/</loc>
     <lastmod>2018-04-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-03-27-order-api/</loc>
+    <loc>https://gopherday.com/post/2018-03-27-order-api/</loc>
     <lastmod>2018-03-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-03-16-job-interview-go/</loc>
+    <loc>https://gopherday.com/post/2018-03-16-job-interview-go/</loc>
     <lastmod>2018-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-03-16-job-interview-python/</loc>
+    <loc>https://gopherday.com/post/2018-03-16-job-interview-python/</loc>
     <lastmod>2018-03-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-03-08-new-media/</loc>
+    <loc>https://gopherday.com/post/2018-03-08-new-media/</loc>
     <lastmod>2018-03-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-11-27-go-nsq/</loc>
+    <loc>https://gopherday.com/post/2017-11-27-go-nsq/</loc>
     <lastmod>2017-11-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-11-21-go-etcd-watcd/</loc>
+    <loc>https://gopherday.com/post/2017-11-21-go-etcd-watcd/</loc>
     <lastmod>2017-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-08-10-go-kafka/</loc>
+    <loc>https://gopherday.com/post/2017-08-10-go-kafka/</loc>
     <lastmod>2017-08-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-06-13-ariang-filemanerger/</loc>
+    <loc>https://gopherday.com/post/2017-06-13-ariang-filemanerger/</loc>
     <lastmod>2017-06-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-06-10-caddy-nginx/</loc>
+    <loc>https://gopherday.com/post/2017-06-10-caddy-nginx/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-04-10-go-sync.map/</loc>
+    <loc>https://gopherday.com/post/2017-04-10-go-sync.map/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-05-10-rclone/</loc>
+    <loc>https://gopherday.com/post/2017-05-10-rclone/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-04-10-baota-linux/</loc>
+    <loc>https://gopherday.com/post/2017-04-10-baota-linux/</loc>
     <lastmod>2017-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-24-spark-dataframe/</loc>
+    <loc>https://gopherday.com/post/2017-03-24-spark-dataframe/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-23-spark-01/</loc>
+    <loc>https://gopherday.com/post/2017-03-23-spark-01/</loc>
     <lastmod>2017-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/</loc>
+    <loc>https://gopherday.com/post/2017-03-20-photoswipe-gallery-sample/</loc>
     <lastmod>2017-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-10-18-go-colly/</loc>
+    <loc>https://gopherday.com/post/2017-10-18-go-colly/</loc>
     <lastmod>2017-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-14-jsonrpc/</loc>
+    <loc>https://gopherday.com/post/2017-03-14-jsonrpc/</loc>
     <lastmod>2017-03-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-13-rpc/</loc>
+    <loc>https://gopherday.com/post/2017-03-13-rpc/</loc>
     <lastmod>2017-03-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-10-elastic-model/</loc>
+    <loc>https://gopherday.com/post/2017-03-10-elastic-model/</loc>
     <lastmod>2017-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-08-etcd&#43;confd/</loc>
+    <loc>https://gopherday.com/post/2017-03-08-etcd&#43;confd/</loc>
     <lastmod>2017-03-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-07-bigimg-sample/</loc>
+    <loc>https://gopherday.com/post/2017-03-07-bigimg-sample/</loc>
     <lastmod>2017-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-05-math-sample/</loc>
+    <loc>https://gopherday.com/post/2017-03-05-math-sample/</loc>
     <lastmod>2017-03-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-02-15-spark-basic/</loc>
+    <loc>https://gopherday.com/post/2017-02-15-spark-basic/</loc>
     <lastmod>2017-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-02-12-spark-pic/</loc>
+    <loc>https://gopherday.com/post/2017-02-12-spark-pic/</loc>
     <lastmod>2017-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-02-11-sparkstreaming/</loc>
+    <loc>https://gopherday.com/post/2017-02-11-sparkstreaming/</loc>
     <lastmod>2017-02-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-02-10-sparksql/</loc>
+    <loc>https://gopherday.com/post/2017-02-10-sparksql/</loc>
     <lastmod>2017-02-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-02-09-python-hadoop/</loc>
+    <loc>https://gopherday.com/post/2017-02-09-python-hadoop/</loc>
     <lastmod>2017-02-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-12-20-pandas-pic/</loc>
+    <loc>https://gopherday.com/post/2016-12-20-pandas-pic/</loc>
     <lastmod>2016-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-11-23-python-pandas03/</loc>
+    <loc>https://gopherday.com/post/2016-11-23-python-pandas03/</loc>
     <lastmod>2016-11-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-11-21-pandas_to_sql/</loc>
+    <loc>https://gopherday.com/post/2016-11-21-pandas_to_sql/</loc>
     <lastmod>2016-11-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-06-10-python-apscheduler/</loc>
+    <loc>https://gopherday.com/post/2015-06-10-python-apscheduler/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-11-20-golang-set/</loc>
+    <loc>https://gopherday.com/post/2016-11-20-golang-set/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-11-20-python-pandas01/</loc>
+    <loc>https://gopherday.com/post/2016-11-20-python-pandas01/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-09-11-pyquery-goquery/</loc>
+    <loc>https://gopherday.com/post/2016-09-11-pyquery-goquery/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-11-12-gin&#43;mysql-api/</loc>
+    <loc>https://gopherday.com/post/2016-11-12-gin&#43;mysql-api/</loc>
     <lastmod>2016-11-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-10-15-elasticsearch01/</loc>
+    <loc>https://gopherday.com/post/2016-10-15-elasticsearch01/</loc>
     <lastmod>2016-10-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-09-15-go-heap/</loc>
+    <loc>https://gopherday.com/post/2016-09-15-go-heap/</loc>
     <lastmod>2016-09-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-09-14-pykafka/</loc>
+    <loc>https://gopherday.com/post/2016-09-14-pykafka/</loc>
     <lastmod>2016-09-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-09-12-kafka/</loc>
+    <loc>https://gopherday.com/post/2016-09-12-kafka/</loc>
     <lastmod>2016-09-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-08-21-ansible/</loc>
-    <lastmod>2016-08-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/</loc>
+    <loc>https://gopherday.com/post/2016-06-05-alfred&#43;qshell-01/</loc>
     <lastmod>2016-06-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-03-08-code-sample/</loc>
+    <loc>https://gopherday.com/post/2016-06-5-programing-start/</loc>
+    <lastmod>2016-06-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/post/2016-03-08-code-sample/</loc>
     <lastmod>2016-03-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-02-15-golang-redispool/</loc>
+    <loc>https://gopherday.com/post/2016-02-15-golang-redispool/</loc>
     <lastmod>2016-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-07-14-python-elastic-utils/</loc>
+    <loc>https://gopherday.com/post/2015-07-14-python-elastic-utils/</loc>
     <lastmod>2015-07-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-07-13-python-mysql-utils/</loc>
+    <loc>https://gopherday.com/post/2015-07-13-python-mysql-utils/</loc>
     <lastmod>2015-07-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-07-12-python-redis-utils/</loc>
+    <loc>https://gopherday.com/post/2015-07-12-python-redis-utils/</loc>
     <lastmod>2015-07-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-07-10-pyspider-01/</loc>
+    <loc>https://gopherday.com/post/2015-07-10-pyspider-01/</loc>
     <lastmod>2015-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2014-11-10-vagrant/</loc>
+    <loc>https://gopherday.com/post/2014-11-10-vagrant/</loc>
     <lastmod>2015-06-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/</loc>
+    <loc>https://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/</loc>
     <lastmod>2015-02-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-02-20-test-markdown/</loc>
+    <loc>https://gopherday.com/post/2015-02-20-test-markdown/</loc>
     <lastmod>2015-02-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2015-02-13-hamlet-monologue/</loc>
+    <loc>https://gopherday.com/post/2015-02-13-hamlet-monologue/</loc>
     <lastmod>2015-02-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2014-07-10-mysql-setup/</loc>
+    <loc>https://gopherday.com/post/2014-07-10-mysql-setup/</loc>
     <lastmod>2014-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2014.05-10-python-retring/</loc>
+    <loc>https://gopherday.com/post/2014.05-10-python-retring/</loc>
     <lastmod>2014-05-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2014-04-10-mac/</loc>
+    <loc>https://gopherday.com/post/2014-04-10-mac/</loc>
     <lastmod>2014-04-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/</loc>
+    <loc>https://gopherday.com/</loc>
     <lastmod>2018-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-05-10-beego-01/</loc>
+    <loc>https://gopherday.com/post/2016-05-10-beego-01/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-12-01-go-websocket/</loc>
+    <loc>https://gopherday.com/post/2016-08-21-ansible/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-12-10-gin-web-development-01/</loc>
+    <loc>https://gopherday.com/post/2016-12-01-go-websocket/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2016-9-12-beego/</loc>
+    <loc>https://gopherday.com/post/2016-12-10-gin-web-development-01/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-01-11-go-kafka/</loc>
+    <loc>https://gopherday.com/post/2016-9-12-beego/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-01-go-context/</loc>
+    <loc>https://gopherday.com/post/2017-01-11-go-kafka/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-01-go-design-patterns/</loc>
+    <loc>https://gopherday.com/post/2017-03-01-go-context/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-03-10-spark-dockerfile/</loc>
+    <loc>https://gopherday.com/post/2017-03-01-go-design-patterns/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-05-10-rpcx/</loc>
+    <loc>https://gopherday.com/post/2017-03-10-spark-dockerfile/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2017-11-01-springboot-01/</loc>
+    <loc>https://gopherday.com/post/2017-05-10-rpcx/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-05-03-javascript/</loc>
+    <loc>https://gopherday.com/post/2017-11-01-springboot-01/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/post/2018-07-18-k8s-deployment/</loc>
+    <loc>https://gopherday.com/post/2018-05-03-javascript/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/page/about/</loc>
+    <loc>https://gopherday.com/post/2018-07-18-k8s-deployment/</loc>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/alfred/</loc>
+    <loc>https://gopherday.com/page/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/alfred/</loc>
     <lastmod>2016-06-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/ansible/</loc>
-    <lastmod>2016-08-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/bigimg/</loc>
+    <loc>https://gopherday.com/tags/bigimg/</loc>
     <lastmod>2018-03-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/categories/</loc>
+    <loc>https://gopherday.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/devops/</loc>
+    <loc>https://gopherday.com/tags/devops/</loc>
     <lastmod>2018-07-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/elasticsearch/</loc>
+    <loc>https://gopherday.com/tags/elasticsearch/</loc>
     <lastmod>2017-03-10T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/etcd/</loc>
+    <loc>https://gopherday.com/tags/etcd/</loc>
     <lastmod>2017-11-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/example/</loc>
+    <loc>https://gopherday.com/tags/example/</loc>
     <lastmod>2018-03-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/golang/</loc>
+    <loc>https://gopherday.com/tags/golang/</loc>
     <lastmod>2018-07-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/hadoop/</loc>
+    <loc>https://gopherday.com/tags/hadoop/</loc>
     <lastmod>2017-02-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/kafka/</loc>
-    <lastmod>2016-09-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/linux/</loc>
-    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/mac/</loc>
-    <lastmod>2014-04-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/markdown/</loc>
-    <lastmod>2015-02-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/math/</loc>
-    <lastmod>2017-03-05T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/nodejs/</loc>
-    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/page/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/pandas/</loc>
-    <lastmod>2016-12-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/photoswipe/</loc>
-    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/post/</loc>
-    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/pyspider/</loc>
-    <lastmod>2015-07-10T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/python/</loc>
-    <lastmod>2018-03-16T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/redis/</loc>
-    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/spark/</loc>
-    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gopherday.com/tags/</loc>
+    <loc>https://gopherday.com/tags/java/</loc>
     <lastmod>2016-06-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/utils/</loc>
+    <loc>https://gopherday.com/tags/kafka/</loc>
+    <lastmod>2016-09-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/linux/</loc>
+    <lastmod>2017-06-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/mac/</loc>
+    <lastmod>2014-04-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/markdown/</loc>
+    <lastmod>2015-02-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/math/</loc>
+    <lastmod>2017-03-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/nodejs/</loc>
+    <lastmod>2018-05-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/page/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/pandas/</loc>
+    <lastmod>2016-12-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/photoswipe/</loc>
+    <lastmod>2017-03-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/post/</loc>
+    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/pyspider/</loc>
+    <lastmod>2015-07-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/python/</loc>
+    <lastmod>2018-03-16T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/redis/</loc>
+    <lastmod>2018-05-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/spark/</loc>
+    <lastmod>2017-03-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/</loc>
+    <lastmod>2016-06-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/tags/utils/</loc>
     <lastmod>2016-11-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gopherday.com/tags/vagrant/</loc>
+    <loc>https://gopherday.com/tags/vagrant/</loc>
     <lastmod>2015-06-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

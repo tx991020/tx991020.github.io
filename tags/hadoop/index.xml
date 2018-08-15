@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hadoop on 大王派我来搬砖</title>
-    <link>http://gopherday.com/tags/hadoop/</link>
+    <link>https://gopherday.com/tags/hadoop/</link>
     <description>Recent content in Hadoop on 大王派我来搬砖</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
     <lastBuildDate>Thu, 09 Feb 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://gopherday.com/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gopherday.com/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>python hadoop</title>
-      <link>http://gopherday.com/post/2017-02-09-python-hadoop/</link>
+      <link>https://gopherday.com/post/2017-02-09-python-hadoop/</link>
       <pubDate>Thu, 09 Feb 2017 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
-      <guid>http://gopherday.com/post/2017-02-09-python-hadoop/</guid>
+      <guid>https://gopherday.com/post/2017-02-09-python-hadoop/</guid>
       <description>pip install mrjob from mrjob.job import MRJob class MRWordFrequencyCount(MRJob): def mapper(self, _, line): yield &amp;#34;chars&amp;#34;, len(line) yield &amp;#34;words&amp;#34;, len(line.split()) yield &amp;#34;lines&amp;#34;, 1 def reducer(self, key, values): yield key, sum(values) if __name__ == &amp;#39;__main__&amp;#39;: MRWordFrequencyCount.run() </description>
     </item>
     
