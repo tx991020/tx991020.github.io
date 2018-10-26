@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>k8s struct</title>
-  <meta property="og:title" content="k8s struct" />
-  <meta name="twitter:title" content="k8s struct" />
+  <title>postgres01</title>
+  <meta property="og:title" content="postgres01" />
+  <meta name="twitter:title" content="postgres01" />
   <meta name="description" content="pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接的信息。 \password [user]: 修改用户密码 \q：退出 # Connect to PostgreSQL, using a superuser named &#39;postgres&#39; psql -U postgres -h localhost pg 测试数据生成 select id from generate_series(1,10) t(id); #随机数 select (random()*100)::int from generate_series(1,10); #生成随机字符串 select md5(random()::text) from generate_series(1,10); #随机汉字 create or replace function gen_hanzi(int) returns text as $$ declare res text; begin if $1 &gt;=1 then select string_agg(chr(19968&#43;(random()*20901)::int), &#39;&#39;) into res from generate_series(1,$1); return res; end if; return null; end; $$ language plpgsql strict; select gen_hanzi(10) from generate_series #随机数组 create or replace function gen_rand_arr(int,int) returns int[] as $$ select array_agg((random()*$1)::int) from generate_series(1,$2); $$ language sql strict; # 随机身份证 create or replace function gen_id( a date, b date ) returns text as $$ select lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || to_char(a &#43; (random()*(b-a))::int, &#39;yyyymmdd&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || random()::int || (case when random()*10 &gt;9 then &#39;X&#39; else (random()*9)::int::text end ) ; $$ language sql strict; select gen_id(&#39;1900-01-01&#39;, &#39;2017-10-16&#39;) from generate_series(1,10);  gin 倒排索引 CREATE INDEX &#34;name &#34; ON &#34;tablename&#34; USING gin(to_tsvector(&#39;jiebacfg&#39;, &#34;columnname&#34;)); CREATE INDEX rumidx ON rum_test USING rum (c1 rum_tsvector_ops); pg 查询 4#全文检索 select * from tbl where tsvector_col @@ &#39;postgres &amp; china | digoal:A&#39; order by ts_rank(tsvector_col, &#39;postgres &amp; china | digoal:A&#39;) limit xx; 5正则查询。（可以使用pg_trgm和gin索引） select * from tbl where col ~ &#39;^a[0-9]{1,5}\ &#43;digoal$&#39;; 6、相似查询。（可以使用pg_trgm和gin索引） select * from tbl order by similarity(col, &#39;postgre&#39;) desc limit 10; 7ADHOC查询，任意字段组合查询。（通过bloom index, multi-index bitmap scan, gin-index bitmap scan 等索引都可以实现） select * from tbl where a=?">
   <meta property="og:description" content="pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接的信息。 \password [user]: 修改用户密码 \q：退出 # Connect to PostgreSQL, using a superuser named &#39;postgres&#39; psql -U postgres -h localhost pg 测试数据生成 select id from generate_series(1,10) t(id); #随机数 select (random()*100)::int from generate_series(1,10); #生成随机字符串 select md5(random()::text) from generate_series(1,10); #随机汉字 create or replace function gen_hanzi(int) returns text as $$ declare res text; begin if $1 &gt;=1 then select string_agg(chr(19968&#43;(random()*20901)::int), &#39;&#39;) into res from generate_series(1,$1); return res; end if; return null; end; $$ language plpgsql strict; select gen_hanzi(10) from generate_series #随机数组 create or replace function gen_rand_arr(int,int) returns int[] as $$ select array_agg((random()*$1)::int) from generate_series(1,$2); $$ language sql strict; # 随机身份证 create or replace function gen_id( a date, b date ) returns text as $$ select lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || to_char(a &#43; (random()*(b-a))::int, &#39;yyyymmdd&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || random()::int || (case when random()*10 &gt;9 then &#39;X&#39; else (random()*9)::int::text end ) ; $$ language sql strict; select gen_id(&#39;1900-01-01&#39;, &#39;2017-10-16&#39;) from generate_series(1,10);  gin 倒排索引 CREATE INDEX &#34;name &#34; ON &#34;tablename&#34; USING gin(to_tsvector(&#39;jiebacfg&#39;, &#34;columnname&#34;)); CREATE INDEX rumidx ON rum_test USING rum (c1 rum_tsvector_ops); pg 查询 4#全文检索 select * from tbl where tsvector_col @@ &#39;postgres &amp; china | digoal:A&#39; order by ts_rank(tsvector_col, &#39;postgres &amp; china | digoal:A&#39;) limit xx; 5正则查询。（可以使用pg_trgm和gin索引） select * from tbl where col ~ &#39;^a[0-9]{1,5}\ &#43;digoal$&#39;; 6、相似查询。（可以使用pg_trgm和gin索引） select * from tbl order by similarity(col, &#39;postgre&#39;) desc limit 10; 7ADHOC查询，任意字段组合查询。（通过bloom index, multi-index bitmap scan, gin-index bitmap scan 等索引都可以实现） select * from tbl where a=?">
   <meta name="twitter:description" content="pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接 …">
@@ -181,7 +181,7 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>k8s struct</h1>
+              <h1>postgres01</h1>
                 
                 
                   <span class="post-meta">
@@ -351,7 +351,7 @@ LIMIT 10;
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://gopherday.com/post/2018-10-26-postgresql02/" data-toggle="tooltip" data-placement="top" title="k8s struct">&larr; Previous Post</a>
+              <a href="https://gopherday.com/post/2018-10-26-postgresql02/" data-toggle="tooltip" data-placement="top" title="postgres02">&larr; Previous Post</a>
             </li>
           
           

@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>k8s struct</title>
-  <meta property="og:title" content="k8s struct" />
-  <meta name="twitter:title" content="k8s struct" />
+  <title>postgres02</title>
+  <meta property="og:title" content="postgres02" />
+  <meta name="twitter:title" content="postgres02" />
   <meta name="description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;------&#43;---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;--------------&#43;---------------------------- 1 | hello | 2017-04-24 15:27:39.">
   <meta property="og:description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;------&#43;---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;--------------&#43;---------------------------- 1 | hello | 2017-04-24 15:27:39.">
   <meta name="twitter:description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on …">
@@ -181,7 +181,7 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>k8s struct</h1>
+              <h1>postgres02</h1>
                 
                 
                   <span class="post-meta">
@@ -248,7 +248,7 @@ test03=# select * from test;
           
           
             <li class="next">
-              <a href="https://gopherday.com/post/2018-10-25-postgresql/" data-toggle="tooltip" data-placement="top" title="k8s struct">Next Post &rarr;</a>
+              <a href="https://gopherday.com/post/2018-10-25-postgresql/" data-toggle="tooltip" data-placement="top" title="postgres01">Next Post &rarr;</a>
             </li>
           
         </ul>

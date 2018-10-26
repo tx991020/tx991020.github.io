@@ -13,7 +13,7 @@
     
     
     <item>
-      <title>k8s struct</title>
+      <title>postgres01</title>
       <link>https://gopherday.com/post/2018-10-25-postgresql/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
@@ -22,7 +22,7 @@
     </item>
     
     <item>
-      <title>k8s struct</title>
+      <title>postgres02</title>
       <link>https://gopherday.com/post/2018-10-26-postgresql02/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
       <author>tx991020@gmail.com (andy wu)</author>
