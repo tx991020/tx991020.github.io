@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on 大王派我来搬砖</title>
+    <link>https://gopherday.com/tags/postgresql/</link>
+    <description>Recent content in Postgresql on 大王派我来搬砖</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
+    <webMaster>tx991020@gmail.com (andy wu)</webMaster>
+    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://gopherday.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-10-25-postgresql/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-10-25-postgresql/</guid>
+      <description>pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接的信息。 \password [user]: 修改用户密码 \q：退出 # Connect to PostgreSQL, using a superuser named &amp;#39;postgres&amp;#39; psql -U postgres -h localhost pg 测试数据生成 select id from generate_series(1,10) t(id); #随机数 select (random()*100)::int from generate_series(1,10); #生成随机字符串 select md5(random()::text) from generate_series(1,10); #随机汉字 create or replace function gen_hanzi(int) returns text as $$ declare res text; begin if $1 &amp;gt;=1 then select string_agg(chr(19968+(random()*20901)::int), &amp;#39;&amp;#39;) into res from generate_series(1,$1); return res; end if; return null; end; $$ language plpgsql strict; select gen_hanzi(10) from generate_series #随机数组 create or replace function gen_rand_arr(int,int) returns int[] as $$ select array_agg((random()*$1)::int) from generate_series(1,$2); $$ language sql strict; # 随机身份证 create or replace function gen_id( a date, b date ) returns text as $$ select lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || to_char(a + (random()*(b-a))::int, &amp;#39;yyyymmdd&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || random()::int || (case when random()*10 &amp;gt;9 then &amp;#39;X&amp;#39; else (random()*9)::int::text end ) ; $$ language sql strict; select gen_id(&amp;#39;1900-01-01&amp;#39;, &amp;#39;2017-10-16&amp;#39;) from generate_series(1,10);  gin 倒排索引 CREATE INDEX &amp;#34;name &amp;#34; ON &amp;#34;tablename&amp;#34; USING gin(to_tsvector(&amp;#39;jiebacfg&amp;#39;, &amp;#34;columnname&amp;#34;)); CREATE INDEX rumidx ON rum_test USING rum (c1 rum_tsvector_ops); pg 查询 4#全文检索 select * from tbl where tsvector_col @@ &amp;#39;postgres &amp;amp; china | digoal:A&amp;#39; order by ts_rank(tsvector_col, &amp;#39;postgres &amp;amp; china | digoal:A&amp;#39;) limit xx; 5正则查询。（可以使用pg_trgm和gin索引） select * from tbl where col ~ &amp;#39;^a[0-9]{1,5}\ +digoal$&amp;#39;; 6、相似查询。（可以使用pg_trgm和gin索引） select * from tbl order by similarity(col, &amp;#39;postgre&amp;#39;) desc limit 10; 7ADHOC查询，任意字段组合查询。（通过bloom index, multi-index bitmap scan, gin-index bitmap scan 等索引都可以实现） select * from tbl where a=?</description>
+    </item>
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-10-26-postgresql02/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-10-26-postgresql02/</guid>
+      <description>pg upsert .5+ UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&amp;#39;test&amp;#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+------+---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&amp;#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+--------------+---------------------------- 1 | hello | 2017-04-24 15:27:39.</description>
+    </item>
+    
+  </channel>
+</rss>

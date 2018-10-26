@@ -214,6 +214,81 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-08-10-go-kafka/">
+                <h2 class="post-title">golang kafka</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 10, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (219 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
+                  <a href="https://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-06-13-ariang-filemanerger/">
+                <h2 class="post-title">AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 15, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (357 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  简单介绍 Aria2 是一个命令行下运行、多协议、多来源下载工具，支持磁力链接、BT 种子、HTTP、FTP 等下载协议，当然因为它是命令行下载工具，所以我们想下载一个东西还需要去敲命令自然是不方便，于是就有一些人根据 Aria2 的 API 开发了一些在线管理面板，可以直接在网页上面添加管理任务。
+本教程介绍的是 AriaNg，Github 项目：https://github.com/mayswind/AriaNg
+Aria2 是一个后端 (服务端) 的程序，而 AriaNg 是一个前端 (HTML+JS 静态) 控制面板，不需要和 Aria2(后端 / 服务端)放在一个服务器或者设备中，你甚至可以只在服务器上面搭建 Aria2 后端，然后访问别人建好的 AriaNg 前端面板，也可以远程操作 Aria2 后端！
+centos6 安装Aria2 wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm yum -y install aria2 # 测试 aria2c -v  配置后端 # 创建Aria2配置文件夹 mkdir /root/.aria2 &amp;&amp; cd /root/.aria2 # 下载Aria2配置文件、DHT文件(BT有没有速度就靠这个) wget --no-check-certificate https://softs.fun/Other/Aria2/aria2.conf wget --no-check-certificate https://softs.fun/Other/Aria2/dht.dat # 创建一个空的 Aria2 下载任务保存文件 echo &#39;&#39; &gt; /root/.
+                  <a href="https://gopherday.com/post/2017-06-13-ariang-filemanerger/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/linux/">linux</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2017-06-10-caddy-nginx/">
                 <h2 class="post-title">caddy nginx 对比</h2>
                 
@@ -599,86 +674,6 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
                 
                   package main import ( &#34;fmt&#34; ) type Collector struct { // UserAgent is the User-Agent string used by HTTP requests 	UserAgent string // MaxDepth limits the recursion depth of visited URLs. 	// Set it to 0 for infinite recursion (default). 	MaxDepth int } func UserAgent(ua string) func(*Collector) { return func(c *Collector) { c.UserAgent = ua } } func (c *Collector) Init() { c.UserAgent = &#34;colly - https://github.com/gocolly/colly&#34; c.
                   <a href="https://gopherday.com/post/2017-10-18-go-colly/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-03-14-jsonrpc/">
-                <h2 class="post-title">golang jsonrpc</h2>
-                
-                  <h3 class="post-subtitle">
-                  golang 标准库
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 14, 2017
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 3 minutes (616 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  client package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/rpc/jsonrpc&#34; &#34;time&#34; ) type Args struct { A, B int } type Arith int func main() { // Create a new jsonrpc client 	// 	// NewClient returns a new rpc.Client to handle requests to the 	// set of services at the other end of the connection. 	// 	// Client will use json as the server&#39;s specified codec 	// to encode requests and decode responses.
-                  <a href="https://gopherday.com/post/2017-03-14-jsonrpc/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-03-13-rpc/">
-                <h2 class="post-title">golang net/rpc</h2>
-                
-                  <h3 class="post-subtitle">
-                  golang 标准库
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 13, 2017
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 2 minutes (229 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  client package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/rpc&#34; ) type Args struct { A, B int } type Quotient struct { Quo, Rem int } func main() { client, err := rpc.DialHTTP(&#34;tcp&#34;, &#34;127.0.0.1:1234&#34;) if err != nil { log.Fatal(&#34;dialing:&#34;, err) } // Synchronous call 	args := &amp;Args{7, 8} var reply int err = client.Call(&#34;Arith.Multiply&#34;, args, &amp;reply) if err != nil { log.Fatal(&#34;arith error:&#34;, err) } fmt.Printf(&#34;Arith: %d*%d=%d\n&#34;, args.A, args.
-                  <a href="https://gopherday.com/post/2017-03-13-rpc/" class="post-read-more">[Read More]</a>
                 
               </div>
 

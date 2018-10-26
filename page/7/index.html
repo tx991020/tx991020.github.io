@@ -214,6 +214,78 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2015-07-10-pyspider-01/">
+                <h2 class="post-title">pyspider 常用模板</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2015
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (188 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  from pyspider.libs.base_handler import * import time import re class Handler(BaseHandler): crawl_config = { &#34;User-Agent&#34;: &#34;Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4&#34; } @every(minutes=24 * 60) def on_start(self): self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=425&amp;page=1&amp;title=%E7%B2%BE%E5%BD%A9%E8%A7%86%E9%A2%91&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) self.crawl( &#39;http://www.yntv.cn/page_list_text/picindex.html?sectionid=429&amp;page=1&amp;title=%E7%83%AD%E6%92%AD%E5%89%A7%E5%9C%BA&#39;, callback=self.index_page, fetch_type=&#39;js&#39;) @config(age=23 * 60 * 60) def index_page(self, response): for x, y in zip(response.doc(&#39;.video_item_img&#39;).items(), response.doc(&#39;.item_img&#39;).items()): href = x(&#39;a&#39;).attr.href self.crawl(href, callback=self.detail_page, fetch_type=&#39;js&#39;, save={&#39;p&#39;: y.attr.src}, js_script=&#39;&#39;&#39; function() { return video } &#39;&#39;&#39;) @config(priority=10) def detail_page(self, response): try: a = re.
+                  <a href="https://gopherday.com/post/2015-07-10-pyspider-01/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/pyspider/">pyspider</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2014-11-10-vagrant/">
+                <h2 class="post-title">vagrant 入门</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 12, 2015
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (89 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  基础镜像 centos7 http://pan.baidu.com/s/1o7BSmoU centos6 http://pan.baidu.com/s/1o81Zb9C ubuntu http://pan.baidu.com/s/1pLzVhnP 添加本地box vagrant box add 自定义你的box名称 box路径 vagrant box add my_first_box D:/centos-7.0-x86_64.box 查看已添加的box vagrant box list 删除box vagrant box remove your_box_name vagrant虚拟机优化 虚拟机名称 config.vm.hostname = &#34;test&#34; 虚拟机主机名 vb.name = &#34;ubuntu_test&#34; 配置虚拟机内存 vb.memory = &#34;512&#34; 配置虚拟机CPU vb.cpus = 1 完整示例 先复制一份Vagrantfile为Vagrantfile.bak作为备份 Vagrantfile Vagrant.configure(&#34;2&#34;) do |config| config.vm.box = &#34;centos&#34; config.vm.network &#34;forwarded_port&#34;, guest:80, host:80 config.vm.network &#34;forwarded_port&#34;, guest:8080, host:8080 config.vm.synced_folder &#34;/Users/andy/data&#34;, &#39;/data&#39;, :smb =&gt; true config.vm.network &#34;private_network&#34;, ip: &#34;192.
+                  <a href="https://gopherday.com/post/2014-11-10-vagrant/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/vagrant/">vagrant</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2015-02-26-flake-it-till-you-make-it/">
                 <h2 class="post-title">Flake it till you make it</h2>
                 
@@ -473,64 +545,6 @@ osascript -e &#39;tell application &#34;Finder&#34; to quit&#39;</code></pre></d
           
             <article class="post-preview">
               <a href="https://gopherday.com/post/2016-08-21-ansible/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2016-12-01-go-websocket/">
-                <h2 class="post-title"></h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 1, 0001
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2016-12-10-gin-web-development-01/">
                 <h2 class="post-title"></h2>
                 
                 

@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gopherday.com/post/2018-10-25-postgresql/</loc>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/post/2018-10-26-postgresql02/</loc>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gopherday.com/post/2018-07-20-k8s-struct/</loc>
+    <lastmod>2018-07-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gopherday.com/post/2018-07-17-k8s-replicas-set/</loc>
     <lastmod>2018-07-17T00:00:00+00:00</lastmod>
   </url>
@@ -10,11 +25,6 @@
   <url>
     <loc>https://gopherday.com/post/2018-07-16-k8s-pods/</loc>
     <lastmod>2018-07-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gopherday.com/post/2018-07-11-go-retry/</loc>
-    <lastmod>2018-07-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -334,7 +344,7 @@
   
   <url>
     <loc>https://gopherday.com/</loc>
-    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -453,6 +463,12 @@
   </url>
   
   <url>
+    <loc>https://gopherday.com/tags/k8s/</loc>
+    <lastmod>2018-07-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gopherday.com/tags/kafka/</loc>
     <lastmod>2016-09-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -506,8 +522,14 @@
   </url>
   
   <url>
+    <loc>https://gopherday.com/tags/postgresql/</loc>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gopherday.com/post/</loc>
-    <lastmod>2018-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

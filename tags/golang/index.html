@@ -184,77 +184,6 @@
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="https://gopherday.com/post/2018-07-11-go-retry/">
-                <h2 class="post-title">golang retry</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on July 11, 2018
-              </p>
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-	<span class="s">&#34;fmt&#34;</span>
-	<span class="s">&#34;io/ioutil&#34;</span>
-	<span class="s">&#34;net/http&#34;</span>
-	<span class="s">&#34;time&#34;</span>
-
-	<span class="s">&#34;github.com/Rican7/retry&#34;</span>
-	<span class="s">&#34;github.com/Rican7/retry/backoff&#34;</span>
-	<span class="s">&#34;github.com/Rican7/retry/strategy&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">Retry</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">Retry</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">response</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Response</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
-	<span class="nx">action</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
-
-		<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&#34;http://www.baidu.com&#34;</span><span class="p">)</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
-		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-		<span class="p">}</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-
-	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">retry</span><span class="p">.</span><span class="nx">Retry</span><span class="p">(</span>
-		<span class="nx">action</span><span class="p">,</span>
-		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Backoff</span><span class="p">(</span><span class="nx">backoff</span><span class="p">.</span><span class="nx">Fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)),</span>
-	<span class="p">)</span>
-
-	<span class="k">if</span> <span class="kc">nil</span> <span class="o">!=</span> <span class="nx">err</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-		<span class="k">return</span> <span class="nx">err</span>
-
-	<span class="p">}</span>
-	<span class="nx">data</span><span class="p">,</span><span class="nx">_</span><span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
-	<span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span></code></pre></div>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
               <a href="https://gopherday.com/post/2018-07-15-go-clockchain/">
                 <h2 class="post-title">golang 实现blockchain</h2>
 
@@ -511,6 +440,33 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
                     #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                     #<a href="https://gopherday.com//tags/etcd/">etcd</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-08-10-go-kafka/">
+                <h2 class="post-title">golang kafka</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on August 10, 2017
+              </p>
+              <div class="post-entry">
+                
+                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
+                  <a href="https://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                 </span>
               

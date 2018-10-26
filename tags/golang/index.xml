@@ -13,15 +13,6 @@
     
     
     <item>
-      <title>golang retry</title>
-      <link>https://gopherday.com/post/2018-07-11-go-retry/</link>
-      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>https://gopherday.com/post/2018-07-11-go-retry/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;io/ioutil&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/Rican7/retry&amp;#34; &amp;#34;github.com/Rican7/retry/backoff&amp;#34; &amp;#34;github.com/Rican7/retry/strategy&amp;#34; ) func main() { Retry() } func Retry() error { var response *http.Response fmt.Println(1,&amp;amp;response) action := func(attempt uint) error { var err error response, err = http.Get(&amp;#34;http://www.baidu.com&amp;#34;) fmt.Println(2,&amp;amp;response) if err != nil { fmt.Println(err.Error()) } return err } err := retry.Retry( action, strategy.Limit(5), strategy.Backoff(backoff.Fibonacci(2*time.Second)), ) if nil != err { fmt.Println(222, err) return err } data,_:= ioutil.ReadAll(response.Body) fmt.Println(string(data)) return nil }</description>
-    </item>
-    
-    <item>
       <title>golang 实现blockchain</title>
       <link>https://gopherday.com/post/2018-07-15-go-clockchain/</link>
       <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>

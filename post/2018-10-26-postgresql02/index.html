@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>k8s pods</title>
-  <meta property="og:title" content="k8s pods" />
-  <meta name="twitter:title" content="k8s pods" />
-  <meta name="description" content=" Pod 基础 $ kubectl get pods # 获取所有正在运行的POD $ kubectl get pods -o wide # 获取pod的更多信息，比如在哪台k8s机器上 $ kubectl describe pod &lt;pod&gt; #获取一个POD的详细信息 $ kubectl exec &lt;pod&gt; &lt;cmd&gt; #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指 定哪个 pod_nginx.yml apiVersion: v1 kind: Pod metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80">
-  <meta property="og:description" content=" Pod 基础 $ kubectl get pods # 获取所有正在运行的POD $ kubectl get pods -o wide # 获取pod的更多信息，比如在哪台k8s机器上 $ kubectl describe pod &lt;pod&gt; #获取一个POD的详细信息 $ kubectl exec &lt;pod&gt; &lt;cmd&gt; #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指 定哪个 pod_nginx.yml apiVersion: v1 kind: Pod metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80">
-  <meta name="twitter:description" content=" Pod 基础 $ kubectl get pods # 获取所有正在运行的POD $ kubectl get pods -o wide # 获取pod的更多信息，比如在哪台k8s机器上 $ kubectl describe pod &lt;pod&gt; #获取一个POD的详细信息 $ kubectl exec &lt;pod&gt; &lt;cmd&gt; #在pod里的container里执 …">
+  <title>k8s struct</title>
+  <meta property="og:title" content="k8s struct" />
+  <meta name="twitter:title" content="k8s struct" />
+  <meta name="description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;------&#43;---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;--------------&#43;---------------------------- 1 | hello | 2017-04-24 15:27:39.">
+  <meta property="og:description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;------&#43;---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----&#43;--------------&#43;---------------------------- 1 | hello | 2017-04-24 15:27:39.">
+  <meta name="twitter:description" content="pg upsert .5&#43; UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on …">
   <meta name="author" content="andy wu"/>
   <link href='https://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
   <meta property="og:image" content="https://gopherday.com/img/avatar-icon.png" />
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@1059622332Andy" />
   <meta name="twitter:creator" content="@1059622332Andy" />
-  <meta property="og:url" content="https://gopherday.com/post/2018-07-16-k8s-pods/" />
+  <meta property="og:url" content="https://gopherday.com/post/2018-10-26-postgresql02/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="大王派我来搬砖" />
 
   <meta name="generator" content="Hugo 0.32.4" />
-  <link rel="canonical" href="https://gopherday.com/post/2018-07-16-k8s-pods/" />
+  <link rel="canonical" href="https://gopherday.com/post/2018-10-26-postgresql02/" />
   <link rel="alternate" href="https://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -181,17 +181,17 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>k8s pods</h1>
+              <h1>k8s struct</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 16, 2018
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 26, 2018
   
   
   &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (51 words)
+  <i class="fa fa-clock-o"></i> 1 minutes (88 words)
   
   
 </span>
@@ -213,38 +213,42 @@
       <article role="main" class="blog-post">
         
 
-<h1 id="pod-基础">Pod 基础</h1>
-<div class="highlight"><pre class="chroma">$ kubectl get pods   # 获取所有正在运行的POD
-$ kubectl get pods -o wide   # 获取pod的更多信息，比如在哪台k8s机器上
-$ kubectl describe pod &lt;pod&gt;   #获取一个POD的详细信息
-$ kubectl exec &lt;pod&gt; &lt;cmd&gt;     #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指
-定哪个
+<h2 id="pg-upsert">pg upsert</h2>
+<div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html">.5+ UPSERT用法举例
+创建一张测试表，其中一个字段为唯一键或者主键。
 
-pod_nginx.yml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
-    app: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-    - containerPort: 80</pre></div>
+create table test(id int primary key, info text, crt_time timestamp);  
+1. 不存在则插入，存在则更新
+
+test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time;  
+INSERT 0 1  
+  
+test03=# select * from test;  
+ id | info |          crt_time            
+----+------+----------------------------  
+  1 | test | 2017-04-24 15:27:25.393948  
+(1 row)  
+  
+test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time;  
+INSERT 0 1  
+  
+test03=# select * from test;  
+ id |     info     |          crt_time            
+----+--------------+----------------------------  
+  1 | hello  | 2017-04-24 15:27:39.140877  
+(1 row)  </code></pre></div>
       </article>
 
       
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://gopherday.com/post/2018-07-15-go-clockchain/" data-toggle="tooltip" data-placement="top" title="golang 实现blockchain">&larr; Previous Post</a>
+              <a href="https://gopherday.com/post/2018-07-20-k8s-struct/" data-toggle="tooltip" data-placement="top" title="k8s struct">&larr; Previous Post</a>
             </li>
           
           
             <li class="next">
-              <a href="https://gopherday.com/post/2018-07-17-k8s-replicas-set/" data-toggle="tooltip" data-placement="top" title="k8s replicas-set">Next Post &rarr;</a>
+              <a href="https://gopherday.com/post/2018-10-25-postgresql/" data-toggle="tooltip" data-placement="top" title="k8s struct">Next Post &rarr;</a>
             </li>
           
         </ul>

@@ -214,6 +214,86 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-03-14-jsonrpc/">
+                <h2 class="post-title">golang jsonrpc</h2>
+                
+                  <h3 class="post-subtitle">
+                  golang 标准库
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 14, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 3 minutes (616 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  client package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/rpc/jsonrpc&#34; &#34;time&#34; ) type Args struct { A, B int } type Arith int func main() { // Create a new jsonrpc client 	// 	// NewClient returns a new rpc.Client to handle requests to the 	// set of services at the other end of the connection. 	// 	// Client will use json as the server&#39;s specified codec 	// to encode requests and decode responses.
+                  <a href="https://gopherday.com/post/2017-03-14-jsonrpc/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-03-13-rpc/">
+                <h2 class="post-title">golang net/rpc</h2>
+                
+                  <h3 class="post-subtitle">
+                  golang 标准库
+                  </h3>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 13, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (229 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  client package main import ( &#34;fmt&#34; &#34;log&#34; &#34;net/rpc&#34; ) type Args struct { A, B int } type Quotient struct { Quo, Rem int } func main() { client, err := rpc.DialHTTP(&#34;tcp&#34;, &#34;127.0.0.1:1234&#34;) if err != nil { log.Fatal(&#34;dialing:&#34;, err) } // Synchronous call 	args := &amp;Args{7, 8} var reply int err = client.Call(&#34;Arith.Multiply&#34;, args, &amp;reply) if err != nil { log.Fatal(&#34;arith error:&#34;, err) } fmt.Printf(&#34;Arith: %d*%d=%d\n&#34;, args.A, args.
+                  <a href="https://gopherday.com/post/2017-03-13-rpc/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2017-03-10-elastic-model/">
                 <h2 class="post-title">ElasticSearch 智障 使用模板</h2>
                 
@@ -549,94 +629,6 @@ $$</p>
                 <span class="post-meta">
                 
                   #<a href="https://gopherday.com//tags/spark/">spark</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-02-09-python-hadoop/">
-                <h2 class="post-title">python hadoop</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 9, 2017
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (34 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs">pip install mrjob</code></pre></div>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">from</span> <span class="nx">mrjob</span><span class="p">.</span><span class="nx">job</span> <span class="k">import</span> <span class="nx">MRJob</span>
-
-
-<span class="k">class</span> <span class="nx">MRWordFrequencyCount</span><span class="p">(</span><span class="nx">MRJob</span><span class="p">)</span><span class="o">:</span>
-
-    <span class="nx">def</span> <span class="nx">mapper</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">yield</span> <span class="s2">&#34;chars&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="s2">&#34;words&#34;</span><span class="p">,</span> <span class="nx">len</span><span class="p">(</span><span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">())</span>
-        <span class="k">yield</span> <span class="s2">&#34;lines&#34;</span><span class="p">,</span> <span class="mi">1</span>
-
-    <span class="nx">def</span> <span class="nx">reducer</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">values</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">yield</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span>
-
-
-<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="o">:</span>
-    <span class="nx">MRWordFrequencyCount</span><span class="p">.</span><span class="nx">run</span><span class="p">()</span></code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/hadoop/">hadoop</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2016-12-20-pandas-pic/">
-                <h2 class="post-title">pandas basic</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on December 20, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/屏幕快照%202018-02-23%2014.07.03.png" alt="" /></p>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/pandas/">pandas</a>&nbsp;
                 
                 </span>
               

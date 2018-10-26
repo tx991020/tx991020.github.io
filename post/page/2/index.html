@@ -184,6 +184,87 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-05-27-redis-watch/">
+                <h2 class="post-title">Redis Watch</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 21, 2018
+              </p>
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;?</span><span class="nx">php</span>  
+<span class="nx">header</span><span class="p">(</span><span class="s2">&#34;content-type:text/html;charset=utf-8&#34;</span><span class="p">);</span>  
+<span class="nx">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">redis</span><span class="p">();</span>  
+<span class="nx">$result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;10.10.10.119&#39;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span> 
+<span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">watch</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>   
+<span class="nx">$mywatchkey</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>  
+<span class="nx">$rob_total</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>   <span class="c1">//抢购数量  
+</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="nx">$mywatchkey</span><span class="o">&lt;</span><span class="nx">$rob_total</span><span class="p">){</span>  
+   
+    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">multi</span><span class="p">();</span>  
+      
+    <span class="c1">//设置延迟，方便测试效果。  
+</span><span class="c1"></span>    <span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>  
+    <span class="c1">//插入抢购数据  
+</span><span class="c1"></span>    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hSet</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">,</span><span class="s2">&#34;user_id_&#34;</span><span class="p">.</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9999</span><span class="p">),</span><span class="nx">time</span><span class="p">());</span>  
+    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">,</span><span class="nx">$mywatchkey</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  
+    <span class="nx">$rob_result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">exec</span><span class="p">();</span>  
+    <span class="k">if</span><span class="p">(</span><span class="nx">$rob_result</span><span class="p">){</span>  
+        <span class="nx">$mywatchlist</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hGetAll</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">);</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;抢购成功！&lt;br/&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;剩余数量：&#34;</span><span class="p">.(</span><span class="nx">$rob_total</span><span class="o">-</span><span class="nx">$mywatchkey</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="s2">&#34;&lt;br/&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;用户列表：&lt;pre&gt;&#34;</span><span class="p">;</span>  
+        <span class="nx">var_dump</span><span class="p">(</span><span class="nx">$mywatchlist</span><span class="p">);</span>  
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>  
+        <span class="nx">echo</span> <span class="s2">&#34;手气不好，再抢购！&#34;</span><span class="p">;</span><span class="nx">exit</span><span class="p">;</span>  
+    <span class="p">}</span>  
+<span class="p">}</span>  
+<span class="o">?&gt;</span>  </code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://gopherday.com//tags/redis/">Redis</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-05-02-express/">
+                <h2 class="post-title">Express</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 2, 2018
+              </p>
+              <div class="post-entry">
+                
+                  const express = require(&#39;express&#39;); const path = require(&#39;path&#39;); const bodyParser = require(&#39;body-parser&#39;); const crypto = require(&#39;crypto&#39;); // 生成一个 express 实例 const app = express(); // 设置视图文件存放目录 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); app.set(&#39;view engine&#39;, &#39;ejs&#39;); // 设置静态文件存放目录 app.use(express.static(path.join(__dirname, &#39;public&#39;))); // 解析 urlencoded 请求体必备 app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true })); // 响应首页get请求 app.get(&#39;/&#39;, function(req, res) { res.render(&#39;index&#39;, { title: &#39;首页&#39; }); }); app.get(&#39;/login&#39;, function(req, res) { res.render(&#39;login&#39;, { title: &#39;登录&#39;, user: req.session.user, page: &#39;login&#39; }); }); app.
+                  <a href="https://gopherday.com/post/2018-05-02-express/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://gopherday.com//tags/nodejs/">NodeJs</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2018-04-10-coupon/">
                 <h2 class="post-title">Coupon 商品优惠券 API</h2>
 
@@ -419,63 +500,6 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
                     #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
                   
                     #<a href="https://gopherday.com//tags/etcd/">etcd</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-08-10-go-kafka/">
-                <h2 class="post-title">golang kafka</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on August 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
-                  <a href="https://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-06-13-ariang-filemanerger/">
-                <h2 class="post-title">AriaNg&#43;Caddy FileManager打造自己的离线下载网盘</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on June 15, 2017
-              </p>
-              <div class="post-entry">
-                
-                  简单介绍 Aria2 是一个命令行下运行、多协议、多来源下载工具，支持磁力链接、BT 种子、HTTP、FTP 等下载协议，当然因为它是命令行下载工具，所以我们想下载一个东西还需要去敲命令自然是不方便，于是就有一些人根据 Aria2 的 API 开发了一些在线管理面板，可以直接在网页上面添加管理任务。
-本教程介绍的是 AriaNg，Github 项目：https://github.com/mayswind/AriaNg
-Aria2 是一个后端 (服务端) 的程序，而 AriaNg 是一个前端 (HTML+JS 静态) 控制面板，不需要和 Aria2(后端 / 服务端)放在一个服务器或者设备中，你甚至可以只在服务器上面搭建 Aria2 后端，然后访问别人建好的 AriaNg 前端面板，也可以远程操作 Aria2 后端！
-centos6 安装Aria2 wget http://repository.it4i.cz/mirrors/repoforge/redhat/el6/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm yum -y install aria2 # 测试 aria2c -v  配置后端 # 创建Aria2配置文件夹 mkdir /root/.aria2 &amp;&amp; cd /root/.aria2 # 下载Aria2配置文件、DHT文件(BT有没有速度就靠这个) wget --no-check-certificate https://softs.fun/Other/Aria2/aria2.conf wget --no-check-certificate https://softs.fun/Other/Aria2/dht.dat # 创建一个空的 Aria2 下载任务保存文件 echo &#39;&#39; &gt; /root/.
-                  <a href="https://gopherday.com/post/2017-06-13-ariang-filemanerger/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/linux/">linux</a>&nbsp;
                   
                 </span>
               

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K8s on 大王派我来搬砖</title>
+    <link>https://gopherday.com/tags/k8s/</link>
+    <description>Recent content in K8s on 大王派我来搬砖</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
+    <webMaster>tx991020@gmail.com (andy wu)</webMaster>
+    <lastBuildDate>Fri, 20 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://gopherday.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-07-20-k8s-struct/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-07-20-k8s-struct/</guid>
+      <description>package k8s import ( &amp;#34;k8s.io/client-go/dynamic&amp;#34; &amp;#34;k8s.io/client-go/kubernetes&amp;#34; &amp;#34;cloud/util&amp;#34; &amp;#34;cloud/models/hosts&amp;#34; ) // 配置服务存储数据 type StorageData struct { // 宿主机路径 	HostPath string // 容器挂载路径 	ContainerPath string // 分布式卷名称 	Volume string // 读写权限 	Model int // 只读挂载 	ReadOnly bool } // 亲和性配置结构 // 必须在服务器进行标签配置 // 2018-01-11 type Affinity struct { // 类型 disk service server 	Type string // 值 	Value string } // 选择节点配置 // 2018-01-11 15;57 // 只能选择一个机器 // kubernetes.</description>
+    </item>
+    
+  </channel>
+</rss>

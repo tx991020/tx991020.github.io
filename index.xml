@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>tx991020@gmail.com (andy wu)</managingEditor>
     <webMaster>tx991020@gmail.com (andy wu)</webMaster>
-    <lastBuildDate>Tue, 17 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://gopherday.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-10-25-postgresql/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-10-25-postgresql/</guid>
+      <description>pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接的信息。 \password [user]: 修改用户密码 \q：退出 # Connect to PostgreSQL, using a superuser named &amp;#39;postgres&amp;#39; psql -U postgres -h localhost pg 测试数据生成 select id from generate_series(1,10) t(id); #随机数 select (random()*100)::int from generate_series(1,10); #生成随机字符串 select md5(random()::text) from generate_series(1,10); #随机汉字 create or replace function gen_hanzi(int) returns text as $$ declare res text; begin if $1 &amp;gt;=1 then select string_agg(chr(19968+(random()*20901)::int), &amp;#39;&amp;#39;) into res from generate_series(1,$1); return res; end if; return null; end; $$ language plpgsql strict; select gen_hanzi(10) from generate_series #随机数组 create or replace function gen_rand_arr(int,int) returns int[] as $$ select array_agg((random()*$1)::int) from generate_series(1,$2); $$ language sql strict; # 随机身份证 create or replace function gen_id( a date, b date ) returns text as $$ select lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || to_char(a + (random()*(b-a))::int, &amp;#39;yyyymmdd&amp;#39;) || lpad((random()*99)::int::text, 2, &amp;#39;0&amp;#39;) || random()::int || (case when random()*10 &amp;gt;9 then &amp;#39;X&amp;#39; else (random()*9)::int::text end ) ; $$ language sql strict; select gen_id(&amp;#39;1900-01-01&amp;#39;, &amp;#39;2017-10-16&amp;#39;) from generate_series(1,10);  gin 倒排索引 CREATE INDEX &amp;#34;name &amp;#34; ON &amp;#34;tablename&amp;#34; USING gin(to_tsvector(&amp;#39;jiebacfg&amp;#39;, &amp;#34;columnname&amp;#34;)); CREATE INDEX rumidx ON rum_test USING rum (c1 rum_tsvector_ops); pg 查询 4#全文检索 select * from tbl where tsvector_col @@ &amp;#39;postgres &amp;amp; china | digoal:A&amp;#39; order by ts_rank(tsvector_col, &amp;#39;postgres &amp;amp; china | digoal:A&amp;#39;) limit xx; 5正则查询。（可以使用pg_trgm和gin索引） select * from tbl where col ~ &amp;#39;^a[0-9]{1,5}\ +digoal$&amp;#39;; 6、相似查询。（可以使用pg_trgm和gin索引） select * from tbl order by similarity(col, &amp;#39;postgre&amp;#39;) desc limit 10; 7ADHOC查询，任意字段组合查询。（通过bloom index, multi-index bitmap scan, gin-index bitmap scan 等索引都可以实现） select * from tbl where a=?</description>
+    </item>
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-10-26-postgresql02/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-10-26-postgresql02/</guid>
+      <description>pg upsert .5+ UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&amp;#39;test&amp;#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+------+---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&amp;#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+--------------+---------------------------- 1 | hello | 2017-04-24 15:27:39.</description>
+    </item>
+    
+    <item>
+      <title>k8s struct</title>
+      <link>https://gopherday.com/post/2018-07-20-k8s-struct/</link>
+      <pubDate>Fri, 20 Jul 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-07-20-k8s-struct/</guid>
+      <description>package k8s import ( &amp;#34;k8s.io/client-go/dynamic&amp;#34; &amp;#34;k8s.io/client-go/kubernetes&amp;#34; &amp;#34;cloud/util&amp;#34; &amp;#34;cloud/models/hosts&amp;#34; ) // 配置服务存储数据 type StorageData struct { // 宿主机路径 	HostPath string // 容器挂载路径 	ContainerPath string // 分布式卷名称 	Volume string // 读写权限 	Model int // 只读挂载 	ReadOnly bool } // 亲和性配置结构 // 必须在服务器进行标签配置 // 2018-01-11 type Affinity struct { // 类型 disk service server 	Type string // 值 	Value string } // 选择节点配置 // 2018-01-11 15;57 // 只能选择一个机器 // kubernetes.</description>
+    </item>
     
     <item>
       <title>k8s replicas-set</title>
@@ -28,15 +55,6 @@
       <author>tx991020@gmail.com (andy wu)</author>
       <guid>https://gopherday.com/post/2018-07-16-k8s-pods/</guid>
       <description> Pod 基础 $ kubectl get pods # 获取所有正在运行的POD $ kubectl get pods -o wide # 获取pod的更多信息，比如在哪台k8s机器上 $ kubectl describe pod &amp;lt;pod&amp;gt; #获取一个POD的详细信息 $ kubectl exec &amp;lt;pod&amp;gt; &amp;lt;cmd&amp;gt; #在pod里的container里执行一个命令，如果这个pod有多个container，默认会在第一个里执行，或者通过-c去指 定哪个 pod_nginx.yml apiVersion: v1 kind: Pod metadata: name: nginx labels: app: nginx spec: containers: - name: nginx image: nginx ports: - containerPort: 80</description>
-    </item>
-    
-    <item>
-      <title>golang retry</title>
-      <link>https://gopherday.com/post/2018-07-11-go-retry/</link>
-      <pubDate>Wed, 11 Jul 2018 00:00:00 +0000</pubDate>
-      <author>tx991020@gmail.com (andy wu)</author>
-      <guid>https://gopherday.com/post/2018-07-11-go-retry/</guid>
-      <description>package main import ( &amp;#34;fmt&amp;#34; &amp;#34;io/ioutil&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/Rican7/retry&amp;#34; &amp;#34;github.com/Rican7/retry/backoff&amp;#34; &amp;#34;github.com/Rican7/retry/strategy&amp;#34; ) func main() { Retry() } func Retry() error { var response *http.Response fmt.Println(1,&amp;amp;response) action := func(attempt uint) error { var err error response, err = http.Get(&amp;#34;http://www.baidu.com&amp;#34;) fmt.Println(2,&amp;amp;response) if err != nil { fmt.Println(err.Error()) } return err } err := retry.Retry( action, strategy.Limit(5), strategy.Backoff(backoff.Fibonacci(2*time.Second)), ) if nil != err { fmt.Println(222, err) return err } data,_:= ioutil.ReadAll(response.Body) fmt.Println(string(data)) return nil }</description>
     </item>
     
     <item>

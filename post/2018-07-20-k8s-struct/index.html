@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>k8s struct</title>
+  <meta property="og:title" content="k8s struct" />
+  <meta name="twitter:title" content="k8s struct" />
+  <meta name="description" content="package k8s import ( &#34;k8s.io/client-go/dynamic&#34; &#34;k8s.io/client-go/kubernetes&#34; &#34;cloud/util&#34; &#34;cloud/models/hosts&#34; ) // 配置服务存储数据 type StorageData struct { // 宿主机路径 	HostPath string // 容器挂载路径 	ContainerPath string // 分布式卷名称 	Volume string // 读写权限 	Model int // 只读挂载 	ReadOnly bool } // 亲和性配置结构 // 必须在服务器进行标签配置 // 2018-01-11 type Affinity struct { // 类型 disk service server 	Type string // 值 	Value string } // 选择节点配置 // 2018-01-11 15;57 // 只能选择一个机器 // kubernetes.">
+  <meta property="og:description" content="package k8s import ( &#34;k8s.io/client-go/dynamic&#34; &#34;k8s.io/client-go/kubernetes&#34; &#34;cloud/util&#34; &#34;cloud/models/hosts&#34; ) // 配置服务存储数据 type StorageData struct { // 宿主机路径 	HostPath string // 容器挂载路径 	ContainerPath string // 分布式卷名称 	Volume string // 读写权限 	Model int // 只读挂载 	ReadOnly bool } // 亲和性配置结构 // 必须在服务器进行标签配置 // 2018-01-11 type Affinity struct { // 类型 disk service server 	Type string // 值 	Value string } // 选择节点配置 // 2018-01-11 15;57 // 只能选择一个机器 // kubernetes.">
+  <meta name="twitter:description" content="package k8s import ( &#34;k8s.io/client-go/dynamic&#34; &#34;k8s.io/client-go/kubernetes&#34; &#34;cloud/util&#34; &#34;cloud/models/hosts&#34; ) // 配置服务存储数据 type StorageData struct { // …">
+  <meta name="author" content="andy wu"/>
+  <link href='https://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://gopherday.com/img/avatar-icon.png" />
+  <meta name="twitter:image" content="https://gopherday.com/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@1059622332Andy" />
+  <meta name="twitter:creator" content="@1059622332Andy" />
+  <meta property="og:url" content="https://gopherday.com/post/2018-07-20-k8s-struct/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="大王派我来搬砖" />
+
+  <meta name="generator" content="Hugo 0.32.4" />
+  <link rel="canonical" href="https://gopherday.com/post/2018-07-20-k8s-struct/" />
+  <link rel="alternate" href="https://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://gopherday.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://gopherday.com/css/highlight.min.css" /><link rel="stylesheet" href="https://gopherday.com/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://gopherday.com/">大王派我来搬砖</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="post" href="/post/">post</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">samples</a>
+              <div class="navlinks-children">
+                
+                  <a href="/post/2017-03-07-bigimg-sample">Big Image Sample</a>
+                
+                  <a href="/post/2017-03-05-math-sample">Math Sample</a>
+                
+                  <a href="/post/2016-03-08-code-sample">Code Sample</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="大王派我来搬砖" href="https://gopherday.com/">
+            <img class="avatar-img" src="https://gopherday.com/img/avatar-icon.png" alt="大王派我来搬砖" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>k8s struct</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 20, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 7 minutes (1377 words)
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <div class="highlight"><pre class="chroma"><code class="language-angularjs" data-lang="angularjs"><span class="kn">package</span> <span class="nx">k8s</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;k8s.io/client-go/dynamic&#34;</span>
+	<span class="s">&#34;k8s.io/client-go/kubernetes&#34;</span>
+	<span class="s">&#34;cloud/util&#34;</span>
+	<span class="s">&#34;cloud/models/hosts&#34;</span>
+<span class="p">)</span>
+
+<span class="c1">// 配置服务存储数据
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">StorageData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 宿主机路径
+</span><span class="c1"></span>	<span class="nx">HostPath</span> <span class="kt">string</span>
+	<span class="c1">// 容器挂载路径
+</span><span class="c1"></span>	<span class="nx">ContainerPath</span> <span class="kt">string</span>
+	<span class="c1">// 分布式卷名称
+</span><span class="c1"></span>	<span class="nx">Volume</span> <span class="kt">string</span>
+	<span class="c1">// 读写权限
+</span><span class="c1"></span>	<span class="nx">Model</span> <span class="kt">int</span>
+	<span class="c1">// 只读挂载
+</span><span class="c1"></span>	<span class="nx">ReadOnly</span> <span class="kt">bool</span>
+<span class="p">}</span>
+
+<span class="c1">// 亲和性配置结构
+</span><span class="c1">// 必须在服务器进行标签配置
+</span><span class="c1">// 2018-01-11
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Affinity</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 类型 disk service server
+</span><span class="c1"></span>	<span class="nx">Type</span> <span class="kt">string</span>
+	<span class="c1">// 值
+</span><span class="c1"></span>	<span class="nx">Value</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 选择节点配置
+</span><span class="c1">// 2018-01-11 15;57
+</span><span class="c1">// 只能选择一个机器
+</span><span class="c1">// kubernetes.io/hostname=
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">NodeSelector</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 标签名称,主要是主机名称
+</span><span class="c1"></span>	<span class="nx">Lables</span> <span class="kt">string</span>
+	<span class="c1">// 标签值
+</span><span class="c1"></span>	<span class="nx">Value</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 获取服务和pod的映射端口数据
+</span><span class="c1">// 2018-01-12 15:36
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">PortData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 标签名称,主要是主机名称
+</span><span class="c1"></span>	<span class="nx">NodePort</span> <span class="kt">string</span>
+	<span class="c1">// 容器端口
+</span><span class="c1"></span>	<span class="nx">ContainerPort</span> <span class="kt">string</span>
+	<span class="c1">// 集群内端口
+</span><span class="c1"></span>	<span class="nx">Port</span> <span class="kt">string</span>
+	<span class="c1">// 访问类型,集群内, 集群外,集群内外
+</span><span class="c1"></span>	<span class="nx">Type</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+
+<span class="c1">// 创建服务参数文件
+</span><span class="c1">// 2018-01-11 21:02
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">ServiceParam</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 客户端
+</span><span class="c1"></span>	<span class="nx">C1</span> <span class="o">*</span><span class="nx">dynamic</span><span class="p">.</span><span class="nx">Client</span>
+	<span class="c1">// 命名空间
+</span><span class="c1"></span>	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="c1">// 服务名称
+</span><span class="c1"></span>	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="c1">// deploy名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">// cpu
+</span><span class="c1"></span>	<span class="nx">Cpu</span> <span class="kd">interface</span><span class="p">{}</span>
+	<span class="c1">// 内存
+</span><span class="c1"></span>	<span class="nx">Memory</span> <span class="kt">string</span>
+	<span class="c1">// 容器暴露端口
+</span><span class="c1"></span>	<span class="nx">Port</span> <span class="kt">string</span>
+	<span class="c1">// 存储数据
+</span><span class="c1"></span>	<span class="nx">StorageData</span> <span class="kt">string</span>
+	<span class="c1">// 镜像名称
+</span><span class="c1"></span>	<span class="nx">Image</span> <span class="kt">string</span>
+	<span class="c1">// 标签选择器
+</span><span class="c1"></span>	<span class="nx">Selector</span> <span class="kt">string</span>
+	<span class="c1">// 亲和性数据
+</span><span class="c1"></span>	<span class="c1">// 环境变量数据
+</span><span class="c1"></span>	<span class="nx">Envs</span> <span class="kt">string</span>
+	<span class="c1">// 副本数量
+</span><span class="c1"></span>	<span class="nx">Replicas</span> <span class="kt">int64</span>
+	<span class="c1">// 健康检查数据
+</span><span class="c1"></span>	<span class="nx">HealthData</span> <span class="kt">string</span>
+	<span class="c1">// 客户端
+</span><span class="c1"></span>	<span class="nx">Cl2</span> <span class="o">*</span><span class="nx">dynamic</span><span class="p">.</span><span class="nx">Client</span>
+	<span class="c1">// 端口数据
+</span><span class="c1"></span>	<span class="nx">PortData</span> <span class="kt">string</span>
+	<span class="c1">// 获取数据客户端
+</span><span class="c1"></span>	<span class="nx">Cl3</span> <span class="nx">kubernetes</span><span class="p">.</span><span class="nx">Clientset</span>
+	<span class="c1">// 更新类型
+</span><span class="c1"></span>	<span class="nx">Update</span> <span class="kt">bool</span>
+	<span class="c1">// 滚动升级时候,会优先启动的pod数量
+</span><span class="c1"></span>	<span class="nx">MaxSurge</span> <span class="kt">int</span>
+	<span class="c1">// 滚动升级时候,最大的unavailable数量
+</span><span class="c1"></span>	<span class="nx">MaxUnavailable</span> <span class="kt">int</span>
+	<span class="c1">// 指定没有任何容器crash的Pod并被认为是可用状态的最小秒数
+</span><span class="c1"></span>	<span class="nx">MinReady</span> <span class="kt">int</span>
+	<span class="c1">// 更新类型
+</span><span class="c1"></span>	<span class="nx">UpdateType</span> <span class="kt">string</span>
+	<span class="c1">// 已经存在的端口数据
+</span><span class="c1"></span>	<span class="nx">OldPort</span> <span class="nx">util</span><span class="p">.</span><span class="nx">Lock</span>
+	<span class="c1">// 配置文件key
+</span><span class="c1"></span>	<span class="nx">ConfigureData</span> <span class="p">[]</span><span class="nx">ConfigureData</span>
+	<span class="c1">// 集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">// 容器启动命令[]string
+</span><span class="c1"></span>	<span class="nx">Command</span> <span class="kt">string</span>
+	<span class="c1">// 镜像仓库的
+</span><span class="c1"></span>	<span class="c1">// 集群主机IP
+</span><span class="c1"></span>	<span class="nx">Master</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">MasterPort</span> <span class="kt">string</span>
+	<span class="c1">// 资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">// 应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">// 创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">// 配置文件是否更新参数
+</span><span class="c1"></span>	<span class="nx">NoUpdateConfig</span> <span class="kt">bool</span>
+	<span class="c1">// 主机端口
+</span><span class="c1"></span>	<span class="nx">HostPort</span> <span class="kt">string</span>
+	<span class="c1">// 安全设置
+</span><span class="c1"></span>	<span class="nx">Privileged</span> <span class="kt">bool</span>
+	<span class="c1">// 镜像仓库地址
+</span><span class="c1"></span>	<span class="nx">Registry</span> <span class="kt">string</span>
+	<span class="c1">// 镜像仓库用户名密码 admin:admin
+</span><span class="c1"></span>	<span class="nx">RegistryAuth</span> <span class="kt">string</span>
+	<span class="c1">// 最大扩容量
+</span><span class="c1"></span>	<span class="nx">ReplicasMax</span> <span class="kt">int64</span>
+	<span class="c1">// 标签
+</span><span class="c1"></span>	<span class="nx">Labels</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+	<span class="c1">// 访问状态
+</span><span class="c1"></span>	<span class="nx">AccessMode</span> <span class="kt">string</span>
+	<span class="c1">// 老的yaml信息,主要是获取端口
+</span><span class="c1"></span>	<span class="nx">PortYaml</span> <span class="kt">string</span>
+	<span class="c1">// 重建标志
+</span><span class="c1"></span>	<span class="nx">IsRedeploy</span> <span class="kt">bool</span>
+	<span class="c1">// pod关闭时间
+</span><span class="c1"></span>	<span class="nx">TerminationSeconds</span> <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="c1">// 配置服务健康检查使用的
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">HealthData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 检查类型
+</span><span class="c1"></span>	<span class="nx">HealthType</span> <span class="kt">string</span>
+	<span class="c1">// 检查端口
+</span><span class="c1"></span>	<span class="nx">HealthPort</span> <span class="kt">string</span>
+	<span class="c1">// http访问路径
+</span><span class="c1"></span>	<span class="nx">HealthPath</span> <span class="kt">string</span>
+	<span class="c1">// 服务启动预计时间
+</span><span class="c1"></span>	<span class="nx">HealthInitialDelay</span> <span class="kt">string</span>
+	<span class="c1">// 检查间隔
+</span><span class="c1"></span>	<span class="nx">HealthInterval</span> <span class="kt">string</span>
+	<span class="c1">// 失败阈值
+</span><span class="c1"></span>	<span class="nx">HealthFailureThreshold</span> <span class="kt">string</span>
+	<span class="c1">// 检查超时
+</span><span class="c1"></span>	<span class="nx">HealthTimeout</span> <span class="kt">string</span>
+	<span class="c1">// 通过命令检查
+</span><span class="c1"></span>	<span class="nx">HealthCmd</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 配置文件信息
+</span><span class="c1">// 2018-01-17 21:34
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">ConfigureData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">ContainerPath</span> <span class="kt">string</span>
+	<span class="nx">DataName</span> <span class="kt">string</span>
+	<span class="nx">DataId</span> <span class="kt">string</span>
+	<span class="nx">ConfigDbData</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="p">}</span>
+
+
+<span class="kd">const</span> <span class="nx">SelectCloudConfigureMount</span> <span class="p">=</span> <span class="s">&#34;select service_name,mount_path,data_name,create_time,mount_id,configure_name,namespace,cluster_name,last_update_time from cloud_configure_mount&#34;</span>
+<span class="kd">const</span> <span class="nx">UpdateCloudConfigureMount</span> <span class="p">=</span> <span class="s">&#34;update cloud_configure_mount&#34;</span>
+<span class="kd">const</span> <span class="nx">DeleteCloudConfigureMount</span> <span class="p">=</span> <span class="s">&#34;delete from cloud_configure_mount&#34;</span>
+<span class="kd">const</span> <span class="nx">InsertCloudConfigureMount</span> <span class="p">=</span> <span class="s">&#34;insert into cloud_configure_mount&#34;</span>
+<span class="kd">const</span> <span class="nx">SelectCloudLb</span> <span class="p">=</span> <span class="s">&#34;select service_number,entname,cpu,memory,host_log_path,lb_ip,lb_type,lb_id,description,create_time,cluster_name,resource_name,last_modify_time,lb_name,lb_domain_prefix,lb_domain_suffix,create_user,last_modify_user,status from cloud_lb&#34;</span>
+
+
+
+
+<span class="c1">//2018-01-18 10:45:25.5832512 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudConfigureMount</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//首次挂载时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">MountId</span> <span class="kt">int64</span>
+	<span class="c1">//配置文件名称
+</span><span class="c1"></span>	<span class="nx">ConfigureName</span> <span class="kt">string</span>
+	<span class="c1">//命名空间
+</span><span class="c1"></span>	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//最近更新时间
+</span><span class="c1"></span>	<span class="nx">LastUpdateTime</span> <span class="kt">string</span>
+	<span class="c1">// 数据名称
+</span><span class="c1"></span>	<span class="nx">DataName</span> <span class="kt">string</span>
+	<span class="c1">// 挂载路径
+</span><span class="c1"></span>	<span class="nx">MountPath</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 仓库创建使用参数
+</span><span class="c1">// 2018-01-21 15:55
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">RegistryParam</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Name</span>        <span class="kt">string</span>
+	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="nx">Master</span>      <span class="kt">string</span>
+	<span class="nx">Port</span>        <span class="kt">string</span>
+	<span class="nx">AuthServer</span>  <span class="kt">string</span>
+	<span class="nx">HostPath</span>    <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 镜像信息获取
+</span><span class="c1">// 2018-01-28 13:23
+</span><span class="c1"></span>
+<span class="c1">//2018-01-27 15:08:36.2055048 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudImage</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//镜像名称
+</span><span class="c1"></span>	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="c1">//所属仓库
+</span><span class="c1"></span>	<span class="nx">Repositories</span> <span class="kt">string</span>
+	<span class="c1">//镜像类型,分为共有和私有
+</span><span class="c1"></span>	<span class="nx">ImageType</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">ImageId</span> <span class="kt">int64</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//镜像大小
+</span><span class="c1"></span>	<span class="nx">Size</span> <span class="kt">int64</span>
+	<span class="c1">//镜像仓库组
+</span><span class="c1"></span>	<span class="nx">RepositoriesGroup</span> <span class="kt">string</span>
+	<span class="c1">// tag数量
+</span><span class="c1"></span>	<span class="nx">TagNumber</span> <span class="kt">int</span>
+	<span class="c1">// 访问方式
+</span><span class="c1"></span>	<span class="nx">Access</span> <span class="kt">string</span>
+	<span class="c1">// 镜像层数
+</span><span class="c1"></span>	<span class="nx">LayersNumber</span> <span class="kt">int</span>
+	<span class="c1">// 版本数据
+</span><span class="c1"></span>	<span class="nx">Tags</span> <span class="kt">string</span>
+	<span class="c1">// 下载次数
+</span><span class="c1"></span>	<span class="nx">Download</span> <span class="kt">int64</span>
+<span class="p">}</span>
+
+<span class="c1">//2018-01-18 16:23:05.0430682 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudStorage</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">StorageId</span> <span class="kt">int64</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//描述信息
+</span><span class="c1"></span>	<span class="nx">Description</span> <span class="kt">string</span>
+	<span class="c1">//存储大小,单位GB
+</span><span class="c1"></span>	<span class="nx">StorageSize</span> <span class="kt">string</span>
+	<span class="c1">//存储格式
+</span><span class="c1"></span>	<span class="nx">StorageFormat</span> <span class="kt">string</span>
+	<span class="c1">//最近修改用户
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//glusterfs, nfs, host
+</span><span class="c1"></span>	<span class="nx">StorageType</span> <span class="kt">string</span>
+	<span class="c1">// 名称
+</span><span class="c1"></span>	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="c1">// 服务器地址
+</span><span class="c1"></span>	<span class="nx">StorageServer</span> <span class="kt">string</span>
+	<span class="c1">// 使用装态
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+	<span class="c1">// 环境名称
+</span><span class="c1"></span>	<span class="nx">Entname</span> <span class="kt">string</span>
+	<span class="c1">// 是否是共享存储 1 独有, 0 共享
+</span><span class="c1"></span>	<span class="nx">SharedType</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">//2018-01-31 10:10:22.9723601 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudStorageMountInfo</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//服务名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">//应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//存储服务器
+</span><span class="c1"></span>	<span class="nx">StorageServer</span> <span class="kt">string</span>
+	<span class="c1">//读写权限
+</span><span class="c1"></span>	<span class="nx">Model</span> <span class="kt">string</span>
+	<span class="c1">//存储类型
+</span><span class="c1"></span>	<span class="nx">StorageType</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">MountId</span> <span class="kt">int64</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//容器挂载路径
+</span><span class="c1"></span>	<span class="nx">MountPath</span> <span class="kt">string</span>
+	<span class="c1">// 资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">// 挂载状态
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+	<span class="c1">// 存储卷名称
+</span><span class="c1"></span>	<span class="nx">StorageName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">CloudLbService</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//转到容器的端口
+</span><span class="c1"></span>	<span class="nx">ContainerPort</span> <span class="kt">string</span>
+	<span class="c1">//要负载的服务的名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">//负载均衡名称
+</span><span class="c1"></span>	<span class="nx">LbName</span> <span class="kt">string</span>
+	<span class="c1">//证书文件
+</span><span class="c1"></span>	<span class="nx">CertFile</span> <span class="kt">string</span>
+	<span class="c1">//服务描述信息
+</span><span class="c1"></span>	<span class="nx">Description</span> <span class="kt">string</span>
+	<span class="c1">//监听端口
+</span><span class="c1"></span>	<span class="nx">ListenPort</span> <span class="kt">string</span>
+	<span class="c1">//负载均衡类型,tcp,http,https
+</span><span class="c1"></span>	<span class="nx">LbType</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//最近修改用户
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">ServiceId</span> <span class="kt">int64</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">// 访问地址
+</span><span class="c1"></span>	<span class="nx">Domain</span> <span class="kt">string</span>
+	<span class="c1">// 应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">// 资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">// 应用服务对应的ID
+</span><span class="c1"></span>	<span class="nx">LbServiceId</span> <span class="kt">string</span>
+	<span class="c1">// 负载均衡的ID
+</span><span class="c1"></span>	<span class="nx">LbId</span> <span class="kt">int64</span>
+	<span class="c1">// 是否配置默认域名
+</span><span class="c1"></span>	<span class="nx">DefaultDomain</span> <span class="kt">string</span>
+	<span class="c1">// 负载方式 pod node
+</span><span class="c1"></span>	<span class="nx">LbMethod</span> <span class="kt">string</span>
+	<span class="c1">// 负载协议
+</span><span class="c1"></span>	<span class="nx">Protocol</span> <span class="kt">string</span>
+	<span class="c1">// 服务版本
+</span><span class="c1"></span>	<span class="nx">ServiceVersion</span> <span class="kt">string</span>
+	<span class="c1">// 环境名称
+</span><span class="c1"></span>	<span class="nx">Entname</span> <span class="kt">string</span>
+	<span class="c1">// 流量切入百分比
+</span><span class="c1"></span>	<span class="nx">Percent</span> <span class="kt">int</span>
+	<span class="c1">// 流量切入名称
+</span><span class="c1"></span>	<span class="nx">FlowServiceName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">CloudClusterHosts</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//主机IP
+</span><span class="c1"></span>	<span class="nx">HostIp</span> <span class="kt">string</span>
+	<span class="c1">//主机标签
+</span><span class="c1"></span>	<span class="nx">HostLabel</span> <span class="kt">string</span>
+	<span class="c1">//主机类型
+</span><span class="c1"></span>	<span class="nx">HostType</span> <span class="kt">string</span>
+	<span class="c1">//是否有效
+</span><span class="c1"></span>	<span class="nx">IsValid</span> <span class="kt">int64</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">HostId</span> <span class="kt">int64</span>
+	<span class="c1">// 集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">// k8sAPi端口,只需要master有就行了
+</span><span class="c1"></span>	<span class="nx">ApiPort</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+
+<span class="c1">//2018-02-01 13:32:07.5158035 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudLbNginxConf</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">ConfId</span> <span class="kt">int64</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//参考lb服务id
+</span><span class="c1"></span>	<span class="nx">LbServiceId</span> <span class="kt">string</span>
+	<span class="c1">//资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">//应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">// 最近修改人
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//域名
+</span><span class="c1"></span>	<span class="nx">Domain</span> <span class="kt">string</span>
+	<span class="c1">//vhost数据
+</span><span class="c1"></span>	<span class="nx">Vhost</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//服务名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">// 负载服务ID
+</span><span class="c1"></span>	<span class="nx">ServiceId</span> <span class="kt">int64</span>
+	<span class="c1">// 使用证书名称
+</span><span class="c1"></span>	<span class="nx">CertFile</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">CloudLb</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//负载均衡名称
+</span><span class="c1"></span>	<span class="nx">LbName</span> <span class="kt">string</span>
+	<span class="c1">//域名前缀
+</span><span class="c1"></span>	<span class="nx">LbDomainPrefix</span> <span class="kt">string</span>
+	<span class="c1">//域名后缀
+</span><span class="c1"></span>	<span class="nx">LbDomainSuffix</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//最近修改用户
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+	<span class="c1">//IP地址
+</span><span class="c1"></span>	<span class="nx">LbIp</span> <span class="kt">string</span>
+	<span class="c1">//负载均衡类型,nginx,haproxy
+</span><span class="c1"></span>	<span class="nx">LbType</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">LbId</span> <span class="kt">int64</span>
+	<span class="c1">//配额描述信息
+</span><span class="c1"></span>	<span class="nx">Description</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">ServiceNumber</span> <span class="kt">int64</span>
+	<span class="c1">// 环境名称
+</span><span class="c1"></span>	<span class="nx">Entname</span> <span class="kt">string</span>
+	<span class="c1">// cpu
+</span><span class="c1"></span>	<span class="nx">Cpu</span> <span class="kt">string</span>
+	<span class="c1">// Memory
+</span><span class="c1"></span>	<span class="nx">Memory</span> <span class="kt">string</span>
+	<span class="c1">// 日志挂载路径
+</span><span class="c1"></span>	<span class="nx">HostLogPath</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">//2018-02-02 10:01:17.2337629 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudLbCert</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//描述信息
+</span><span class="c1"></span>	<span class="nx">Description</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">CertId</span> <span class="kt">int64</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">//最近修改用户
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//证书名称
+</span><span class="c1"></span>	<span class="nx">CertKey</span> <span class="kt">string</span>
+	<span class="c1">//证书内容
+</span><span class="c1"></span>	<span class="nx">CertValue</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">// 证书公钥文件
+</span><span class="c1"></span>	<span class="nx">PemValue</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+
+<span class="c1">//2018-02-06 10:40:26.9362807 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudImageSyncLog</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//镜像仓库组
+</span><span class="c1"></span>	<span class="nx">RegistryGroup</span> <span class="kt">string</span>
+	<span class="c1">//仓库服务器2
+</span><span class="c1"></span>	<span class="nx">RegistryServer2</span> <span class="kt">string</span>
+	<span class="c1">//项目名称
+</span><span class="c1"></span>	<span class="nx">ItemName</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">LogId</span> <span class="kt">int64</span>
+	<span class="c1">//执行内容
+</span><span class="c1"></span>	<span class="nx">Messages</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//程序运行时间
+</span><span class="c1"></span>	<span class="nx">Runtime</span> <span class="kt">int64</span>
+	<span class="c1">//仓库服务器1
+</span><span class="c1"></span>	<span class="nx">RegistryServer1</span> <span class="kt">string</span>
+	<span class="c1">// 版本号
+</span><span class="c1"></span>	<span class="nx">Version</span> <span class="kt">string</span>
+	<span class="c1">// 同步状态
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-02-13 09:46
+</span><span class="c1">// 镜像数据,
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">HostImages</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Id</span> <span class="kt">int</span>
+	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="nx">Tag</span> <span class="kt">string</span>
+	<span class="nx">Size</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-02-16 18:36
+</span><span class="c1">// 服务滚动更新参数
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">RollingParam</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">MinReadySeconds</span> <span class="kt">int32</span>
+	<span class="nx">TerminationGracePeriodSeconds</span> <span class="kt">int64</span>
+	<span class="nx">MaxUnavailable</span> <span class="kt">int32</span>
+	<span class="nx">MaxSurge</span> <span class="kt">int32</span>
+	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="nx">Client</span> <span class="nx">kubernetes</span><span class="p">.</span><span class="nx">Clientset</span>
+	<span class="nx">Images</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-02-17 21:09
+</span><span class="c1">// 更新upstream，参数
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">UpdateLbNginxUpstream</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Master</span> <span class="kt">string</span>
+	<span class="nx">Port</span> <span class="kt">string</span>
+	<span class="nx">Domain</span> <span class="kt">string</span>
+	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="nx">V</span> <span class="nx">CloudLbService</span>
+	<span class="nx">ClusterName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-02-19 14:50
+</span><span class="c1">// 获取自动扩容的扩容数量参数
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">AutoScaleParam</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">ReplicasMax</span> <span class="kt">int32</span>
+	<span class="nx">ReplicasMin</span> <span class="kt">int32</span>
+	<span class="nx">Cpu</span> <span class="kt">int64</span>
+	<span class="nx">Memory</span> <span class="kt">int64</span>
+	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="nx">ResourceName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">//2018-02-20 09:39:59.7024273 +0800 CST
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CloudAutoScaleLog</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">LogId</span> <span class="kt">int64</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//指标类型
+</span><span class="c1"></span>	<span class="nx">MetricType</span> <span class="kt">string</span>
+	<span class="c1">//缩容步长
+</span><span class="c1"></span>	<span class="nx">ReduceStep</span> <span class="kt">int64</span>
+	<span class="c1">//扩展到
+</span><span class="c1"></span>	<span class="nx">Replicas</span> <span class="kt">int64</span>
+	<span class="c1">//指标名称
+</span><span class="c1"></span>	<span class="nx">MetricName</span> <span class="kt">string</span>
+	<span class="c1">//es连接地址
+</span><span class="c1"></span>	<span class="nx">Es</span> <span class="kt">string</span>
+	<span class="c1">//扩容状态,成功失败
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+	<span class="c1">//监控值
+</span><span class="c1"></span>	<span class="nx">MonitorValue</span> <span class="kt">float64</span>
+	<span class="c1">//最小值
+</span><span class="c1"></span>	<span class="nx">ReplicasMin</span> <span class="kt">int32</span>
+	<span class="c1">//扩容步长
+</span><span class="c1"></span>	<span class="nx">IncreaseStep</span> <span class="kt">int64</span>
+	<span class="c1">//最大值
+</span><span class="c1"></span>	<span class="nx">ReplicasMax</span> <span class="kt">int32</span>
+	<span class="c1">//扩容或缩容间隔
+</span><span class="c1"></span>	<span class="nx">ActionInterval</span> <span class="kt">int64</span>
+	<span class="c1">//查询参数
+</span><span class="c1"></span>	<span class="nx">Query</span> <span class="kt">string</span>
+	<span class="c1">//应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">//集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">//最近几次超过阈值
+</span><span class="c1"></span>	<span class="nx">LastCount</span> <span class="kt">int64</span>
+	<span class="c1">// 配置的阈值
+</span><span class="c1"></span>	<span class="nx">Gt</span> <span class="kt">int64</span>
+	<span class="c1">// 步长
+</span><span class="c1"></span>	<span class="nx">Step</span> <span class="kt">string</span>
+	<span class="c1">// 服务名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">// 环境名称
+</span><span class="c1"></span>	<span class="nx">Entname</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-01-29 14:28
+</span><span class="c1">// 创建nfs存储
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">StorageParam</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 存储名称
+</span><span class="c1"></span>	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="c1">// 存储大小
+</span><span class="c1"></span>	<span class="nx">Size</span> <span class="kt">string</span>
+	<span class="c1">// 访问模式
+</span><span class="c1"></span>	<span class="nx">AccessMode</span> <span class="kt">string</span>
+	<span class="c1">// 集群MasterIP
+</span><span class="c1"></span>	<span class="nx">Master</span> <span class="kt">string</span>
+	<span class="c1">// 集群MasterPort
+</span><span class="c1"></span>	<span class="nx">Port</span> <span class="kt">string</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="c1">// pvc name
+</span><span class="c1"></span>	<span class="nx">PvcName</span> <span class="kt">string</span>
+	<span class="c1">// 宿主机地址
+</span><span class="c1"></span>	<span class="nx">HostPath</span> <span class="kt">string</span>
+	<span class="c1">// pvc类型
+</span><span class="c1"></span>	<span class="nx">StorageType</span> <span class="kt">string</span>
+	<span class="c1">// 集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-02-27 20:51
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">EventData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// 事件事件
+</span><span class="c1"></span>	<span class="nx">EventTime</span> <span class="kt">string</span>
+	<span class="c1">// 信息
+</span><span class="c1"></span>	<span class="nx">Messages</span> <span class="kt">string</span>
+	<span class="c1">// 原因
+</span><span class="c1"></span>	<span class="nx">Reason</span> <span class="kt">string</span>
+	<span class="c1">// 主机Ip
+</span><span class="c1"></span>	<span class="nx">Host</span> <span class="kt">string</span>
+	<span class="c1">// 类型
+</span><span class="c1"></span>	<span class="nx">Type</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+
+<span class="kd">type</span> <span class="nx">NodeStatus</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">hosts</span><span class="p">.</span><span class="nx">CloudClusterHosts</span>
+	<span class="nx">Lables</span>     <span class="p">[]</span><span class="kt">string</span>
+	<span class="nx">K8sVersion</span> <span class="kt">string</span>
+	<span class="nx">ErrorMsg</span>   <span class="kt">string</span>
+	<span class="nx">MemSize</span>    <span class="kt">int64</span>
+	<span class="nx">OsVersion</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">ClusterStatus</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">ClusterId</span>    <span class="kt">int64</span>
+	<span class="nx">ClusterType</span>  <span class="kt">string</span>
+	<span class="nx">NodeStatus</span>
+	<span class="nx">ClusterAlias</span> <span class="kt">string</span>
+	<span class="nx">ClusterName</span>  <span class="kt">string</span>
+	<span class="nx">Nodes</span>        <span class="kt">int64</span>
+	<span class="nx">Services</span>     <span class="kt">int</span>
+	<span class="nx">OsVersion</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">ClusterResources</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">UsedCpu</span>       <span class="kt">int64</span>
+	<span class="nx">UsedMem</span>       <span class="kt">int64</span>
+	<span class="nx">CpuUsePercent</span> <span class="kt">float64</span>
+	<span class="nx">MemUsePercent</span> <span class="kt">float64</span>
+	<span class="nx">MemFree</span>       <span class="kt">int64</span>
+	<span class="nx">CpuFree</span>       <span class="kt">int64</span>
+	<span class="nx">Cpu</span>           <span class="kt">int64</span>
+	<span class="nx">Mmeory</span>        <span class="kt">int64</span>
+	<span class="nx">Services</span>      <span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">CloudApp</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">AppId</span> <span class="kt">int64</span>
+	<span class="c1">//应用名称
+</span><span class="c1"></span>	<span class="nx">AppName</span> <span class="kt">string</span>
+	<span class="c1">//运行状态
+</span><span class="c1"></span>	<span class="nx">Status</span> <span class="kt">string</span>
+	<span class="c1">//最近修改时间
+</span><span class="c1"></span>	<span class="nx">LastModifyTime</span> <span class="kt">string</span>
+	<span class="c1">//应用标签
+</span><span class="c1"></span>	<span class="nx">AppLabels</span> <span class="kt">string</span>
+	<span class="c1">//其他非固定数据存储
+</span><span class="c1"></span>	<span class="nx">JsonData</span> <span class="kt">string</span>
+	<span class="c1">//应用类型
+</span><span class="c1"></span>	<span class="nx">AppType</span> <span class="kt">string</span>
+	<span class="c1">//资源空间
+</span><span class="c1"></span>	<span class="nx">ResourceName</span> <span class="kt">string</span>
+	<span class="c1">//创建时间
+</span><span class="c1"></span>	<span class="nx">CreateTime</span> <span class="kt">string</span>
+	<span class="c1">//创建用户
+</span><span class="c1"></span>	<span class="nx">CreateUser</span> <span class="kt">string</span>
+	<span class="c1">//最近修改用户
+</span><span class="c1"></span>	<span class="nx">LastModifyUser</span> <span class="kt">string</span>
+	<span class="c1">//最近更新时间
+</span><span class="c1"></span>	<span class="nx">LastUpdateTime</span> <span class="kt">string</span>
+	<span class="c1">// 容器数量
+</span><span class="c1"></span>	<span class="nx">ContainerNumber</span> <span class="kt">int</span>
+	<span class="c1">// 集群名称
+</span><span class="c1"></span>	<span class="nx">ClusterName</span> <span class="kt">string</span>
+	<span class="c1">// 失败的容器数量
+</span><span class="c1"></span>	<span class="nx">ContainerFail</span> <span class="kt">int</span>
+	<span class="c1">// 失败的服务数量
+</span><span class="c1"></span>	<span class="nx">ServiceFail</span> <span class="kt">int</span>
+	<span class="c1">// 服务总量
+</span><span class="c1"></span>	<span class="nx">ServiceNumber</span> <span class="kt">int</span>
+	<span class="c1">// 域名
+</span><span class="c1"></span>	<span class="nx">Domain</span> <span class="kt">string</span>
+	<span class="c1">// svc + namespace:8888
+</span><span class="c1"></span>	<span class="c1">// 访问方式
+</span><span class="c1"></span>	<span class="nx">Access</span> <span class="p">[]</span><span class="kt">string</span>
+	<span class="c1">// 镜像名称
+</span><span class="c1"></span>	<span class="nx">Image</span> <span class="kt">string</span>
+	<span class="c1">// 服务名称
+</span><span class="c1"></span>	<span class="nx">ServiceName</span> <span class="kt">string</span>
+	<span class="c1">// 服务ID
+</span><span class="c1"></span>	<span class="nx">ServiceId</span> <span class="kt">int64</span>
+	<span class="c1">// 正在运行的数量
+</span><span class="c1"></span>	<span class="nx">AvailableReplicas</span> <span class="kt">int32</span>
+	<span class="c1">// 环境名称
+</span><span class="c1"></span>	<span class="nx">Entname</span> <span class="kt">string</span>
+	<span class="c1">// 检查时间
+</span><span class="c1"></span>	<span class="nx">CheckTime</span> <span class="kt">int64</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-03-01 14:24
+</span><span class="c1">// 获取集群证书文件
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">CertData</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">// ca证书公钥文件
+</span><span class="c1"></span>	<span class="nx">CaData</span> <span class="kt">string</span>
+	<span class="c1">// node证书公钥内容
+</span><span class="c1"></span>	<span class="nx">CertData</span> <span class="kt">string</span>
+	<span class="c1">// node证书私钥内容
+</span><span class="c1"></span>	<span class="nx">KeyData</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 2018-09-04 09:51
+</span><span class="c1">// 集群节点资源使用情况
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">NodeReport</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="nx">Ip</span> <span class="kt">string</span>
+	<span class="nx">Namespace</span> <span class="kt">string</span>
+	<span class="nx">Name</span> <span class="kt">string</span>
+	<span class="nx">CpuRequests</span> <span class="kt">string</span>
+	<span class="nx">MemoryRequests</span> <span class="kt">string</span>
+	<span class="nx">CpuLimits</span> <span class="kt">string</span>
+	<span class="nx">MemoryLimits</span> <span class="kt">string</span>
+<span class="p">}</span></code></pre></div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://gopherday.com/post/2018-07-17-k8s-replicas-set/" data-toggle="tooltip" data-placement="top" title="k8s replicas-set">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://gopherday.com/post/2018-10-26-postgresql02/" data-toggle="tooltip" data-placement="top" title="k8s struct">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:tx991020@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/tx991020" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/1059622332Andy" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="https://gopherday.com/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="gopherday.com">andy wu</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://gopherday.com/">大王派我来搬砖</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.32.4</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://gopherday.com/js/main.js"></script>
+<script src="https://gopherday.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://gopherday.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

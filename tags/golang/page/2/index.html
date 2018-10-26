@@ -184,33 +184,6 @@
         <div class="posts-list">
           
             <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-08-10-go-kafka/">
-                <h2 class="post-title">golang kafka</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on August 10, 2017
-              </p>
-              <div class="post-entry">
-                
-                  producer package kafka import ( &#34;github.com/Shopify/sarama&#34; &#34;github.com/astaxie/beego/logs&#34; ) var ( client sarama.SyncProducer ) func InitKafka(addr string) (err error) { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll config.Producer.Partitioner = sarama.NewRandomPartitioner config.Producer.Return.Successes = true client, err = sarama.NewSyncProducer([]string{addr}, config) if err != nil { logs.Error(&#34;init kafka producer failed, err:&#34;, err) return } logs.Debug(&#34;init kafka succ&#34;) return } func SendToKafka(data, topic string) (err error) { msg := &amp;sarama.ProducerMessage{} msg.Topic = topic msg.Value = sarama.
-                  <a href="https://gopherday.com/post/2017-08-10-go-kafka/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
               <a href="https://gopherday.com/post/2017-04-10-go-sync.map/">
                 <h2 class="post-title">golang sync.map</h2>
 

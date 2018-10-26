@@ -214,6 +214,114 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-10-25-postgresql/">
+                <h2 class="post-title">k8s struct</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 26, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (419 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  pg常用命令 \password：设置当前登录用户的密码 \h：查看SQL命令的解释，比如\h select。 \?：查看psql命令列表。 \l：列出所有数据库。 \c [database_name]：连接其他数据库。 \d：列出当前数据库的所有表格。 \d [table_name]：列出某一张表格的结构。 \du：列出所有用户。 \e：打开文本编辑器。 \conninfo：列出当前数据库和连接的信息。 \password [user]: 修改用户密码 \q：退出 # Connect to PostgreSQL, using a superuser named &#39;postgres&#39; psql -U postgres -h localhost pg 测试数据生成 select id from generate_series(1,10) t(id); #随机数 select (random()*100)::int from generate_series(1,10); #生成随机字符串 select md5(random()::text) from generate_series(1,10); #随机汉字 create or replace function gen_hanzi(int) returns text as $$ declare res text; begin if $1 &gt;=1 then select string_agg(chr(19968+(random()*20901)::int), &#39;&#39;) into res from generate_series(1,$1); return res; end if; return null; end; $$ language plpgsql strict; select gen_hanzi(10) from generate_series #随机数组 create or replace function gen_rand_arr(int,int) returns int[] as $$ select array_agg((random()*$1)::int) from generate_series(1,$2); $$ language sql strict; # 随机身份证 create or replace function gen_id( a date, b date ) returns text as $$ select lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || to_char(a + (random()*(b-a))::int, &#39;yyyymmdd&#39;) || lpad((random()*99)::int::text, 2, &#39;0&#39;) || random()::int || (case when random()*10 &gt;9 then &#39;X&#39; else (random()*9)::int::text end ) ; $$ language sql strict; select gen_id(&#39;1900-01-01&#39;, &#39;2017-10-16&#39;) from generate_series(1,10);  gin 倒排索引 CREATE INDEX &#34;name &#34; ON &#34;tablename&#34; USING gin(to_tsvector(&#39;jiebacfg&#39;, &#34;columnname&#34;)); CREATE INDEX rumidx ON rum_test USING rum (c1 rum_tsvector_ops); pg 查询 4#全文检索 select * from tbl where tsvector_col @@ &#39;postgres &amp; china | digoal:A&#39; order by ts_rank(tsvector_col, &#39;postgres &amp; china | digoal:A&#39;) limit xx; 5正则查询。（可以使用pg_trgm和gin索引） select * from tbl where col ~ &#39;^a[0-9]{1,5}\ +digoal$&#39;; 6、相似查询。（可以使用pg_trgm和gin索引） select * from tbl order by similarity(col, &#39;postgre&#39;) desc limit 10; 7ADHOC查询，任意字段组合查询。（通过bloom index, multi-index bitmap scan, gin-index bitmap scan 等索引都可以实现） select * from tbl where a=?
+                  <a href="https://gopherday.com/post/2018-10-25-postgresql/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/postgresql/">PostgreSQL</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-10-26-postgresql02/">
+                <h2 class="post-title">k8s struct</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 26, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (88 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  pg upsert .5+ UPSERT用法举例 创建一张测试表，其中一个字段为唯一键或者主键。 create table test(id int primary key, info text, crt_time timestamp); 1. 不存在则插入，存在则更新 test03=# insert into test values (1,&#39;test&#39;,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+------+---------------------------- 1 | test | 2017-04-24 15:27:25.393948 (1 row) test03=# insert into test values (1,&#39;hello ,now()) on conflict (id) do update set info=excluded.info,crt_time=excluded.crt_time; INSERT 0 1 test03=# select * from test; id | info | crt_time ----+--------------+---------------------------- 1 | hello | 2017-04-24 15:27:39.
+                  <a href="https://gopherday.com/post/2018-10-26-postgresql02/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/postgresql/">PostgreSQL</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-07-20-k8s-struct/">
+                <h2 class="post-title">k8s struct</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 20, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 7 minutes (1377 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package k8s import ( &#34;k8s.io/client-go/dynamic&#34; &#34;k8s.io/client-go/kubernetes&#34; &#34;cloud/util&#34; &#34;cloud/models/hosts&#34; ) // 配置服务存储数据 type StorageData struct { // 宿主机路径 	HostPath string // 容器挂载路径 	ContainerPath string // 分布式卷名称 	Volume string // 读写权限 	Model int // 只读挂载 	ReadOnly bool } // 亲和性配置结构 // 必须在服务器进行标签配置 // 2018-01-11 type Affinity struct { // 类型 disk service server 	Type string // 值 	Value string } // 选择节点配置 // 2018-01-11 15;57 // 只能选择一个机器 // kubernetes.
+                  <a href="https://gopherday.com/post/2018-07-20-k8s-struct/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/k8s/">k8s</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2018-07-17-k8s-replicas-set/">
                 <h2 class="post-title">k8s replicas-set</h2>
                 
@@ -319,86 +427,6 @@ spec:
                 <span class="post-meta">
                 
                   #<a href="https://gopherday.com//tags/devops/">DevOps</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2018-07-11-go-retry/">
-                <h2 class="post-title">golang retry</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 11, 2018
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (72 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-	<span class="s">&#34;fmt&#34;</span>
-	<span class="s">&#34;io/ioutil&#34;</span>
-	<span class="s">&#34;net/http&#34;</span>
-	<span class="s">&#34;time&#34;</span>
-
-	<span class="s">&#34;github.com/Rican7/retry&#34;</span>
-	<span class="s">&#34;github.com/Rican7/retry/backoff&#34;</span>
-	<span class="s">&#34;github.com/Rican7/retry/strategy&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="nx">Retry</span><span class="p">()</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nx">Retry</span><span class="p">()</span> <span class="kt">error</span> <span class="p">{</span>
-	<span class="kd">var</span> <span class="nx">response</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Response</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
-	<span class="nx">action</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">attempt</span> <span class="kt">uint</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-		<span class="kd">var</span> <span class="nx">err</span> <span class="kt">error</span>
-
-		<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&#34;http://www.baidu.com&#34;</span><span class="p">)</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">response</span><span class="p">)</span>
-		<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-			<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">())</span>
-		<span class="p">}</span>
-		<span class="k">return</span> <span class="nx">err</span>
-	<span class="p">}</span>
-
-	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">retry</span><span class="p">.</span><span class="nx">Retry</span><span class="p">(</span>
-		<span class="nx">action</span><span class="p">,</span>
-		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Limit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-		<span class="nx">strategy</span><span class="p">.</span><span class="nx">Backoff</span><span class="p">(</span><span class="nx">backoff</span><span class="p">.</span><span class="nx">Fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)),</span>
-	<span class="p">)</span>
-
-	<span class="k">if</span> <span class="kc">nil</span> <span class="o">!=</span> <span class="nx">err</span> <span class="p">{</span>
-		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="mi">222</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-		<span class="k">return</span> <span class="nx">err</span>
-
-	<span class="p">}</span>
-	<span class="nx">data</span><span class="p">,</span><span class="nx">_</span><span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
-	<span class="k">return</span> <span class="kc">nil</span>
-<span class="p">}</span></code></pre></div>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
                 
                 </span>
               
@@ -579,105 +607,6 @@ spec:
                 <span class="post-meta">
                 
                   #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2018-05-27-redis-watch/">
-                <h2 class="post-title">Redis Watch</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on May 21, 2018
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (46 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="o">&lt;?</span><span class="nx">php</span>  
-<span class="nx">header</span><span class="p">(</span><span class="s2">&#34;content-type:text/html;charset=utf-8&#34;</span><span class="p">);</span>  
-<span class="nx">$redis</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">redis</span><span class="p">();</span>  
-<span class="nx">$result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">connect</span><span class="p">(</span><span class="s1">&#39;10.10.10.119&#39;</span><span class="p">,</span> <span class="mi">6379</span><span class="p">);</span> 
-<span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">watch</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>   
-<span class="nx">$mywatchkey</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">);</span>  
-<span class="nx">$rob_total</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>   <span class="c1">//抢购数量  
-</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="nx">$mywatchkey</span><span class="o">&lt;</span><span class="nx">$rob_total</span><span class="p">){</span>  
-   
-    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">multi</span><span class="p">();</span>  
-      
-    <span class="c1">//设置延迟，方便测试效果。  
-</span><span class="c1"></span>    <span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>  
-    <span class="c1">//插入抢购数据  
-</span><span class="c1"></span>    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hSet</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">,</span><span class="s2">&#34;user_id_&#34;</span><span class="p">.</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9999</span><span class="p">),</span><span class="nx">time</span><span class="p">());</span>  
-    <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">set</span><span class="p">(</span><span class="s2">&#34;mywatchkey&#34;</span><span class="p">,</span><span class="nx">$mywatchkey</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>  
-    <span class="nx">$rob_result</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">exec</span><span class="p">();</span>  
-    <span class="k">if</span><span class="p">(</span><span class="nx">$rob_result</span><span class="p">){</span>  
-        <span class="nx">$mywatchlist</span> <span class="o">=</span> <span class="nx">$redis</span><span class="o">-&gt;</span><span class="nx">hGetAll</span><span class="p">(</span><span class="s2">&#34;mywatchlist&#34;</span><span class="p">);</span>  
-        <span class="nx">echo</span> <span class="s2">&#34;抢购成功！&lt;br/&gt;&#34;</span><span class="p">;</span>  
-        <span class="nx">echo</span> <span class="s2">&#34;剩余数量：&#34;</span><span class="p">.(</span><span class="nx">$rob_total</span><span class="o">-</span><span class="nx">$mywatchkey</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="s2">&#34;&lt;br/&gt;&#34;</span><span class="p">;</span>  
-        <span class="nx">echo</span> <span class="s2">&#34;用户列表：&lt;pre&gt;&#34;</span><span class="p">;</span>  
-        <span class="nx">var_dump</span><span class="p">(</span><span class="nx">$mywatchlist</span><span class="p">);</span>  
-    <span class="p">}</span><span class="k">else</span><span class="p">{</span>  
-        <span class="nx">echo</span> <span class="s2">&#34;手气不好，再抢购！&#34;</span><span class="p">;</span><span class="nx">exit</span><span class="p">;</span>  
-    <span class="p">}</span>  
-<span class="p">}</span>  
-<span class="o">?&gt;</span>  </code></pre></div>
-
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/redis/">Redis</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2018-05-02-express/">
-                <h2 class="post-title">Express</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on May 2, 2018
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (140 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  const express = require(&#39;express&#39;); const path = require(&#39;path&#39;); const bodyParser = require(&#39;body-parser&#39;); const crypto = require(&#39;crypto&#39;); // 生成一个 express 实例 const app = express(); // 设置视图文件存放目录 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); app.set(&#39;view engine&#39;, &#39;ejs&#39;); // 设置静态文件存放目录 app.use(express.static(path.join(__dirname, &#39;public&#39;))); // 解析 urlencoded 请求体必备 app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true })); // 响应首页get请求 app.get(&#39;/&#39;, function(req, res) { res.render(&#39;index&#39;, { title: &#39;首页&#39; }); }); app.get(&#39;/login&#39;, function(req, res) { res.render(&#39;login&#39;, { title: &#39;登录&#39;, user: req.session.user, page: &#39;login&#39; }); }); app.
-                  <a href="https://gopherday.com/post/2018-05-02-express/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/nodejs/">NodeJs</a>&nbsp;
                 
                 </span>
               
