@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>GORM,MySQL,PG</title>
+  <meta property="og:title" content="GORM,MySQL,PG" />
+  <meta name="twitter:title" content="GORM,MySQL,PG" />
+  <meta name="description" content="package main import ( &#34;GORM/orm/dao&#34; &#34;fmt&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;github.com/jinzhu/gorm&#34; _ &#34;github.com/jinzhu/gorm/dialects/postgres&#34; &#34;time&#34; ) type Gist struct { Id int64 Url string Snip string Kword string Md5 string language string } func main() { const ( mysqladdr = &#34;root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&amp;parseTime=true&amp;loc=Local&#34; postgaddr = `host=5432 user=postgres dbname=goods sslmode=disable password=123456` ) //psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%s password=%s dbname=%s sslmode=disable&#34;, &#34;127.0.0.1&#34;, 5432, &#34;postgres&#34;, &#34;123456&#34;, &#34;goods&#34;)  db, err := gorm.Open(&#34;mysql&#34;, mysqladdr) db.LogMode(true) if err != nil { fmt.">
+  <meta property="og:description" content="package main import ( &#34;GORM/orm/dao&#34; &#34;fmt&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;github.com/jinzhu/gorm&#34; _ &#34;github.com/jinzhu/gorm/dialects/postgres&#34; &#34;time&#34; ) type Gist struct { Id int64 Url string Snip string Kword string Md5 string language string } func main() { const ( mysqladdr = &#34;root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&amp;parseTime=true&amp;loc=Local&#34; postgaddr = `host=5432 user=postgres dbname=goods sslmode=disable password=123456` ) //psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%s password=%s dbname=%s sslmode=disable&#34;, &#34;127.0.0.1&#34;, 5432, &#34;postgres&#34;, &#34;123456&#34;, &#34;goods&#34;)  db, err := gorm.Open(&#34;mysql&#34;, mysqladdr) db.LogMode(true) if err != nil { fmt.">
+  <meta name="twitter:description" content="package main import ( &#34;GORM/orm/dao&#34; &#34;fmt&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;github.com/jinzhu/gorm&#34; _ &#34;github.com/jinzhu/gorm/dialects/postgres&#34; …">
+  <meta name="author" content="andy wu"/>
+  <link href='https://gopherday.com/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta property="og:image" content="https://gopherday.com/img/avatar-icon.png" />
+  <meta name="twitter:image" content="https://gopherday.com/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@1059622332Andy" />
+  <meta name="twitter:creator" content="@1059622332Andy" />
+  <meta property="og:url" content="https://gopherday.com/post/2018-10-27-gorm-pg/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="大王派我来搬砖" />
+
+  <meta name="generator" content="Hugo 0.32.4" />
+  <link rel="canonical" href="https://gopherday.com/post/2018-10-27-gorm-pg/" />
+  <link rel="alternate" href="https://gopherday.com/index.xml" type="application/rss+xml" title="大王派我来搬砖">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://gopherday.com/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://gopherday.com/css/highlight.min.css" /><link rel="stylesheet" href="https://gopherday.com/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://gopherday.com/">大王派我来搬砖</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="/">Home</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="post" href="/post/">post</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">samples</a>
+              <div class="navlinks-children">
+                
+                  <a href="/post/2017-03-07-bigimg-sample">Big Image Sample</a>
+                
+                  <a href="/post/2017-03-05-math-sample">Math Sample</a>
+                
+                  <a href="/post/2016-03-08-code-sample">Code Sample</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="大王派我来搬砖" href="https://gopherday.com/">
+            <img class="avatar-img" src="https://gopherday.com/img/avatar-icon.png" alt="大王派我来搬砖" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>GORM,MySQL,PG</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 26, 2018
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (372 words)
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <div class="highlight"><pre class="chroma"><code class="language-angular2html" data-lang="angular2html"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+	<span class="s">&#34;GORM/orm/dao&#34;</span>
+	<span class="s">&#34;fmt&#34;</span>
+	<span class="nx">_</span> <span class="s">&#34;github.com/go-sql-driver/mysql&#34;</span>
+	<span class="s">&#34;github.com/jinzhu/gorm&#34;</span>
+	<span class="nx">_</span> <span class="s">&#34;github.com/jinzhu/gorm/dialects/postgres&#34;</span>
+	<span class="s">&#34;time&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Gist</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">Id</span>       <span class="kt">int64</span>
+	<span class="nx">Url</span>      <span class="kt">string</span>
+	<span class="nx">Snip</span>     <span class="kt">string</span>
+	<span class="nx">Kword</span>    <span class="kt">string</span>
+	<span class="nx">Md5</span>      <span class="kt">string</span>
+	<span class="nx">language</span> <span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">const</span> <span class="p">(</span>
+		<span class="nx">mysqladdr</span> <span class="p">=</span> <span class="s">&#34;root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&amp;parseTime=true&amp;loc=Local&#34;</span>
+
+		<span class="nx">postgaddr</span> <span class="p">=</span> <span class="s">`host=5432 user=postgres dbname=goods sslmode=disable password=123456`</span>
+	<span class="p">)</span>
+	<span class="c1">//psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%s password=%s dbname=%s sslmode=disable&#34;, &#34;127.0.0.1&#34;, 5432, &#34;postgres&#34;, &#34;123456&#34;, &#34;goods&#34;)
+</span><span class="c1"></span>
+	<span class="nx">db</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&#34;mysql&#34;</span><span class="p">,</span> <span class="nx">mysqladdr</span><span class="p">)</span>
+	<span class="nx">db</span><span class="p">.</span><span class="nx">LogMode</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">defer</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+	<span class="nx">tt</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Array</span><span class="p">{[]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&#34;1&#34;</span><span class="p">,</span><span class="s">&#34;2&#34;</span><span class="p">,</span><span class="s">&#34;3&#34;</span><span class="p">}}</span>
+	<span class="nx">c</span> <span class="o">:=&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Class</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="s">&#34;wangwu&#34;</span><span class="p">,</span><span class="nx">Arrs</span><span class="p">:</span><span class="nx">tt</span><span class="p">}</span>
+	
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;class&#34;</span><span class="p">).</span><span class="nx">Create</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+	<span class="nx">r</span> <span class="o">:=&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Class</span><span class="p">{}</span>
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;class&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;name =?&#34;</span><span class="p">,</span><span class="s">&#34;李四&#34;</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Test</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span>
+
+	<span class="nx">result</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Product</span><span class="p">{}</span>
+	<span class="nx">g</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Gist</span><span class="p">{</span><span class="nx">Url</span><span class="p">:</span> <span class="s">&#34;https://gist.github.com/43801f3fdf2c3f09409ca6a3288797f5&#34;</span><span class="p">,</span> <span class="nx">Kword</span><span class="p">:</span> <span class="s">&#34;gorm&#34;</span><span class="p">,</span> <span class="nx">Md5</span><span class="p">:</span> <span class="s">&#34;d9b9f1b0c992aff24378c92508d4e881&#34;</span><span class="p">,</span> <span class="nx">language</span><span class="p">:</span> <span class="s">&#34;go&#34;</span><span class="p">}</span>
+	
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;users&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">` jstext @@ &#39;北京&#39;`</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;gist&#34;</span><span class="p">).</span><span class="nx">Create</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
+	
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&#34;id&#34;</span><span class="p">:</span> <span class="mi">1003</span><span class="p">})</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+	<span class="kd">type</span> <span class="nx">Id</span> <span class="kt">int64</span>
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id = ?&#34;</span><span class="p">,</span><span class="mi">1001</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="nx">Id</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+	<span class="c1">//sql := &#34;id = 1001 for update;&#34;
+</span><span class="c1"></span>	<span class="nx">tx</span> <span class="o">:=</span> <span class="nx">db</span><span class="p">.</span><span class="nx">Begin</span><span class="p">()</span>
+	<span class="nx">tx</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Raw</span><span class="p">(</span><span class="s">&#34;select * from product where id =1001 for update&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+	<span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Product</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id = ?&#34;</span><span class="p">,</span> <span class="mi">1001</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&#34;name&#34;</span><span class="p">,</span> <span class="s">&#34;L6&#34;</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="nx">tx</span><span class="p">.</span><span class="nx">Commit</span><span class="p">()</span>
+
+	<span class="k">if</span>  <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;pingtuan&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Pingtuan</span><span class="p">{</span><span class="nx">CreaterId</span><span class="p">:</span><span class="mi">444</span><span class="p">}).</span><span class="nx">FirstOrCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">tuan</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span><span class="nx">err</span> <span class="o">!=</span><span class="kc">nil</span><span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">tuan</span><span class="p">)</span>
+
+
+	<span class="kd">var</span> <span class="nx">count</span> <span class="nx">PaidCount</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;miaosha&#34;</span><span class="p">).</span><span class="nx">Raw</span><span class="p">(</span><span class="s">&#34;SELECT count(1) as num from `miaosha` where UNIX_TIMESTAMP(`during_time`) &gt; ? AND pay_status &gt;= 0 AND tuan_id = ?&#34;</span><span class="p">,</span> <span class="p">).</span><span class="nx">Count</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+	
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="kd">var</span> <span class="nx">miaosha</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">Miaosha</span>
+	<span class="c1">//一个人不能两次重复加入
+</span><span class="c1"></span>	<span class="nx">filter</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{}</span>
+	<span class="nx">filter</span><span class="p">[</span><span class="s">&#34;tuan_id&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">37</span>
+	<span class="nx">filter</span><span class="p">[</span><span class="s">&#34;user_id&#34;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">234</span>
+	<span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;miaosha&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="nx">filter</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">miaosha</span><span class="p">)</span>
+	
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">miaosha</span><span class="p">)</span>
+
+	<span class="kd">var</span> <span class="nx">orders</span> <span class="p">[]</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Order</span>
+	<span class="k">if</span>  <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;order&#34;</span><span class="p">).</span><span class="nx">Raw</span><span class="p">(</span><span class="s">&#34;SELECT ping_id FROM `order` WHERE paid = ? and refunded = ?&#34;</span><span class="p">,</span><span class="s">&#34;true&#34;</span><span class="p">,</span><span class="s">&#34;false&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">orders</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span><span class="kc">nil</span><span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span><span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">orders</span><span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">PingId</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;miaosha&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id=?&#34;</span><span class="p">,</span><span class="mi">30</span><span class="p">).</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Miaosha</span><span class="p">{}).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&#34;pay_status&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+
+	<span class="nx">tuan</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Pingtuan</span><span class="p">{}</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;pingtuan&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id = ?&#34;</span><span class="p">,</span> <span class="mi">125</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="nx">tuan</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+	
+	<span class="p">}</span>
+	<span class="nx">查询</span>
+	<span class="nx">m</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&#34;count&#34;</span><span class="p">:</span><span class="s">&#34;L3提高&#34;</span><span class="p">}</span>
+	<span class="nx">aff</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Product</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;id = ?&#34;</span><span class="p">,</span> <span class="mi">1002</span><span class="p">).</span><span class="nx">UpdateColumns</span><span class="p">(</span><span class="nx">m</span><span class="p">).</span><span class="nx">RowsAffected</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">aff</span><span class="p">)</span>
+
+	<span class="kd">var</span> <span class="nx">count</span> <span class="kt">int</span>
+	<span class="nx">t2</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">()</span> <span class="o">/</span> <span class="mf">1e9</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;miaosha&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34; UNIX_TIMESTAMP(`due_time`) &gt; ? AND pay_status &gt;= 0 AND tuan_id = ?&#34;</span><span class="p">,</span> <span class="nx">t2</span><span class="p">,</span> <span class="mi">143</span><span class="p">).</span><span class="nx">Count</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">).</span><span class="nx">Error</span><span class="p">;</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+		<span class="c1">//	return err, 0
+</span><span class="c1"></span>	<span class="p">}</span>
+
+	<span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+	<span class="nx">miaosha</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">dao</span><span class="p">.</span><span class="nx">Miaosha</span><span class="p">{}</span>
+	<span class="nx">m</span> <span class="o">:=</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&#34;price&#34;</span><span class="p">:</span><span class="mi">99</span><span class="p">}</span>
+	<span class="nx">result</span> <span class="o">:=</span> <span class="nx">dao</span><span class="p">.</span><span class="nx">GetProducts</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+	<span class="c1">//if err := dao.DB().Table(&#34;miaosha&#34;).Where(&#34;UNIX_TIMESTAMP(`ctime`) &lt;?&#34;,t).First(miaosha).Error; err != nil {
+</span><span class="c1"></span>
+	<span class="c1">//}
+</span><span class="c1"></span>	
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">miaosha</span><span class="p">)</span>
+	<span class="kd">type</span> <span class="nx">Result</span> <span class="kd">struct</span> <span class="p">{</span>
+		<span class="nx">UserId</span> <span class="kt">int</span>
+	<span class="p">}</span>
+	<span class="kd">var</span> <span class="nx">users</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Result</span>
+	<span class="nx">dao</span><span class="p">.</span><span class="nx">DB</span><span class="p">().</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;tuan_member&#34;</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&#34;user_id&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34; tuan_id =?&#34;</span><span class="p">,</span><span class="mi">30</span><span class="p">).</span><span class="nx">Order</span><span class="p">(</span><span class="s">&#34;ctime asc&#34;</span><span class="p">).</span><span class="nx">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
+	<span class="c1">//
+</span><span class="c1"></span>	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span><span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">users</span><span class="p">{</span>
+		<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+	<span class="p">}</span>
+
+	<span class="nx">dao</span><span class="p">.</span><span class="nx">Table</span><span class="p">(</span><span class="s">&#34;product&#34;</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&#34;name like ?&#34;</span><span class="p">,</span> <span class="s">&#34;%提高%&#34;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">result</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+
+	<span class="nx">为Select语句添加扩展SQL选项</span>
+	<span class="nx">db</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&#34;gorm:query_option&#34;</span><span class="p">,</span> <span class="s">&#34;FOR UPDATE&#34;</span><span class="p">).</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+	<span class="nx">SELECT</span> <span class="o">*</span> <span class="nx">FROM</span> <span class="nx">users</span> <span class="nx">WHERE</span> <span class="nx">id</span> <span class="p">=</span>
+
+<span class="p">}</span></code></pre></div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://gopherday.com/post/2018-10-25-postgresql/" data-toggle="tooltip" data-placement="top" title="postgres01">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:tx991020@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/tx991020" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/1059622332Andy" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            
+            <a href="https://gopherday.com/index.xml" title="RSS">
+            
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="gopherday.com">andy wu</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://gopherday.com/">大王派我来搬砖</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.32.4</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://gopherday.com/js/main.js"></script>
+<script src="https://gopherday.com/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="https://gopherday.com/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

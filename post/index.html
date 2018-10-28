@@ -184,6 +184,33 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-10-27-gorm-pg/">
+                <h2 class="post-title">GORM,MySQL,PG</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on October 26, 2018
+              </p>
+              <div class="post-entry">
+                
+                  package main import ( &#34;GORM/orm/dao&#34; &#34;fmt&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;github.com/jinzhu/gorm&#34; _ &#34;github.com/jinzhu/gorm/dialects/postgres&#34; &#34;time&#34; ) type Gist struct { Id int64 Url string Snip string Kword string Md5 string language string } func main() { const ( mysqladdr = &#34;root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&amp;parseTime=true&amp;loc=Local&#34; postgaddr = `host=5432 user=postgres dbname=goods sslmode=disable password=123456` ) //psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%s password=%s dbname=%s sslmode=disable&#34;, &#34;127.0.0.1&#34;, 5432, &#34;postgres&#34;, &#34;123456&#34;, &#34;goods&#34;)  db, err := gorm.Open(&#34;mysql&#34;, mysqladdr) db.LogMode(true) if err != nil { fmt.
+                  <a href="https://gopherday.com/post/2018-10-27-gorm-pg/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://gopherday.com//tags/postgresql/">PostgreSQL</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2018-10-25-postgresql/">
                 <h2 class="post-title">postgres01</h2>
 
@@ -453,32 +480,6 @@ spec:
                 
                   ``` %like%查询 result :=[]*dao.Product{} dao.DB().Table(&#34;product&#34;).Where(&#34;name like ?&#34;,&#34;%提高%&#34;).Find(&amp;result) fmt.Println(result) ## 自定义JsonP 类型 type JsonP struct { T map[string]interface{} } func (p JsonP) Value() (driver.Value, error) { if p ==nil{ return &#34;&#34;,nil } j, _ := json.Marshal(p.T) return j, nil } func (p *JsonP) Scan(src interface{}) error { if p ==nil{ return errors.New(&#34;p is nil&#34;) } source, ok := src.([]byte) if !ok { return errors.New(&#34;Type assertion .([]byte) failed.&#34;) } var i interface{} err := json.
                   <a href="https://gopherday.com/post/2018-05-21-gorm/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2018-05-25-mysql/">
-                <h2 class="post-title">MySQL 乐观锁与悲观锁</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on May 21, 2018
-              </p>
-              <div class="post-entry">
-                
-                  
                 
               </div>
 

@@ -214,6 +214,48 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-02-10-sparksql/">
+                <h2 class="post-title">sparksql</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 10, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 1 minutes (21 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="sa"></span><span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Python Spark &#34;</span><span class="p">)</span><span class="o">.</span><span class="n">master</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;local[2]&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+    <span class="n">jdbcDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;jdbc&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;url&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;jdbc:mysql://localhost:3306/video&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;driver&#34;</span><span class="p">,</span><span class="sa"></span><span class="s2">&#34;com.mysql.jdbc.Driver&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;dbtable&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;baidu&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;user&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;root&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;password&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;123456&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">jdbcDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></code></pre></div>
+
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/spark/">spark</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2017-02-09-python-hadoop/">
                 <h2 class="post-title">python hadoop</h2>
                 
@@ -573,44 +615,6 @@ job = scheduler.add_job(myfunc, &lsquo;interval&rsquo;, minutes=2) job.remove() 
                 
                   数据库 CREATE TABLE `person` ( `id` int(11) NOT NULL AUTO_INCREMENT, `first_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, `last_name` varchar(40) NOT NULL DEFAULT &#39;&#39;, PRIMARY KEY (`id`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 组织项目 在项目根目录创建下面三个文件夹，apis，databases和models，并在文件夹内创建文件。此时我们的目录结果如下： myql.go的包代码如下： package database import ( &#34;database/sql&#34; _ &#34;github.com/go-sql-driver/mysql&#34; &#34;log&#34; ) var SqlDB *sql.DB func init() { var err error SqlDB, err = sql.Open(&#34;mysql&#34;, &#34;root:@tcp(127.0.0.1:3306)/test?parseTime=true&#34;) if err != nil { log.Fatal(err.Error()) } err = SqlDB.Ping() if err != nil { log.
                   <a href="https://gopherday.com/post/2016-11-12-gin&#43;mysql-api/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2016-10-15-elasticsearch01/">
-                <h2 class="post-title">ElasticSearch 入门</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 15, 2016
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 0 minutes (0 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p><img src="http://oq1xuulg6.bkt.clouddn.com/d8729850d72830bd7b4b1f6b617c97a5.png" alt="" /></p>
-
-<p><img src="http://oq1xuulg6.bkt.clouddn.com/7a89498963af92287cf4742a4d8a6399.png" alt="" /></p>
-
                 
               </div>
 

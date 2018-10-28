@@ -214,6 +214,44 @@
           
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2017-11-21-go-etcd-watcd/">
+                <h2 class="post-title">golang etcd watch</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 21, 2017
+  
+  
+  &nbsp;|&nbsp;
+  <i class="fa fa-clock-o"></i> 2 minutes (308 words)
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  package etcd import ( &#34;context&#34; &#34;encoding/json&#34; &#34;fmt&#34; &#34;LearnEtcd/tailf&#34; &#34;strings&#34; &#34;time&#34; &#34;github.com/astaxie/beego/logs&#34; etcd_client &#34;github.com/coreos/etcd/clientv3&#34; &#34;github.com/coreos/etcd/mvcc/mvccpb&#34; &#34;LearnEtcd/Ip&#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&#34;localhost:2379&#34;, &#34;localhost:22379&#34;, &#34;localhost:32379&#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&#34;connect etcd failed, err:&#34;, err) return } etcdClient = &amp;EtcdClient{ Client: cli, } if strings.
+                  <a href="https://gopherday.com/post/2017-11-21-go-etcd-watcd/" class="post-read-more">[Read More]</a>
+                
+              </div>
+
+              
+                <span class="post-meta">
+                
+                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
+                
+                  #<a href="https://gopherday.com//tags/etcd/">etcd</a>&nbsp;
+                
+                </span>
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2017-08-10-go-kafka/">
                 <h2 class="post-title">golang kafka</h2>
                 
@@ -641,46 +679,6 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/dou
                   #<a href="https://gopherday.com//tags/example/">example</a>&nbsp;
                 
                   #<a href="https://gopherday.com//tags/photoswipe/">photoswipe</a>&nbsp;
-                
-                </span>
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-10-18-go-colly/">
-                <h2 class="post-title">go-colly</h2>
-                
-                  <h3 class="post-subtitle">
-                  装饰器
-                  </h3>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 20, 2017
-  
-  
-  &nbsp;|&nbsp;
-  <i class="fa fa-clock-o"></i> 1 minutes (100 words)
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  package main import ( &#34;fmt&#34; ) type Collector struct { // UserAgent is the User-Agent string used by HTTP requests 	UserAgent string // MaxDepth limits the recursion depth of visited URLs. 	// Set it to 0 for infinite recursion (default). 	MaxDepth int } func UserAgent(ua string) func(*Collector) { return func(c *Collector) { c.UserAgent = ua } } func (c *Collector) Init() { c.UserAgent = &#34;colly - https://github.com/gocolly/colly&#34; c.
-                  <a href="https://gopherday.com/post/2017-10-18-go-colly/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                
-                  #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
                 
                 </span>
               

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gopherday.com/post/2018-10-27-gorm-pg/</loc>
+    <lastmod>2018-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gopherday.com/post/2018-10-25-postgresql/</loc>
     <lastmod>2018-10-26T00:00:00+00:00</lastmod>
   </url>

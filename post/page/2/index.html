@@ -184,6 +184,32 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="https://gopherday.com/post/2018-05-25-mysql/">
+                <h2 class="post-title">MySQL 乐观锁与悲观锁</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                Posted on May 21, 2018
+              </p>
+              <div class="post-entry">
+                
+                  
+                
+              </div>
+
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
+                  
+                </span>
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="https://gopherday.com/post/2018-05-27-redis-watch/">
                 <h2 class="post-title">Redis Watch</h2>
 
@@ -471,35 +497,6 @@ nsqlookupd： 主要负责服务发现 负责nsqd的心跳、状态监测，给�
                 <span class="post-meta">
                   
                     #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                </span>
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="https://gopherday.com/post/2017-11-21-go-etcd-watcd/">
-                <h2 class="post-title">golang etcd watch</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                Posted on November 21, 2017
-              </p>
-              <div class="post-entry">
-                
-                  package etcd import ( &#34;context&#34; &#34;encoding/json&#34; &#34;fmt&#34; &#34;LearnEtcd/tailf&#34; &#34;strings&#34; &#34;time&#34; &#34;github.com/astaxie/beego/logs&#34; etcd_client &#34;github.com/coreos/etcd/clientv3&#34; &#34;github.com/coreos/etcd/mvcc/mvccpb&#34; &#34;LearnEtcd/Ip&#34; ) type EtcdClient struct { Client *etcd_client.Client Keys []string } var ( etcdClient *EtcdClient ) func InitEtcd(addr string, key string) (collectConf []tailf.CollectConf, err error) { cli, err := etcd_client.New(etcd_client.Config{ Endpoints: []string{&#34;localhost:2379&#34;, &#34;localhost:22379&#34;, &#34;localhost:32379&#34;}, DialTimeout: 5 * time.Second, }) if err != nil { logs.Error(&#34;connect etcd failed, err:&#34;, err) return } etcdClient = &amp;EtcdClient{ Client: cli, } if strings.
-                  <a href="https://gopherday.com/post/2017-11-21-go-etcd-watcd/" class="post-read-more">[Read More]</a>
-                
-              </div>
-
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://gopherday.com//tags/golang/">golang</a>&nbsp;
-                  
-                    #<a href="https://gopherday.com//tags/etcd/">etcd</a>&nbsp;
                   
                 </span>
               

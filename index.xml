@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>GORM,MySQL,PG</title>
+      <link>https://gopherday.com/post/2018-10-27-gorm-pg/</link>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
+      <author>tx991020@gmail.com (andy wu)</author>
+      <guid>https://gopherday.com/post/2018-10-27-gorm-pg/</guid>
+      <description>package main import ( &amp;#34;GORM/orm/dao&amp;#34; &amp;#34;fmt&amp;#34; _ &amp;#34;github.com/go-sql-driver/mysql&amp;#34; &amp;#34;github.com/jinzhu/gorm&amp;#34; _ &amp;#34;github.com/jinzhu/gorm/dialects/postgres&amp;#34; &amp;#34;time&amp;#34; ) type Gist struct { Id int64 Url string Snip string Kword string Md5 string language string } func main() { const ( mysqladdr = &amp;#34;root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&amp;amp;parseTime=true&amp;amp;loc=Local&amp;#34; postgaddr = `host=5432 user=postgres dbname=goods sslmode=disable password=123456` ) //psqlInfo := fmt.Sprintf(&amp;#34;host=%s port=%d user=%s password=%s dbname=%s sslmode=disable&amp;#34;, &amp;#34;127.0.0.1&amp;#34;, 5432, &amp;#34;postgres&amp;#34;, &amp;#34;123456&amp;#34;, &amp;#34;goods&amp;#34;)  db, err := gorm.Open(&amp;#34;mysql&amp;#34;, mysqladdr) db.LogMode(true) if err != nil { fmt.</description>
+    </item>
+    
+    <item>
       <title>postgres01</title>
       <link>https://gopherday.com/post/2018-10-25-postgresql/</link>
       <pubDate>Fri, 26 Oct 2018 00:00:00 +0000</pubDate>
